@@ -46,6 +46,12 @@ jobs:
       - name: Run P0 Production Security Hardening & Docker Sandbox Tests
         run: python -m unittest agents/AGI_1_7/tests/test_p0_security_and_real_docker.py -v
 
+      - name: Run Adversarial Model-Disclosure Boundary & Secret Redaction Tests
+        run: python -m unittest agents/AGI_1_7/tests/test_model_disclosure_boundary.py -v
+
+      - name: Run Finance Safety Invariants & Pre-Trade RMS Control Tests
+        run: python -m unittest agents/AGI_1_7/tests/test_finance_safety_invariants.py -v
+
       - name: Verify 100 Specialist Contracts & Ecosystem Sync (Dry-Run, Zero Home Mutation)
         run: python agents/AGI_1_7/scripts/sync_ecosystem.py --dry-run
 
