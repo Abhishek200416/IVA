@@ -22,6 +22,7 @@ import enum
 import hashlib
 import json
 import time
+import uuid
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
@@ -271,3 +272,254 @@ class ContextEngine:
             compact_prompt_block=redacted_block,
             manifest_digest=digest,
         )
+
+    # Active provider models and real-time context capacities
+    ACTIVE_PROVIDER_MODELS: Dict[str, Dict[str, Any]] = {
+        "gemini-3.8-flash-high": {
+            "display_name": "Gemini 3.8 Flash High",
+            "provider": "google",
+            "context_limit": 1_048_576,
+            "support_token_metrics": True,
+        },
+        "clarisonet-4.6": {
+            "display_name": "Clarisonet 4.6",
+            "provider": "anthropic_or_compatible",
+            "context_limit": 200_000,
+            "support_token_metrics": True,
+        },
+        "oppose-4.6": {
+            "display_name": "Oppose 4.6",
+            "provider": "frontier_debate",
+            "context_limit": 200_000,
+            "support_token_metrics": True,
+        },
+        "gpt-128b": {
+            "display_name": "GPT 128B Parameter",
+            "provider": "openai_compatible",
+            "context_limit": 128_000,
+            "support_token_metrics": True,
+        },
+        "zai-org/GLM-5.3-Flash": {
+            "display_name": "GLM-5.3 Flash",
+            "provider": "gonkarouter",
+            "context_limit": 128_000,
+            "support_token_metrics": True,
+        },
+        "MiniMaxAI/MiniMax-M2.7": {
+            "display_name": "MiniMax M2.7",
+            "provider": "gonkarouter",
+            "context_limit": 256_000,
+            "support_token_metrics": True,
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+            "display_name": "DeepSeek V4 Flash",
+            "provider": "gonkarouter",
+            "context_limit": 128_000,
+            "support_token_metrics": True,
+        },
+    }
+
+    def get_model_context_limit(self, model_id: str) -> int:
+        """Resolves context window ceiling for the active provider model."""
+        if not model_id:
+            return 128_000
+        norm = model_id.strip().lower()
+        for k, v in self.ACTIVE_PROVIDER_MODELS.items():
+            if norm == k.lower() or norm in v["display_name"].lower():
+                return int(v["context_limit"])
+        return 128_000
+
+    def estimate_tokens(self, text: str, provider_usage: Optional[int] = None) -> int:
+        """Estimates token count: uses exact provider_usage when available, or character heuristic (~4 chars/token)."""
+        if provider_usage is not None and provider_usage > 0:
+            return int(provider_usage)
+        if not text:
+            return 0
+        return max(1, len(text) // 4)
+
+    def should_rollover(
+        self,
+        current_tokens: int,
+        max_tokens: int = 128_000,
+        threshold: float = 0.80,
+    ) -> bool:
+        """Determines if context should roll over before hitting the model context window limit."""
+        if max_tokens <= 0:
+            return False
+        return (current_tokens / max_tokens) >= threshold
+
+    def truncate_and_dedup_tool_outputs(
+        self,
+        outputs: List[Dict[str, Any]],
+        max_chars: int = 1500,
+        artifact_store_dir: Optional[Path] = None,
+    ) -> List[Dict[str, Any]]:
+        """Deduplicates consecutive identical tool outputs, truncates oversized payloads,
+        and saves raw uncompressed content to a durable content-addressed artifact store.
+        """
+        store_dir = artifact_store_dir or (self.repo_root / "runtime_storage" / "artifact_store")
+        try:
+            store_dir.mkdir(parents=True, exist_ok=True)
+        except Exception:
+            pass
+
+        cleaned: List[Dict[str, Any]] = []
+        last_sig: Optional[str] = None
+
+        for item in outputs:
+            raw_content = str(item.get("output", item.get("content", "")))
+            tool_name = item.get("tool", "unknown")
+            content_hash = hashlib.sha256(raw_content.encode("utf-8", errors="ignore")).hexdigest()
+            sig = f"{tool_name}:{content_hash}"
+
+            # Deduplication of identical consecutive tool invocations
+            if sig == last_sig:
+                continue
+            last_sig = sig
+
+            # Truncation if payload exceeds max_chars
+            if len(raw_content) > max_chars:
+                # Save full uncompressed content in content-addressed artifact store
+                art_file = store_dir / f"art_{content_hash[:16]}.txt"
+                try:
+                    art_file.write_text(raw_content, encoding="utf-8")
+                except Exception:
+                    pass
+
+                snippet = (
+                    raw_content[:max_chars]
+                    + f"\n... [TRUNCATED {len(raw_content) - max_chars} characters; full artifact preserved at artifact_store/art_{content_hash[:16]}.txt]"
+                )
+                cleaned_item = dict(item)
+                if "output" in cleaned_item:
+                    cleaned_item["output"] = snippet
+                if "content" in cleaned_item:
+                    cleaned_item["content"] = snippet
+                cleaned_item["is_truncated"] = True
+                cleaned_item["artifact_digest"] = content_hash[:16]
+                cleaned_item["artifact_path"] = str(art_file)
+                cleaned.append(cleaned_item)
+            else:
+                cleaned.append(item)
+
+        return cleaned
+
+    def write_artifact(self, content: str, artifact_store_dir: Optional[Path] = None) -> str:
+        """Saves content directly to the durable content-addressed artifact store and returns its digest."""
+        store_dir = artifact_store_dir or (self.repo_root / "runtime_storage" / "artifact_store")
+        store_dir.mkdir(parents=True, exist_ok=True)
+        content_hash = hashlib.sha256(content.encode("utf-8", errors="ignore")).hexdigest()
+        digest = content_hash[:16]
+        art_file = store_dir / f"art_{digest}.txt"
+        art_file.write_text(content, encoding="utf-8")
+        return f"art_{digest}"
+
+    def retrieve_artifact(self, artifact_digest: str, artifact_store_dir: Optional[Path] = None) -> Optional[str]:
+        """Retrieves raw un-truncated tool output from content-addressed artifact store."""
+        store_dir = artifact_store_dir or (self.repo_root / "runtime_storage" / "artifact_store")
+        clean_digest = artifact_digest[4:] if artifact_digest.startswith("art_") else artifact_digest
+        target = store_dir / f"art_{clean_digest}.txt"
+        if target.exists():
+            try:
+                return target.read_text(encoding="utf-8")
+            except Exception:
+                return None
+        return None
+
+    def create_rollover_summary(
+        self,
+        *,
+        completed_work: List[str],
+        unresolved_decisions: List[str],
+        files_changed: List[str],
+        tests_run: List[str],
+        unfinished_steps: List[str],
+        safety_constraints: Optional[List[str]] = None,
+        referenced_artifacts: Optional[List[str]] = None,
+        account_epoch: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        """Creates a compact, loss-free summary preserving safety, decisions, files, and artifact refs."""
+        constraints = safety_constraints or self.CORE_INVARIANTS
+        return {
+            "rollover_timestamp": time.time(),
+            "account_epoch": account_epoch or "EPOCH-PAPER-10K-20261014-001",
+            "safety_constraints": list(constraints),
+            "completed_work": list(completed_work),
+            "unresolved_decisions": list(unresolved_decisions),
+            "files_changed": list(files_changed),
+            "tests_run": list(tests_run),
+            "unfinished_steps": list(unfinished_steps),
+            "referenced_artifacts": list(referenced_artifacts or []),
+            "summary_digest": hashlib.sha256(
+                json.dumps(
+                    {
+                        "completed": completed_work,
+                        "unresolved": unresolved_decisions,
+                        "files": files_changed,
+                        "tests": tests_run,
+                        "unfinished": unfinished_steps,
+                        "artifacts": referenced_artifacts or [],
+                    },
+                    sort_keys=True,
+                ).encode("utf-8")
+            ).hexdigest(),
+        }
+
+    def save_checkpoint(
+        self,
+        checkpoint_dir: Path,
+        checkpoint_data: Dict[str, Any],
+        checkpoint_name: Optional[str] = None,
+    ) -> Path:
+        """Saves durable task checkpoint to disk with atomic write/replace."""
+        checkpoint_dir = Path(checkpoint_dir)
+        checkpoint_dir.mkdir(parents=True, exist_ok=True)
+        fname = checkpoint_name or f"chk_{int(time.time() * 1000)}.json"
+        target = checkpoint_dir / fname
+        tmp_target = checkpoint_dir / f"{fname}.tmp_{uuid.uuid4().hex[:6]}"
+        try:
+            tmp_target.write_text(json.dumps(checkpoint_data, indent=2), encoding="utf-8")
+            tmp_target.replace(target)
+        except Exception:
+            # Fallback direct write
+            target.write_text(json.dumps(checkpoint_data, indent=2), encoding="utf-8")
+            if tmp_target.exists():
+                try:
+                    tmp_target.unlink()
+                except Exception:
+                    pass
+        return target
+
+    def load_checkpoint(self, checkpoint_path: Path) -> Dict[str, Any]:
+        """Loads durable task checkpoint from disk with corruption and missing-field resilience."""
+        target = Path(checkpoint_path)
+        if not target.exists():
+            raise FileNotFoundError(f"Checkpoint file not found: {target}")
+
+        raw = target.read_text(encoding="utf-8")
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError as e:
+            corrupted_backup = target.with_suffix(f".corrupted_{int(time.time())}")
+            try:
+                target.rename(corrupted_backup)
+            except Exception:
+                pass
+            raise ValueError(f"Corrupted checkpoint detected and quarantined: {e}")
+
+        # Ensure baseline required keys are present
+        defaults = {
+            "safety_constraints": list(self.CORE_INVARIANTS),
+            "completed_work": [],
+            "unresolved_decisions": [],
+            "files_changed": [],
+            "tests_run": [],
+            "unfinished_steps": [],
+            "account_epoch": "EPOCH-PAPER-10K-20261014-001",
+        }
+        for k, v in defaults.items():
+            if k not in data:
+                data[k] = v
+
+        return data
+

@@ -21,6 +21,13 @@ from agents.AGI_1_7.ecosystem.agent_registry.agent_contract import AgentContract
 from agents.AGI_1_7.ecosystem.agent_registry.specialist_factory import SpecialistFactory
 from ..capabilities.resource_snapshot import ResourceSnapshot
 from ..memory.omega_command_memory import OmegaCommandMemory
+from ..memory.titans_virtual_memory import MemGPTPagedMemoryEngine
+from ..memory.code_knowledge_graph import CodeKnowledgeGraph
+from ..memory.ttt_representation_layer import TestTimeTrainingLayer
+from ..memory.dynamic_schema_evolution_engine import DynamicSchemaEvolutionEngine
+from .reflexion_search_engine import ReflexionEngine, TestTimeSearchVerifier
+from .speculative_prm_sandbox import SpeculativePRMSandbox
+from .confidence_aware_compute_governor import ConfidenceAwareComputeGovernor
 from ..task_control.task_store import TaskStore
 
 
@@ -52,6 +59,14 @@ class AutonomousSelfEvolutionEngine:
         self.specialist_factory = specialist_factory
         self.memory = memory
         self.task_store = task_store
+        self.paged_memory = MemGPTPagedMemoryEngine()
+        self.reflexion = ReflexionEngine()
+        self.search_verifier = TestTimeSearchVerifier()
+        self.speculative_sandbox = SpeculativePRMSandbox()
+        self.knowledge_graph = CodeKnowledgeGraph()
+        self.ttt_layer = TestTimeTrainingLayer()
+        self.compute_governor = ConfidenceAwareComputeGovernor()
+        self.schema_evolution = DynamicSchemaEvolutionEngine()
 
     def run_evolution_cycle(
         self,

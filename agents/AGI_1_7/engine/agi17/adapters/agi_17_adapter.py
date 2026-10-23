@@ -32,6 +32,7 @@ from ..process_supervision.sandbox_runner import (
     SandboxPolicy,
 )
 from ..research.grounded_research import GroundedResearchEngine
+from ..security.model_disclosure_policy import ModelDisclosurePolicy
 from ..task_control.task_manager import DurableTaskManager
 from ..telemetry.progress_service import ProgressService
 from ..telemetry.token_economy import AdaptiveTokenController
@@ -54,6 +55,7 @@ class AGI17Adapter:
         sandbox_runner: Optional[DisposableSandboxRunner] = None,
         approval_gate: Optional[HighImpactApprovalGate] = None,
         model_adapter: Optional[ModelAdapter] = None,
+        disclosure_policy: Optional[ModelDisclosurePolicy] = None,
     ) -> None:
         import os as _os
         import sys as _sys
@@ -90,10 +92,16 @@ class AGI17Adapter:
             task_manager=self.task_manager,
             logs_dir=self.storage_root / "logs" / "processes",
         )
+        self.disclosure_policy = disclosure_policy or (
+            getattr(model_adapter, "disclosure_policy", None)
+            if model_adapter is not None
+            else ModelDisclosurePolicy.production_strict()
+        )
         self.model_adapter = model_adapter or ModelAdapter(
             token_controller=self.token_controller,
             governor=self.governor,
             supervisor=self.supervisor,
+            disclosure_policy=self.disclosure_policy,
         )
         self.approval_gate = approval_gate or (
             sandbox_runner.approval_gate if sandbox_runner is not None else HighImpactApprovalGate()
@@ -116,6 +124,7 @@ class AGI17Adapter:
             supervisor=self.supervisor,
             sandbox_runner=self.sandbox_runner,
             approval_gate=self.approval_gate,
+            disclosure_policy=self.disclosure_policy,
         )
         self.ci_repair_agent = CIRepairAgent(
             model_adapter=self.model_adapter,
@@ -123,6 +132,7 @@ class AGI17Adapter:
             specialist_factory=self.specialist_factory,
             ecosystem_coordinator=self.ecosystem_coordinator,
             approval_gate=self.approval_gate,
+            disclosure_policy=self.disclosure_policy,
         )
         self.progress_service = ProgressService(
             task_store=self.task_manager.store,
@@ -148,6 +158,12 @@ class AGI17Adapter:
             is self.ci_repair_agent.approval_gate
             is self.sandbox_runner.approval_gate
         )
+        shared_disclosure = bool(
+            self.disclosure_policy
+            is self.orchestrator.disclosure_policy
+            is self.ci_repair_agent.disclosure_policy
+            is self.model_adapter.disclosure_policy
+        )
         return {
             "adapter_instance_id": id(self),
             "adapter_runner_id": id(self.sandbox_runner),
@@ -160,7 +176,16 @@ class AGI17Adapter:
             "approval_gate_instance_id": id(self.approval_gate),
             "shared_approval_gate_identity_verified": shared_gate,
             "shared_approval_gate_verified": shared_gate,
+            "adapter_disclosure_policy_id": id(self.disclosure_policy),
+            "disclosure_policy_instance_id": id(self.disclosure_policy),
+            "shared_disclosure_policy_verified": shared_disclosure,
             "effective_policy": self.sandbox_runner.policy.to_dict(),
+            "disclosure_policy": {
+                "mode": self.disclosure_policy.mode.value,
+                "allow_workspace_model_disclosure": self.disclosure_policy.allow_workspace_model_disclosure,
+                "local_only": self.disclosure_policy.local_only,
+                "redact_secrets_outbound": self.disclosure_policy.redact_secrets_outbound,
+            },
             "orchestrator_diagnostics": self.orchestrator.get_security_diagnostics(),
             "ci_repair_diagnostics": self.ci_repair_agent.get_security_diagnostics(),
         }
@@ -192,6 +217,7 @@ class AGI17Adapter:
         fallback_module_code: Optional[str] = None,
         fallback_test_code: Optional[str] = None,
         apply_approved_patch: bool = False,
+        allow_workspace_model_disclosure: bool = False,
     ) -> list[SubtaskSpec]:
         """Delegates to `HierarchicalOrchestrator.build_code_and_test_subtasks`."""
         return self.orchestrator.build_code_and_test_subtasks(
@@ -204,6 +230,7 @@ class AGI17Adapter:
             fallback_module_code=fallback_module_code,
             fallback_test_code=fallback_test_code,
             apply_approved_patch=apply_approved_patch,
+            allow_workspace_model_disclosure=allow_workspace_model_disclosure,
         )
 
     def run_ci_repair(
@@ -215,6 +242,7 @@ class AGI17Adapter:
         issue_description: str = "Fix failing Python unit tests with minimal diff.",
         write_patch_to_workspace: bool = False,
         apply_approved_patch: Optional[bool] = None,
+        allow_workspace_model_disclosure: Optional[bool] = None,
     ) -> Dict[str, Any]:
         """Executes the focused Python CI-Repair product workflow inside a disposable sandbox."""
         res = self.ci_repair_agent.repair_workspace(
@@ -224,6 +252,7 @@ class AGI17Adapter:
             issue_description=issue_description,
             write_patch_to_workspace=write_patch_to_workspace,
             apply_approved_patch=apply_approved_patch,
+            allow_workspace_model_disclosure=allow_workspace_model_disclosure,
         )
         out = res.to_dict()
         out["security_diagnostics"] = self.get_security_diagnostics()
@@ -243,6 +272,7 @@ class AGI17Adapter:
         test_filename: str = "test_token_bucket.py",
         inject_deliberate_test_failure: bool = False,
         apply_approved_patch: bool = False,
+        allow_workspace_model_disclosure: bool = False,
         max_wall_clock_sec: Optional[float] = None,
         max_mission_tokens: Optional[int] = None,
     ) -> Dict[str, Any]:
@@ -259,6 +289,7 @@ class AGI17Adapter:
             test_filename=test_filename,
             inject_deliberate_test_failure=inject_deliberate_test_failure,
             apply_approved_patch=apply_approved_patch,
+            allow_workspace_model_disclosure=allow_workspace_model_disclosure,
             max_wall_clock_sec=max_wall_clock_sec,
             max_mission_tokens=max_mission_tokens,
         )

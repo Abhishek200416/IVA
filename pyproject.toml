@@ -38,3 +38,16 @@ include = ["agents.AGI_1_7*"]
 
 [tool.setuptools.package-data]
 "agents.AGI_1_7.ecosystem.agent_registry.contracts" = ["*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["agents/AGI_1_7/tests"]
+norecursedirs = [
+    "agents/AGI_1_7/backups",
+    "agents/AGI_1_7/heldout_benchmark_workspace",
+    "agents/AGI_1_7/live_code_mission_workspace",
+    "agents/AGI_1_7/demo_workspace",
+    "node_modules",
+    ".venv",
+    ".gemini",
+]
+

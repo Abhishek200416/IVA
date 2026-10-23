@@ -8,8 +8,9 @@
 [![Verification & CI](assets/badges/verification.svg)](.github/workflows/agi17-ci.yml)
 [![P0 Security Hardening](assets/badges/security.svg)](agents/AGI_1_7/docs/AGI_1_7_P0_SECURITY_HARDENING_REPORT.md)
 [![70 Benchmarks](assets/badges/benchmarks.svg)](agents/AGI_1_7/docs/AGI_1_7_FOUR_AGENT_70_BENCHMARK_COMPARISON.md)
+[![Iva Cognitive Partner](https://img.shields.io/badge/Iva_Agent-Quickstart_%26_Architecture-blueviolet.svg)](IVA_README.md)
 
-**AGI 1.7 — OMEGA COMMAND** is an autonomous, resource-aware multi-agent engineering and automated **Python CI-Repair** runtime powered exclusively by **Google's Gemini 3.8 Flash High (`gemini-3.8-flash-high`)** using the **Python 3.10+ Standard Library** (`0` third-party PyPI runtime dependencies required).
+**AGI 1.7 — OMEGA COMMAND** is an autonomous, resource-aware multi-agent engineering and automated **Python CI-Repair** runtime led by **Iva** ([`IVA_README.md`](IVA_README.md)), powered exclusively by **Google's Gemini 3.8 Flash High (`gemini-3.8-flash-high`)** using the **Python 3.10+ Standard Library** (`0` third-party PyPI runtime dependencies required).
 
 > [!IMPORTANT]
 > **Production Scope & Runtime Boundaries**
@@ -822,16 +823,46 @@ python agents/AGI_1_7/run_agi_17.py \
 
 ## ⚡ 6. Quickstart & Reproducible Commands
 
-### 1. Installation (`pyproject.toml`)
+### 1. One-Command Autonomous Setup (`setup_iva.py`)
+AGI 1.7 and Iva feature a self-provisioning runtime setup script that runs on any machine with zero required third-party dependencies:
 ```bash
 git clone https://github.com/Abhishek200416/AGI-1.7V.git
 cd AGI-1.7V
-python -m pip install -e .
+python setup_iva.py
 ```
+*(Alternatively, with `uv`: `uv run python setup_iva.py`)*
 
-### 2. Run the Complete Verification Suite (`88` Tests)
+**What `setup_iva.py` automatically handles for your local system:**
+1. **Runtime Verification:** Checks Python 3.10+ standard library compatibility.
+2. **Environment Configuration:** Automatically creates a safe `.env` file from `.env.example` if not present.
+3. **Local Cognitive Memory Provisioning:** Automatically initializes a fresh, cross-platform SQLite WAL memory database (`omega_memory.db`) directly on **your own system** at `~/.iva/memory/omega_memory.db` (or custom directory set via `OMEGA_MEMORY_DIR`). Sets up all 10 schema layers and seeds baseline cognitive identity.
+4. **100-Specialist Registry Audit:** Validates 100 specialist contracts across all 16 functional families.
+5. **Physical Safety Gate Audit:** Confirms fail-closed safety invariant (`LIVE_ORDER_DISPATCH_ENABLED = False`).
+
+---
+
+### 2. Run Iva Multi-Modal Interfaces
+After running setup, you can launch Iva across three primary interaction surfaces:
+- **Desktop Voice HUD & Always-On-Top Overlay:**
+  ```bash
+  python talk_to_iva.py
+  # (On Windows, double-click: launch_iva_call.bat)
+  ```
+- **Autonomous Terminal Multi-Agent CLI:**
+  ```bash
+  python agents/AGI_1_7/run_agi_17.py
+  ```
+- **Real-Time Observability Web Dashboard (port 8088):**
+  ```bash
+  python agents/AGI_1_7/ui/standalone_dashboard_server.py
+  ```
+
+---
+
+### 3. Run the Complete Verification Suite (`88+` Tests)
 ```bash
 python -m unittest \
+  agents/AGI_1_7/tests/test_iva_cognitive_architecture_and_identity.py \
   agents/AGI_1_7/tests/test_p0_security_and_real_docker.py \
   agents/AGI_1_7/tests/test_production_hardening_sprint.py \
   agents/AGI_1_7/tests/unit/test_agi17_unit_suite.py \
@@ -839,12 +870,18 @@ python -m unittest \
   agents/AGI_1_7/tests/end_to_end/test_agi17_e2e_demos.py -v
 ```
 
-### 3. Run Capability Profiler & Crash Reconciliation
+### 4. Optional Package Installation (`pyproject.toml`)
+If you want to install optional UI voice, dashboard, or browser dependencies:
+```bash
+python -m pip install -e .
+```
+
+### 5. Run Capability Profiler & Crash Reconciliation
 ```bash
 python agents/AGI_1_7/run_agi_17.py --profile-only
 ```
 
-### 4. Run Multi-Specialist Coding, Sandboxed Testing & Self-Healing
+### 6. Run Multi-Specialist Coding, Sandboxed Testing & Self-Healing
 ```bash
 python agents/AGI_1_7/run_agi_17.py \
   --title "Interval Merger" \
@@ -854,7 +891,7 @@ python agents/AGI_1_7/run_agi_17.py \
   --test-filename test_interval_merger.py
 ```
 
-### 5. Run Detached Background Execution (Daemon Mode)
+### 7. Run Detached Background Execution (Daemon Mode)
 ```bash
 python agents/AGI_1_7/run_agi_17.py \
   --detach \

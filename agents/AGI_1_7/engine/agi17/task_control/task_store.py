@@ -100,7 +100,10 @@ class TaskStore:
                         created_at REAL NOT NULL,
                         updated_at REAL NOT NULL,
                         started_at REAL,
-                        ended_at REAL
+                        ended_at REAL,
+                        provenance TEXT DEFAULT 'SEEDED_FIXTURE',
+                        last_heartbeat REAL,
+                        verification_evidence_json TEXT DEFAULT '{}'
                     );
 
                     CREATE INDEX IF NOT EXISTS idx_tasks_job_id ON tasks(job_id);
@@ -134,6 +137,16 @@ class TaskStore:
                     );
                     """
                 )
+                # Check for existing table schema migrations
+                cursor = conn.execute("PRAGMA table_info(tasks)")
+                existing_cols = {row["name"] for row in cursor.fetchall()}
+                if "provenance" not in existing_cols:
+                    conn.execute("ALTER TABLE tasks ADD COLUMN provenance TEXT DEFAULT 'SEEDED_FIXTURE'")
+                if "last_heartbeat" not in existing_cols:
+                    conn.execute("ALTER TABLE tasks ADD COLUMN last_heartbeat REAL")
+                if "verification_evidence_json" not in existing_cols:
+                    conn.execute("ALTER TABLE tasks ADD COLUMN verification_evidence_json TEXT DEFAULT '{}'")
+
 
     def _append_event(
         self,
@@ -182,7 +195,7 @@ class TaskStore:
 
     def create_task(
         self,
-        title: str,
+        title: str = "Task",
         description: str = "",
         job_id: Optional[str] = None,
         task_id: Optional[str] = None,
@@ -197,9 +210,15 @@ class TaskStore:
         budget: Optional[Dict[str, Any]] = None,
         token_budget: Optional[int] = None,
         metadata: Optional[Dict[str, Any]] = None,
+        input_data: Optional[Dict[str, Any]] = None,
         delegation_depth: Optional[int] = None,
         max_retries: int = 2,
         initial_state: TaskState = TaskState.CREATED,
+        provenance: str = "REAL_DISPATCHED",
+        verification_status: Optional[str] = None,
+        verification_evidence: Optional[Dict[str, Any]] = None,
+        worker_pid: Optional[int] = None,
+        last_heartbeat: Optional[float] = None,
     ) -> Dict[str, Any]:
         with self.lock:
             with self._connect() as conn:
@@ -209,6 +228,17 @@ class TaskStore:
                     ).fetchone()
                     if row:
                         return self._row_to_dict(row)
+                elif job_id:
+                    active_match = conn.execute(
+                        """
+                        SELECT * FROM tasks 
+                        WHERE job_id = ? AND COALESCE(parent_task_id, '') = ? AND LOWER(title) = ?
+                          AND state NOT IN ('COMPLETED', 'FAILED', 'CANCELLED')
+                        """,
+                        (job_id, parent_task_id or '', title.strip().lower()),
+                    ).fetchone()
+                    if active_match:
+                        return self._row_to_dict(active_match)
 
                 now = time.time()
                 t_id = task_id or f"TSK-{int(now * 1000)}-{uuid.uuid4().hex[:6]}"
@@ -231,15 +261,23 @@ class TaskStore:
                     budget_dict["token_budget"] = token_budget
                 if metadata is not None:
                     budget_dict["metadata"] = metadata
+                elif input_data is not None:
+                    budget_dict["metadata"] = input_data
                 budget_dict["delegation_depth"] = computed_depth
+
+                started_ts = now if state_val == "RUNNING" else None
+                hb_ts = last_heartbeat if last_heartbeat is not None else (now if state_val == "RUNNING" else None)
+                ver_status = verification_status or "PROPOSED"
+                ver_evidence_str = json.dumps(verification_evidence or {})
 
                 conn.execute(
                     """
                     INSERT INTO tasks (
                         task_id, job_id, parent_task_id, campaign_id, title, description,
                         specialist_id, state, priority, idempotency_key, dependencies_json,
-                        budget_json, max_retries, created_at, updated_at
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        budget_json, max_retries, created_at, updated_at, started_at, pid,
+                        provenance, last_heartbeat, verification_evidence_json, verification_status
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
                     (
                         t_id,
@@ -257,6 +295,12 @@ class TaskStore:
                         max_retries,
                         now,
                         now,
+                        started_ts,
+                        worker_pid,
+                        provenance,
+                        hb_ts,
+                        ver_evidence_str,
+                        ver_status,
                     ),
                 )
                 self._append_event(
@@ -266,7 +310,7 @@ class TaskStore:
                     "TASK_CREATED",
                     None,
                     state_val,
-                    {"title": title, "parent_task_id": parent_task_id, "specialist_id": spec_val},
+                    {"title": title, "parent_task_id": parent_task_id, "specialist_id": spec_val, "provenance": provenance},
                 )
                 row = conn.execute("SELECT * FROM tasks WHERE task_id = ?", (t_id,)).fetchone()
                 return self._row_to_dict(row)
@@ -280,14 +324,19 @@ class TaskStore:
         exit_code: Optional[int] = None,
         artifact_path: Optional[str] = None,
         verification_status: Optional[str] = None,
+        verification_evidence: Optional[Dict[str, Any]] = None,
         error_detail: Optional[str] = None,
         result_data: Optional[Dict[str, Any]] = None,
+        heartbeat: Optional[float] = None,
+        provenance: Optional[str] = None,
     ) -> Dict[str, Any]:
         with self.lock:
             with self._connect() as conn:
-                row = conn.execute("SELECT * FROM tasks WHERE task_id = ?", (task_id,)).fetchone()
+                tid = task_id.get("task_id") if isinstance(task_id, dict) else str(task_id)
+                row = conn.execute("SELECT * FROM tasks WHERE task_id = ?", (tid,)).fetchone()
                 if not row:
                     raise KeyError(f"Task not found: {task_id}")
+                task_id = tid
                 curr_state = row["state"]
                 validated_next = TaskStateMachine.validate_transition(curr_state, next_state)
                 now = time.time()
@@ -305,13 +354,41 @@ class TaskStore:
                 new_ver = verification_status if verification_status is not None else row["verification_status"]
                 new_err = error_detail if error_detail is not None else row["error_detail"]
                 new_res = json.dumps(result_data) if result_data is not None else row["result_json"]
+                
+                # Update heartbeat: if running, set to heartbeat param or current timestamp
+                if validated_next == TaskState.RUNNING:
+                    new_hb = heartbeat if heartbeat is not None else now
+                else:
+                    new_hb = heartbeat if heartbeat is not None else (row["last_heartbeat"] if "last_heartbeat" in row.keys() else None)
+
+                # Verification Authenticity Gate:
+                # A task must not be labeled VERIFIED_PASS without genuine validation evidence
+                if new_ver == "VERIFIED_PASS":
+                    has_evidence = False
+                    if verification_evidence and isinstance(verification_evidence, dict) and len(verification_evidence) > 0:
+                        if verification_evidence.get("passed") is True or verification_evidence.get("verified") is True:
+                            has_evidence = True
+                    if result_data and isinstance(result_data, dict):
+                        if result_data.get("verified") is True or result_data.get("passed") is True or result_data.get("status") in ("PASSED", "VERIFIED"):
+                            has_evidence = True
+                        elif "checks_passed" in result_data and len(result_data["checks_passed"]) > 0:
+                            has_evidence = True
+                    if not has_evidence:
+                        new_ver = "UNVERIFIED_RESULT"
+                        if details is None:
+                            details = {}
+                        details["verification_override"] = "Downgraded from VERIFIED_PASS to UNVERIFIED_RESULT: lacks empirical verification evidence"
+
+                ver_ev_json = json.dumps(verification_evidence) if verification_evidence is not None else (row["verification_evidence_json"] if "verification_evidence_json" in row.keys() else "{}")
+                new_prov = provenance if provenance is not None else (row["provenance"] if "provenance" in row.keys() else "SEEDED_FIXTURE")
 
                 conn.execute(
                     """
                     UPDATE tasks
                     SET state = ?, updated_at = ?, started_at = ?, ended_at = ?,
                         pid = ?, exit_code = ?, artifact_path = ?, verification_status = ?,
-                        error_detail = ?, result_json = ?
+                        error_detail = ?, result_json = ?, last_heartbeat = ?,
+                        verification_evidence_json = ?, provenance = ?
                     WHERE task_id = ?
                     """,
                     (
@@ -325,6 +402,9 @@ class TaskStore:
                         new_ver,
                         new_err,
                         new_res,
+                        new_hb,
+                        ver_ev_json,
+                        new_prov,
                         task_id,
                     ),
                 )
@@ -339,6 +419,100 @@ class TaskStore:
                 )
                 updated = conn.execute("SELECT * FROM tasks WHERE task_id = ?", (task_id,)).fetchone()
                 return self._row_to_dict(updated)
+
+    # Alias for compatibility with external callers
+    transition_state = transition_task
+
+    def record_heartbeat(
+        self,
+        task_id: str,
+        timestamp: Optional[float] = None,
+        pid: Optional[int] = None,
+        details: Optional[Dict[str, Any]] = None,
+    ) -> bool:
+        """Records a fresh heartbeat from an executing worker or daemon."""
+        with self.lock:
+            now = timestamp or time.time()
+            tid = task_id.get("task_id") if isinstance(task_id, dict) else str(task_id)
+            with self._connect() as conn:
+                row = conn.execute("SELECT * FROM tasks WHERE task_id = ?", (tid,)).fetchone()
+                if not row:
+                    return False
+                task_id = tid
+                curr_pid = pid if pid is not None else row["pid"]
+                conn.execute(
+                    "UPDATE tasks SET last_heartbeat = ?, updated_at = ?, pid = ? WHERE task_id = ?",
+                    (now, now, curr_pid, task_id),
+                )
+                self._append_event(
+                    conn,
+                    task_id,
+                    row["job_id"],
+                    "HEARTBEAT_RECORDED",
+                    row["state"],
+                    row["state"],
+                    details or {"timestamp": now, "pid": curr_pid},
+                )
+                return True
+
+    def audit_stale_tasks(
+        self,
+        staleness_threshold_sec: float = 120.0,
+        auto_mark_orphaned: bool = False,
+        stale_threshold_sec: Optional[float] = None,
+    ) -> List[Dict[str, Any]]:
+        """Audits tasks in RUNNING state to detect dead processes or missing heartbeats."""
+        threshold = stale_threshold_sec if stale_threshold_sec is not None else staleness_threshold_sec
+        with self.lock:
+            stale_list = []
+            now = time.time()
+            with self._connect() as conn:
+                running_rows = conn.execute("SELECT * FROM tasks WHERE state = 'RUNNING'").fetchall()
+                for r in running_rows:
+                    t = self._row_to_dict(r)
+                    hb = t.get("last_heartbeat") or t.get("updated_at") or 0.0
+                    age = now - hb
+                    if age > threshold:
+                        # Check PID liveness
+                        is_pid_alive = False
+                        pid = t.get("pid")
+                        if pid:
+                            try:
+                                import psutil
+                                is_pid_alive = psutil.pid_exists(pid)
+                            except Exception:
+                                try:
+                                    os.kill(pid, 0)
+                                    is_pid_alive = True
+                                except Exception:
+                                    is_pid_alive = False
+
+                        health = "STALE_HEARTBEAT" if is_pid_alive else "ORPHANED_DEAD"
+                        t["is_stale"] = True
+                        t["execution_health"] = health
+                        t["staleness_age_sec"] = round(age, 1)
+                        stale_list.append(t)
+
+                        if auto_mark_orphaned and not is_pid_alive:
+                            conn.execute(
+                                "UPDATE tasks SET state = 'FAILED', error_detail = ?, updated_at = ?, ended_at = ? WHERE task_id = ?",
+                                (
+                                    f"Orphaned task execution timed out after {age:.1f}s without heartbeat (PID dead or missing)",
+                                    now,
+                                    now,
+                                    t["task_id"],
+                                ),
+                            )
+                            self._append_event(
+                                conn,
+                                t["task_id"],
+                                t["job_id"],
+                                "TASK_ORPHANED_TIMEOUT",
+                                "RUNNING",
+                                "FAILED",
+                                {"age_sec": age, "pid": pid},
+                            )
+            return stale_list
 
     def update_task_fields(self, task_id: str, **kwargs: Any) -> Dict[str, Any]:
         with self.lock:
@@ -359,6 +533,8 @@ class TaskStore:
                     b_cur = json.loads(row["budget_json"] or "{}")
                     b_cur["metadata"] = kwargs.pop("metadata")
                     kwargs["budget_json"] = b_cur
+                if "verification_evidence" in kwargs:
+                    kwargs["verification_evidence_json"] = kwargs.pop("verification_evidence")
 
                 allowed = {
                     "priority",
@@ -373,6 +549,9 @@ class TaskStore:
                     "error_detail",
                     "result_json",
                     "specialist_id",
+                    "provenance",
+                    "last_heartbeat",
+                    "verification_evidence_json",
                 }
                 updates = []
                 params = []
@@ -388,10 +567,11 @@ class TaskStore:
                 updated = conn.execute("SELECT * FROM tasks WHERE task_id = ?", (task_id,)).fetchone()
                 return self._row_to_dict(updated)
 
-    def get_task(self, task_id: str) -> Optional[Dict[str, Any]]:
+    def get_task(self, task_id: str | Dict[str, Any]) -> Optional[Dict[str, Any]]:
         with self.lock:
+            tid = task_id.get("task_id") if isinstance(task_id, dict) else str(task_id)
             with self._connect() as conn:
-                row = conn.execute("SELECT * FROM tasks WHERE task_id = ?", (task_id,)).fetchone()
+                row = conn.execute("SELECT * FROM tasks WHERE task_id = ?", (tid,)).fetchone()
                 return self._row_to_dict(row) if row else None
 
     def list_tasks(
@@ -571,4 +751,38 @@ class TaskStore:
         d["result"] = result
         d["specialist_role"] = d.get("specialist_id")
         d["worker_pid"] = d.get("pid")
+
+        # Provenance & Heartbeat telemetry
+        d["provenance"] = d.get("provenance") or "SEEDED_FIXTURE"
+        d["last_heartbeat"] = d.get("last_heartbeat")
+        ver_ev = json.loads(d.pop("verification_evidence_json", "{}") or "{}") if "verification_evidence_json" in d else {}
+        d["verification_evidence"] = ver_ev
+
+        # Dynamic execution health calculation
+        state = d.get("state")
+        now = time.time()
+        hb = d.get("last_heartbeat") or d.get("updated_at") or 0.0
+        age = now - hb if hb > 0 else 999999.0
+
+        if state == "RUNNING":
+            if age > 120.0:
+                d["is_stale"] = True
+                d["execution_health"] = "STALE_HEARTBEAT" if d.get("pid") else "ORPHANED_DEAD"
+            else:
+                d["is_stale"] = False
+                d["execution_health"] = "HEALTHY_RUNNING"
+        elif state in ("SUCCEEDED", "COMPLETED"):
+            d["is_stale"] = False
+            if d.get("verification_status") == "VERIFIED_PASS":
+                d["execution_health"] = "COMPLETED_VALIDATED"
+            else:
+                d["execution_health"] = "COMPLETED_UNVERIFIED"
+        elif state == "FAILED":
+            d["is_stale"] = False
+            d["execution_health"] = "FAILED"
+        else:
+            d["is_stale"] = False
+            d["execution_health"] = "QUEUED_STANDBY"
+
         return d
+

@@ -44,6 +44,13 @@ from ..process_supervision.sandbox_runner import (
     validate_relative_sandbox_path,
     validate_test_pattern,
 )
+from ..security.model_disclosure_policy import (
+    DisclosureContext,
+    DisclosureDecision,
+    ExternalProviderBlockedInLocalOnlyModeError,
+    ModelDisclosureDeniedError,
+    ModelDisclosurePolicy,
+)
 from ..telemetry.token_economy import TokenBudgetExceededError
 from .hierarchical_orchestrator import _extract_python_code, _is_valid_python_syntax
 
@@ -117,6 +124,7 @@ class CIRepairAgent:
         ecosystem_coordinator: Optional[EcosystemCoordinator] = None,
         approval_gate: Optional[HighImpactApprovalGate] = None,
         budget: Optional[CIRepairBudget] = None,
+        disclosure_policy: Optional[ModelDisclosurePolicy] = None,
     ) -> None:
         self.budget = budget or CIRepairBudget()
         self.approval_gate = approval_gate or (
@@ -128,6 +136,9 @@ class CIRepairAgent:
                 max_mission_cost_usd=self.budget.max_cost_usd,
             )
         )
+        self.disclosure_policy = disclosure_policy or getattr(
+            self.model_adapter, "disclosure_policy", None
+        ) or ModelDisclosurePolicy.production_strict()
         self.sandbox_runner = sandbox_runner or DisposableSandboxRunner(
             policy=SandboxPolicy.production(wall_timeout_sec=self.budget.sandbox_timeout_sec),
             approval_gate=self.approval_gate,
@@ -141,7 +152,13 @@ class CIRepairAgent:
             "ci_repair_agent_instance_id": id(self),
             "sandbox_runner_instance_id": id(self.sandbox_runner),
             "approval_gate_instance_id": id(self.approval_gate),
+            "disclosure_policy_instance_id": id(self.disclosure_policy),
             "effective_policy": self.sandbox_runner.policy.to_dict(),
+            "disclosure_policy": {
+                "mode": self.disclosure_policy.mode.value,
+                "allow_workspace_model_disclosure": self.disclosure_policy.allow_workspace_model_disclosure,
+                "local_only": self.disclosure_policy.local_only,
+            },
             "sandbox_diagnostics": self.sandbox_runner.get_security_diagnostics(),
         }
 
@@ -215,6 +232,7 @@ class CIRepairAgent:
         issue_description: str = "Fix failing Python unit tests with minimal diff.",
         write_patch_to_workspace: bool = False,
         apply_approved_patch: Optional[bool] = None,
+        allow_workspace_model_disclosure: Optional[bool] = None,
         repair_id: Optional[str] = None,
     ) -> CIRepairResult:
         """Reproduces failing tests in the sandbox, synthesizes a minimal patch, verifies in sandbox, and builds a PR payload.
@@ -319,7 +337,35 @@ class CIRepairAgent:
                 },
             )
 
-        # Step 3: Iterative repair loop within strict attempt, token, wall-clock, and USD cost budgets
+        # Step 3: Model Disclosure Authorization check BEFORE assembling prompt or invoking model
+        has_workspace_content = bool(original_code.strip() or py_files)
+        ctx = DisclosureContext(
+            task_id=rid,
+            agent_id="swe_patch_minimizer",
+            workspace_root=ws,
+            target_files=[norm_module_rel] + [k for k in py_files.keys() if k != norm_module_rel],
+            has_workspace_content=has_workspace_content,
+            is_external_provider=bool(self.model_adapter.mock_provider is None or getattr(self.model_adapter.mock_provider, "is_external", False)),
+            provider_name=self.model_adapter.config.model_name,
+            operation_type="ci_repair_model_invocation",
+        )
+        if self.disclosure_policy.local_only and ctx.is_external_provider:
+            decision = self.disclosure_policy.evaluate(ctx)
+            raise ExternalProviderBlockedInLocalOnlyModeError(decision.reason)
+        if allow_workspace_model_disclosure is not None:
+            if not allow_workspace_model_disclosure:
+                raise ModelDisclosureDeniedError(
+                    f"DISCLOSURE_DENIED: Explicit allow_workspace_model_disclosure=False for '{norm_module_rel}'"
+                )
+            decision = DisclosureDecision(
+                authorized=True,
+                mode=self.disclosure_policy.mode,
+                reason="DISCLOSURE_PERMITTED: Explicit call-site allow_workspace_model_disclosure=True grant.",
+            )
+            self.disclosure_policy._record_audit(ctx, decision)
+        else:
+            self.disclosure_policy.authorize_or_raise(ctx)
+
         contract = self.specialist_factory.get_contract("swe_patch_minimizer")
         coord = self.ecosystem_coordinator.build_coordination_railings(contract, is_repair=True)
         test_sources = "\n\n".join(

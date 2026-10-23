@@ -17,6 +17,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 .venv/
+.osworld_venv/
 venv/
 *.egg-info/
 
@@ -73,6 +74,91 @@ external/
 
 
 # AGI 1.7 demo runtime scratch & CLI home
+**/runtime_storage/
+agents/AGI_1_7/engine/runtime_storage/
 agents/AGI_1_7/demo_workspace/eval_env/
 agents/AGI_1_7/demo_workspace/runtime_storage/
+agents/AGI_1_7/runtime_storage/
+agents/AGI_1_7/local_fallback_storage/
+agents/AGI_1_7/state_fallback/
+agents/AGI_1_7/backups/
+agents/agents/
+*.woff
+*.woff2
+*.ttf
+COLLABORATION_CHANNEL.md
+MISSION_STATUS.md
 
+# Screenshots & Local Scrapes
+/*.png
+/*.jpg
+/*.jpeg
+/alexa_*.json
+/deep_*.json
+/live_triumvirate_portfolio.json
+/paytm_*.json
+/tab1_*.json
+/inspect_*.py
+/test_*.py
+/find_*.py
+/verify_sync_and_capture.py
+/voice_cache/
+*.wav
+*.mp3
+*.bak
+.venv*
+
+# Local session reports & runtime logs
+/PHASE*.md
+/AGI_UI_*.md
+/AGI_PAYTM_*.md
+/MARKET_*.md
+/MEMORY_*.md
+/OMEGA_*.md
+/PAPER_*.md
+/DASHBOARD_*.md
+/FINAL_*.md
+/READ_*.md
+/SUPERVISOR_*.md
+/TEAM_*.md
+/WEB_*.md
+/AGENT_*.md
+/EXAMPLE_*.json
+/afternoon_gamma_hunter_daemon.py
+agents/AGI_1_7/reports/PHASE*
+agents/AGI_1_7/reports/complete_test_audit_evidence.json
+agents/AGI_1_7/reports/phase17*
+agents/AGI_1_7/reports/library_digest.json
+agents/AGI_1_7/reports/AGI_1_7_FINAL_*.md
+agents/AGI_1_7/reports/AGI_1_7_PHASE*.md
+agents/AGI_1_7/reports/AGI_1_7_RECOVERY*.md
+agents/AGI_1_7/reports/AGI_1_7_PRODUCTION*.md
+
+# Local scratch & inspection scripts
+agents/AGI_1_7/scripts/audit_*.py
+agents/AGI_1_7/scripts/check_*.py
+agents/AGI_1_7/scripts/inspect_*.py
+agents/AGI_1_7/scripts/run_complete_*.py
+agents/AGI_1_7/scripts/safe_backup_*.py
+agents/AGI_1_7/scripts/sanitize_*.py
+agents/AGI_1_7/scripts/start_improvement_*
+agents/AGI_1_7/scripts/supervised_soak_*
+agents/AGI_1_7/scripts/verify_*.py
+agents/AGI_1_7/engine/inspect_*.py
+agents/AGI_1_7/engine/test_*.py
+agents/AGI_1_7/engine/search_*.py
+agents/AGI_1_7/engine/deep_inspect_*.py
+agents/AGI_1_7/engine/measure_*.py
+agents/AGI_1_7/engine/recover_*.py
+agents/AGI_1_7/engine/replace_*.py
+agents/AGI_1_7/engine/select_*.py
+agents/AGI_1_7/engine/summarize_*.py
+agents/AGI_1_7/engine/read_*.py
+agents/AGI_1_7/engine/find_*.py
+agents/AGI_1_7/engine/check_*.py
+agents/AGI_1_7/engine/click_*.py
+agents/AGI_1_7/engine/capture_*.py
+agents/AGI_1_7/engine/comprehensive_*.py
+agents/AGI_1_7/engine/diagnose_*.py
+
+agents/AGI_1_7/finance/

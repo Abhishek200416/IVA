@@ -15,6 +15,7 @@ Covers Phases 1, 2, 3, 4, 6, and 7:
 
 from __future__ import annotations
 
+import os
 import shutil
 import subprocess
 import sys
@@ -58,11 +59,14 @@ class TestProductionHardeningSprint(unittest.TestCase):
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_01_zero_secret_or_local_username_leaks_in_repo(self) -> None:
+        git_env = dict(os.environ)
+        git_env["GIT_CONFIG_GLOBAL"] = "NUL" if os.name == "nt" else "/dev/null"
         proc = subprocess.run(
             ["git", "-c", "safe.directory=*", "ls-files"],
             cwd=str(REPO_ROOT),
             capture_output=True,
             text=True,
+            env=git_env,
             check=True,
         )
         leaked_paths = []

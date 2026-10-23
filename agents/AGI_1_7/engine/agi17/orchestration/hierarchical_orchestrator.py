@@ -48,6 +48,12 @@ from ..process_supervision.sandbox_runner import (
     validate_relative_sandbox_path,
     validate_test_pattern,
 )
+from ..security.model_disclosure_policy import (
+    DisclosureContext,
+    ExternalProviderBlockedInLocalOnlyModeError,
+    ModelDisclosureDeniedError,
+    ModelDisclosurePolicy,
+)
 from ..task_control.task_manager import DurableTaskManager
 from ..task_control.task_state_machine import TERMINAL_STATES, TaskState
 from ..telemetry.token_economy import AdaptiveTokenController, TokenBudgetExceededError
@@ -138,6 +144,7 @@ class HierarchicalOrchestrator:
         supervisor: Optional[ProcessSupervisor] = None,
         sandbox_runner: Optional[DisposableSandboxRunner] = None,
         approval_gate: Optional[HighImpactApprovalGate] = None,
+        disclosure_policy: Optional[ModelDisclosurePolicy] = None,
     ) -> None:
         self.task_manager = task_manager or DurableTaskManager()
         self.memory = memory or OmegaCommandMemory()
@@ -156,6 +163,9 @@ class HierarchicalOrchestrator:
                 approval_gate=self.approval_gate,
             )
         self.model_adapter = model_adapter
+        self.disclosure_policy = disclosure_policy or getattr(
+            self.model_adapter, "disclosure_policy", None
+        ) or ModelDisclosurePolicy.production_strict()
 
     def get_security_diagnostics(self) -> Dict[str, Any]:
         """Returns safe diagnostic metadata for the orchestrator's runner and approval gate."""
@@ -163,7 +173,13 @@ class HierarchicalOrchestrator:
             "orchestrator_instance_id": id(self),
             "sandbox_runner_instance_id": id(self.sandbox_runner),
             "approval_gate_instance_id": id(self.approval_gate),
+            "disclosure_policy_instance_id": id(self.disclosure_policy),
             "effective_policy": self.sandbox_runner.policy.to_dict(),
+            "disclosure_policy": {
+                "mode": self.disclosure_policy.mode.value,
+                "allow_workspace_model_disclosure": self.disclosure_policy.allow_workspace_model_disclosure,
+                "local_only": self.disclosure_policy.local_only,
+            },
             "sandbox_diagnostics": self.sandbox_runner.get_security_diagnostics(),
         }
 
@@ -180,6 +196,7 @@ class HierarchicalOrchestrator:
         fallback_test_code: Optional[str] = None,
         adaptive_reuse_existing_tests: bool = True,
         apply_approved_patch: bool = False,
+        allow_workspace_model_disclosure: bool = False,
     ) -> List[SubtaskSpec]:
         """Builds a 3-specialist live-model coding + unit-testing + self-healing DAG."""
         ws_raw = Path(code_task_dir)
@@ -194,8 +211,28 @@ class HierarchicalOrchestrator:
         validate_test_pattern(test_path.name)
         module_stem = module_path.stem
 
+        # Evaluate model disclosure authorization before injecting workspace files into model prompts
+        has_workspace_content = bool(module_path.exists() or len(list(ws.glob("test_*.py"))) > 0)
+        eff_disclosure = bool(
+            allow_workspace_model_disclosure
+            or getattr(self.disclosure_policy, "allow_workspace_model_disclosure", False)
+        )
+        if has_workspace_content and not eff_disclosure:
+            ctx = DisclosureContext(
+                task_id=title,
+                agent_id="orchestrator",
+                workspace_root=ws,
+                target_files=[module_filename] + [tf.name for tf in ws.glob("test_*.py")],
+                has_workspace_content=True,
+                is_external_provider=True,
+                provider_name="gemini-3.8-flash-high",
+                operation_type="build_subtasks_prompt_assembly",
+            )
+            decision = self.disclosure_policy.evaluate(ctx)
+            eff_disclosure = decision.authorized
+
         existing_source_block = ""
-        if not self.approval_gate.block_workspace_mutations and module_path.exists():
+        if eff_disclosure and not self.approval_gate.block_workspace_mutations and module_path.exists():
             try:
                 existing_src = module_path.read_text(encoding="utf-8")
                 if existing_src.strip():
@@ -213,11 +250,11 @@ class HierarchicalOrchestrator:
                 raise PathTraversalBlockedError(f"Symlink test file blocked in workspace: {tf}")
             if tf.is_file():
                 validate_relative_sandbox_path(ws, tf.name, require_py_extension=True)
-                if not self.approval_gate.block_workspace_mutations:
+                existing_test_files.append(tf)
+                if eff_disclosure and not self.approval_gate.block_workspace_mutations:
                     try:
                         t_content = tf.read_text(encoding="utf-8", errors="replace")
                         if t_content.strip():
-                            existing_test_files.append(tf)
                             existing_tests_snippets.append(f"# {tf.name}\n{t_content}")
                     except Exception:
                         pass
@@ -454,6 +491,7 @@ class HierarchicalOrchestrator:
         test_filename: str = "test_token_bucket.py",
         inject_deliberate_test_failure: bool = False,
         apply_approved_patch: bool = False,
+        allow_workspace_model_disclosure: bool = False,
         custom_subtask_hook: Optional[Callable[[str, Dict[str, Any]], None]] = None,
         simulated_resource_snapshot: Optional[LiveResourceMetrics] = None,
         max_wall_clock_sec: Optional[float] = None,
@@ -479,6 +517,7 @@ class HierarchicalOrchestrator:
                     test_filename=test_filename,
                     inject_deliberate_test_failure=inject_deliberate_test_failure,
                     apply_approved_patch=apply_approved_patch,
+                    allow_workspace_model_disclosure=allow_workspace_model_disclosure,
                 )
                 force_hierarchical = True
 
@@ -932,6 +971,21 @@ class HierarchicalOrchestrator:
         else:
             broken_code = disk_bytes.decode("utf-8", errors="replace") if disk_bytes is not None else ""
             original_sha256 = disk_sha256
+
+        # Step: Authorize disclosure BEFORE reading test files into prompt or constructing repair prompt
+        has_workspace_content = bool(broken_code.strip() or (ws_root.is_dir() and any(ws_root.glob("test_*.py"))))
+        ctx = DisclosureContext(
+            task_id=root_id,
+            agent_id=sp_spec.repair_specialist_id,
+            workspace_root=ws_root,
+            target_files=[repair_file.name],
+            has_workspace_content=has_workspace_content,
+            is_external_provider=bool(getattr(self.model_adapter, "mock_provider", None) is None or getattr(self.model_adapter.mock_provider, "is_external", False)),
+            provider_name=getattr(getattr(self.model_adapter, "config", None), "model_name", "gemini-3.8-flash-high"),
+            operation_type="self_healing_repair_model_invocation",
+        )
+        self.disclosure_policy.authorize_or_raise(ctx)
+
         stderr_trace = failure_details.get("stderr") or failure_details.get("stdout") or str(failure_details)
         try:
             repair_contract = self.specialist_factory.get_contract(sp_spec.repair_specialist_id)
@@ -975,6 +1029,7 @@ class HierarchicalOrchestrator:
             f"UNITTEST FAILURE OUTPUT (exit_code={failure_details.get('exit_code')}):\n```text\n{stderr_trace}\n```\n\n"
             f"Fix all bugs causing the test failures and return the complete corrected `{repair_file.name}` in a ```python ... ``` fenced code block."
         )
+
         model_res = self.model_adapter.invoke(
             task_id=root_id,
             child_task_id=f"{child_id}-REPAIR",

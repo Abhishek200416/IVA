@@ -1,0 +1,7511 @@
+{
+  "stocks_home": {
+    "url": "https://www.paytmmoney.com/stocks",
+    "title": "Paytm Money - Online Demat Account, Trading, Direct Mutual Funds and NPS",
+    "headerLinks": [
+      {
+        "text": "Pricing",
+        "href": "/stocks/pricing"
+      },
+      {
+        "text": "Company",
+        "href": "/about-us"
+      },
+      {
+        "text": "Contact Us",
+        "href": "/contact-us"
+      },
+      {
+        "text": "Home",
+        "href": "/"
+      },
+      {
+        "text": "Products",
+        "href": "/products"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Products",
+        "aria": "",
+        "cls": "focus-visible:outline focus-visible:outline-2 focus-visible:",
+        "top": 40,
+        "left": 656,
+        "w": 59,
+        "h": 20
+      },
+      {
+        "text": "Login",
+        "aria": "",
+        "cls": "inline-flex items-center justify-center gap-2 whitespace-now",
+        "top": 32,
+        "left": 1178,
+        "w": 78,
+        "h": 36
+      },
+      {
+        "text": "Sign up",
+        "aria": "",
+        "cls": "inline-flex items-center justify-center gap-2 whitespace-now",
+        "top": 32,
+        "left": 1268,
+        "w": 90,
+        "h": 36
+      },
+      {
+        "text": "Start Free Investing",
+        "aria": "",
+        "cls": "inline-flex items-center justify-center gap-2 whitespace-now",
+        "top": 416,
+        "left": 478,
+        "w": 207,
+        "h": 48
+      },
+      {
+        "text": "Get Started Today",
+        "aria": "",
+        "cls": "inline-flex items-center justify-center gap-2 whitespace-now",
+        "top": 1182,
+        "left": 772,
+        "w": 181,
+        "h": 44
+      },
+      {
+        "text": "Get Started Today",
+        "aria": "",
+        "cls": "inline-flex items-center justify-center gap-2 whitespace-now",
+        "top": 1836,
+        "left": 162,
+        "w": 181,
+        "h": 44
+      },
+      {
+        "text": "Get Started",
+        "aria": "",
+        "cls": "inline-flex items-center justify-center gap-2 whitespace-now",
+        "top": 2647,
+        "left": 800,
+        "w": 308,
+        "h": 44
+      },
+      {
+        "text": "What is the Stock market?",
+        "aria": "",
+        "cls": "py-4 text-sm font-medium transition-all flex items-start sm:",
+        "top": 2879,
+        "left": 315,
+        "w": 892,
+        "h": 60
+      },
+      {
+        "text": "How Does A Stock Market Work?",
+        "aria": "",
+        "cls": "py-4 text-sm font-medium transition-all flex items-start sm:",
+        "top": 2940,
+        "left": 315,
+        "w": 892,
+        "h": 60
+      },
+      {
+        "text": "How Is A Company's Stock Price Determine",
+        "aria": "",
+        "cls": "py-4 text-sm font-medium transition-all flex items-start sm:",
+        "top": 3001,
+        "left": 315,
+        "w": 892,
+        "h": 60
+      },
+      {
+        "text": "How can I start trading in stocks?",
+        "aria": "",
+        "cls": "py-4 text-sm font-medium transition-all flex items-start sm:",
+        "top": 3061,
+        "left": 315,
+        "w": 892,
+        "h": 60
+      },
+      {
+        "text": "What is F&O trading?",
+        "aria": "",
+        "cls": "py-4 text-sm font-medium transition-all flex items-start sm:",
+        "top": 3122,
+        "left": 315,
+        "w": 892,
+        "h": 60
+      },
+      {
+        "text": "Is F&O suitable for beginners?",
+        "aria": "",
+        "cls": "py-4 text-sm font-medium transition-all flex items-start sm:",
+        "top": 3183,
+        "left": 315,
+        "w": 892,
+        "h": 60
+      },
+      {
+        "text": "Are there any charges involved in stock ",
+        "aria": "",
+        "cls": "py-4 text-sm font-medium transition-all flex items-start sm:",
+        "top": 3244,
+        "left": 315,
+        "w": 892,
+        "h": 60
+      },
+      {
+        "text": "What is margin trading?",
+        "aria": "",
+        "cls": "py-4 text-sm font-medium transition-all flex items-start sm:",
+        "top": 3305,
+        "left": 315,
+        "w": 892,
+        "h": 60
+      },
+      {
+        "text": "Can I convert intraday trades into deliv",
+        "aria": "",
+        "cls": "py-4 text-sm font-medium transition-all flex items-start sm:",
+        "top": 3365,
+        "left": 315,
+        "w": 892,
+        "h": 60
+      },
+      {
+        "text": "What is the minimum amount needed to sta",
+        "aria": "",
+        "cls": "py-4 text-sm font-medium transition-all flex items-start sm:",
+        "top": 3426,
+        "left": 315,
+        "w": 892,
+        "h": 60
+      },
+      {
+        "text": "How is profit taxed in stocks and F&O?",
+        "aria": "",
+        "cls": "py-4 text-sm font-medium transition-all flex items-start sm:",
+        "top": 3487,
+        "left": 315,
+        "w": 892,
+        "h": 60
+      },
+      {
+        "text": "Can I do stock and F&O trading on mobile",
+        "aria": "",
+        "cls": "py-4 text-sm font-medium transition-all flex items-start sm:",
+        "top": 3548,
+        "left": 315,
+        "w": 892,
+        "h": 60
+      },
+      {
+        "text": "\ud83d\udcd0 550px",
+        "aria": "",
+        "cls": "",
+        "top": 51,
+        "left": 1203,
+        "w": 69,
+        "h": 22
+      },
+      {
+        "text": "\u2014",
+        "aria": "",
+        "cls": "",
+        "top": 51,
+        "left": 1276,
+        "w": 16,
+        "h": 22
+      },
+      {
+        "text": "\ud83d\udee1\ufe0f Trail Profits",
+        "aria": "",
+        "cls": "",
+        "top": 678,
+        "left": 966,
+        "w": 104,
+        "h": 22
+      }
+    ],
+    "tabs": [],
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Your Simplest way to Start Investing in Stocks"
+      },
+      {
+        "tag": "H2",
+        "text": "Empowering Investors\nwith Smarter Features"
+      },
+      {
+        "tag": "H3",
+        "text": "Stock SIP"
+      },
+      {
+        "tag": "H3",
+        "text": "ETFs"
+      },
+      {
+        "tag": "H3",
+        "text": "GTT & AMO"
+      },
+      {
+        "tag": "H3",
+        "text": "Portfolio Insights"
+      },
+      {
+        "tag": "H3",
+        "text": "Corporate Actions"
+      },
+      {
+        "tag": "H3",
+        "text": "Analyst Rating"
+      },
+      {
+        "tag": "H2",
+        "text": "Smart Tools for\nSwift Decisions"
+      },
+      {
+        "tag": "H3",
+        "text": "Breakouts"
+      },
+      {
+        "tag": "H3",
+        "text": "Realtime news"
+      },
+      {
+        "tag": "H3",
+        "text": "Dynamic Watchlist"
+      },
+      {
+        "tag": "H3",
+        "text": "Notification Center"
+      },
+      {
+        "tag": "H3",
+        "text": "Margin Trading Facility"
+      },
+      {
+        "tag": "H3",
+        "text": "Reminder Widgets"
+      },
+      {
+        "tag": "H2",
+        "text": "Trade Your Way Across Multiple Platforms"
+      },
+      {
+        "tag": "H2",
+        "text": "Frequently Asked Questions"
+      },
+      {
+        "tag": "H3",
+        "text": "What is the Stock market?"
+      },
+      {
+        "tag": "H3",
+        "text": "How Does A Stock Market Work?"
+      },
+      {
+        "tag": "H3",
+        "text": "How Is A Company's Stock Price Determined?"
+      },
+      {
+        "tag": "H3",
+        "text": "How can I start trading in stocks?"
+      },
+      {
+        "tag": "H3",
+        "text": "What is F&O trading?"
+      },
+      {
+        "tag": "H3",
+        "text": "Is F&O suitable for beginners?"
+      },
+      {
+        "tag": "H3",
+        "text": "Are there any charges involved in stock or F&O trading?"
+      },
+      {
+        "tag": "H3",
+        "text": "What is margin trading?"
+      },
+      {
+        "tag": "H3",
+        "text": "Can I convert intraday trades into delivery?"
+      },
+      {
+        "tag": "H3",
+        "text": "What is the minimum amount needed to start trading in stocks"
+      },
+      {
+        "tag": "H3",
+        "text": "How is profit taxed in stocks and F&O?"
+      },
+      {
+        "tag": "H3",
+        "text": "Can I do stock and F&O trading on mobile apps?"
+      },
+      {
+        "tag": "H2",
+        "text": "Join the 21 million+ community\nof empowered investors"
+      },
+      {
+        "tag": "H3",
+        "text": "Download the\nPaytm Money app today"
+      },
+      {
+        "tag": "H2",
+        "text": "Join our social media channels"
+      },
+      {
+        "tag": "H2",
+        "text": "Product"
+      },
+      {
+        "tag": "H2",
+        "text": "Company"
+      },
+      {
+        "tag": "H2",
+        "text": "Support"
+      },
+      {
+        "tag": "H2",
+        "text": "Contact us"
+      },
+      {
+        "tag": "H3",
+        "text": "Trading and clearing member of:"
+      },
+      {
+        "tag": "H3",
+        "text": "Useful Links:"
+      },
+      {
+        "tag": "H3",
+        "text": "For any complaints please write to"
+      },
+      {
+        "tag": "H3",
+        "text": "Attention to Investors:"
+      },
+      {
+        "tag": "H3",
+        "text": "Project Jagrook"
+      },
+      {
+        "tag": "H3",
+        "text": "\"Attention Investors!\""
+      }
+    ],
+    "tablesOrGrids": [],
+    "toggles": [
+      {
+        "text": "Skip to main content\nSuggestions will ap",
+        "tag": "HTML",
+        "cls": "__variable_040460 __variable_c4de9a __variable_89686e __vari"
+      },
+      {
+        "text": "Skip to main content\nSuggestions will ap",
+        "tag": "BODY",
+        "cls": "antialiased"
+      },
+      {
+        "text": "Skip to main content\nSuggestions will ap",
+        "tag": "MAIN",
+        "cls": ""
+      },
+      {
+        "text": "Trade Your Way Across Multiple Platforms",
+        "tag": "SECTION",
+        "cls": "w-full bg-cover bg-center bg-no-repeat text-textWhite bg-[li"
+      },
+      {
+        "text": "Trade Your Way Across Multiple Platforms",
+        "tag": "DIV",
+        "cls": "w-full mx-auto md:px-0 py-4"
+      },
+      {
+        "text": "Experience seamless trading on mobile, w",
+        "tag": "P",
+        "cls": "hidden md:block text-center mb-4 text-white text-[18px] px-["
+      },
+      {
+        "text": "Mobile App\n\nInvest on the go with our po",
+        "tag": "DIV",
+        "cls": "grid grid-cols-1 md:grid-cols-2 gap-4 mt-2"
+      },
+      {
+        "text": "Mobile App\n\nInvest on the go with our po",
+        "tag": "DIV",
+        "cls": "grid grid-cols-2 gap-[6px] gap-y-[10px] md:gap-4 p-4 md:p-8 "
+      },
+      {
+        "text": "TradingView\n\nIntegrate with TradingView ",
+        "tag": "DIV",
+        "cls": " bg-white rounded-2xl px-[16px] py-[32px] lg:px-6 lg:py-6 sh"
+      },
+      {
+        "text": "TradingView",
+        "tag": "SPAN",
+        "cls": "text-base md:text-lg font-semibold text-black mb-2"
+      },
+      {
+        "text": "Integrate with TradingView for precision",
+        "tag": "P",
+        "cls": "text-grayLight text-[12px] md:text-[15px] leading-[18px] md:"
+      }
+    ],
+    "inputs": [
+      {
+        "type": "search",
+        "placeholder": "Search Stocks",
+        "value": "",
+        "cls": "w-[173px] max-w-full min-w-0 h-6 min-h-6 max-h-6 f"
+      },
+      {
+        "type": "search",
+        "placeholder": "Search Stocks",
+        "value": "",
+        "cls": "w-[173px] max-w-full min-w-0 h-6 min-h-6 max-h-6 f"
+      },
+      {
+        "type": "text",
+        "placeholder": "Enter mobile number",
+        "value": "",
+        "cls": "w-full md:w-[300px] p-[16px] outline-none border-n"
+      }
+    ]
+  },
+  "fno_dashboard": {
+    "url": "https://www.paytmmoney.com/stocks/fno/dashboard",
+    "title": "Paytm Money Stocks",
+    "headerLinks": [
+      {
+        "text": "Dashboard",
+        "href": "/stocks/fno/dashboard"
+      },
+      {
+        "text": "Market",
+        "href": "/stocks/fno/movers"
+      },
+      {
+        "text": "Portfolio",
+        "href": "/stocks/portfolio"
+      },
+      {
+        "text": "Positions",
+        "href": "/stocks/positions"
+      },
+      {
+        "text": "Orders",
+        "href": "/stocks/orders"
+      },
+      {
+        "text": "Funds",
+        "href": "/stocks/funds"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Stocks",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88",
+        "top": 13,
+        "left": 541,
+        "w": 48,
+        "h": 25
+      },
+      {
+        "text": "F&O",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88 _1t_wm2yj4nrB5hqa9hJvyu E6Hsjo0mp1yqIO",
+        "top": 13,
+        "left": 587,
+        "w": 42,
+        "h": 25
+      },
+      {
+        "text": "Call Us",
+        "aria": "",
+        "cls": "_1psV_2xl_FhMo2ojGngjMJ",
+        "top": 10,
+        "left": 1008,
+        "w": 54,
+        "h": 31
+      },
+      {
+        "text": "More",
+        "aria": "More",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 17,
+        "left": 1138,
+        "w": 51,
+        "h": 15
+      },
+      {
+        "text": "Custom",
+        "aria": "",
+        "cls": "_2aovQQDGmDejuWhznpzw4k _252Jl-DW9iBEFCGoiy_6_k",
+        "top": 120,
+        "left": 216,
+        "w": 131,
+        "h": 22
+      },
+      {
+        "text": "B",
+        "aria": "Buy Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 178,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 178,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Vodafone Idea in watchlis",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 178,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Vodafone Idea from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 233,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 233,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Suzlon in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 234,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Suzlon from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 288,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 288,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Alok Industries in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 289,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Alok Industries from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 343,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 343,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Jio Financial Serv",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Jio Financial Services in",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 344,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Jio Financial Services from watch",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 399,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 399,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Trident in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 399,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Trident from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 454,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 454,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Wipro in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 454,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Wipro from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 509,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 509,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder HDFC Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 510,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove HDFC Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show Chart",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 55,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder stock in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 565,
+        "left": 87,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 117,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 619,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 619,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Indian Renewable E",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Indian Renewable Energy i",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 620,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Indian Renewable Energy from watc",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 675,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 675,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Yes Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 675,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Yes Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 730,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 730,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Titagarh Wagons in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 731,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Titagarh Wagons from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 785,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 785,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for NCL Research & Fin",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder NCL Research & Financial ",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 786,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove NCL Research & Financial from wat",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 840,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 840,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder IDFC First Bank in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 841,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove IDFC First Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 896,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 896,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Swiggy Limited in watchli",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 896,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Swiggy Limited from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Close",
+        "cls": "_1anrNb9NTm4SZbe51_aIKO _1J00XjgrMsBHOC8IS6WrI5",
+        "top": 420,
+        "left": 332,
+        "w": 10,
+        "h": 10
+      },
+      {
+        "text": "",
+        "aria": "Manage watchlist",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa RKL-jMvYfP2dJD8ggIPbC",
+        "top": 488,
+        "left": 284,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "",
+        "aria": "Close watchlist menu",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa c5Um2TYPIcHCFvcP-DA9j RKL-jMvYfP2dJD",
+        "top": 488,
+        "left": 312,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "Default Stock Watchlist 14",
+        "aria": "Default Stock Watchlist, 14 stocks. Expa",
+        "cls": "_1m0N8bBEZj95Zoceju4w_-",
+        "top": 476,
+        "left": 40,
+        "w": 307,
+        "h": 47
+      },
+      {
+        "text": "+ Add Funds",
+        "aria": "",
+        "cls": "_1zB_71aQeeUwkDUsjy6nOL",
+        "top": 360,
+        "left": 388,
+        "w": 100,
+        "h": 31
+      },
+      {
+        "text": "Trade Now",
+        "aria": "",
+        "cls": "b-K-6Jfu5xYyKXAfAIqQy",
+        "top": 354,
+        "left": 729,
+        "w": 94,
+        "h": 31
+      },
+      {
+        "text": "Graph View",
+        "aria": "",
+        "cls": "GxWSZTtAGRD6N_c50itYR roAkCeZv2qGpaIs63_xvo",
+        "top": 737,
+        "left": 1221,
+        "w": 80,
+        "h": 18
+      },
+      {
+        "text": "List View",
+        "aria": "",
+        "cls": "GxWSZTtAGRD6N_c50itYR roAkCeZv2qGpaIs63_xvo",
+        "top": 981,
+        "left": 1223,
+        "w": 80,
+        "h": 18
+      },
+      {
+        "text": "All",
+        "aria": "",
+        "cls": "_2aovQQDGmDejuWhznpzw4k _3KD40PzkuDu-2h79L-7w1w",
+        "top": 1048,
+        "left": 368,
+        "w": 251,
+        "h": 30
+      },
+      {
+        "text": "Last 15 Minutes",
+        "aria": "",
+        "cls": "_2aovQQDGmDejuWhznpzw4k _3KD40PzkuDu-2h79L-7w1w",
+        "top": 1048,
+        "left": 639,
+        "w": 251,
+        "h": 30
+      },
+      {
+        "text": "\ud83d\udcd0 550px",
+        "aria": "",
+        "cls": "",
+        "top": 29,
+        "left": 1114,
+        "w": 54,
+        "h": 32
+      },
+      {
+        "text": "\u2014",
+        "aria": "",
+        "cls": "",
+        "top": 34,
+        "left": 1174,
+        "w": 20,
+        "h": 22
+      },
+      {
+        "text": "\ud83d\udee1\ufe0f Trail Profits",
+        "aria": "",
+        "cls": "",
+        "top": 380,
+        "left": 1105,
+        "w": 77,
+        "h": 20
+      }
+    ],
+    "tabs": [
+      {
+        "text": "Bullish",
+        "selected": "true",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI undefined aLjIGUmQbtnpa7Zl"
+      },
+      {
+        "text": "Bearish",
+        "selected": "false",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI _3jBBz1LY9Q2lioC0RkkWl2"
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H2",
+        "text": "Select Watchlist"
+      }
+    ],
+    "tablesOrGrids": [],
+    "toggles": [],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Search by Stock Name",
+        "value": "",
+        "cls": "_1rZ0EptjqRTmQn4LZ0qSz6"
+      },
+      {
+        "type": "checkbox",
+        "placeholder": "",
+        "value": "ALL",
+        "cls": ""
+      },
+      {
+        "type": "checkbox",
+        "placeholder": "",
+        "value": "Gap Up",
+        "cls": ""
+      },
+      {
+        "type": "checkbox",
+        "placeholder": "",
+        "value": "Break Prev Day's High",
+        "cls": ""
+      },
+      {
+        "type": "checkbox",
+        "placeholder": "",
+        "value": "Day's High",
+        "cls": ""
+      },
+      {
+        "type": "checkbox",
+        "placeholder": "",
+        "value": "52 Week High",
+        "cls": ""
+      },
+      {
+        "type": "checkbox",
+        "placeholder": "",
+        "value": "Breaking Resist 1",
+        "cls": ""
+      },
+      {
+        "type": "checkbox",
+        "placeholder": "",
+        "value": "Breaking Resist 2",
+        "cls": ""
+      },
+      {
+        "type": "checkbox",
+        "placeholder": "",
+        "value": "Breaking Resist 3",
+        "cls": ""
+      },
+      {
+        "type": "checkbox",
+        "placeholder": "",
+        "value": "Vol>Prev Day's Vol with Price ",
+        "cls": ""
+      },
+      {
+        "type": "checkbox",
+        "placeholder": "",
+        "value": "Filled Gap Down",
+        "cls": ""
+      }
+    ]
+  },
+  "option_chain": {
+    "url": "https://www.paytmmoney.com/stocks/fno/option-chain/2000000011/NIFTY/NSE",
+    "title": "Paytm Money Stocks",
+    "headerLinks": [
+      {
+        "text": "Dashboard",
+        "href": "/stocks/fno/dashboard"
+      },
+      {
+        "text": "Market",
+        "href": "/stocks/fno/movers"
+      },
+      {
+        "text": "Portfolio",
+        "href": "/stocks/portfolio"
+      },
+      {
+        "text": "Positions",
+        "href": "/stocks/positions"
+      },
+      {
+        "text": "Orders",
+        "href": "/stocks/orders"
+      },
+      {
+        "text": "Funds",
+        "href": "/stocks/funds"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Stocks",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88",
+        "top": 13,
+        "left": 541,
+        "w": 48,
+        "h": 25
+      },
+      {
+        "text": "F&O",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88 _1t_wm2yj4nrB5hqa9hJvyu E6Hsjo0mp1yqIO",
+        "top": 13,
+        "left": 587,
+        "w": 42,
+        "h": 25
+      },
+      {
+        "text": "Call Us",
+        "aria": "",
+        "cls": "_1psV_2xl_FhMo2ojGngjMJ",
+        "top": 10,
+        "left": 1007,
+        "w": 55,
+        "h": 31
+      },
+      {
+        "text": "More",
+        "aria": "More",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 17,
+        "left": 1138,
+        "w": 51,
+        "h": 15
+      },
+      {
+        "text": "Custom",
+        "aria": "",
+        "cls": "_2aovQQDGmDejuWhznpzw4k _252Jl-DW9iBEFCGoiy_6_k",
+        "top": 120,
+        "left": 216,
+        "w": 131,
+        "h": 22
+      },
+      {
+        "text": "B",
+        "aria": "Buy Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 178,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 178,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Vodafone Idea in watchlis",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 178,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Vodafone Idea from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 233,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 233,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Suzlon in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 234,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Suzlon from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 288,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 288,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Alok Industries in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 289,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Alok Industries from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 343,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 343,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Jio Financial Serv",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Jio Financial Services in",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 344,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Jio Financial Services from watch",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 399,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 399,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Trident in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 399,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Trident from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 454,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 454,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Wipro in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 454,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Wipro from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 509,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 509,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder HDFC Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 510,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove HDFC Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show Chart",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 55,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder stock in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 565,
+        "left": 87,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 117,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 619,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 619,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Indian Renewable E",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Indian Renewable Energy i",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 620,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Indian Renewable Energy from watc",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 675,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 675,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Yes Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 675,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Yes Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 730,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 730,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Titagarh Wagons in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 731,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Titagarh Wagons from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 785,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 785,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for NCL Research & Fin",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder NCL Research & Financial ",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 786,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove NCL Research & Financial from wat",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 840,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 840,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder IDFC First Bank in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 841,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove IDFC First Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 896,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 896,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Swiggy Limited in watchli",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 896,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Swiggy Limited from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Close",
+        "cls": "_1anrNb9NTm4SZbe51_aIKO _1J00XjgrMsBHOC8IS6WrI5",
+        "top": 422,
+        "left": 332,
+        "w": 10,
+        "h": 10
+      },
+      {
+        "text": "",
+        "aria": "Manage watchlist",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa RKL-jMvYfP2dJD8ggIPbC",
+        "top": 488,
+        "left": 284,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "",
+        "aria": "Close watchlist menu",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa c5Um2TYPIcHCFvcP-DA9j RKL-jMvYfP2dJD",
+        "top": 488,
+        "left": 312,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "Default Stock Watchlist 14",
+        "aria": "Default Stock Watchlist, 14 stocks. Expa",
+        "cls": "_1m0N8bBEZj95Zoceju4w_-",
+        "top": 476,
+        "left": 40,
+        "w": 307,
+        "h": 47
+      },
+      {
+        "text": "19 Oct 26",
+        "aria": "",
+        "cls": "_2aovQQDGmDejuWhznpzw4k _3M5DGsZW8x5usXlBiSf6zg",
+        "top": 124,
+        "left": 772,
+        "w": 100,
+        "h": 20
+      },
+      {
+        "text": "\ud83d\udcd0 550px",
+        "aria": "",
+        "cls": "",
+        "top": 29,
+        "left": 1114,
+        "w": 54,
+        "h": 32
+      },
+      {
+        "text": "\u2014",
+        "aria": "",
+        "cls": "",
+        "top": 34,
+        "left": 1174,
+        "w": 20,
+        "h": 22
+      },
+      {
+        "text": "\ud83d\udee1\ufe0f Trail Profits",
+        "aria": "",
+        "cls": "",
+        "top": 380,
+        "left": 1105,
+        "w": 77,
+        "h": 20
+      }
+    ],
+    "tabs": [
+      {
+        "text": "Option Chain",
+        "selected": "true",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI _1rTRd7GOnIr2JH55cAImW LMh"
+      },
+      {
+        "text": "Futures Contracts",
+        "selected": "false",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI LMh5hoXFd6w0Iwcjm833Q"
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H2",
+        "text": "Select Watchlist"
+      }
+    ],
+    "tablesOrGrids": [],
+    "toggles": [],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Search by Stock Name",
+        "value": "",
+        "cls": "_1rZ0EptjqRTmQn4LZ0qSz6"
+      },
+      {
+        "type": "text",
+        "placeholder": "Search by Underlying",
+        "value": "",
+        "cls": "_32n-ipDdGAKdVZhM2WjtB8"
+      }
+    ]
+  },
+  "positions": {
+    "url": "https://www.paytmmoney.com/stocks/positions",
+    "title": "Paytm Money Stocks",
+    "headerLinks": [
+      {
+        "text": "Dashboard",
+        "href": "/stocks/dashboard"
+      },
+      {
+        "text": "Market",
+        "href": "/stocks/market/movers"
+      },
+      {
+        "text": "Portfolio",
+        "href": "/stocks/portfolio"
+      },
+      {
+        "text": "Positions",
+        "href": "/stocks/positions"
+      },
+      {
+        "text": "Orders",
+        "href": "/stocks/orders"
+      },
+      {
+        "text": "Funds",
+        "href": "/stocks/funds"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Stocks",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88 _1t_wm2yj4nrB5hqa9hJvyu E6Hsjo0mp1yqIO",
+        "top": 13,
+        "left": 541,
+        "w": 55,
+        "h": 25
+      },
+      {
+        "text": "F&O",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88",
+        "top": 13,
+        "left": 594,
+        "w": 38,
+        "h": 25
+      },
+      {
+        "text": "Call Us",
+        "aria": "",
+        "cls": "_1psV_2xl_FhMo2ojGngjMJ",
+        "top": 10,
+        "left": 1009,
+        "w": 53,
+        "h": 31
+      },
+      {
+        "text": "More",
+        "aria": "More",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 17,
+        "left": 1138,
+        "w": 51,
+        "h": 15
+      },
+      {
+        "text": "Custom",
+        "aria": "",
+        "cls": "_2aovQQDGmDejuWhznpzw4k _252Jl-DW9iBEFCGoiy_6_k",
+        "top": 120,
+        "left": 216,
+        "w": 131,
+        "h": 22
+      },
+      {
+        "text": "B",
+        "aria": "Buy Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 178,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 178,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Vodafone Idea in watchlis",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 178,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Vodafone Idea from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 233,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 233,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Suzlon in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 234,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Suzlon from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 288,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 288,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Alok Industries in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 289,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Alok Industries from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 343,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 343,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Jio Financial Serv",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Jio Financial Services in",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 344,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Jio Financial Services from watch",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 399,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 399,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Trident in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 399,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Trident from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 454,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 454,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Wipro in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 454,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Wipro from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 509,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 509,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder HDFC Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 510,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove HDFC Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show Chart",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 55,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder stock in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 565,
+        "left": 87,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 117,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 619,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 619,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Indian Renewable E",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Indian Renewable Energy i",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 620,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Indian Renewable Energy from watc",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 675,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 675,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Yes Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 675,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Yes Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 730,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 730,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Titagarh Wagons in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 731,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Titagarh Wagons from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 785,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 785,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for NCL Research & Fin",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder NCL Research & Financial ",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 786,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove NCL Research & Financial from wat",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 840,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 840,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder IDFC First Bank in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 841,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove IDFC First Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 896,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 896,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Swiggy Limited in watchli",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 896,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Swiggy Limited from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Close",
+        "cls": "_1anrNb9NTm4SZbe51_aIKO _1J00XjgrMsBHOC8IS6WrI5",
+        "top": 420,
+        "left": 332,
+        "w": 10,
+        "h": 10
+      },
+      {
+        "text": "",
+        "aria": "Manage watchlist",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa RKL-jMvYfP2dJD8ggIPbC",
+        "top": 488,
+        "left": 284,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "",
+        "aria": "Close watchlist menu",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa c5Um2TYPIcHCFvcP-DA9j RKL-jMvYfP2dJD",
+        "top": 488,
+        "left": 312,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "Default Stock Watchlist 14",
+        "aria": "Default Stock Watchlist, 14 stocks. Expa",
+        "cls": "_1m0N8bBEZj95Zoceju4w_-",
+        "top": 476,
+        "left": 40,
+        "w": 307,
+        "h": 47
+      },
+      {
+        "text": "Place Order",
+        "aria": "Place Order",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _2BUWh2lea-eC-_NVK0yzVf",
+        "top": 521,
+        "left": 652,
+        "w": 241,
+        "h": 40
+      },
+      {
+        "text": "\ud83d\udcd0 550px",
+        "aria": "",
+        "cls": "",
+        "top": 29,
+        "left": 1114,
+        "w": 54,
+        "h": 32
+      },
+      {
+        "text": "\u2014",
+        "aria": "",
+        "cls": "",
+        "top": 34,
+        "left": 1174,
+        "w": 20,
+        "h": 22
+      },
+      {
+        "text": "\ud83d\udee1\ufe0f Trail Profits",
+        "aria": "",
+        "cls": "",
+        "top": 380,
+        "left": 1105,
+        "w": 77,
+        "h": 20
+      }
+    ],
+    "tabs": [
+      {
+        "text": "All\n0",
+        "selected": "true",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI _2LFd5Qu0yYXmvHwb7EVuK3  a"
+      },
+      {
+        "text": "Open\n0",
+        "selected": "false",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI _2LFd5Qu0yYXmvHwb7EVuK3 _3"
+      },
+      {
+        "text": "Closed\n0",
+        "selected": "false",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI _2LFd5Qu0yYXmvHwb7EVuK3 _3"
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H2",
+        "text": "Select Watchlist"
+      },
+      {
+        "tag": "H1",
+        "text": "Positions"
+      }
+    ],
+    "tablesOrGrids": [],
+    "toggles": [],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Search by Stock Name",
+        "value": "",
+        "cls": "_1rZ0EptjqRTmQn4LZ0qSz6"
+      }
+    ]
+  },
+  "orders": {
+    "url": "https://www.paytmmoney.com/stocks/orders",
+    "title": "Paytm Money Stocks",
+    "headerLinks": [
+      {
+        "text": "Dashboard",
+        "href": "/stocks/dashboard"
+      },
+      {
+        "text": "Market",
+        "href": "/stocks/market/movers"
+      },
+      {
+        "text": "Portfolio",
+        "href": "/stocks/portfolio"
+      },
+      {
+        "text": "Positions",
+        "href": "/stocks/positions"
+      },
+      {
+        "text": "Orders",
+        "href": "/stocks/orders"
+      },
+      {
+        "text": "Funds",
+        "href": "/stocks/funds"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Stocks",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88 _1t_wm2yj4nrB5hqa9hJvyu E6Hsjo0mp1yqIO",
+        "top": 13,
+        "left": 541,
+        "w": 55,
+        "h": 25
+      },
+      {
+        "text": "F&O",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88",
+        "top": 13,
+        "left": 594,
+        "w": 38,
+        "h": 25
+      },
+      {
+        "text": "Call Us",
+        "aria": "",
+        "cls": "_1psV_2xl_FhMo2ojGngjMJ",
+        "top": 10,
+        "left": 1009,
+        "w": 53,
+        "h": 31
+      },
+      {
+        "text": "More",
+        "aria": "More",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 17,
+        "left": 1138,
+        "w": 51,
+        "h": 15
+      },
+      {
+        "text": "Custom",
+        "aria": "",
+        "cls": "_2aovQQDGmDejuWhznpzw4k _252Jl-DW9iBEFCGoiy_6_k",
+        "top": 120,
+        "left": 216,
+        "w": 131,
+        "h": 22
+      },
+      {
+        "text": "B",
+        "aria": "Buy Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 178,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 178,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Vodafone Idea in watchlis",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 178,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Vodafone Idea from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 233,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 233,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Suzlon in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 234,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Suzlon from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 288,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 288,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Alok Industries in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 289,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Alok Industries from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 343,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 343,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Jio Financial Serv",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Jio Financial Services in",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 344,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Jio Financial Services from watch",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 399,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 399,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Trident in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 399,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Trident from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 454,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 454,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Wipro in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 454,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Wipro from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 509,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 509,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder HDFC Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 510,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove HDFC Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show Chart",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 55,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder stock in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 565,
+        "left": 87,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 117,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 619,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 619,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Indian Renewable E",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Indian Renewable Energy i",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 620,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Indian Renewable Energy from watc",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 675,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 675,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Yes Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 675,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Yes Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 730,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 730,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Titagarh Wagons in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 731,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Titagarh Wagons from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 785,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 785,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for NCL Research & Fin",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder NCL Research & Financial ",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 786,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove NCL Research & Financial from wat",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 840,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 840,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder IDFC First Bank in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 841,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove IDFC First Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 896,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 896,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Swiggy Limited in watchli",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 896,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Swiggy Limited from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Close",
+        "cls": "_1anrNb9NTm4SZbe51_aIKO _1J00XjgrMsBHOC8IS6WrI5",
+        "top": 420,
+        "left": 332,
+        "w": 10,
+        "h": 10
+      },
+      {
+        "text": "",
+        "aria": "Manage watchlist",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa RKL-jMvYfP2dJD8ggIPbC",
+        "top": 488,
+        "left": 284,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "",
+        "aria": "Close watchlist menu",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa c5Um2TYPIcHCFvcP-DA9j RKL-jMvYfP2dJD",
+        "top": 488,
+        "left": 312,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "Default Stock Watchlist 14",
+        "aria": "Default Stock Watchlist, 14 stocks. Expa",
+        "cls": "_1m0N8bBEZj95Zoceju4w_-",
+        "top": 476,
+        "left": 40,
+        "w": 307,
+        "h": 47
+      },
+      {
+        "text": "View GTTs",
+        "aria": "",
+        "cls": "_1ZZbB8P7txHjTZjUepygz5",
+        "top": 70,
+        "left": 766,
+        "w": 134,
+        "h": 33
+      },
+      {
+        "text": "Place Order",
+        "aria": "Place Order",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _2BUWh2lea-eC-_NVK0yzVf",
+        "top": 473,
+        "left": 652,
+        "w": 241,
+        "h": 40
+      },
+      {
+        "text": "\ud83d\udcd0 550px",
+        "aria": "",
+        "cls": "",
+        "top": 29,
+        "left": 1114,
+        "w": 54,
+        "h": 32
+      },
+      {
+        "text": "\u2014",
+        "aria": "",
+        "cls": "",
+        "top": 34,
+        "left": 1174,
+        "w": 20,
+        "h": 22
+      },
+      {
+        "text": "\ud83d\udee1\ufe0f Trail Profits",
+        "aria": "",
+        "cls": "",
+        "top": 380,
+        "left": 1105,
+        "w": 77,
+        "h": 20
+      }
+    ],
+    "tabs": [
+      {
+        "text": "Pending\n0",
+        "selected": "true",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI _2LFd5Qu0yYXmvHwb7EVuK3 _3"
+      },
+      {
+        "text": "Successful\n0",
+        "selected": "false",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI _2LFd5Qu0yYXmvHwb7EVuK3"
+      },
+      {
+        "text": "Failed\n0",
+        "selected": "false",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI _2LFd5Qu0yYXmvHwb7EVuK3"
+      },
+      {
+        "text": "Cancelled\n0",
+        "selected": "false",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI _2LFd5Qu0yYXmvHwb7EVuK3"
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H2",
+        "text": "Select Watchlist"
+      },
+      {
+        "tag": "H1",
+        "text": "Orders"
+      }
+    ],
+    "tablesOrGrids": [],
+    "toggles": [],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Search by Stock Name",
+        "value": "",
+        "cls": "_1rZ0EptjqRTmQn4LZ0qSz6"
+      }
+    ]
+  },
+  "portfolio": {
+    "url": "https://www.paytmmoney.com/stocks/portfolio",
+    "title": "Paytm Money Stocks",
+    "headerLinks": [
+      {
+        "text": "Dashboard",
+        "href": "/stocks/dashboard"
+      },
+      {
+        "text": "Market",
+        "href": "/stocks/market/movers"
+      },
+      {
+        "text": "Portfolio",
+        "href": "/stocks/portfolio"
+      },
+      {
+        "text": "Positions",
+        "href": "/stocks/positions"
+      },
+      {
+        "text": "Orders",
+        "href": "/stocks/orders"
+      },
+      {
+        "text": "Funds",
+        "href": "/stocks/funds"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Stocks",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88 _1t_wm2yj4nrB5hqa9hJvyu E6Hsjo0mp1yqIO",
+        "top": 13,
+        "left": 541,
+        "w": 55,
+        "h": 25
+      },
+      {
+        "text": "F&O",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88",
+        "top": 13,
+        "left": 594,
+        "w": 38,
+        "h": 25
+      },
+      {
+        "text": "Call Us",
+        "aria": "",
+        "cls": "_1psV_2xl_FhMo2ojGngjMJ",
+        "top": 10,
+        "left": 1009,
+        "w": 52,
+        "h": 31
+      },
+      {
+        "text": "More",
+        "aria": "More",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 17,
+        "left": 1138,
+        "w": 51,
+        "h": 15
+      },
+      {
+        "text": "Custom",
+        "aria": "",
+        "cls": "_2aovQQDGmDejuWhznpzw4k _252Jl-DW9iBEFCGoiy_6_k",
+        "top": 120,
+        "left": 220,
+        "w": 131,
+        "h": 22
+      },
+      {
+        "text": "B",
+        "aria": "Buy Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 178,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 178,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Vodafone Idea in watchlis",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 178,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Vodafone Idea from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 233,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 233,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Suzlon in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 234,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Suzlon from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 288,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 288,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Alok Industries in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 289,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Alok Industries from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 343,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 343,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Jio Financial Serv",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Jio Financial Services in",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 344,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Jio Financial Services from watch",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 399,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 399,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Trident in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 399,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Trident from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 454,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 454,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Wipro in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 454,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Wipro from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 509,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 509,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder HDFC Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 510,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove HDFC Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show Chart",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 55,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder stock in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 565,
+        "left": 87,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 117,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 619,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 619,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Indian Renewable E",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Indian Renewable Energy i",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 620,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Indian Renewable Energy from watc",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 675,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 675,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Yes Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 675,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Yes Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 730,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 730,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Titagarh Wagons in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 731,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Titagarh Wagons from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 785,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 785,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for NCL Research & Fin",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder NCL Research & Financial ",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 786,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove NCL Research & Financial from wat",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 840,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 840,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder IDFC First Bank in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 841,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove IDFC First Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 896,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 896,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Swiggy Limited in watchli",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 896,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Swiggy Limited from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Close",
+        "cls": "_1anrNb9NTm4SZbe51_aIKO _1J00XjgrMsBHOC8IS6WrI5",
+        "top": 420,
+        "left": 335,
+        "w": 10,
+        "h": 10
+      },
+      {
+        "text": "",
+        "aria": "Manage watchlist",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa RKL-jMvYfP2dJD8ggIPbC",
+        "top": 488,
+        "left": 287,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "",
+        "aria": "Close watchlist menu",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa c5Um2TYPIcHCFvcP-DA9j RKL-jMvYfP2dJD",
+        "top": 488,
+        "left": 315,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "Default Stock Watchlist 14",
+        "aria": "Default Stock Watchlist, 14 stocks. Expa",
+        "cls": "_1m0N8bBEZj95Zoceju4w_-",
+        "top": 476,
+        "left": 40,
+        "w": 310,
+        "h": 47
+      },
+      {
+        "text": "",
+        "aria": "Close",
+        "cls": "_1anrNb9NTm4SZbe51_aIKO _1hSGAmHZ-7vwA8P_9znbk7",
+        "top": 209,
+        "left": 1169,
+        "w": 10,
+        "h": 10
+      },
+      {
+        "text": "Avoid T-PIN for each sell transaction",
+        "aria": "Authorise holdings",
+        "cls": "_25RhUgwF-8gAgHnSWbEzFy",
+        "top": 267,
+        "left": 807,
+        "w": 262,
+        "h": 20
+      },
+      {
+        "text": "Authorise Holdings",
+        "aria": "",
+        "cls": "FakwvmOZ-Hkh90mvGgKNu",
+        "top": 269,
+        "left": 1069,
+        "w": 110,
+        "h": 15
+      },
+      {
+        "text": "Holdings",
+        "aria": "",
+        "cls": "_2xL_sFF4QW-6lJI7oSUfyK _107FbCiCDtI_mhcGYP1CKH FvzBWzgnZuUS",
+        "top": 260,
+        "left": 371,
+        "w": 101,
+        "h": 33
+      },
+      {
+        "text": "Analytics",
+        "aria": "",
+        "cls": "_2xL_sFF4QW-6lJI7oSUfyK _107FbCiCDtI_mhcGYP1CKH _3V7E42fpzfP",
+        "top": 260,
+        "left": 473,
+        "w": 101,
+        "h": 33
+      },
+      {
+        "text": "Profit & Loss",
+        "aria": "",
+        "cls": "_2xL_sFF4QW-6lJI7oSUfyK _107FbCiCDtI_mhcGYP1CKH _3V7E42fpzfP",
+        "top": 260,
+        "left": 574,
+        "w": 117,
+        "h": 33
+      },
+      {
+        "text": "Filter",
+        "aria": "",
+        "cls": "_3COY3bRvNV59ZNNf3w5xgn _1BNZ7a5VRy1p5yKKt8GwiN",
+        "top": 321,
+        "left": 386,
+        "w": 69,
+        "h": 26
+      },
+      {
+        "text": "Overall",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88 _1t_wm2yj4nrB5hqa9hJvyu",
+        "top": 321,
+        "left": 1070,
+        "w": 58,
+        "h": 25
+      },
+      {
+        "text": "Today",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88",
+        "top": 321,
+        "left": 1127,
+        "w": 51,
+        "h": 25
+      },
+      {
+        "text": "B",
+        "aria": "Buy NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 399,
+        "left": 466,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 399,
+        "left": 491,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "More options",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 399,
+        "left": 515,
+        "w": 21,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "NCL Research & Financial row details",
+        "cls": "_2XQ_QsyCGDXoexZBPwy8ac",
+        "top": 402,
+        "left": 1166,
+        "w": 8,
+        "h": 15
+      },
+      {
+        "text": "B",
+        "aria": "Buy Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 445,
+        "left": 466,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 445,
+        "left": 491,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "More options",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 444,
+        "left": 515,
+        "w": 21,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Vodafone Idea row details",
+        "cls": "_2XQ_QsyCGDXoexZBPwy8ac",
+        "top": 447,
+        "left": 1166,
+        "w": 8,
+        "h": 15
+      },
+      {
+        "text": "OK",
+        "aria": "",
+        "cls": "",
+        "top": 332,
+        "left": 777,
+        "w": 100,
+        "h": 38
+      },
+      {
+        "text": "\ud83d\udcd0 550px",
+        "aria": "",
+        "cls": "",
+        "top": 29,
+        "left": 1114,
+        "w": 54,
+        "h": 32
+      },
+      {
+        "text": "\u2014",
+        "aria": "",
+        "cls": "",
+        "top": 34,
+        "left": 1174,
+        "w": 20,
+        "h": 22
+      },
+      {
+        "text": "\ud83d\udee1\ufe0f Trail Profits",
+        "aria": "",
+        "cls": "",
+        "top": 380,
+        "left": 1105,
+        "w": 77,
+        "h": 20
+      }
+    ],
+    "tabs": [
+      {
+        "text": "Holdings",
+        "selected": "true",
+        "cls": "_2xL_sFF4QW-6lJI7oSUfyK _107FbCiCDtI_mhcGYP1CKH Fv"
+      },
+      {
+        "text": "Analytics",
+        "selected": "false",
+        "cls": "_2xL_sFF4QW-6lJI7oSUfyK _107FbCiCDtI_mhcGYP1CKH _3"
+      },
+      {
+        "text": "Profit & Loss",
+        "selected": "false",
+        "cls": "_2xL_sFF4QW-6lJI7oSUfyK _107FbCiCDtI_mhcGYP1CKH _3"
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H2",
+        "text": "Select Watchlist"
+      },
+      {
+        "tag": "H1",
+        "text": "Portfolio Value"
+      },
+      {
+        "tag": "H2",
+        "text": "Filter"
+      }
+    ],
+    "tablesOrGrids": [],
+    "toggles": [],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Search by Stock Name",
+        "value": "",
+        "cls": "_1rZ0EptjqRTmQn4LZ0qSz6"
+      },
+      {
+        "type": "text",
+        "placeholder": "Search in your holdings",
+        "value": "",
+        "cls": ""
+      }
+    ]
+  },
+  "funds": {
+    "url": "https://www.paytmmoney.com/stocks/funds",
+    "title": "Manage Funds - Add & Withdraw Money | Paytm Money",
+    "headerLinks": [
+      {
+        "text": "Dashboard",
+        "href": "/stocks/dashboard"
+      },
+      {
+        "text": "Market",
+        "href": "/stocks/market/movers"
+      },
+      {
+        "text": "Portfolio",
+        "href": "/stocks/portfolio"
+      },
+      {
+        "text": "Positions",
+        "href": "/stocks/positions"
+      },
+      {
+        "text": "Orders",
+        "href": "/stocks/orders"
+      },
+      {
+        "text": "Funds",
+        "href": "/stocks/funds"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Stocks",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88 _1t_wm2yj4nrB5hqa9hJvyu E6Hsjo0mp1yqIO",
+        "top": 13,
+        "left": 541,
+        "w": 55,
+        "h": 25
+      },
+      {
+        "text": "F&O",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88",
+        "top": 13,
+        "left": 594,
+        "w": 38,
+        "h": 25
+      },
+      {
+        "text": "Call Us",
+        "aria": "",
+        "cls": "_1psV_2xl_FhMo2ojGngjMJ",
+        "top": 10,
+        "left": 1009,
+        "w": 53,
+        "h": 31
+      },
+      {
+        "text": "More",
+        "aria": "More",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 17,
+        "left": 1138,
+        "w": 51,
+        "h": 15
+      },
+      {
+        "text": "Custom",
+        "aria": "",
+        "cls": "_2aovQQDGmDejuWhznpzw4k _252Jl-DW9iBEFCGoiy_6_k",
+        "top": 120,
+        "left": 216,
+        "w": 131,
+        "h": 22
+      },
+      {
+        "text": "B",
+        "aria": "Buy Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 178,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 178,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Vodafone Idea in watchlis",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 178,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Vodafone Idea from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 233,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 233,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Suzlon in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 234,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Suzlon from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 288,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 288,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Alok Industries in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 289,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Alok Industries from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 343,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 343,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Jio Financial Serv",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Jio Financial Services in",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 344,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Jio Financial Services from watch",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 399,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 399,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Trident in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 399,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Trident from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 454,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 454,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Wipro in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 454,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Wipro from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 509,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 509,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder HDFC Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 510,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove HDFC Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show Chart",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 55,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder stock in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 565,
+        "left": 87,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 117,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 619,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 619,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Indian Renewable E",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Indian Renewable Energy i",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 620,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Indian Renewable Energy from watc",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 675,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 675,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Yes Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 675,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Yes Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 730,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 730,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Titagarh Wagons in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 731,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Titagarh Wagons from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 785,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 785,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for NCL Research & Fin",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder NCL Research & Financial ",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 786,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove NCL Research & Financial from wat",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 840,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 840,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder IDFC First Bank in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 841,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove IDFC First Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 896,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 896,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Swiggy Limited in watchli",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 896,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Swiggy Limited from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Close",
+        "cls": "_1anrNb9NTm4SZbe51_aIKO _1J00XjgrMsBHOC8IS6WrI5",
+        "top": 420,
+        "left": 332,
+        "w": 10,
+        "h": 10
+      },
+      {
+        "text": "",
+        "aria": "Manage watchlist",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa RKL-jMvYfP2dJD8ggIPbC",
+        "top": 488,
+        "left": 284,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "",
+        "aria": "Close watchlist menu",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa c5Um2TYPIcHCFvcP-DA9j RKL-jMvYfP2dJD",
+        "top": 488,
+        "left": 312,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "Default Stock Watchlist 14",
+        "aria": "Default Stock Watchlist, 14 stocks. Expa",
+        "cls": "_1m0N8bBEZj95Zoceju4w_-",
+        "top": 476,
+        "left": 40,
+        "w": 307,
+        "h": 47
+      },
+      {
+        "text": "",
+        "aria": "More information",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 181,
+        "left": 522,
+        "w": 19,
+        "h": 13
+      },
+      {
+        "text": "+\u20b9 5,000",
+        "aria": "",
+        "cls": "hym2AhhUUXFtxVrqyhLMA ",
+        "top": 231,
+        "left": 619,
+        "w": 56,
+        "h": 20
+      },
+      {
+        "text": "+\u20b9 25,000",
+        "aria": "",
+        "cls": "hym2AhhUUXFtxVrqyhLMA ",
+        "top": 231,
+        "left": 682,
+        "w": 62,
+        "h": 20
+      },
+      {
+        "text": "+\u20b9 50,000",
+        "aria": "",
+        "cls": "hym2AhhUUXFtxVrqyhLMA ",
+        "top": 231,
+        "left": 750,
+        "w": 62,
+        "h": 20
+      },
+      {
+        "text": "Add Funds",
+        "aria": "",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK yUrmjKJ3_0D0DOJzobLNQ _3-GUQWCdzRfl_",
+        "top": 284,
+        "left": 619,
+        "w": 247,
+        "h": 32
+      },
+      {
+        "text": "",
+        "aria": "More information on available cash",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 136,
+        "left": 1015,
+        "w": 31,
+        "h": 25
+      },
+      {
+        "text": "View Funds Detail",
+        "aria": "",
+        "cls": "_2hEWbnThy7ASokWWxBqvCX _2m7xqfHcIOTC2MDYudgE1e",
+        "top": 218,
+        "left": 932,
+        "w": 230,
+        "h": 15
+      },
+      {
+        "text": "Funds History",
+        "aria": "",
+        "cls": "_2xL_sFF4QW-6lJI7oSUfyK _107FbCiCDtI_mhcGYP1CKH FvzBWzgnZuUS",
+        "top": 372,
+        "left": 368,
+        "w": 121,
+        "h": 33
+      },
+      {
+        "text": "Ledger History",
+        "aria": "",
+        "cls": "_2xL_sFF4QW-6lJI7oSUfyK _107FbCiCDtI_mhcGYP1CKH",
+        "top": 372,
+        "left": 489,
+        "w": 125,
+        "h": 33
+      },
+      {
+        "text": "MTF History",
+        "aria": "",
+        "cls": "_2xL_sFF4QW-6lJI7oSUfyK _107FbCiCDtI_mhcGYP1CKH",
+        "top": 372,
+        "left": 614,
+        "w": 113,
+        "h": 33
+      },
+      {
+        "text": "All",
+        "aria": "Status",
+        "cls": "_2aovQQDGmDejuWhznpzw4k _2zpksUvjdK4bAPTlYHq2tG",
+        "top": 425,
+        "left": 1076,
+        "w": 100,
+        "h": 25
+      },
+      {
+        "text": "Date",
+        "aria": "Sort by Date, inactive",
+        "cls": "sWb3JUvD1fJ3auGZnFMXV",
+        "top": 456,
+        "left": 368,
+        "w": 135,
+        "h": 33
+      },
+      {
+        "text": "Transaction ID",
+        "aria": "Sort by Transaction ID, inactive",
+        "cls": "sWb3JUvD1fJ3auGZnFMXV",
+        "top": 456,
+        "left": 503,
+        "w": 270,
+        "h": 33
+      },
+      {
+        "text": "Payment Method",
+        "aria": "Sort by Payment Method, inactive",
+        "cls": "sWb3JUvD1fJ3auGZnFMXV",
+        "top": 456,
+        "left": 772,
+        "w": 135,
+        "h": 33
+      },
+      {
+        "text": "Amount",
+        "aria": "Sort by Amount, inactive",
+        "cls": "sWb3JUvD1fJ3auGZnFMXV",
+        "top": 456,
+        "left": 907,
+        "w": 135,
+        "h": 33
+      },
+      {
+        "text": "Status",
+        "aria": "Sort by Status, inactive",
+        "cls": "sWb3JUvD1fJ3auGZnFMXV",
+        "top": 456,
+        "left": 1042,
+        "w": 135,
+        "h": 33
+      },
+      {
+        "text": "\ud83d\udcd0 550px",
+        "aria": "",
+        "cls": "",
+        "top": 29,
+        "left": 1114,
+        "w": 54,
+        "h": 32
+      },
+      {
+        "text": "\u2014",
+        "aria": "",
+        "cls": "",
+        "top": 34,
+        "left": 1174,
+        "w": 20,
+        "h": 22
+      },
+      {
+        "text": "\ud83d\udee1\ufe0f Trail Profits",
+        "aria": "",
+        "cls": "",
+        "top": 380,
+        "left": 1105,
+        "w": 77,
+        "h": 20
+      }
+    ],
+    "tabs": [
+      {
+        "text": "Funds History",
+        "selected": "true",
+        "cls": "_2xL_sFF4QW-6lJI7oSUfyK _107FbCiCDtI_mhcGYP1CKH Fv"
+      },
+      {
+        "text": "Ledger History",
+        "selected": "false",
+        "cls": "_2xL_sFF4QW-6lJI7oSUfyK _107FbCiCDtI_mhcGYP1CKH"
+      },
+      {
+        "text": "MTF History",
+        "selected": "false",
+        "cls": "_2xL_sFF4QW-6lJI7oSUfyK _107FbCiCDtI_mhcGYP1CKH"
+      },
+      {
+        "text": "Added",
+        "selected": "true",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI undefined aLjIGUmQbtnpa7Zl"
+      },
+      {
+        "text": "Withdrawn",
+        "selected": "false",
+        "cls": "_1tfu3GhMgShrEgydyCyrbI"
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H2",
+        "text": "Select Watchlist"
+      },
+      {
+        "tag": "H1",
+        "text": "Funds"
+      },
+      {
+        "tag": "H2",
+        "text": "My Investment Account:"
+      },
+      {
+        "tag": "H3",
+        "text": "Current Balance"
+      },
+      {
+        "tag": "H3",
+        "text": "Add Money"
+      },
+      {
+        "tag": "H2",
+        "text": "Manage Funds"
+      }
+    ],
+    "tablesOrGrids": [],
+    "toggles": [],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Search by Stock Name",
+        "value": "",
+        "cls": "_1rZ0EptjqRTmQn4LZ0qSz6"
+      },
+      {
+        "type": "text",
+        "placeholder": "",
+        "value": "\u20b9",
+        "cls": "_1EnhlijpCo0Q8PnABYPEsu _3SehLNsC1gFhDQ2L-A1IW7"
+      }
+    ]
+  },
+  "company_page": {
+    "url": "https://www.paytmmoney.com/stocks/company/1000001488",
+    "title": "Paytm Money Stocks",
+    "headerLinks": [
+      {
+        "text": "Dashboard",
+        "href": "/stocks/dashboard"
+      },
+      {
+        "text": "Market",
+        "href": "/stocks/market/movers"
+      },
+      {
+        "text": "Portfolio",
+        "href": "/stocks/portfolio"
+      },
+      {
+        "text": "Positions",
+        "href": "/stocks/positions"
+      },
+      {
+        "text": "Orders",
+        "href": "/stocks/orders"
+      },
+      {
+        "text": "Funds",
+        "href": "/stocks/funds"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Stocks",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88 _1t_wm2yj4nrB5hqa9hJvyu E6Hsjo0mp1yqIO",
+        "top": 13,
+        "left": 541,
+        "w": 55,
+        "h": 25
+      },
+      {
+        "text": "F&O",
+        "aria": "",
+        "cls": "T2wsbcd0IQX9t05MrMF88",
+        "top": 13,
+        "left": 594,
+        "w": 38,
+        "h": 25
+      },
+      {
+        "text": "Call Us",
+        "aria": "",
+        "cls": "_1psV_2xl_FhMo2ojGngjMJ",
+        "top": 10,
+        "left": 1008,
+        "w": 54,
+        "h": 31
+      },
+      {
+        "text": "More",
+        "aria": "More",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 17,
+        "left": 1138,
+        "w": 51,
+        "h": 15
+      },
+      {
+        "text": "Custom",
+        "aria": "",
+        "cls": "_2aovQQDGmDejuWhznpzw4k _252Jl-DW9iBEFCGoiy_6_k",
+        "top": 120,
+        "left": 216,
+        "w": 131,
+        "h": 22
+      },
+      {
+        "text": "B",
+        "aria": "Buy Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 178,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 178,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Vodafone Idea",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Vodafone Idea in watchlis",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 178,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Vodafone Idea from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 178,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 233,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 233,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Suzlon",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Suzlon in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 234,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Suzlon from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 233,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 288,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 288,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Alok Industries",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Alok Industries in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 289,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Alok Industries from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 288,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 343,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 343,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Jio Financial Serv",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Jio Financial Services",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Jio Financial Services in",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 344,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Jio Financial Services from watch",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 343,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 399,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 399,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Trident",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Trident in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 399,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Trident from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 399,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 454,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 454,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Wipro",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Wipro in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 454,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Wipro from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 454,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 509,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 509,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for HDFC Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder HDFC Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 510,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove HDFC Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 509,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show Chart",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 55,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder stock in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 565,
+        "left": 87,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 564,
+        "left": 117,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 619,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 619,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Indian Renewable E",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Indian Renewable Energy",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Indian Renewable Energy i",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 620,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Indian Renewable Energy from watc",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 619,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 675,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 675,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Yes Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Yes Bank in watchlist",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 675,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Yes Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 675,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 730,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 730,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Titagarh Wagons",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Titagarh Wagons in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 731,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Titagarh Wagons from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 730,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 785,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 785,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for NCL Research & Fin",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for NCL Research & Financial",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder NCL Research & Financial ",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 786,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove NCL Research & Financial from wat",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 785,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 840,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 840,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for IDFC First Bank",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder IDFC First Bank in watchl",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 841,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove IDFC First Bank from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 840,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "B",
+        "aria": "Buy Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1Ix1V00T-yt",
+        "top": 896,
+        "left": 55,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "S",
+        "aria": "Sell Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _1wDCXgSXdwT",
+        "top": 896,
+        "left": 80,
+        "w": 20,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show market depth for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 105,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Show chart for Swiggy Limited",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 137,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Pin or reorder Swiggy Limited in watchli",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 896,
+        "left": 168,
+        "w": 24,
+        "h": 18
+      },
+      {
+        "text": "",
+        "aria": "Remove Swiggy Limited from watchlist",
+        "cls": "_3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S62GZSwtp7 _3JbZ7GWRXS0",
+        "top": 896,
+        "left": 198,
+        "w": 26,
+        "h": 21
+      },
+      {
+        "text": "",
+        "aria": "Close",
+        "cls": "_1anrNb9NTm4SZbe51_aIKO _1J00XjgrMsBHOC8IS6WrI5",
+        "top": 422,
+        "left": 332,
+        "w": 10,
+        "h": 10
+      },
+      {
+        "text": "",
+        "aria": "Manage watchlist",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa RKL-jMvYfP2dJD8ggIPbC",
+        "top": 488,
+        "left": 284,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "",
+        "aria": "Close watchlist menu",
+        "cls": "_3rT0L9jN-A8Y_YRyfFQ7wa c5Um2TYPIcHCFvcP-DA9j RKL-jMvYfP2dJD",
+        "top": 488,
+        "left": 312,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "Default Stock Watchlist 14",
+        "aria": "Default Stock Watchlist, 14 stocks. Expa",
+        "cls": "_1m0N8bBEZj95Zoceju4w_-",
+        "top": 476,
+        "left": 40,
+        "w": 307,
+        "h": 47
+      },
+      {
+        "text": "",
+        "aria": "Bookmarked",
+        "cls": "_2yh_pFYFdoxzb_imY7drzd",
+        "top": 73,
+        "left": 520,
+        "w": 20,
+        "h": 20
+      },
+      {
+        "text": "Buy",
+        "aria": "",
+        "cls": "A5SYQkLobNFTCqzM1O8KY _3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S",
+        "top": 101,
+        "left": 784,
+        "w": 73,
+        "h": 36
+      },
+      {
+        "text": "Sell",
+        "aria": "",
+        "cls": "A5SYQkLobNFTCqzM1O8KY _3_Oj3w8EX2Ra2dUFE5FjVK _1ZwcIukl7cs4S",
+        "top": 101,
+        "left": 867,
+        "w": 73,
+        "h": 36
+      },
+      {
+        "text": "",
+        "aria": "Scalper",
+        "cls": "_1CzuTHAEdQJQw7Zbay9zPJ",
+        "top": 101,
+        "left": 950,
+        "w": 96,
+        "h": 36
+      },
+      {
+        "text": "",
+        "aria": "Chart",
+        "cls": "A5SYQkLobNFTCqzM1O8KY B6FMpGVhegxstzzzZLzgR _3_Oj3w8EX2Ra2dU",
+        "top": 101,
+        "left": 1102,
+        "w": 35,
+        "h": 36
+      },
+      {
+        "text": "",
+        "aria": "More options",
+        "cls": "_3EDVBLHmatdWR8K4i7frI2",
+        "top": 101,
+        "left": 1141,
+        "w": 35,
+        "h": 35
+      },
+      {
+        "text": "1D",
+        "aria": "Charts 1D",
+        "cls": "_2XDwt6vGhAmF3lGUhEkT7J _3Zh862Jqfe6aW2-I4UoAVi",
+        "top": 179,
+        "left": 968,
+        "w": 32,
+        "h": 32
+      },
+      {
+        "text": "1W",
+        "aria": "Charts 1W",
+        "cls": "_2XDwt6vGhAmF3lGUhEkT7J",
+        "top": 179,
+        "left": 1000,
+        "w": 32,
+        "h": 32
+      },
+      {
+        "text": "1M",
+        "aria": "Charts 1M",
+        "cls": "_2XDwt6vGhAmF3lGUhEkT7J",
+        "top": 179,
+        "left": 1032,
+        "w": 32,
+        "h": 32
+      },
+      {
+        "text": "3M",
+        "aria": "Charts 3M",
+        "cls": "_2XDwt6vGhAmF3lGUhEkT7J",
+        "top": 179,
+        "left": 1064,
+        "w": 32,
+        "h": 32
+      },
+      {
+        "text": "1Y",
+        "aria": "Charts 1Y",
+        "cls": "_2XDwt6vGhAmF3lGUhEkT7J",
+        "top": 179,
+        "left": 1097,
+        "w": 32,
+        "h": 32
+      },
+      {
+        "text": "3Y",
+        "aria": "Charts 3Y",
+        "cls": "_2XDwt6vGhAmF3lGUhEkT7J",
+        "top": 179,
+        "left": 1129,
+        "w": 32,
+        "h": 32
+      },
+      {
+        "text": "Date",
+        "aria": "Sort by Date",
+        "cls": "_1OlcIVuRB07R8kLGP1fkgJ _1wxprfS4k2W7VyLZS589y2",
+        "top": 1172,
+        "left": 368,
+        "w": 206,
+        "h": 33
+      },
+      {
+        "text": "Investment",
+        "aria": "Sort by Investment",
+        "cls": "_1OlcIVuRB07R8kLGP1fkgJ _1wxprfS4k2W7VyLZS589y2",
+        "top": 1172,
+        "left": 574,
+        "w": 166,
+        "h": 33
+      },
+      {
+        "text": "Shares",
+        "aria": "Sort by Shares",
+        "cls": "_1OlcIVuRB07R8kLGP1fkgJ _1wxprfS4k2W7VyLZS589y2",
+        "top": 1172,
+        "left": 740,
+        "w": 136,
+        "h": 33
+      },
+      {
+        "text": "Avg. Price",
+        "aria": "Sort by Avg. Price",
+        "cls": "_1OlcIVuRB07R8kLGP1fkgJ _1wxprfS4k2W7VyLZS589y2",
+        "top": 1172,
+        "left": 875,
+        "w": 151,
+        "h": 33
+      },
+      {
+        "text": "Returns",
+        "aria": "Sort by Returns",
+        "cls": "_1OlcIVuRB07R8kLGP1fkgJ _1wxprfS4k2W7VyLZS589y2",
+        "top": 1172,
+        "left": 1026,
+        "w": 151,
+        "h": 33
+      },
+      {
+        "text": "Show more",
+        "aria": "",
+        "cls": "yuMYmt5Bqw9irfrk6UJ0d",
+        "top": 1651,
+        "left": 783,
+        "w": 64,
+        "h": 15
+      },
+      {
+        "text": "\ud83d\udcd0 550px",
+        "aria": "",
+        "cls": "",
+        "top": 29,
+        "left": 1114,
+        "w": 54,
+        "h": 32
+      },
+      {
+        "text": "\u2014",
+        "aria": "",
+        "cls": "",
+        "top": 34,
+        "left": 1174,
+        "w": 20,
+        "h": 22
+      },
+      {
+        "text": "\ud83d\udee1\ufe0f Trail Profits",
+        "aria": "",
+        "cls": "",
+        "top": 380,
+        "left": 1105,
+        "w": 77,
+        "h": 20
+      }
+    ],
+    "tabs": [
+      {
+        "text": "1D",
+        "selected": "true",
+        "cls": "_2XDwt6vGhAmF3lGUhEkT7J _3Zh862Jqfe6aW2-I4UoAVi"
+      },
+      {
+        "text": "1W",
+        "selected": "false",
+        "cls": "_2XDwt6vGhAmF3lGUhEkT7J"
+      },
+      {
+        "text": "1M",
+        "selected": "false",
+        "cls": "_2XDwt6vGhAmF3lGUhEkT7J"
+      },
+      {
+        "text": "3M",
+        "selected": "false",
+        "cls": "_2XDwt6vGhAmF3lGUhEkT7J"
+      },
+      {
+        "text": "1Y",
+        "selected": "false",
+        "cls": "_2XDwt6vGhAmF3lGUhEkT7J"
+      },
+      {
+        "text": "3Y",
+        "selected": "false",
+        "cls": "_2XDwt6vGhAmF3lGUhEkT7J"
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H2",
+        "text": "Select Watchlist"
+      },
+      {
+        "tag": "H1",
+        "text": "Vodafone Idea"
+      },
+      {
+        "tag": "H2",
+        "text": "Market Depth"
+      },
+      {
+        "tag": "H3",
+        "text": "Bid (Buy Orders)"
+      },
+      {
+        "tag": "H3",
+        "text": "Ask (Sell Orders)"
+      },
+      {
+        "tag": "H2",
+        "text": "Performance"
+      },
+      {
+        "tag": "H2",
+        "text": "52 Week Performance"
+      },
+      {
+        "tag": "H2",
+        "text": "About"
+      }
+    ],
+    "tablesOrGrids": [],
+    "toggles": [],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Search by Stock Name",
+        "value": "",
+        "cls": "_1rZ0EptjqRTmQn4LZ0qSz6"
+      }
+    ]
+  }
+}

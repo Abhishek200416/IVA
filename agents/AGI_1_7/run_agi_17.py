@@ -208,8 +208,119 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Run in an OS-detached background process that keeps working even after closing Antigravity IDE",
     )
+    parser.add_argument("command", nargs="?", default=None, help="Optional command (e.g. 'trading')")
+    parser.add_argument("--trading", action="store_true", help="Launch Autonomous Paper-Trading System")
+    parser.add_argument("--improvement-worker", action="store_true", help="Run Persistent Autonomous Improvement Worker")
+    parser.add_argument("--worker-start", action="store_true", help="Launch Improvement Worker in detached background process")
+    parser.add_argument("--worker-stop", action="store_true", help="Authoritative STOP signal to Improvement Worker")
+    parser.add_argument("--worker-pause", action="store_true", help="Authoritative PAUSE signal to Improvement Worker")
+    parser.add_argument("--worker-resume", action="store_true", help="Authoritative RESUME signal to Improvement Worker")
+    parser.add_argument("--worker-status", action="store_true", help="Check Improvement Worker status and heartbeat")
+    parser.add_argument("--worker-single-cycle", action="store_true", help="Run exactly one improvement cycle and exit")
+    parser.add_argument("--worker-stop-after-cycle", action="store_true", help="Stop Improvement Worker after completing current cycle")
+    parser.add_argument("--query", default=None, help="Process conversational or operational query through CommandRouter and LLM communication layer")
     parser.add_argument("--detached-pid-file", default=None, help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
+
+    # Conversational & Operational Query Fast-Path (Phase 17.26)
+    if args.query:
+        from agents.AGI_1_7.engine.agi17.runtime.command_router import CommandRouter
+        router = CommandRouter()
+        routing_res = router.handle_command(args.query)
+        print(json.dumps(routing_res, indent=2, default=str), flush=True)
+        return 0 if routing_res.get("permissible", True) else 2
+
+    # Autonomous Improvement Worker Handlers (Phase 17.25)
+    if args.worker_stop or (args.command and args.command.lower() in ("worker-stop", "omega-stop")):
+        from agents.AGI_1_7.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
+        w = PersistentImprovementWorker()
+        w.set_control_signal("STOP", reason="run_agi_17.py --worker-stop")
+        print(json.dumps({"status": "STOP_SIGNAL_SENT", "persisted": True}, indent=2))
+        return 0
+
+    if args.worker_pause or (args.command and args.command.lower() in ("worker-pause", "omega-pause")):
+        from agents.AGI_1_7.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
+        w = PersistentImprovementWorker()
+        w.set_control_signal("PAUSE", reason="run_agi_17.py --worker-pause")
+        print(json.dumps({"status": "PAUSE_SIGNAL_SENT"}, indent=2))
+        return 0
+
+    if args.worker_resume or (args.command and args.command.lower() in ("worker-resume", "omega-resume")):
+        from agents.AGI_1_7.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
+        w = PersistentImprovementWorker()
+        w.set_control_signal("RESUME", reason="run_agi_17.py --worker-resume")
+        print(json.dumps({"status": "RESUME_SIGNAL_SENT"}, indent=2))
+        return 0
+
+    if args.worker_status or (args.command and args.command.lower() in ("worker-status", "omega-status")):
+        from agents.AGI_1_7.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
+        w = PersistentImprovementWorker()
+        hb = json.loads(w.heartbeat_file.read_text(encoding="utf-8")) if w.heartbeat_file.exists() else {}
+        cp = json.loads(w.checkpoint_file.read_text(encoding="utf-8")) if w.checkpoint_file.exists() else {}
+        print(json.dumps({"heartbeat": hb, "checkpoint": cp}, indent=2))
+        return 0
+
+    if args.worker_single_cycle or (args.command and args.command.lower() == "worker-single-cycle"):
+        from agents.AGI_1_7.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
+        w = PersistentImprovementWorker()
+        w.acquire_worker_lock(force=True)
+        try:
+            res = w.execute_cycle()
+            print(json.dumps(res.to_dict(), indent=2))
+            return 0 if res.test_passed else 1
+        finally:
+            w.release_worker_lock()
+
+    if args.worker_start or (args.command and args.command.lower() in ("worker-start", "worker")):
+        # Spawn persistent worker in OS-detached background process
+        worker_script = REPO_ROOT / "agents" / "AGI_1_7" / "engine" / "agi17" / "orchestration" / "persistent_improvement_worker.py"
+        log_dir = REPO_ROOT / "scratch" / "logs"
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_file = log_dir / "improvement_worker.log"
+        creationflags = 0
+        if os.name == "nt":
+            creationflags = (
+                getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0x00000200)
+                | getattr(subprocess, "CREATE_NO_WINDOW", 0x08000000)
+                | 0x00000008  # DETACHED_PROCESS
+            )
+            log_fd = os.open(str(log_file), os.O_CREAT | os.O_WRONLY | os.O_APPEND)
+            proc = subprocess.Popen(
+                [sys.executable, str(worker_script), "--interval", "15"],
+                cwd=str(REPO_ROOT),
+                stdout=log_fd,
+                stderr=subprocess.STDOUT,
+                stdin=subprocess.DEVNULL,
+                creationflags=creationflags,
+                close_fds=False,
+            )
+            os.close(log_fd)
+        else:
+            log_fh = open(log_file, "a", encoding="utf-8")
+            proc = subprocess.Popen(
+                [sys.executable, str(worker_script), "--interval", "15"],
+                cwd=str(REPO_ROOT),
+                stdout=log_fh,
+                stderr=subprocess.STDOUT,
+                stdin=subprocess.DEVNULL,
+                start_new_session=True,
+                close_fds=True,
+            )
+        print(json.dumps({
+            "status": "WORKER_DETACHED_STARTED",
+            "pid": proc.pid,
+            "log_file": str(log_file),
+            "survives_console_close": True
+        }, indent=2))
+        return 0
+
+    if args.command == "trading" or args.trading or (args.prompt and args.prompt.strip().lower() == "trading"):
+        from agents.AGI_1_7.engine.agi17.finance.trading_orchestrator import run_trading_command
+        return run_trading_command()
+
+    if (args.command and args.command.lower() in ("go-real", "goreal", "live")) or (args.prompt and args.prompt.strip().lower() in ("go real", "goreal", "go-real", "live")):
+        from agents.AGI_1_7.engine.agi17.finance.trading_orchestrator import run_go_real_command
+        return run_go_real_command()
 
     storage_root = _resolve_storage_root(args.storage_root)
 
@@ -303,6 +414,15 @@ def main(argv: list[str] | None = None) -> int:
         )
         print(json.dumps(out_payload, indent=2), flush=True)
         return 0
+
+    if args.prompt:
+        from agents.AGI_1_7.engine.agi17.runtime.command_router import CommandRouter, CommandIntent
+        router = CommandRouter()
+        intent = router.classify_intent(args.prompt)
+        if intent == CommandIntent.GENUINE_SAFETY_GATE:
+            gate_res = router.handle_command(args.prompt)
+            print(json.dumps(gate_res, indent=2), flush=True)
+            return 2  # BLOCKED_BY_POLICY
 
     result = adapter.execute(
         title=args.title,

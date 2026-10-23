@@ -110,8 +110,8 @@ class CrossAssetToxicityEngine:
         self.buckets2: List[VolumeBucket] = []
 
         # Last trade directions for tick rule
-        self._last_direction1: str = "BUY"
-        self._last_direction2: str = "BUY"
+        self._last_direction1: Optional[str] = None
+        self._last_direction2: Optional[str] = None
 
     def record_tick(
         self,
@@ -133,38 +133,38 @@ class CrossAssetToxicityEngine:
         if asset == self.asset1_name:
             # Lee-Ready tick rule for asset 1
             if p > prev_p:
-                is_buy = True
+                direction = "BUY"
                 self._last_direction1 = "BUY"
             elif p < prev_p:
-                is_buy = False
+                direction = "SELL"
                 self._last_direction1 = "SELL"
             else:
-                is_buy = (self._last_direction1 == "BUY")
+                direction = self._last_direction1 if self._last_direction1 is not None else "NEUTRAL"
 
             completed = self._accumulate_volume(
                 self.active_bucket1,
                 self.buckets1,
                 vol,
-                is_buy,
+                direction,
                 ts,
                 self.bucket_size1,
             )
         elif asset == self.asset2_name:
             # Lee-Ready tick rule for asset 2
             if p > prev_p:
-                is_buy = True
+                direction = "BUY"
                 self._last_direction2 = "BUY"
             elif p < prev_p:
-                is_buy = False
+                direction = "SELL"
                 self._last_direction2 = "SELL"
             else:
-                is_buy = (self._last_direction2 == "BUY")
+                direction = self._last_direction2 if self._last_direction2 is not None else "NEUTRAL"
 
             completed = self._accumulate_volume(
                 self.active_bucket2,
                 self.buckets2,
                 vol,
-                is_buy,
+                direction,
                 ts,
                 self.bucket_size2,
             )
@@ -181,7 +181,7 @@ class CrossAssetToxicityEngine:
         active: VolumeBucket,
         completed_list: List[VolumeBucket],
         volume: float,
-        is_buy: bool,
+        direction: str,
         timestamp: float,
         target_size: float,
     ) -> bool:
@@ -206,10 +206,13 @@ class CrossAssetToxicityEngine:
                 space_left = target_size
 
             fill = min(rem_volume, space_left)
-            if is_buy:
+            if direction == "BUY":
                 active.buy_volume += fill
-            else:
+            elif direction == "SELL":
                 active.sell_volume += fill
+            else:
+                active.buy_volume += fill / 2.0
+                active.sell_volume += fill / 2.0
             rem_volume -= fill
 
             if active.is_full:
@@ -261,7 +264,10 @@ class CrossAssetToxicityEngine:
             var1 = sum((x - mean1) ** 2 for x in imbs1) / pair_len
             var2 = sum((y - mean2) ** 2 for y in imbs2) / pair_len
 
-            if var1 > 1e-12 and var2 > 1e-12:
+            non_zero_1 = sum(1 for x in imbs1 if abs(x) > 1e-6)
+            non_zero_2 = sum(1 for y in imbs2 if abs(y) > 1e-6)
+
+            if non_zero_1 >= 2 and non_zero_2 >= 2 and var1 > 1e-12 and var2 > 1e-12:
                 rho = cov / math.sqrt(var1 * var2)
                 rho = max(-1.0, min(1.0, rho))
             else:

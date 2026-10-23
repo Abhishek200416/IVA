@@ -1,0 +1,49 @@
+# Antigravity Global Ignore File
+# Prevents indexing, reading, or watching heavy environments and cache folders
+
+# Virtual Environments (Vanu)
+.osworld_venv/
+.venv/
+venv/
+env/
+.env/
+node_modules/
+__pycache__/
+*.py[cod]
+
+# Testing & Scratch Artifacts
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Runtime storage & browser profiles
+**/runtime_storage/
+agents/AGI_1_7/engine/runtime_storage/
+agents/AGI_1_7/runtime_storage/
+agents/AGI_1_7/demo_workspace/
+agents/AGI_1_7/local_fallback_storage/
+agents/AGI_1_7/state_fallback/
+agents/agents/
+browser_recordings/
+chrome_profile/
+
+# Binary & archives
+*.iso
+*.zip
+*.tar
+*.gz
+*.mp4
+*.webm
+*.png
+*.jpg
+*.jpeg
+*.woff
+*.woff2
+*.ttf
+*.eot
+*.db
+*.db-wal
+*.db-shm

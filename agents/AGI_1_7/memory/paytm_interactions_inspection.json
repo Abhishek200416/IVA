@@ -1,0 +1,135 @@
+{
+  "fno_dashboard": {
+    "url": "https://www.paytmmoney.com/stocks/fno/dashboard",
+    "sections": [],
+    "allTextSnippets": [
+      "Nifty 50",
+      "22,997.35",
+      "Nifty 50 unchanged 0.00, 0.00 percent\n+374.65\n(\n1.66%\n)",
+      "Nifty 50 unchanged 0.00, 0.00 percent",
+      "+374.65",
+      "BSE Sensex",
+      "74,315.61",
+      "BSE Sensex unchanged 0.00, 0.00 percent\n+1,533.72\n(\n2.11%\n)",
+      "BSE Sensex unchanged 0.00, 0.00 percent",
+      "+1,533.72",
+      "Stocks\nF&O",
+      "Stocks\nF&O",
+      "Stocks",
+      "Dashboard",
+      "Market",
+      "Portfolio",
+      "Positions",
+      "Orders",
+      "Call Us",
+      "Search by Stock Name",
+      "Search by Stock Name",
+      "Search by Stock Name",
+      "Suggestions will appear as you start typing.",
+      "Sort by :\nCustom",
+      "Sort by :",
+      "Custom",
+      "Custom",
+      "Vodafone Idea\nNSE\n3 x 14.61\n12.52\n-0.15\n(\n1.18%\n)\nB\nS",
+      "Vodafone Idea\nNSE\n3 x 14.61\n12.52\n-0.15\n(\n1.18%\n)\nB\nS",
+      "Vodafone Idea\nNSE\n3 x 14.61"
+    ]
+  },
+  "order_pad": {
+    "foundModal": true,
+    "modalTitle": "Vodafone Idea",
+    "labels": [
+      "NSE:\n\u20b912.52\n-0.15\n(\n1.18%\n)",
+      "BSE:\n\u20b912.57",
+      "Quantity",
+      "Price"
+    ],
+    "radios": [],
+    "buttons": [
+      "Buy",
+      "S",
+      "Invest",
+      "Trade",
+      "MTF",
+      "BUY",
+      "Advanced Options"
+    ],
+    "inputs": [
+      {
+        "type": "radio",
+        "name": "exchange",
+        "placeholder": "",
+        "value": "NSE"
+      },
+      {
+        "type": "radio",
+        "name": "exchange",
+        "placeholder": "",
+        "value": "BSE"
+      },
+      {
+        "type": "text",
+        "name": "",
+        "placeholder": "",
+        "value": "1"
+      },
+      {
+        "type": "text",
+        "name": "",
+        "placeholder": "At Market",
+        "value": ""
+      },
+      {
+        "type": "checkbox",
+        "name": "",
+        "placeholder": "",
+        "value": "on"
+      }
+    ]
+  },
+  "chart_inspection": {
+    "url": "https://www.paytmmoney.com/stocks/company/1000001488?toggleDetails=true",
+    "title": "Paytm Money Stocks",
+    "iframes": [
+      {
+        "src": "https://api-eq.paytmmoney.com/equity-charts/trading-view/",
+        "title": "Interactive price chart for Vodafone Idea, NSE exchange, down 1.18 percent",
+        "id": "chart",
+        "cls": "_1nujZBprcEo8rVT01-oM1E"
+      }
+    ],
+    "toolbars": [],
+    "buttons": [
+      "Stocks",
+      "F&O",
+      "Call Us",
+      "More",
+      "Custom",
+      "B",
+      "S",
+      "Show market depth for Vodafone Idea",
+      "Show chart for Vodafone Idea",
+      "Remove Vodafone Idea from watchlist",
+      "B",
+      "S",
+      "Show market depth for Suzlon",
+      "Show chart for Suzlon",
+      "Pin or reorder Suzlon in watchlist",
+      "Remove Suzlon from watchlist",
+      "B",
+      "S",
+      "Show market depth for Alok Industries",
+      "Show chart for Alok Industries",
+      "Remove Alok Industries from watchlist",
+      "B",
+      "S",
+      "Show chart for Jio Financial Services",
+      "B",
+      "S",
+      "Show market depth for Trident",
+      "Show chart for Trident",
+      "Pin or reorder Trident in watchlist",
+      "Remove Trident from watchlist"
+    ]
+  }
+}

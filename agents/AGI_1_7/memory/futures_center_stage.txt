@@ -1,0 +1,96 @@
+s - a simple way to access the gold category through mutual funds. Explore Now!
+Select Watchlist
+Default Stock Watchlist
+14
+Default ETF Watchlist
+25
+Default index
+8
+Calls
+5
+Puts
+3
+Default Stock Watchlist
+14
+Nifty Bank
+NSE
+55,810.50
++494.50
+(
+0.89%
+)
+NSE
+CLOSED
+Option Chain
+Futures Contracts
+Greeks Info
+Futures Contracts
+Price
+Change
+% Change
+BANKNIFTY OCT FUT
+NSE
+55,890.00
++409.20
++0.74%
+BANKNIFTY NOV FUT
+NSE
+56,215.00
++419.20
++0.75%
+BANKNIFTY DEC FUT
+NSE
+56,605.20
++457.60
++0.81%
+⠿
+AGI 1.7 OMEGA COMMAND
+NIFTY: 19 OCT
+BNF: 27 OCT
+N50: 55,810.50 | BNF: 55,810.50
+📐 550px
+—
+In Trading:
+₹48,900.00
+|
+Left in Cash:
+₹66,409.00
+(Safe Cushion)
+|
+● 2 Rotated Active • 3 Booked
+BUY • CALL
+BANKNIFTY 27 OCT 55700 CALL
+(60 Qty)
+ROTATED RUNNER
+Entry: ₹540.00 LTP: ₹602.00
+Trailing SL:
+₹510.00 (Active Floor)
+T1: ₹640.00 | T2: ₹720.00
++₹3,720.00 (+11.48%)
+BUY • CALL
+NIFTY 19 OCT 23000 CALL
+(150 Qty)
+ROTATED RUNNER
+Entry: ₹110.00 LTP: ₹147.30
+Trailing SL:
+₹98.00 (Active Floor)
+T1: ₹135.00 | T2: ₹160.00
++₹5,595.00 (+33.91%)
+PROFIT BOOKED
+BANKNIFTY 27 OCT 55800 CALL
+(60 Qty)
+Exit: ₹680.00 +₹12,057.00 (+42.06%)
+🎯 Target 1 (₹750) reached. Retracement below ₹680 triggered trailing lock. ₹28,719.00 capital returned to Cash Cushion.
+PROFIT BOOKED
+NIFTY 19 OCT 23000 CALL
+(150 Qty)
+Exit: ₹142.00 +₹3,276.00 (+18.33%)
+🎯 Target 1 (₹142) reached. Trailing SL locked profits cleanly. ₹18,000.00 capital returned to Cash Cushion.
+BREAKEVEN
+NIFTY 19 OCT 22800 PUT
+(100 Qty)
+Exit: ₹75.00 ₹0 Loss • Capital Saved
+TODAY TOTAL NET EARNINGS (BOOKED + ACTIVE)
++₹24,576.00
+(+50.26%)
+🛡️ Trail Profits

@@ -29,6 +29,12 @@ from typing import Any, Callable, Dict, List, Optional
 
 from ..orchestration.resource_governor import ResourceGovernor
 from ..process_supervision.process_supervisor import ProcessSupervisor
+from ..security.model_disclosure_policy import (
+    DisclosureContext,
+    ExternalProviderBlockedInLocalOnlyModeError,
+    ModelDisclosurePolicy,
+    SecretRedactor,
+)
 from ..telemetry.token_economy import AdaptiveTokenController
 
 
@@ -46,11 +52,13 @@ class ModelResponseValidationError(RuntimeError):
 
 _SECRET_PATTERNS = [
     (re.compile(r"AIza[0-9A-Za-z\-_]{35}"), "<REDACTED_GOOGLE_API_KEY>"),
-    (re.compile(r"sk-[A-Za-z0-9]{20,}"), "<REDACTED_SK_KEY>"),
+    (re.compile(r"sk-[A-Za-z0-9]{16,}"), "<REDACTED_SK_KEY>"),
     (re.compile(r"ghp_[A-Za-z0-9]{30,}"), "<REDACTED_GITHUB_TOKEN>"),
     (re.compile(r"github_pat_[A-Za-z0-9_]{22,}"), "<REDACTED_GITHUB_PAT>"),
     (re.compile(r"AKIA[0-9A-Z]{16}"), "<REDACTED_AWS_KEY>"),
     (re.compile(r"(?i)Bearer\s+[A-Za-z0-9\-._~+/]+=*"), "Bearer <REDACTED_TOKEN>"),
+    (re.compile(r"eyJ[A-Za-z0-9-_]{10,}\.eyJ[A-Za-z0-9-_]{10,}\.[A-Za-z0-9-_]{10,}"), "<REDACTED_JWT_TOKEN>"),
+    (re.compile(r"(?i)(api[_-]?secret|secret[_-]?key|access[_-]?token|auth[_-]?token|jwt[_-]?token)\s*[:=]\s*['\"]?[A-Za-z0-9\-_./+=]{8,}['\"]?"), r"\1=<REDACTED_SECRET>"),
     (re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----[\s\S]*?-----END [A-Z ]*PRIVATE KEY-----"), "<REDACTED_PRIVATE_KEY>"),
 ]
 
@@ -259,6 +267,7 @@ class ModelAdapter:
         agy_path: Optional[str | Path] = None,
         config: Optional[ModelProviderConfig] = None,
         mock_provider: Optional[BaseModelProvider] = None,
+        disclosure_policy: Optional[ModelDisclosurePolicy] = None,
     ) -> None:
         self.config = config or ModelProviderConfig()
         if not self.is_authorized_model(self.config.model_name, allow_federated=self.config.allow_federated_models):
@@ -269,6 +278,7 @@ class ModelAdapter:
         self.governor = governor or ResourceGovernor()
         self.supervisor = supervisor or ProcessSupervisor()
         self.mock_provider = mock_provider
+        self.disclosure_policy = disclosure_policy or ModelDisclosurePolicy.production_strict()
 
         self.agy_path = self.resolve_agy_path(agy_path)
 
@@ -448,6 +458,20 @@ class ModelAdapter:
                 f"Directive 0 violation: requested effort '{effort}', but '{self.SOLE_MODEL}' requires effort='high'"
             )
 
+        ctx = DisclosureContext(
+            task_id=task_id,
+            agent_id=agent_id,
+            is_external_provider=bool(self.mock_provider is None or getattr(self.mock_provider, "is_external", False)),
+            provider_name=self.config.model_name,
+            operation_type="model_invocation",
+        )
+        if self.disclosure_policy.local_only and ctx.is_external_provider:
+            raise ExternalProviderBlockedInLocalOnlyModeError(
+                f"LOCAL_ONLY_POLICY_VIOLATION: External provider '{self.config.model_name}' is blocked under local-only mode."
+            )
+
+        prompt, _ = self.disclosure_policy.sanitize_outbound_prompt(prompt)
+
         est_tokens = max(250, len(prompt) // 4 + 500)
         self.token_controller.check_pre_call_admission(
             task_id=task_id,
@@ -482,6 +506,7 @@ class ModelAdapter:
             mock_out = self.mock_provider.generate(request_obj)
             provider_usage = mock_out.get("provider_usage")
             response_text = redact_sensitive_text(str(mock_out.get("response_text", "")))
+            response_text, _ = SecretRedactor.redact(response_text)
             parsed_response = mock_out.get("parsed_json") or {}
             if self.config.strict_response_validation and not response_text.strip():
                 raise ModelResponseValidationError(f"Empty response from mock provider for task '{task_id}'")
@@ -647,6 +672,7 @@ class ModelAdapter:
                     pass
 
         response_text = redact_sensitive_text(response_text)
+        response_text, _ = SecretRedactor.redact(response_text)
         if self.config.strict_response_validation and (
             notif.final_status != "SUCCEEDED" or not response_text.strip()
         ):

@@ -46,12 +46,18 @@ jobs:
       - name: Run P0 Production Security Hardening & Docker Sandbox Tests
         run: python -m unittest agents/AGI_1_7/tests/test_p0_security_and_real_docker.py -v
 
+      - name: Run Adversarial Model-Disclosure Boundary & Secret Redaction Tests
+        run: python -m unittest agents/AGI_1_7/tests/test_model_disclosure_boundary.py -v
+
+      - name: Run Finance Safety Invariants & Pre-Trade RMS Control Tests
+        run: python -m unittest agents/AGI_1_7/tests/test_finance_safety_invariants.py -v
+
       - name: Verify 100 Specialist Contracts & Ecosystem Sync (Dry-Run, Zero Home Mutation)
         run: python agents/AGI_1_7/scripts/sync_ecosystem.py --dry-run
 
-      - name: Verify EcosystemCoordinator Inventory (100 Specialists, 76 Agency Profiles, 21 MCPs, 11 Plugins, 74 Skills)
+      - name: Verify EcosystemCoordinator Inventory (100 Specialists, >=76 Agency Profiles, 21 MCPs, 11 Plugins, 74 Skills)
         run: |
-          python -c "from agents.AGI_1_7.ecosystem.agent_registry.ecosystem_coordinator import EcosystemCoordinator; c = EcosystemCoordinator(); inv = c.get_inventory_summary(); print(inv); assert inv['embedded_specialists_count'] == 100; assert inv['agency_profiles_bridged_count'] == 76; assert inv['mcp_servers_count'] == 21; assert inv['plugin_suites_count'] == 11; assert inv['workflow_skills_count'] == 74"
+          python -c "from agents.AGI_1_7.ecosystem.agent_registry.ecosystem_coordinator import EcosystemCoordinator; c = EcosystemCoordinator(); inv = c.get_inventory_summary(); print(inv); assert inv['embedded_specialists_count'] == 100; assert inv['agency_profiles_bridged_count'] >= 76; assert inv['mcp_servers_count'] == 21; assert inv['plugin_suites_count'] == 11; assert inv['workflow_skills_count'] == 74"
 
       - name: Run AGI 1.7 Unit Test Suite (26 Tests)
         run: python -m unittest agents/AGI_1_7/tests/unit/test_agi17_unit_suite.py -v

@@ -41,6 +41,15 @@ class BankNiftyContractSpec:
         return round(round(price / 0.05) * 0.05, 2)
 
     @classmethod
+    def get_lot_size(
+        cls,
+        as_of_date: Optional[datetime.date] = None,
+        expiry_date: Optional[datetime.date] = None,
+    ) -> int:
+        from .live_contract_validator import get_standard_lot_size
+        return get_standard_lot_size("BANKNIFTY", as_of_date, expiry_date)
+
+    @classmethod
     def generate_contract_symbol(
         cls,
         spot_strike: float,

@@ -2,1205 +2,606 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGI 1.7 OMEGA COMMAND — Bank Nifty Options Quantitative Trading & Research Terminal</title>
-    <style>
-        :root {
-            --bg-base: #090d16;
-            --bg-surface: #0f172a;
-            --bg-card: #131d33;
-            --bg-hover: #1e293b;
-            --border: #1e293b;
-            --border-highlight: #334155;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --text-dim: #64748b;
-            --green: #10b981;
-            --green-glow: rgba(16, 185, 129, 0.2);
-            --red: #ef4444;
-            --red-glow: rgba(239, 68, 68, 0.2);
-            --cyan: #06b6d4;
-            --violet: #8b5cf6;
-            --amber: #f59e0b;
-            --blue: #3b82f6;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", monospace, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-base);
-            color: var(--text-main);
-            overflow-x: hidden;
-            font-size: 13px;
-        }
-
-        /* Top Context Bar */
-        .top-bar {
-            background-color: var(--bg-surface);
-            border-bottom: 1px solid var(--border);
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .brand-section {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .badge-terminal {
-            background: linear-gradient(135deg, #06b6d4, #8b5cf6);
-            color: #000;
-            font-weight: 800;
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        .terminal-title {
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .safe-harbor-tag {
-            background: rgba(245, 158, 11, 0.15);
-            border: 1px solid rgba(245, 158, 11, 0.4);
-            color: #fbbf24;
-            font-size: 11px;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        .market-metrics-ticker {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .metric-pill {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .metric-label {
-            font-size: 10px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .metric-val {
-            font-size: 14px;
-            font-weight: 700;
-            font-family: monospace;
-        }
-
-        .val-up { color: var(--green); }
-        .val-down { color: var(--red); }
-        .val-cyan { color: var(--cyan); }
-        .val-violet { color: var(--violet); }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn {
-            background: var(--bg-card);
-            border: 1px solid var(--border-highlight);
-            color: var(--text-main);
-            padding: 6px 14px;
-            border-radius: 5px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.15s ease;
-        }
-
-        .btn:hover {
-            background: var(--bg-hover);
-            border-color: var(--cyan);
-        }
-
-        .btn-killswitch {
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid var(--red);
-            color: #fca5a5;
-        }
-
-        .btn-killswitch:hover {
-            background: var(--red);
-            color: #fff;
-        }
-
-        .btn-buy-ce {
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid var(--green);
-            color: var(--green);
-            padding: 4px 8px;
-            font-size: 11px;
-        }
-        .btn-buy-ce:hover { background: var(--green); color: #000; }
-
-        .btn-buy-pe {
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid var(--red);
-            color: var(--red);
-            padding: 4px 8px;
-            font-size: 11px;
-        }
-        .btn-buy-pe:hover { background: var(--red); color: #fff; }
-
-        /* Main Dashboard Grid */
-        .dashboard-container {
-            display: grid;
-            grid-template-columns: 280px 1fr 340px;
-            grid-template-rows: auto auto auto;
-            gap: 12px;
-            padding: 12px;
-            height: calc(100vh - 65px);
-        }
-
-        /* Responsive Layout Panels */
-        .panel {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .panel-header {
-            background: var(--bg-card);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-        }
-
-        .panel-header-badge {
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 3px;
-            background: var(--bg-base);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-        }
-
-        .panel-body {
-            padding: 10px;
-            overflow-y: auto;
-            flex: 1;
-        }
-
-        /* Center Column Layout */
-        .center-column {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            height: 100%;
-        }
-
-        .chart-panel {
-            height: 380px;
-            position: relative;
-        }
-
-        canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        /* Intraday Decision & CPR/GEX Panel */
-        .decision-panel {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 10px 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .cpr-metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-        }
-
-        .cpr-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 6px 10px;
-        }
-
-        .cpr-card-title {
-            font-size: 10px;
-            color: var(--text-dim);
-            font-weight: 700;
-            text-transform: uppercase;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .cpr-card-val {
-            font-size: 13px;
-            font-weight: 800;
-            font-family: monospace;
-            margin-top: 3px;
-        }
-
-        .checklist-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
-            background: rgba(6, 182, 212, 0.04);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            padding: 8px;
-            border-radius: 4px;
-        }
-
-        .check-item {
-            font-size: 11px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .check-pass {
-            color: var(--green);
-            font-weight: 800;
-        }
-
-        .directive-pill {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
-            border: 1px solid var(--green);
-            color: #f8fafc;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* Option Chain Table */
-        .chain-panel {
-            flex: 1;
-            min-height: 280px;
-        }
-
-        .chain-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 11px;
-            text-align: right;
-            font-family: monospace;
-        }
-
-        .chain-table th {
-            background: var(--bg-card);
-            color: var(--text-dim);
-            padding: 6px 8px;
-            font-weight: 600;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 2;
-        }
-
-        .chain-table td {
-            padding: 5px 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .strike-cell {
-            background: var(--bg-card);
-            color: #f8fafc;
-            font-weight: 800;
-            text-align: center;
-            border-left: 1px solid var(--border);
-            border-right: 1px solid var(--border);
-        }
-
-        .atm-row {
-            background: rgba(6, 182, 212, 0.08);
-            border: 1px solid var(--cyan);
-        }
-
-        /* Microstructure Panel */
-        .depth-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .depth-table {
-            width: 100%;
-            font-size: 11px;
-            font-family: monospace;
-            border-collapse: collapse;
-        }
-
-        .depth-table th {
-            color: var(--text-dim);
-            padding-bottom: 4px;
-            text-align: right;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .depth-table td {
-            padding: 3px 0;
-            text-align: right;
-        }
-
-        .bid-text { color: var(--green); }
-        .ask-text { color: var(--red); }
-
-        .micro-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 8px;
-            margin-bottom: 8px;
-        }
-
-        .micro-card-title {
-            font-size: 10px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            font-weight: 700;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .micro-card-val {
-            font-size: 15px;
-            font-weight: 800;
-            font-family: monospace;
-            margin-top: 4px;
-        }
-
-        /* AI Debate & Reasoning */
-        .ai-model-tabs {
-            display: flex;
-            gap: 4px;
-            margin-bottom: 8px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 6px;
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-dim);
-            font-size: 11px;
-            font-weight: 600;
-            padding: 4px 8px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        .tab-btn.active {
-            background: var(--cyan);
-            color: #000;
-            font-weight: 700;
-        }
-
-        .debate-entry {
-            background: var(--bg-card);
-            border-left: 3px solid var(--cyan);
-            border-radius: 0 4px 4px 0;
-            padding: 8px;
-            margin-bottom: 8px;
-            font-size: 11px;
-            line-height: 1.4;
-        }
-
-        .debate-header {
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-muted);
-            font-size: 10px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .consensus-bar {
-            height: 8px;
-            background: rgba(239, 68, 68, 0.5);
-            border-radius: 4px;
-            overflow: hidden;
-            display: flex;
-            margin: 8px 0;
-        }
-
-        .bullish-fill {
-            background: var(--green);
-            height: 100%;
-            transition: width 0.3s ease;
-        }
-
-        /* Order Ticket Form */
-        .ticket-form {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-
-        .input-group label {
-            font-size: 10px;
-            color: var(--text-dim);
-            font-weight: 600;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .input-group input, .input-group select {
-            width: 100%;
-            background: var(--bg-card);
-            border: 1px solid var(--border-highlight);
-            color: var(--text-main);
-            padding: 6px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-family: monospace;
-        }
-
-        .btn-submit-order {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: #000;
-            font-weight: 800;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 6px;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-submit-order:hover {
-            opacity: 0.9;
-        }
-
-        /* Positions Table */
-        .positions-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 11px;
-            font-family: monospace;
-            text-align: right;
-        }
-
-        .positions-table th {
-            color: var(--text-dim);
-            padding: 5px 6px;
-            border-bottom: 1px solid var(--border);
-            font-weight: 600;
-        }
-
-        .positions-table td {
-            padding: 5px 6px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        /* Status Pills */
-        .pill-green {
-            background: rgba(16, 185, 129, 0.15);
-            color: var(--green);
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 10px;
-            font-weight: 700;
-        }
-
-        .pill-red {
-            background: rgba(239, 68, 68, 0.15);
-            color: var(--red);
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 10px;
-            font-weight: 700;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AGI 1.7 OMEGA COMMAND — Trading & Research Terminal</title>
+    
+    <!-- Modular CSS Architecture -->
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
+    <div class="app-shell">
+        <!-- ═══════════════════════════════════════════════════════════════
+             1. COMPACT PERSISTENT HEADER (Strict 48px Height, Zero Nav Clutter)
+        ═══════════════════════════════════════════════════════════════ -->
+        <header class="app-header">
+            <div class="header-left">
+                <!-- Mobile Menu Button (Phone Only) -->
+                <button class="mobile-menu-btn" id="btnMobileNavToggle" aria-label="Open Navigation Menu">☰</button>
 
-    <!-- Top Context Bar -->
-    <header class="top-bar">
-        <div class="brand-section">
-            <span class="badge-terminal">AGI 1.7</span>
-            <span class="terminal-title">BANK NIFTY QUANT TERMINAL</span>
-            <span class="safe-harbor-tag">SIMULATED PAPER HARBOR (15:15 IST AUTO-SQUARE-OFF)</span>
+                <!-- Brand Anchor -->
+                <a class="brand-anchor" data-navigate="trading">
+                    <span class="brand-badge">AGI 1.7</span>
+                    <span class="brand-title">OMEGA COMMAND</span>
+                </a>
+
+                <!-- Algorithms Navigation Button (Prominent in Top Left as requested) -->
+                <button class="btn-algorithms-nav" id="btnHeaderAlgorithms" data-navigate="algorithms" title="Open Quantitative Algorithms Catalog">
+                    <span class="algo-nav-icon">⚙️</span>
+                    <span class="algo-nav-text">Algorithms</span>
+                </button>
+
+                <span class="paper-status-tag" id="headerModeTag" title="Operating Mode: Click for Matrix / Live Readiness" style="cursor: pointer;" onclick="if(window.location) window.location.href='/readiness';">STRICTLY PAPER</span>
+
+                <!-- Breadcrumb Location -->
+                <div class="header-breadcrumb-area">
+                    <span class="breadcrumb-separator">/</span>
+                    <span id="shellBreadcrumbText" class="header-breadcrumb-title">📈 Trading Desk</span>
+                </div>
+            </div>
+
+            <!-- Central Reconciled Instrument Pill -->
+            <div class="header-center">
+                <div class="header-spot-pill" id="headerSpotPill" title="Reconciled from Paytm Money DOM and NSE Bhavcopy">
+                    <span class="spot-symbol">NIFTY 50</span>
+                    <span class="spot-price" id="headerNiftyPrice">₹22,622.70</span>
+                    <span class="spot-change loss" id="headerNiftyChg">-99.25 (-0.44%)</span>
+                    <span class="badge badge-amber header-session-badge" id="headerSessionBadge">CLOSED • EOD Verified Snapshot</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <!-- Multi-Epoch Account Selector -->
+                <div class="epoch-select-wrapper">
+                    <span class="epoch-select-label">Account:</span>
+                    <select class="epoch-select" id="epochSelect" aria-label="Select Paper Trading Epoch">
+                        <option value="EPOCH-PAPER-100K-MULTI-ASSET" selected>Epoch 1: ₹1,00,000 Multi-Asset (+₹3,310.50)</option>
+                        <option value="EPOCH-SUPERVISOR-10K">Epoch 2: ₹10,000 Supervisor (+₹1,264.50)</option>
+                        <option value="EPOCH-HISTORICAL-DEMO-50K">Epoch 3: ₹50,000 Demo (+₹2,265.45)</option>
+                    </select>
+                </div>
+
+                <!-- IST Monotonic Clock -->
+                <div class="header-clock-pill">
+                    <span id="liveClockText">--:--:-- IST</span>
+                </div>
+
+                <!-- Settings Dropdown Button & Menu -->
+                <div class="settings-dropdown-wrapper">
+                    <button class="btn-settings-toggle" id="btnSettingsToggle" aria-haspopup="true" aria-expanded="false" title="Settings & Terminal Preferences">
+                        <span class="settings-gear-icon">⚙️</span>
+                        <span class="settings-label">Settings ▾</span>
+                    </button>
+                    <div class="settings-dropdown-menu" id="settingsDropdownMenu" role="menu" aria-label="Terminal Settings">
+                        <div class="settings-dropdown-header">
+                            <span class="settings-header-title">Terminal Controls &amp; Settings</span>
+                            <span class="badge badge-cyan" style="font-size: 9.5px; padding: 1px 5px;">V4.2</span>
+                        </div>
+                        <div class="settings-dropdown-group">
+                            <button class="settings-menu-item" id="btnMenuProfile" data-action="open-profile">
+                                <span class="item-icon">👤</span>
+                                <div class="item-text">
+                                    <span class="item-title">Operator Profile &amp; Diagnostics</span>
+                                    <span class="item-desc">Operator Abhi • Loopback 127.0.0.1:8088</span>
+                                </div>
+                            </button>
+                            <button class="settings-menu-item" id="btnMenuResetLayout" data-action="reset-layout">
+                                <span class="item-icon">📐</span>
+                                <div class="item-text">
+                                    <span class="item-title">Reset Desk Layout to Defaults</span>
+                                    <span class="item-desc">Reset 3-panel widths &amp; chart height</span>
+                                </div>
+                            </button>
+                            <button class="settings-menu-item" id="btnMenuReducedMotion" data-action="toggle-motion">
+                                <span class="item-icon">♿</span>
+                                <div class="item-text">
+                                    <span class="item-title">Accessibility &amp; Motion</span>
+                                    <span class="item-desc" id="motionStatusDesc">Standard Animations (Active)</span>
+                                </div>
+                            </button>
+                            <button class="settings-menu-item" id="btnMenuSystemHealth" data-action="open-system" data-navigate="system">
+                                <span class="item-icon">🔋</span>
+                                <div class="item-text">
+                                    <span class="item-title">System &amp; API Health</span>
+                                    <span class="item-desc">Daemons, Memory &amp; Diagnostics</span>
+                                </div>
+                            </button>
+                            <button class="settings-menu-item" id="btnMenuReport" data-action="open-report">
+                                <span class="item-icon">📊</span>
+                                <div class="item-text">
+                                    <span class="item-title">Intelligence Report</span>
+                                    <span class="item-desc">Learnings, Risk &amp; Profit Audit</span>
+                                </div>
+                            </button>
+                            <button class="settings-menu-item" id="btnMenuSettingsPage" data-action="open-settings" data-navigate="settings">
+                                <span class="item-icon">🛠️</span>
+                                <div class="item-text">
+                                    <span class="item-title">Advanced Settings</span>
+                                    <span class="item-desc">Full Configuration Workspace</span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="settings-dropdown-footer">
+                            <span>AGI 1.7 OMEGA COMMAND • v4.2.0</span>
+                            <span class="status-pulse green" title="Operational"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             2. CAPITAL & METRICS SUMMARY RIBBON (Strict 38px Single-Line)
+        ═══════════════════════════════════════════════════════════════ -->
+        <div class="account-ribbon">
+            <div class="ribbon-metrics-list">
+                <div class="ribbon-metric-item">
+                    <span class="metric-lbl">Base Capital:</span>
+                    <span class="metric-val" id="ribbonBaseCapital">₹1,00,000.00</span>
+                </div>
+                <div class="ribbon-metric-item">
+                    <span class="metric-lbl">Cash Reserve:</span>
+                    <span class="metric-val reserve" id="ribbonSavedReserve">₹36,225.00 (36.2%)</span>
+                </div>
+                <div class="ribbon-metric-item">
+                    <span class="metric-lbl">Margin Deployed:</span>
+                    <span class="metric-val" id="ribbonCapitalDeployed">₹63,775.00 (63.8%)</span>
+                </div>
+                <div class="ribbon-metric-item">
+                    <span class="metric-lbl">Session Net P&amp;L:</span>
+                    <span class="metric-val profit" id="ribbonNetPnl">+₹3,310.50 (+3.31%)</span>
+                </div>
+                <div class="ribbon-metric-item">
+                    <span class="metric-lbl">Total Equity:</span>
+                    <span class="metric-val" id="ribbonEquity">₹1,03,310.50</span>
+                </div>
+            </div>
+
+            <div class="ribbon-provenance-tag">
+                <span>PROVENANCE: REAL PAYTM DOM &amp; BHAVCOPY SYNC</span>
+                <span class="badge badge-purple" style="font-size: 9.5px; padding: 1px 5px;">VERIFIED</span>
+            </div>
         </div>
 
-        <div class="market-metrics-ticker">
-            <div class="metric-pill">
-                <span class="metric-label">SPOT</span>
-                <span class="metric-val val-up" id="ticker-spot">49,850.25</span>
-            </div>
-            <div class="metric-pill">
-                <span class="metric-label">FUT BASIS</span>
-                <span class="metric-val val-cyan">+42.50</span>
-            </div>
-            <div class="metric-pill">
-                <span class="metric-label">INDIA VIX</span>
-                <span class="metric-val val-down">13.82 (-0.4%)</span>
-            </div>
-            <div class="metric-pill">
-                <span class="metric-label">ATM IV</span>
-                <span class="metric-val">16.45%</span>
-            </div>
-            <div class="metric-pill">
-                <span class="metric-label">MTM NET P&L</span>
-                <span class="metric-val val-up" id="ticker-pnl">+₹14,287.50</span>
-            </div>
-            <div class="metric-pill">
-                <span class="metric-label">CLOSING CLOCK</span>
-                <span class="metric-val val-violet" id="ticker-clock">14:26:15 IST</span>
+        <!-- ═══════════════════════════════════════════════════════════════
+             3. MAIN APPLICATION BODY (Collapsible Sidebar + Page Viewports)
+        ═══════════════════════════════════════════════════════════════ -->
+        <div class="app-body">
+            <!-- Desktop Collapsible Navigation Sidebar (10 Dedicated Destinations) -->
+            <aside class="app-sidebar" id="appSidebar" aria-label="Main Navigation">
+                <div class="sidebar-top">
+                    <div class="sidebar-section-title">WORKSPACES</div>
+                    <nav class="sidebar-nav-list" aria-label="Primary Destinations">
+                        <button class="sidebar-nav-item active" data-navigate="trading" title="Trading Desk">
+                            <span class="sidebar-nav-icon">📈</span>
+                            <span class="sidebar-nav-label">Trading Desk</span>
+                        </button>
+                        <button class="sidebar-nav-item" data-navigate="market" title="Market Explorer">
+                            <span class="sidebar-nav-icon">🌐</span>
+                            <span class="sidebar-nav-label">Market Explorer</span>
+                        </button>
+                        <button class="sidebar-nav-item" data-navigate="options" title="Options &amp; Depth">
+                            <span class="sidebar-nav-icon">⚡</span>
+                            <span class="sidebar-nav-label">Options &amp; Depth</span>
+                        </button>
+                        <button class="sidebar-nav-item" data-navigate="intelligence" title="AI Intelligence">
+                            <span class="sidebar-nav-icon">🧠</span>
+                            <span class="sidebar-nav-label">AI Intelligence</span>
+                        </button>
+                        <button class="sidebar-nav-item" data-navigate="portfolio" title="Portfolio &amp; Risk">
+                            <span class="sidebar-nav-icon">🛡️</span>
+                            <span class="sidebar-nav-label">Portfolio &amp; Risk</span>
+                        </button>
+                        <button class="sidebar-nav-item" data-navigate="activity" title="Orders &amp; History">
+                            <span class="sidebar-nav-icon">📋</span>
+                            <span class="sidebar-nav-label">Orders &amp; History</span>
+                        </button>
+                        <button class="sidebar-nav-item" data-navigate="strategies" title="Strategy Lab">
+                            <span class="sidebar-nav-icon">🔬</span>
+                            <span class="sidebar-nav-label">Strategy Lab</span>
+                        </button>
+                        <button class="sidebar-nav-item" data-navigate="memory" title="Memory &amp; Learning">
+                            <span class="sidebar-nav-icon">💾</span>
+                            <span class="sidebar-nav-label">Memory &amp; Learning</span>
+                        </button>
+                        <button class="sidebar-nav-item" data-navigate="system" title="System &amp; API Health">
+                            <span class="sidebar-nav-icon">🔋</span>
+                            <span class="sidebar-nav-label">System Health</span>
+                        </button>
+                        <button class="sidebar-nav-item" data-navigate="improvement" title="Autonomous Improvement Engine">
+                            <span class="sidebar-nav-icon">🚀</span>
+                            <span class="sidebar-nav-label">Autonomous Engine</span>
+                        </button>
+                        <button class="sidebar-nav-item" data-navigate="settings" title="Settings &amp; Integrations">
+                            <span class="sidebar-nav-icon">⚙️</span>
+                            <span class="sidebar-nav-label">Settings</span>
+                        </button>
+                    </nav>
+                </div>
+
+                <div class="sidebar-bottom">
+                    <button class="sidebar-collapse-btn" id="btnSidebarCollapse" title="Collapse/Expand Sidebar">
+                        <span class="collapse-icon">◀</span>
+                        <span class="collapse-label">Collapse Menu</span>
+                    </button>
+                    <div class="sidebar-meta-info">
+                        <div class="meta-row">
+                            <span class="status-pulse green"></span>
+                            <span class="meta-text">PAPER TRADING</span>
+                        </div>
+                        <div class="meta-subtext">Port 8088 • Strict Sandbox</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area Holding the 10 Dedicated Pages -->
+            <div class="main-content-area">
+                <main class="workspace-container">
+                    <!-- Page A: /trading -->
+                    <section class="page-pane active" id="page-trading" aria-label="Trading Desk"></section>
+
+                    <!-- Dedicated Algorithms Catalog: /algorithms -->
+                    <section class="page-pane" id="page-algorithms" aria-label="Quantitative Algorithms Catalog"></section>
+
+                    <!-- Page B: /market -->
+                    <section class="page-pane" id="page-market" aria-label="Market Explorer"></section>
+
+                    <!-- Page C: /options -->
+                    <section class="page-pane" id="page-options" aria-label="Options Workspace"></section>
+
+                    <!-- Page D: /intelligence -->
+                    <section class="page-pane" id="page-intelligence" aria-label="AI Intelligence"></section>
+
+                    <!-- Page E: /portfolio -->
+                    <section class="page-pane" id="page-portfolio" aria-label="Portfolio and Risk"></section>
+
+                    <!-- Page F: /activity -->
+                    <section class="page-pane" id="page-activity" aria-label="Orders and Trade Activity"></section>
+
+                    <!-- Page G: /strategies -->
+                    <section class="page-pane" id="page-strategies" aria-label="Strategy Lab"></section>
+
+                    <!-- Page H: /memory -->
+                    <section class="page-pane" id="page-memory" aria-label="Memory and Learning"></section>
+
+                    <!-- Page I: /system -->
+                    <section class="page-pane" id="page-system" aria-label="System and Data Health"></section>
+
+                    <!-- Page J: /settings -->
+                    <section class="page-pane" id="page-settings" aria-label="Settings and Integrations"></section>
+
+                    <!-- Dedicated Autonomous Improvement Engine Pane: /improvement -->
+                    <section class="page-pane" id="page-improvement" aria-label="Autonomous Improvement Engine">
+                        <div class="improvement-panel-container" style="padding: 20px; color: #e0e0e0; max-width: 1200px; margin: 0 auto;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+                                <div>
+                                    <h2 style="margin: 0; color: #00d2ff; display: flex; align-items: center; gap: 10px; font-size: 22px;">
+                                        <span>🚀</span> Autonomous Improvement Engine (Phase 17.25)
+                                    </h2>
+                                    <div style="font-size: 13px; color: #888; margin-top: 4px;">
+                                        Persistent Resumable 11-Stage Self-Improvement Cycle • Zero-Leakage LLM Gateway • Fail-Closed Order Lock
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                    <button id="btnImprovementResume" style="padding: 7px 16px; background: #00e676; color: #000; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">▶ Resume / Start</button>
+                                    <button id="btnImprovementPause" style="padding: 7px 16px; background: #ffb300; color: #000; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">⏸ Pause</button>
+                                    <button id="btnImprovementStopAfterCycle" style="padding: 7px 16px; background: #00b0ff; color: #000; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">⏹ Stop After Cycle</button>
+                                    <button id="btnImprovementStop" style="padding: 7px 16px; background: #ff1744; color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">🛑 OMEGA STOP</button>
+                                </div>
+                            </div>
+
+                            <!-- Worker Telemetry Cards -->
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                                <div style="background: #1e222d; padding: 15px; border-radius: 8px; border-left: 4px solid #00d2ff;">
+                                    <div style="font-size: 11px; text-transform: uppercase; color: #888;">Worker State</div>
+                                    <div id="dispWorkerState" style="font-size: 20px; font-weight: bold; color: #00d2ff; margin-top: 5px;">STOPPED</div>
+                                    <div id="dispCycleId" style="font-size: 11px; color: #aaa; margin-top: 3px;">Cycle: None</div>
+                                </div>
+                                <div style="background: #1e222d; padding: 15px; border-radius: 8px; border-left: 4px solid #00e676;">
+                                    <div style="font-size: 11px; text-transform: uppercase; color: #888;">Completed Cycles</div>
+                                    <div id="dispCompletedCycles" style="font-size: 20px; font-weight: bold; color: #00e676; margin-top: 5px;">0</div>
+                                    <div id="dispFailedCycles" style="font-size: 11px; color: #aaa; margin-top: 3px;">Failed: 0</div>
+                                </div>
+                                <div style="background: #1e222d; padding: 15px; border-radius: 8px; border-left: 4px solid #b388ff;">
+                                    <div style="font-size: 11px; text-transform: uppercase; color: #888;">Daily Token Usage</div>
+                                    <div id="dispDailyTokens" style="font-size: 20px; font-weight: bold; color: #b388ff; margin-top: 5px;">0 / 500,000</div>
+                                    <div id="dispDailyCost" style="font-size: 11px; color: #aaa; margin-top: 3px;">Cost: $0.0000 / $5.00</div>
+                                </div>
+                                <div style="background: #1e222d; padding: 15px; border-radius: 8px; border-left: 4px solid #ff9100;">
+                                    <div style="font-size: 11px; text-transform: uppercase; color: #888;">Queue Backlog</div>
+                                    <div id="dispQueueLength" style="font-size: 20px; font-weight: bold; color: #ff9100; margin-top: 5px;">0 Tasks</div>
+                                    <div id="dispActivePhase" style="font-size: 11px; color: #aaa; margin-top: 3px;">Phase: Idle</div>
+                                </div>
+                            </div>
+
+                            <!-- Current Goal & Active Checkpoint -->
+                            <div style="background: #1e222d; padding: 18px; border-radius: 8px; margin-bottom: 20px;">
+                                <h3 style="margin: 0 0 10px 0; font-size: 15px; color: #fff;">🎯 Active Target & Checkpoint</h3>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                    <div>
+                                        <div style="font-size: 12px; color: #888;">Selected Goal:</div>
+                                        <div id="dispCurrentGoal" style="font-size: 14px; font-weight: bold; color: #fff; margin-top: 3px;">N/A</div>
+                                        <div style="font-size: 12px; color: #888; margin-top: 8px;">Hypothesis:</div>
+                                        <div id="dispCurrentHypothesis" style="font-size: 13px; color: #aaa; margin-top: 3px;">N/A</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 12px; color: #888;">Last Heartbeat:</div>
+                                        <div id="dispLastHeartbeat" style="font-size: 13px; color: #00d2ff; margin-top: 3px;">--</div>
+                                        <div style="font-size: 12px; color: #888; margin-top: 8px;">Order Dispatch Gate:</div>
+                                        <div style="font-size: 13px; color: #ff1744; font-weight: bold; margin-top: 3px;">LOCKED (Strict Fail-Closed)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Prioritized Improvement Backlog Table -->
+                            <div style="background: #1e222d; padding: 18px; border-radius: 8px;">
+                                <h3 style="margin: 0 0 12px 0; font-size: 15px; color: #fff;">📋 Autonomous Engineering Backlog (Prioritized)</h3>
+                                <div style="overflow-x: auto;">
+                                    <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                                        <thead>
+                                            <tr style="border-bottom: 1px solid #333; color: #888; text-align: left;">
+                                                <th style="padding: 8px;">Task ID</th>
+                                                <th style="padding: 8px;">Category</th>
+                                                <th style="padding: 8px;">Title</th>
+                                                <th style="padding: 8px;">Priority</th>
+                                                <th style="padding: 8px;">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tblImprovementBacklogBody">
+                                            <tr><td colspan="5" style="padding: 12px; text-align: center; color: #666;">Loading backlog...</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
             </div>
         </div>
 
-        <div class="header-actions">
-            <button class="btn" onclick="triggerDebate()">⚡ Refresh AI Debate</button>
-            <button class="btn btn-killswitch" onclick="emergencyFlattenAll()">🚨 FLATTEN ALL</button>
-        </div>
-    </header>
+        <!-- ═══════════════════════════════════════════════════════════════
+             4. MOBILE BOTTOM NAVIGATION BAR (Screens <= 768px)
+        ═══════════════════════════════════════════════════════════════ -->
+        <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile Bottom Navigation">
+            <button class="bottom-nav-item active" data-navigate="trading">
+                <span class="bottom-nav-icon">📈</span>
+                <span class="bottom-nav-label">Trading</span>
+            </button>
+            <button class="bottom-nav-item" data-navigate="market">
+                <span class="bottom-nav-icon">🌐</span>
+                <span class="bottom-nav-label">Market</span>
+            </button>
+            <button class="bottom-nav-item" data-navigate="options">
+                <span class="bottom-nav-icon">⚡</span>
+                <span class="bottom-nav-label">Options</span>
+            </button>
+            <button class="bottom-nav-item" data-navigate="portfolio">
+                <span class="bottom-nav-icon">🛡️</span>
+                <span class="bottom-nav-label">Portfolio</span>
+            </button>
+            <button class="bottom-nav-item" id="btnBottomNavMore">
+                <span class="bottom-nav-icon">☰</span>
+                <span class="bottom-nav-label">More</span>
+            </button>
+        </nav>
 
-    <!-- Main Workspace Grid -->
-    <main class="dashboard-container">
-
-        <!-- Left Column: Microstructure & Invariance -->
-        <aside class="panel">
-            <div class="panel-header">
-                <span>MARKET MICROSTRUCTURE</span>
-                <span class="panel-header-badge" id="regime-badge">NORMAL</span>
+        <!-- ═══════════════════════════════════════════════════════════════
+             5. MOBILE SLIDE-OUT NAVIGATION DRAWER (Full 10 Destinations)
+        ═══════════════════════════════════════════════════════════════ -->
+        <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+        <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+            <div class="mobile-nav-header">
+                <div>
+                    <strong style="font-size: 15px; color: #ffffff;">AGI 1.7 COMMAND</strong>
+                    <div style="font-size: 11px; color: var(--color-cyan);">Multi-Page Quantitative Suite</div>
+                </div>
+                <button id="btnCloseMobileNav" style="background: transparent; border: none; color: #ffffff; font-size: 20px; cursor: pointer;">✕</button>
             </div>
-            <div class="panel-body">
-
-                <!-- 5-Level Depth -->
-                <div class="micro-card-title" style="margin-bottom:6px;">5-LEVEL LOB DEPTH (ATM 49800 CE)</div>
-                <div class="depth-grid">
-                    <table class="depth-table">
-                        <thead>
-                            <tr><th style="text-align:left;">BID QTY</th><th>BID</th></tr>
-                        </thead>
-                        <tbody id="lob-bids">
-                            <tr><td style="text-align:left;">450</td><td class="bid-text">242.10</td></tr>
-                            <tr><td style="text-align:left;">1,200</td><td class="bid-text">242.05</td></tr>
-                            <tr><td style="text-align:left;">825</td><td class="bid-text">242.00</td></tr>
-                            <tr><td style="text-align:left;">2,100</td><td class="bid-text">241.95</td></tr>
-                            <tr><td style="text-align:left;">3,450</td><td class="bid-text">241.90</td></tr>
-                        </tbody>
-                    </table>
-                    <table class="depth-table">
-                        <thead>
-                            <tr><th>ASK</th><th style="text-align:right;">ASK QTY</th></tr>
-                        </thead>
-                        <tbody id="lob-asks">
-                            <tr><td class="ask-text">242.15</td><td style="text-align:right;">600</td></tr>
-                            <tr><td class="ask-text">242.20</td><td style="text-align:right;">975</td></tr>
-                            <tr><td class="ask-text">242.25</td><td style="text-align:right;">1,500</td></tr>
-                            <tr><td class="ask-text">242.30</td><td style="text-align:right;">2,850</td></tr>
-                            <tr><td class="ask-text">242.35</td><td style="text-align:right;">4,200</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Invariance Card -->
-                <div class="micro-card">
-                    <div class="micro-card-title">
-                        <span>KYLE'S LAMBDA (λ)</span>
-                        <span style="color:var(--cyan)">OLS ESTIMATE</span>
-                    </div>
-                    <div class="micro-card-val val-cyan" id="metric-lambda">0.0418 INR/cont</div>
-                    <div style="font-size:10px; color:var(--text-dim); margin-top:2px;">R² = 0.842 | Kyle-Obizhaeva (2016)</div>
-                </div>
-
-                <!-- Hawkes Intensity -->
-                <div class="micro-card">
-                    <div class="micro-card-title">
-                        <span>HAWKES CLUSTERING</span>
-                        <span id="hawkes-status" class="pill-green">STABLE</span>
-                    </div>
-                    <div class="micro-card-val" id="metric-hawkes">ρ = 0.410 &lt; 1.0</div>
-                    <div style="font-size:10px; color:var(--text-dim); margin-top:2px;">λ_buy: 1.42/s | λ_sell: 0.88/s | Beta: 1.0</div>
-                </div>
-
-                <!-- Jump Circuit Breaker -->
-                <div class="micro-card">
-                    <div class="micro-card-title">
-                        <span>LEE-MYKLAND JUMP TEST</span>
-                        <span id="jump-status" class="pill-green">NO JUMP</span>
-                    </div>
-                    <div class="micro-card-val" id="metric-jump">L_t = 0.942 &lt; 4.62</div>
-                    <div style="font-size:10px; color:var(--text-dim); margin-top:2px;">Bipower Vol: 16.2% | Alpha: 0.01</div>
-                </div>
-
-                <!-- Avellaneda-Stoikov Inventory -->
-                <div class="micro-card">
-                    <div class="micro-card-title">
-                        <span>AVELLANEDA-STOIKOV MM</span>
-                        <span style="color:var(--violet)">RESERVATION SKEW</span>
-                    </div>
-                    <div class="micro-card-val val-violet" id="metric-reservation">r*(s) = 241.65 (-0.45)</div>
-                    <div style="font-size:10px; color:var(--text-dim); margin-top:2px;">Current Inv: +30 lots | Spread: 1.20</div>
-                </div>
-
-                <!-- Paper Order Ticket -->
-                <div class="panel-header" style="margin: 12px -10px 8px -10px;">
-                    <span>PAPER ORDER TICKET</span>
-                </div>
-                <form class="ticket-form" onsubmit="event.preventDefault(); submitPaperOrder();">
-                    <div class="form-row">
-                        <div class="input-group">
-                            <label>STRIKE</label>
-                            <select id="ticket-strike">
-                                <option value="49700">49700</option>
-                                <option value="49800" selected>49800</option>
-                                <option value="49900">49900</option>
-                                <option value="50000">50000</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <label>TYPE</label>
-                            <select id="ticket-type">
-                                <option value="CE">CALL (CE)</option>
-                                <option value="PE">PUT (PE)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="input-group">
-                            <label>SIDE</label>
-                            <select id="ticket-side">
-                                <option value="BUY">BUY</option>
-                                <option value="SELL">SELL</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <label>LOTS (15 ea)</label>
-                            <input type="number" id="ticket-lots" value="2" min="1" max="50">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="input-group">
-                            <label>PRICE (INR)</label>
-                            <input type="number" id="ticket-price" value="242.10" step="0.05">
-                        </div>
-                        <div class="input-group">
-                            <label>TRAILING SL</label>
-                            <input type="number" id="ticket-sl" value="218.00" step="0.05">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn-submit-order">🚀 SUBMIT SIMULATED ORDER</button>
-                </form>
-
+            <nav class="mobile-nav-list">
+                <a class="mobile-nav-item active" data-navigate="trading">📈 Trading Desk</a>
+                <a class="mobile-nav-item" data-navigate="market">🌐 Market Explorer</a>
+                <a class="mobile-nav-item" data-navigate="options">⚡ Options &amp; Depth</a>
+                <a class="mobile-nav-item" data-navigate="intelligence">🧠 AI Intelligence</a>
+                <a class="mobile-nav-item" data-navigate="portfolio">🛡️ Portfolio &amp; Risk</a>
+                <a class="mobile-nav-item" data-navigate="activity">📋 Orders &amp; Activity</a>
+                <a class="mobile-nav-item" data-navigate="strategies">🔬 Strategy Lab</a>
+                <a class="mobile-nav-item" data-navigate="memory">💾 Memory &amp; Learning</a>
+                <a class="mobile-nav-item" data-navigate="system">🔋 System &amp; Daemons</a>
+                <a class="mobile-nav-item" data-navigate="settings">⚙️ Settings &amp; Preferences</a>
+            </nav>
+            <div style="padding: 14px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 11px; color: #94a3b8;">
+                <div>Execution: <strong>STRICTLY PAPER ONLY</strong></div>
+                <div style="margin-top: 2px;">Loopback: <code>127.0.0.1:8088</code></div>
             </div>
         </aside>
+    </div>
 
-        <!-- Center Column: Candlestick Chart & Option Chain -->
-        <section class="center-column">
-
-            <!-- Candlestick Chart Panel -->
-            <div class="panel chart-panel">
-                <div class="panel-header">
-                    <span>BANK NIFTY 1-MIN LIVE CANDLESTICK + VWAP / EMA</span>
-                    <span style="font-size:11px; font-weight:normal; color:var(--text-dim);">
-                        <span style="color:#a855f7;">● VWAP</span> &nbsp;
-                        <span style="color:#f59e0b;">● 20 EMA</span> &nbsp;
-                        <span style="color:#10b981;">▲ AI BUY</span> &nbsp;
-                        <span style="color:#ef4444;">▼ AI SELL</span>
-                    </span>
-                </div>
-                <div class="panel-body" style="padding:0; overflow:hidden;">
-                    <canvas id="candleChart"></canvas>
-                </div>
+    <!-- ═══════════════════════════════════════════════════════════════
+         6. INSTITUTIONAL MODAL DIALOGS
+    ═══════════════════════════════════════════════════════════════ -->
+    <!-- Start Trading Strategy Launcher Wizard -->
+    <div class="modal-backdrop" id="modalWizard">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-title">🚀 AGI 1.7 Strategy Launcher Wizard</span>
+                <button class="modal-close-btn">&times;</button>
             </div>
-
-            <!-- Intraday Decision & CPR / GEX Command Center -->
-            <div class="decision-panel">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <span style="font-weight:700; font-size:12px; letter-spacing:0.5px;">INTRADAY DECISION ENGINE (CPR • PCR • GEX • ORB)</span>
-                    <span class="pill-green" id="cpr-regime-pill">NARROW CPR BREAKOUT REGIME</span>
-                </div>
-
-                <div class="cpr-metrics-grid">
-                    <!-- CPR Levels -->
-                    <div class="cpr-card">
-                        <div class="cpr-card-title">
-                            <span>CENTRAL PIVOT (CPR)</span>
-                            <span style="color:var(--cyan)">P / TC / BC</span>
-                        </div>
-                        <div class="cpr-card-val val-cyan">49,816.70</div>
-                        <div style="font-size:10px; color:var(--text-dim); margin-top:2px;">TC: 49,833.30 | BC: 49,800.00 (33.3 pts)</div>
-                    </div>
-
-                    <!-- Floor Pivots -->
-                    <div class="cpr-card">
-                        <div class="cpr-card-title">
-                            <span>FLOOR PIVOTS</span>
-                            <span style="color:var(--green)">R1 / S1</span>
-                        </div>
-                        <div class="cpr-card-val">R1: 50,033 | S1: 49,633</div>
-                        <div style="font-size:10px; color:var(--text-dim); margin-top:2px;">R2: 50,217 | S2: 49,417</div>
-                    </div>
-
-                    <!-- PCR & Max Pain -->
-                    <div class="cpr-card">
-                        <div class="cpr-card-title">
-                            <span>PUT-CALL RATIO (PCR)</span>
-                            <span style="color:var(--green)">BULLISH</span>
-                        </div>
-                        <div class="cpr-card-val val-up">1.28 | MP: 49,800</div>
-                        <div style="font-size:10px; color:var(--text-dim); margin-top:2px;">COI: +42k PE / +18k CE (Put Writing)</div>
-                    </div>
-
-                    <!-- GEX & Walls -->
-                    <div class="cpr-card">
-                        <div class="cpr-card-title">
-                            <span>GAMMA EXPOSURE (GEX)</span>
-                            <span style="color:var(--violet)">PINNING</span>
-                        </div>
-                        <div class="cpr-card-val val-violet">+₹1.42 Cr Net</div>
-                        <div style="font-size:10px; color:var(--text-dim); margin-top:2px;">Call Wall: 50,000 | Put Wall: 49,600</div>
+            <div class="modal-body">
+                <div style="background: var(--bg-card-subtle); padding: 12px; border-radius: var(--radius-md); border-left: 3px solid var(--color-cyan); margin-bottom: 14px;">
+                    <div style="font-weight: 800; color: var(--color-navy); margin-bottom: 2px;">STRICT PAPER TRADING NOTICE</div>
+                    <div style="font-size: 11.5px; color: var(--text-secondary);">
+                        Order placement routes are permanently sandboxed. All trades execute in local memory simulation with real DOM pricing. Zero real-money commitments.
                     </div>
                 </div>
 
-                <!-- 6-Point Automated Intraday Checklist -->
-                <div class="checklist-grid">
-                    <div class="check-item"><span class="check-pass">✔</span> 1. 09:15 ORB Breakout (> 49,820)</div>
-                    <div class="check-item"><span class="check-pass">✔</span> 2. Open > TC (49,833) Bullish Zone</div>
-                    <div class="check-item"><span class="check-pass">✔</span> 3. PCR 1.28 > 1.10 (Put Writing)</div>
-                    <div class="check-item"><span class="check-pass">✔</span> 4. GEX Headroom (150 pts to Call Wall)</div>
-                    <div class="check-item"><span class="check-pass">✔</span> 5. R:R 2.4:1 (Target R1 50,033, SL 49,800)</div>
-                    <div class="check-item"><span class="check-pass">✔</span> 6. Active Window (Before 15:15 IST)</div>
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 11.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Select Initial Capital Allocation:</label>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 6px;">
+                        <button class="badge badge-blue" style="padding: 10px; cursor: pointer; text-align: center; font-size: 12px; border: 2px solid var(--color-cyan);">₹1,00,000 (Multi-Asset)</button>
+                        <button class="badge badge-purple" style="padding: 10px; cursor: pointer; text-align: center; font-size: 12px;">₹10,000 (Supervisor)</button>
+                        <button class="badge badge-amber" style="padding: 10px; cursor: pointer; text-align: center; font-size: 12px;">₹50,000 (Demo)</button>
+                    </div>
                 </div>
 
-                <!-- Live Algorithmic Directive Banner -->
-                <div class="directive-pill">
-                    <span>⚡ <strong>INTRADAY DIRECTIVE:</strong> BUY 49800 CE @ ₹242.10 | Target: 50,033 (R1) | Trailing SL: 49,800 (Below TC)</span>
-                    <span style="background:var(--green); color:#000; font-size:10px; font-weight:800; padding:2px 8px; border-radius:3px;">CONFIDENCE: 86%</span>
+                <div style="margin-bottom: 14px;">
+                    <label style="font-size: 11.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Quantitative Strategy Profile:</label>
+                    <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 10px; margin-top: 6px;">
+                        <div style="font-weight: 800; color: var(--color-navy);">Delta-Neutral Volatility Harvest (Strangle)</div>
+                        <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px;">
+                            Sells OTM CE &amp; PE pairs with SABR smile calibration, 36.2% cash reserve buffer, and 15:15 IST automatic intraday cutoff.
+                        </div>
+                    </div>
                 </div>
+
+                <button class="btn-header-cta" style="width: 100%; justify-content: center; padding: 10px; font-size: 13px;" onclick="document.getElementById('modalWizard').classList.remove('active');">
+                    Launch Paper Session
+                </button>
             </div>
+        </div>
+    </div>
 
-            <!-- Option Chain Panel -->
-            <div class="panel chain-panel">
-                <div class="panel-header">
-                    <span>BANK NIFTY OPTIONS CHAIN (WEEKLY EXPIRY)</span>
-                    <span class="panel-header-badge">GREEKS ENGINE: BLACK-SCHOLES (16.4% IV)</span>
-                </div>
-                <div class="panel-body" style="padding:0;">
-                    <table class="chain-table">
-                        <thead>
-                            <tr>
-                                <th>OI</th>
-                                <th>VOL</th>
-                                <th>DELTA</th>
-                                <th>THETA</th>
-                                <th>CALL LTP</th>
-                                <th>ACTION</th>
-                                <th class="strike-cell">STRIKE</th>
-                                <th>ACTION</th>
-                                <th>PUT LTP</th>
-                                <th>THETA</th>
-                                <th>DELTA</th>
-                                <th>VOL</th>
-                                <th>OI</th>
-                            </tr>
-                        </thead>
-                        <tbody id="chain-rows">
-                            <!-- Populated dynamically via JS -->
-                        </tbody>
-                    </table>
-                </div>
+    <!-- Intelligence Report Modal -->
+    <div class="modal-backdrop" id="modalReport">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-title">📊 Institutional Intelligence Report</span>
+                <button class="modal-close-btn">&times;</button>
             </div>
+            <div class="modal-body" id="reportModalBody"></div>
+        </div>
+    </div>
 
-        </section>
-
-        <!-- Right Column: AI Reasoning & Paper Portfolio -->
-        <aside class="panel">
-            <div class="panel-header">
-                <span>EXTERNAL AI AGENT DEBATE</span>
-                <span class="panel-header-badge" style="color:var(--cyan);">GONKAROUTER</span>
+    <!-- Algorithms Catalog Modal -->
+    <div class="modal-backdrop" id="modalAlgos">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-title">⚙️ Quantitative Algorithms Catalog</span>
+                <button class="modal-close-btn">&times;</button>
             </div>
-            <div class="panel-body">
+            <div class="modal-body" id="algosModalBody"></div>
+        </div>
+    </div>
 
-                <!-- Model Selection Tabs -->
-                <div class="ai-model-tabs">
-                    <button class="tab-btn active" onclick="switchModelTab('deepseek')">DeepSeek V4</button>
-                    <button class="tab-btn" onclick="switchModelTab('minimax')">MiniMax M2.7</button>
-                    <button class="tab-btn" onclick="switchModelTab('glm')">GLM 5.3 Flash</button>
-                </div>
-
-                <!-- Consensus Meter -->
-                <div class="micro-card">
-                    <div class="micro-card-title">
-                        <span>CONSENSUS RATIO</span>
-                        <span style="color:var(--green)">68% BULLISH / 32% BEARISH</span>
-                    </div>
-                    <div class="consensus-bar">
-                        <div class="bullish-fill" style="width: 68%;"></div>
-                    </div>
-                    <div style="font-size:10px; color:var(--text-dim); display:flex; justify-content:space-between;">
-                        <span>Call Long Skew (+Delta)</span>
-                        <span>Put Short Protection</span>
-                    </div>
-                </div>
-
-                <!-- Live Reasoning Feed -->
-                <div id="ai-feed">
-                    <div class="debate-entry">
-                        <div class="debate-header">
-                            <span style="color:var(--cyan)">DeepSeek V4 Flash</span>
-                            <span>14:25:30</span>
-                        </div>
-                        <div><strong>Microstructure Drift:</strong> Kyle's lambda dropped to 0.0418, indicating high passive book resilience. OFI is +18.4%. Recommending 49800 CE buy clip with Kyle-Obizhaeva limit pricing at 242.10.</div>
-                    </div>
-
-                    <div class="debate-entry" style="border-left-color: var(--amber);">
-                        <div class="debate-header">
-                            <span style="color:var(--amber)">MiniMax M2.7</span>
-                            <span>14:24:50</span>
-                        </div>
-                        <div><strong>Quantitative Risk Gate:</strong> Deflated Sharpe Ratio (DSR) is 0.884 across 50 trials (passes 0.80 benchmark). Max inventory cap set to 150 contracts. Pre-trade margin verified at ₹42,500.</div>
-                    </div>
-
-                    <div class="debate-entry" style="border-left-color: var(--violet);">
-                        <div class="debate-header">
-                            <span style="color:var(--violet)">GLM 5.3 Flash</span>
-                            <span>14:24:10</span>
-                        </div>
-                        <div><strong>Algorithmic Candlestick Thesis:</strong> 15-minute Opening Range Breakout confirmed above 49,820. 20 EMA slope is +0.08%/min. Hawkes branching ratio is 0.41 (no explosive toxicity). Bias: BULLISH ACCUMULATION.</div>
-                    </div>
-                </div>
-
-                <!-- Active Simulated Positions -->
-                <div class="panel-header" style="margin: 12px -10px 8px -10px;">
-                    <span>ACTIVE PAPER POSITIONS</span>
-                    <span class="panel-header-badge">STT & STATUTORY BILLED</span>
-                </div>
-                <table class="positions-table">
-                    <thead>
-                        <tr>
-                            <th style="text-align:left;">POS</th>
-                            <th>QTY</th>
-                            <th>AVG</th>
-                            <th>LTP</th>
-                            <th>P&L</th>
-                        </tr>
-                    </thead>
-                    <tbody id="positions-body">
-                        <tr>
-                            <td style="text-align:left; color:var(--green);">49800 CE</td>
-                            <td>+30</td>
-                            <td>218.40</td>
-                            <td id="pos-49800ce-ltp">242.10</td>
-                            <td class="val-up" id="pos-49800ce-pnl">+₹10,665.00</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align:left; color:var(--red);">50100 CE</td>
-                            <td>-15</td>
-                            <td>98.50</td>
-                            <td id="pos-50100ce-ltp">82.30</td>
-                            <td class="val-up" id="pos-50100ce-pnl">+₹3,645.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <!-- Statutory Tax Deductions -->
-                <div style="background:var(--bg-card); padding:8px; border-radius:4px; margin-top:8px; font-size:10px; color:var(--text-dim);">
-                    <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
-                        <span>Brokerage & Exchange:</span>
-                        <span>₹40.00</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
-                        <span>STT (0.0625% on sell):</span>
-                        <span>₹18.40</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between;">
-                        <span>GST @ 18% & SEBI:</span>
-                        <span>₹9.60</span>
-                    </div>
-                </div>
-
+    <!-- Profile & Diagnostics Modal -->
+    <div class="modal-backdrop" id="modalProfile">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-title">👤 Operator Profile &amp; Terminal Diagnostics</span>
+                <button class="modal-close-btn">&times;</button>
             </div>
-        </aside>
+            <div class="modal-body" id="profileModalBody"></div>
+        </div>
+    </div>
 
-    </main>
+    <!-- Master ES6 Application Entry Point -->
+    <script type="module" src="modules/app.js"></script>
 
-    <!-- Interactive Script -->
+    <!-- Phase 17.25 Autonomous Improvement Engine Interactive Controller -->
     <script>
-        // State
-        let spotPrice = 49850.25;
-        let pnl = 14287.50;
-        let strikes = [49500, 49600, 49700, 49800, 49900, 50000, 50100, 50200];
-        let candles = [];
+    (function() {
+        async function fetchImprovementStatus() {
+            try {
+                const res = await fetch('/api/improvement/status');
+                if (!res.ok) return;
+                const data = await res.json();
+                if (!data.ok) return;
 
-        // Generate synthetic initial candles
-        function initCandles() {
-            let p = 49750.0;
-            const now = Date.now();
-            for (let i = 40; i >= 0; i--) {
-                const open = p;
-                const change = (Math.random() - 0.48) * 25;
-                const close = open + change;
-                const high = Math.max(open, close) + Math.random() * 12;
-                const low = Math.min(open, close) - Math.random() * 12;
-                p = close;
-                candles.push({
-                    time: now - i * 60000,
-                    open: open,
-                    high: high,
-                    low: low,
-                    close: close,
-                    vwap: p - 10 + (Math.random() * 5),
-                    ema: p - 5 + (Math.random() * 3)
+                const st = document.getElementById('dispWorkerState');
+                if (st) {
+                    st.textContent = data.worker_state || 'STOPPED';
+                    st.style.color = (data.worker_state === 'STOPPED') ? '#ff1744' : (data.worker_state === 'PAUSED' ? '#ffb300' : '#00e676');
+                }
+                const cyc = document.getElementById('dispCycleId');
+                if (cyc) cyc.textContent = 'Cycle: ' + (data.current_cycle_id || 'None');
+                const comp = document.getElementById('dispCompletedCycles');
+                if (comp) comp.textContent = data.completed_cycles || 0;
+                const fail = document.getElementById('dispFailedCycles');
+                if (fail) fail.textContent = 'Failed: ' + (data.failed_cycles || 0);
+
+                const t = data.telemetry || {};
+                const tok = document.getElementById('dispDailyTokens');
+                if (tok) tok.textContent = (t.daily_token_usage || 0).toLocaleString() + ' / ' + (t.daily_token_cap || 500000).toLocaleString();
+                const cost = document.getElementById('dispDailyCost');
+                if (cost) cost.textContent = 'Cost: $' + (t.daily_cost_usd || 0).toFixed(4) + ' / $' + (t.daily_cost_cap_usd || 5).toFixed(2);
+
+                const q = document.getElementById('dispQueueLength');
+                if (q) q.textContent = (data.queue_length || 0) + ' Tasks';
+                const ph = document.getElementById('dispActivePhase');
+                if (ph) ph.textContent = 'Phase: ' + (data.current_phase || 'Idle');
+
+                const g = document.getElementById('dispCurrentGoal');
+                if (g) g.textContent = data.current_goal || 'N/A';
+                const hyp = document.getElementById('dispCurrentHypothesis');
+                if (hyp) hyp.textContent = data.current_hypothesis || 'N/A';
+
+                const hb = data.last_heartbeat || {};
+                const lh = document.getElementById('dispLastHeartbeat');
+                if (lh) lh.textContent = hb.heartbeat_iso || '--';
+            } catch (e) {
+                // Ignore transient network errors
+            }
+        }
+
+        async function fetchImprovementBacklog() {
+            try {
+                const res = await fetch('/api/improvement/backlog');
+                if (!res.ok) return;
+                const data = await res.json();
+                const tbody = document.getElementById('tblImprovementBacklogBody');
+                if (!tbody || !data.backlog) return;
+
+                tbody.innerHTML = '';
+                data.backlog.forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.style.borderBottom = '1px solid #2a2e39';
+                    const statusColor = item.status === 'COMPLETED' ? '#00e676' : (item.status === 'PENDING' ? '#00d2ff' : '#ffb300');
+                    tr.innerHTML = `
+                        <td style="padding: 8px; font-family: monospace; color: #00d2ff;">${item.task_id}</td>
+                        <td style="padding: 8px; color: #bbb;">${item.category}</td>
+                        <td style="padding: 8px; font-weight: 500;">${item.title}</td>
+                        <td style="padding: 8px; color: #ffb300;">${item.priority_score}</td>
+                        <td style="padding: 8px;"><span style="background: ${statusColor}22; color: ${statusColor}; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">${item.status}</span></td>
+                    `;
+                    tbody.appendChild(tr);
                 });
+            } catch (e) {}
+        }
+
+        async function sendImprovementControl(action) {
+            try {
+                const res = await fetch('/api/improvement/control', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({action: action, reason: 'Operator UI button clicked'})
+                });
+                const data = await res.json();
+                if (data.ok) {
+                    setTimeout(fetchImprovementStatus, 300);
+                }
+            } catch (e) {
+                alert('Control command failed: ' + e);
             }
         }
 
-        // Render Canvas Candlestick Chart
-        function drawChart() {
-            const canvas = document.getElementById('candleChart');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            const rect = canvas.getBoundingClientRect();
-            canvas.width = rect.width * window.devicePixelRatio;
-            canvas.height = rect.height * window.devicePixelRatio;
-            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnResume = document.getElementById('btnImprovementResume');
+            const btnPause = document.getElementById('btnImprovementPause');
+            const btnStopAfterCycle = document.getElementById('btnImprovementStopAfterCycle');
+            const btnStop = document.getElementById('btnImprovementStop');
 
-            const w = rect.width;
-            const h = rect.height;
+            if (btnResume) btnResume.addEventListener('click', () => sendImprovementControl('RESUME'));
+            if (btnPause) btnPause.addEventListener('click', () => sendImprovementControl('PAUSE'));
+            if (btnStopAfterCycle) btnStopAfterCycle.addEventListener('click', () => sendImprovementControl('STOP_AFTER_CURRENT_CYCLE'));
+            if (btnStop) btnStop.addEventListener('click', () => sendImprovementControl('STOP'));
 
-            ctx.fillStyle = '#0f172a';
-            ctx.fillRect(0, 0, w, h);
-
-            if (candles.length === 0) return;
-
-            // Compute min/max
-            let minP = Math.min(...candles.map(c => c.low));
-            let maxP = Math.max(...candles.map(c => c.high));
-            const range = maxP - minP || 1;
-
-            const padTop = 30;
-            const padBottom = 30;
-            const plotH = h - padTop - padBottom;
-
-            const getY = p => h - padBottom - ((p - minP) / range) * plotH;
-
-            // Draw horizontal grid lines
-            ctx.strokeStyle = '#1e293b';
-            ctx.lineWidth = 1;
-            for (let i = 0; i < 5; i++) {
-                const price = minP + (range / 4) * i;
-                const y = getY(price);
-                ctx.beginPath();
-                ctx.moveTo(0, y);
-                ctx.lineTo(w, y);
-                ctx.stroke();
-
-                ctx.fillStyle = '#64748b';
-                ctx.font = '10px monospace';
-                ctx.fillText(price.toFixed(1), w - 60, y - 4);
-            }
-
-            const candleW = Math.max(4, (w - 80) / candles.length - 3);
-
-            // Draw candles
-            for (let i = 0; i < candles.length; i++) {
-                const c = candles[i];
-                const x = 10 + i * ((w - 80) / candles.length);
-                const isGreen = c.close >= c.open;
-
-                ctx.strokeStyle = isGreen ? '#10b981' : '#ef4444';
-                ctx.fillStyle = isGreen ? '#10b981' : '#ef4444';
-
-                // Wick
-                ctx.beginPath();
-                ctx.moveTo(x + candleW / 2, getY(c.high));
-                ctx.lineTo(x + candleW / 2, getY(c.low));
-                ctx.stroke();
-
-                // Body
-                const yOpen = getY(c.open);
-                const yClose = getY(c.close);
-                const bodyY = Math.min(yOpen, yClose);
-                const bodyH = Math.max(2, Math.abs(yClose - yOpen));
-
-                ctx.fillRect(x, bodyY, candleW, bodyH);
-            }
-
-            // Draw VWAP line
-            ctx.strokeStyle = '#a855f7';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            for (let i = 0; i < candles.length; i++) {
-                const x = 10 + i * ((w - 80) / candles.length) + candleW / 2;
-                const y = getY(candles[i].vwap);
-                if (i === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
-            }
-            ctx.stroke();
-
-            // Draw 20 EMA line
-            ctx.strokeStyle = '#f59e0b';
-            ctx.lineWidth = 1.5;
-            ctx.beginPath();
-            for (let i = 0; i < candles.length; i++) {
-                const x = 10 + i * ((w - 80) / candles.length) + candleW / 2;
-                const y = getY(candles[i].ema);
-                if (i === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
-            }
-            ctx.stroke();
-        }
-
-        // Render Option Chain
-        function renderOptionChain() {
-            const tbody = document.getElementById('chain-rows');
-            if (!tbody) return;
-
-            let html = '';
-            strikes.forEach(strike => {
-                const isAtm = strike === 49800;
-                const callLtp = Math.max(5, (spotPrice - strike + 120 + Math.random() * 4)).toFixed(2);
-                const putLtp = Math.max(5, (strike - spotPrice + 115 + Math.random() * 4)).toFixed(2);
-
-                const callDelta = (0.5 + (spotPrice - strike) / 1000).toFixed(2);
-                const putDelta = (-0.5 + (spotPrice - strike) / 1000).toFixed(2);
-
-                html += `
-                    <tr class="${isAtm ? 'atm-row' : ''}">
-                        <td>${(Math.random() * 50 + 20).toFixed(1)}k</td>
-                        <td>${(Math.random() * 120 + 40).toFixed(1)}k</td>
-                        <td style="color:var(--green)">${callDelta}</td>
-                        <td style="color:var(--text-dim);">-14.2</td>
-                        <td style="font-weight:700; color:var(--green)">${callLtp}</td>
-                        <td><button class="btn-buy-ce" onclick="prefillTicket(${strike}, 'CE', ${callLtp})">BUY CE</button></td>
-                        <td class="strike-cell">${strike}</td>
-                        <td><button class="btn-buy-pe" onclick="prefillTicket(${strike}, 'PE', ${putLtp})">BUY PE</button></td>
-                        <td style="font-weight:700; color:var(--red)">${putLtp}</td>
-                        <td style="color:var(--text-dim);">-13.8</td>
-                        <td style="color:var(--red)">${putDelta}</td>
-                        <td>${(Math.random() * 110 + 35).toFixed(1)}k</td>
-                        <td>${(Math.random() * 45 + 18).toFixed(1)}k</td>
-                    </tr>
-                `;
-            });
-            tbody.innerHTML = html;
-        }
-
-        // Prefill Paper Order Ticket on click
-        function prefillTicket(strike, type, price) {
-            document.getElementById('ticket-strike').value = strike;
-            document.getElementById('ticket-type').value = type;
-            document.getElementById('ticket-price').value = price;
-            const sl = type === 'CE' ? (price * 0.90).toFixed(2) : (price * 0.90).toFixed(2);
-            document.getElementById('ticket-sl').value = sl;
-        }
-
-        // Submit Paper Order
-        function submitPaperOrder() {
-            const strike = document.getElementById('ticket-strike').value;
-            const type = document.getElementById('ticket-type').value;
-            const side = document.getElementById('ticket-side').value;
-            const lots = document.getElementById('ticket-lots').value;
-            const price = document.getElementById('ticket-price').value;
-
-            alert(`✅ PAPER ORDER FILLED: ${side} ${lots} lots (${lots * 15} contracts) BANKNIFTY ${strike} ${type} @ ₹${price} [SIMULATED EXECUTION]`);
-
-            // Add position row
-            const tbody = document.getElementById('positions-body');
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td style="text-align:left; color:${type === 'CE' ? 'var(--green)' : 'var(--red)'};">${strike} ${type}</td>
-                <td>${side === 'BUY' ? '+' : '-'}${lots * 15}</td>
-                <td>${price}</td>
-                <td>${price}</td>
-                <td class="val-up">+₹0.00</td>
-            `;
-            tbody.appendChild(newRow);
-        }
-
-        // Switch AI Model Tab
-        function switchModelTab(model) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-        }
-
-        // Emergency Flatten All
-        function emergencyFlattenAll() {
-            if (confirm("🚨 EMERGENCY ACTION: Are you sure you want to FLATTEN ALL paper positions and cancel pending child orders?")) {
-                document.getElementById('positions-body').innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--text-dim); padding:12px;">ALL POSITIONS SQUARED OFF [FLAT]</td></tr>';
-                document.getElementById('ticker-pnl').textContent = "+₹14,287.50 (LOCKED)";
-                alert("✅ KILL SWITCH EXECUTED: All Bank Nifty simulated positions flattened.");
-            }
-        }
-
-        // Live Market Simulation Loop (500ms heartbeat)
-        function tickLoop() {
-            // Drift spot price slightly
-            const delta = (Math.random() - 0.49) * 2.5;
-            spotPrice = +(spotPrice + delta).toFixed(2);
-            document.getElementById('ticker-spot').textContent = spotPrice.toLocaleString('en-IN', { minimumFractionDigits: 2 });
-
-            // Update P&L
-            pnl += delta * 12.0;
-            document.getElementById('ticker-pnl').textContent = `${pnl >= 0 ? '+' : ''}₹${pnl.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`;
-
-            // Update Clock
-            const d = new Date();
-            document.getElementById('ticker-clock').textContent = `${d.toTimeString().split(' ')[0]} IST`;
-
-            // Update last candle close
-            if (candles.length > 0) {
-                const last = candles[candles.length - 1];
-                last.close = spotPrice;
-                last.high = Math.max(last.high, spotPrice);
-                last.low = Math.min(last.low, spotPrice);
-            }
-            drawChart();
-        }
-
-        // Initialize on load
-        window.onload = function() {
-            initCandles();
-            drawChart();
-            renderOptionChain();
-            setInterval(tickLoop, 600);
-            window.addEventListener('resize', drawChart);
-        };
+            fetchImprovementStatus();
+            fetchImprovementBacklog();
+            setInterval(fetchImprovementStatus, 3000);
+            setInterval(fetchImprovementBacklog, 10000);
+        });
+    })();
     </script>
 </body>
 </html>

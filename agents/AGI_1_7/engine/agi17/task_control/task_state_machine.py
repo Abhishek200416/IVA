@@ -14,17 +14,23 @@ from typing import Dict, Set
 
 class TaskState(str, Enum):
     CREATED = "CREATED"
+    TASK_CREATED = "TASK_CREATED"
     PLANNED = "PLANNED"
+    AUTHORIZED = "AUTHORIZED"
+    DISPATCHED = "DISPATCHED"
     QUEUED = "QUEUED"
     READY = "READY"
     RUNNING = "RUNNING"
     WAITING_FOR_RESOURCE = "WAITING_FOR_RESOURCE"
     WAITING_FOR_INPUT = "WAITING_FOR_INPUT"
     VERIFYING = "VERIFYING"
+    VALIDATING = "VALIDATING"
     SUCCEEDED = "SUCCEEDED"
+    COMPLETED = "COMPLETED"
     FAILED = "FAILED"
     TIMED_OUT = "TIMED_OUT"
     CANCELED = "CANCELED"
+    CANCELLED = "CANCELLED"
     INTERRUPTED = "INTERRUPTED"
     BLOCKED = "BLOCKED"
 
@@ -35,40 +41,78 @@ class InvalidStateTransitionError(ValueError):
 
 TERMINAL_STATES: Set[TaskState] = {
     TaskState.SUCCEEDED,
+    TaskState.COMPLETED,
     TaskState.FAILED,
     TaskState.TIMED_OUT,
     TaskState.CANCELED,
+    TaskState.CANCELLED,
 }
 
 VALID_TRANSITIONS: Dict[TaskState, Set[TaskState]] = {
     TaskState.CREATED: {
         TaskState.PLANNED,
+        TaskState.AUTHORIZED,
         TaskState.QUEUED,
         TaskState.READY,
         TaskState.BLOCKED,
         TaskState.CANCELED,
+        TaskState.CANCELLED,
+    },
+    TaskState.TASK_CREATED: {
+        TaskState.PLANNED,
+        TaskState.AUTHORIZED,
+        TaskState.QUEUED,
+        TaskState.READY,
+        TaskState.BLOCKED,
+        TaskState.CANCELED,
+        TaskState.CANCELLED,
     },
     TaskState.PLANNED: {
+        TaskState.AUTHORIZED,
+        TaskState.DISPATCHED,
         TaskState.QUEUED,
         TaskState.READY,
         TaskState.WAITING_FOR_RESOURCE,
         TaskState.BLOCKED,
         TaskState.CANCELED,
+        TaskState.CANCELLED,
     },
-    TaskState.QUEUED: {
+    TaskState.AUTHORIZED: {
+        TaskState.DISPATCHED,
+        TaskState.QUEUED,
         TaskState.READY,
+        TaskState.RUNNING,
         TaskState.WAITING_FOR_RESOURCE,
-        TaskState.WAITING_FOR_INPUT,
         TaskState.BLOCKED,
         TaskState.CANCELED,
+        TaskState.CANCELLED,
     },
-    TaskState.READY: {
+    TaskState.DISPATCHED: {
         TaskState.RUNNING,
         TaskState.WAITING_FOR_RESOURCE,
         TaskState.WAITING_FOR_INPUT,
+        TaskState.BLOCKED,
+        TaskState.CANCELED,
+        TaskState.CANCELLED,
+    },
+    TaskState.QUEUED: {
+        TaskState.READY,
+        TaskState.DISPATCHED,
+        TaskState.WAITING_FOR_RESOURCE,
+        TaskState.WAITING_FOR_INPUT,
+        TaskState.BLOCKED,
+        TaskState.CANCELED,
+        TaskState.CANCELLED,
+    },
+    TaskState.READY: {
+        TaskState.RUNNING,
+        TaskState.DISPATCHED,
+        TaskState.WAITING_FOR_RESOURCE,
+        TaskState.WAITING_FOR_INPUT,
         TaskState.QUEUED,
         TaskState.BLOCKED,
         TaskState.CANCELED,
+        TaskState.CANCELLED,
     },
     TaskState.WAITING_FOR_RESOURCE: {
         TaskState.QUEUED,
@@ -76,6 +120,7 @@ VALID_TRANSITIONS: Dict[TaskState, Set[TaskState]] = {
         TaskState.RUNNING,
         TaskState.TIMED_OUT,
         TaskState.CANCELED,
+        TaskState.CANCELLED,
         TaskState.BLOCKED,
     },
     TaskState.WAITING_FOR_INPUT: {
@@ -84,24 +129,39 @@ VALID_TRANSITIONS: Dict[TaskState, Set[TaskState]] = {
         TaskState.RUNNING,
         TaskState.TIMED_OUT,
         TaskState.CANCELED,
+        TaskState.CANCELLED,
         TaskState.BLOCKED,
     },
     TaskState.RUNNING: {
+        TaskState.VALIDATING,
         TaskState.VERIFYING,
         TaskState.WAITING_FOR_RESOURCE,
         TaskState.WAITING_FOR_INPUT,
         TaskState.FAILED,
         TaskState.TIMED_OUT,
         TaskState.CANCELED,
+        TaskState.CANCELLED,
         TaskState.INTERRUPTED,
         TaskState.BLOCKED,
     },
     TaskState.VERIFYING: {
         TaskState.SUCCEEDED,
+        TaskState.COMPLETED,
         TaskState.FAILED,
         TaskState.RUNNING,
         TaskState.TIMED_OUT,
         TaskState.CANCELED,
+        TaskState.CANCELLED,
+        TaskState.INTERRUPTED,
+    },
+    TaskState.VALIDATING: {
+        TaskState.SUCCEEDED,
+        TaskState.COMPLETED,
+        TaskState.FAILED,
+        TaskState.RUNNING,
+        TaskState.TIMED_OUT,
+        TaskState.CANCELED,
+        TaskState.CANCELLED,
         TaskState.INTERRUPTED,
     },
     TaskState.FAILED: {
@@ -109,20 +169,24 @@ VALID_TRANSITIONS: Dict[TaskState, Set[TaskState]] = {
         TaskState.READY,
         TaskState.PLANNED,
         TaskState.CANCELED,
+        TaskState.CANCELLED,
     },
     TaskState.TIMED_OUT: {
         TaskState.QUEUED,
         TaskState.READY,
         TaskState.FAILED,
         TaskState.CANCELED,
+        TaskState.CANCELLED,
     },
     TaskState.INTERRUPTED: {
         TaskState.QUEUED,
         TaskState.READY,
         TaskState.RUNNING,
         TaskState.VERIFYING,
+        TaskState.VALIDATING,
         TaskState.FAILED,
         TaskState.CANCELED,
+        TaskState.CANCELLED,
     },
     TaskState.BLOCKED: {
         TaskState.PLANNED,
@@ -130,9 +194,12 @@ VALID_TRANSITIONS: Dict[TaskState, Set[TaskState]] = {
         TaskState.READY,
         TaskState.FAILED,
         TaskState.CANCELED,
+        TaskState.CANCELLED,
     },
     TaskState.SUCCEEDED: set(),
+    TaskState.COMPLETED: set(),
     TaskState.CANCELED: set(),
+    TaskState.CANCELLED: set(),
 }
 
 ALLOWED_TRANSITIONS = VALID_TRANSITIONS

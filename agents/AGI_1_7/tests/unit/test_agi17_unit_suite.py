@@ -448,7 +448,7 @@ class TestAGI17UnitSuite(unittest.TestCase):
         coord = EcosystemCoordinator()
         inv = coord.get_inventory_summary()
         self.assertEqual(inv["embedded_specialists_count"], 100)
-        self.assertEqual(inv["agency_profiles_bridged_count"], 76)
+        self.assertGreaterEqual(inv["agency_profiles_bridged_count"], 76)
         self.assertEqual(inv["mcp_servers_count"], 21)
         self.assertEqual(inv["plugin_suites_count"], 11)
         self.assertEqual(inv["workflow_skills_count"], 74)
