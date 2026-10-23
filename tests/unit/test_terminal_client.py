@@ -160,6 +160,42 @@ class TestTerminalClient(unittest.TestCase):
         self.assertIn("ZERO EXTERNAL PLUGINS MANDATE", output)
         self.assertIn("Goodbye from Iva", output)
 
+    def test_08_run_self_tests_executes_cleanly(self) -> None:
+        client = TerminalClient(storage_root=self.temp_dir)
+        buf = io.StringIO()
+
+        mock_result = MagicMock()
+        mock_result.wasSuccessful.return_value = True
+        mock_result.failures = []
+        mock_result.errors = []
+
+        with patch("sys.stdout", buf), patch("unittest.TextTestRunner.run", return_value=mock_result):
+            exit_code = client.run_self_tests()
+
+        self.assertEqual(exit_code, 0)
+        output = buf.getvalue()
+        self.assertIn("IVA AUTONOMOUS SELF-VERIFICATION SUITE", output)
+        self.assertIn("IVA self-verification 100% GREEN", output)
+
+    def test_09_interactive_session_handles_test_command(self) -> None:
+        client = TerminalClient(storage_root=self.temp_dir)
+        buf = io.StringIO()
+
+        mock_result = MagicMock()
+        mock_result.wasSuccessful.return_value = True
+        mock_result.failures = []
+        mock_result.errors = []
+
+        user_inputs = ["test", "exit"]
+        with patch("sys.stdout", buf), patch("builtins.input", side_effect=user_inputs), patch("unittest.TextTestRunner.run", return_value=mock_result):
+            exit_code = client.run_interactive()
+
+        self.assertEqual(exit_code, 0)
+        output = buf.getvalue()
+        self.assertIn("IVA AUTONOMOUS SELF-VERIFICATION SUITE", output)
+        self.assertIn("Goodbye from Iva", output)
+
 
 if __name__ == "__main__":
     unittest.main()
+

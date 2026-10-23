@@ -1139,7 +1139,7 @@ class DisposableSandboxRunner:
             if use_docker:
                 container_cleanup_ok = self._verify_container_removed(container_name)
 
-        from ..adapters.model_adapter import redact_sensitive_text
+        from agents.IVA.engine.agi17.adapters.model_adapter import redact_sensitive_text
 
         fs_cleanup_ok = not staging_dir.exists()
         cleanup_ok = bool(fs_cleanup_ok and (container_cleanup_ok if use_docker else True))
