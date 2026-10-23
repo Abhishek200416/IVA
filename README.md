@@ -884,25 +884,54 @@ IVA supports **Universal Access**: it is completely decoupled from any specific 
 
 ---
 
-### 3. Run Iva Multi-Modal Interfaces
-After running setup, you can launch Iva across three primary interaction surfaces:
-- **Desktop Voice HUD & Always-On-Top Overlay:**
-  ```bash
-  python talk_to_iva.py
-  # (On Windows, double-click: launch_iva_call.bat)
-  ```
-- **Autonomous Terminal Multi-Agent CLI:**
-  ```bash
-  python run_iva.py
-  ```
+### 3. Interactive Terminal CLI (Pure Console — Recommended for All Devices)
+Launch the zero-dependency interactive terminal session directly in your console (Windows, Linux, macOS, Raspberry Pi, Docker, SSH):
+```bash
+python run_iva.py
+```
+*(No voice popup, no GUI window — runs 100% in your terminal on any device)*
+
+#### Built-in Terminal Commands:
+```bash
+iva> help        # Display interactive commands & usage guide
+iva> specialists # Inspect all 100 embedded specialist contracts across 16 families
+iva> plugins     # Verify self-contained status (zero external plugins needed)
+iva> status      # View active LLM engine, memory DB, and safety gates
+iva> profile     # Display hardware headroom and resource capacity
+iva> repair <dir># Run automated Python CI repair on target directory
+```
+
+#### Single-Shot Command Execution:
+```bash
+python run_iva.py status
+python run_iva.py specialists
+python run_iva.py "Explain SVI volatility smile calibration"
+```
+
+---
+
+### 4. Zero External Plugins Mandate — 100% Self-Contained Engine
+Users **DO NOT NEED** to install separate external agent frameworks, plugins, or third-party skill packs:
+- ❌ **NO 'Ponytail' plugin needed**: Minimal-diff AST refactoring (`swe_patch_minimizer`, `swe_ast_refactoring_specialist`) is natively built-in.
+- ❌ **NO 'Agency' / 'AutoGPT' / 'CrewAI' frameworks needed**: Multi-agent DAG orchestration and task control planes are embedded.
+- ❌ **NO 'Yux Pro Max' prompt packs needed**: All 100 specialist contracts have pre-compiled prompt schemas inside [`registry.json`](agents/IVA/ecosystem/agent_registry/registry.json).
+
+---
+
+### 5. Other Multi-Modal Interfaces (Optional)
 - **Real-Time Observability Web Dashboard (port 8088):**
   ```bash
   python agents/IVA/ui/standalone_dashboard_server.py
   ```
+- **Optional Desktop Voice HUD (For Desktop Workstations):**
+  ```bash
+  python talk_to_iva.py
+  # (On Windows, double-click: launch_iva_call.bat)
+  ```
 
 ---
 
-### 4. Run the Complete Verification Suite (`tests/`)
+### 6. Run the Complete Verification Suite (`tests/`)
 All test suites are cleanly organized inside the root `tests/` directory:
 ```bash
 python -m unittest \
@@ -911,24 +940,25 @@ python -m unittest \
   tests/test_p0_security_and_real_docker.py \
   tests/test_model_disclosure_boundary.py \
   tests/test_finance_safety_invariants.py \
+  tests/unit/test_terminal_client.py \
   tests/unit/test_universal_api_provider.py \
   tests/unit/test_iva_unit_suite.py \
   tests/integration/test_iva_integration_suite.py \
   tests/end_to_end/test_iva_e2e_demos.py -v
 ```
 
-### 5. Optional Package Installation (`pyproject.toml`)
+### 7. Optional Package Installation (`pyproject.toml`)
 If you want to install optional UI voice, dashboard, or browser dependencies:
 ```bash
 python -m pip install -e .
 ```
 
-### 6. Run Capability Profiler & Crash Reconciliation
+### 8. Run Capability Profiler & Crash Reconciliation
 ```bash
 python run_iva.py --profile-only
 ```
 
-### 7. Run Multi-Specialist Coding, Sandboxed Testing & Self-Healing
+### 9. Run Multi-Specialist Coding, Sandboxed Testing & Self-Healing
 ```bash
 python run_iva.py \
   --title "Interval Merger" \
@@ -938,7 +968,7 @@ python run_iva.py \
   --test-filename test_interval_merger.py
 ```
 
-### 8. Run Detached Background Execution (Daemon Mode)
+### 10. Run Detached Background Execution (Daemon Mode)
 ```bash
 python run_iva.py \
   --detach \
