@@ -1,0 +1,22 @@
+# ==============================================================================
+# Iva & AGI 1.7 OMEGA COMMAND — Runtime & Optional Dependencies
+# Core AGI 1.7 engine requires ZERO third-party packages (100% Python stdlib).
+# The packages below enable optional Desktop Voice HUD, Web UI, and Testing.
+# ==============================================================================
+
+# System Process & Hardware Headroom Supervision
+psutil>=5.9.0
+
+# Optional Web & Dashboard Server
+fastapi>=0.110.0
+uvicorn>=0.28.0
+
+# Optional Browser Automation (for visual & web navigation tasks)
+playwright>=1.42.0
+
+# Optional Voice Synthesis & Audio Processing
+pyttsx3>=2.90
+sounddevice>=0.4.6
+
+# Development & Test Suite Verification
+pytest>=8.0.0

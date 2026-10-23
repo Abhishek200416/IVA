@@ -9,6 +9,12 @@ from .model_disclosure_policy import (
     ModelDisclosurePolicy,
     SecretRedactor,
 )
+from .least_privilege_enforcer import (
+    LeastPrivilegeEnforcer,
+    SecretsHygieneAuditor,
+    SecurityPermissionTier,
+    PermissionDeniedError,
+)
 
 __all__ = [
     "DisclosureContext",
@@ -18,4 +24,8 @@ __all__ = [
     "ModelDisclosureDeniedError",
     "ModelDisclosurePolicy",
     "SecretRedactor",
+    "LeastPrivilegeEnforcer",
+    "SecretsHygieneAuditor",
+    "SecurityPermissionTier",
+    "PermissionDeniedError",
 ]

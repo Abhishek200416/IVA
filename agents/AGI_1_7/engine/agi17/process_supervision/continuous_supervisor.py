@@ -83,7 +83,45 @@ class ContinuousSupervisor:
         self.total_failed: int = 0
         self.task_history: List[Dict[str, Any]] = []
 
+        self._load_persisted_queue()
         self._save_state()
+
+    def _load_persisted_queue(self) -> None:
+        """Recovers queued and in-flight tasks following supervisor restart."""
+        queue_file = self.state_dir / "tasks_queue.json"
+        if queue_file.exists():
+            try:
+                raw = json.loads(queue_file.read_text(encoding="utf-8"))
+                for item in raw:
+                    p_val = item.get("priority", 6)
+                    try:
+                        p_enum = TaskPriority(p_val)
+                    except Exception:
+                        p_enum = TaskPriority.FEATURE_IMPROVEMENT
+                    t = QueuedTask(
+                        task_id=item["task_id"],
+                        title=item["title"],
+                        description=item["description"],
+                        priority=p_enum,
+                        requires_model_call=item.get("requires_model_call", False),
+                        attempts=item.get("attempts", 0),
+                        max_attempts=item.get("max_attempts", 3),
+                        status="QUEUED" if item.get("status") in ("RUNNING", "QUEUED") else item.get("status", "QUEUED"),
+                        created_at=item.get("created_at", time.time()),
+                        dependencies=item.get("dependencies", []),
+                        metadata=item.get("metadata", {}),
+                    )
+                    if t.status in ("QUEUED", "BLOCKED"):
+                        self.queue.append(t)
+            except Exception:
+                pass
+        if self.state_file.exists():
+            try:
+                st_data = json.loads(self.state_file.read_text(encoding="utf-8"))
+                self.total_completed = st_data.get("total_tasks_completed", 0)
+                self.total_failed = st_data.get("total_tasks_failed", 0)
+            except Exception:
+                pass
 
     def set_executor(self, hook: Callable[[Any, Any], Dict[str, Any]]) -> None:
         self._executor_hook = hook
@@ -106,6 +144,9 @@ class ContinuousSupervisor:
         task_id: Optional[str] = None,
         dependencies: Optional[List[str]] = None,
         metadata: Optional[Dict[str, Any]] = None,
+        idempotency_key: Optional[str] = None,
+        owner: str = "supervisor",
+        deadline: Optional[float] = None,
     ) -> QueuedTask:
         eff_model = requires_model if requires_model is not None else requires_model_call
         p_enum = priority
@@ -115,7 +156,22 @@ class ContinuousSupervisor:
             except ValueError:
                 p_enum = TaskPriority.FEATURE_IMPROVEMENT
 
+        meta = dict(metadata or {})
+        if idempotency_key:
+            meta["idempotency_key"] = idempotency_key
+        meta["owner"] = owner
+        if deadline:
+            meta["deadline"] = deadline
+
         with self.queue_lock:
+            # Idempotency check: deduplicate against active or queued tasks
+            if idempotency_key:
+                for existing in self.queue:
+                    if existing.metadata.get("idempotency_key") == idempotency_key:
+                        return existing
+                if self.active_task and self.active_task.metadata.get("idempotency_key") == idempotency_key:
+                    return self.active_task
+
             tid = task_id or f"TASK-{int(time.time() * 1000)}-{uuid.uuid4().hex[:4]}"
             t = QueuedTask(
                 task_id=tid,
@@ -124,7 +180,7 @@ class ContinuousSupervisor:
                 priority=p_enum,
                 requires_model_call=eff_model,
                 dependencies=dependencies or [],
-                metadata=metadata or {},
+                metadata=meta,
             )
             self.queue.append(t)
             self.queue.sort(key=lambda item: (item.priority.value, item.created_at))
@@ -207,7 +263,19 @@ class ContinuousSupervisor:
             last_health_check_result={"healthy": True, "storage_healthy": True},
         )
         try:
-            self.state_file.write_text(json.dumps(asdict(st), indent=2), encoding="utf-8")
+            # Atomic state file replacement
+            tmp_state = self.state_file.with_suffix(f".tmp_{uuid.uuid4().hex[:6]}")
+            tmp_state.write_text(json.dumps(asdict(st), indent=2), encoding="utf-8")
+            tmp_state.replace(self.state_file)
+
+            # Atomic queue file replacement
+            queue_file = self.state_dir / "tasks_queue.json"
+            all_tasks = [asdict(t) for t in self.queue]
+            if self.active_task:
+                all_tasks.insert(0, asdict(self.active_task))
+            tmp_queue = queue_file.with_suffix(f".tmp_{uuid.uuid4().hex[:6]}")
+            tmp_queue.write_text(json.dumps(all_tasks, indent=2), encoding="utf-8")
+            tmp_queue.replace(queue_file)
         except Exception:
             pass
 
@@ -366,12 +434,36 @@ class ContinuousSupervisor:
                     self.active_task.status = "SUCCEEDED"
                     self.total_completed += 1
                 else:
-                    if self.active_task.attempts < self.active_task.max_attempts:
+                    err_text = str(res.get("error", "Unknown execution failure"))
+                    is_rate_limited = "429" in err_text or "rate limit" in err_text.lower() or "quota" in err_text.lower()
+                    is_provider_down = "503" in err_text or "outage" in err_text.lower() or "unavailable" in err_text.lower() or "502" in err_text or "504" in err_text
+
+                    diagnostic = {
+                        "attempted": f"Execution of task '{self.active_task.title}'",
+                        "failed": True,
+                        "error": err_text,
+                        "remains_possible": "Local state inspection, retry with exponential backoff, supervisor health checks",
+                        "next_step": "Diagnose root cause in log trace, check provider quota/connectivity, execute isolated unit test",
+                        "is_rate_limited": is_rate_limited,
+                        "is_provider_down": is_provider_down,
+                    }
+                    res["diagnostic"] = diagnostic
+
+                    if (is_rate_limited or is_provider_down) and self.active_task.requires_model_call:
+                        self.active_task.status = "BLOCKED"
+                        self.active_task.metadata["block_reason"] = "PROVIDER_UNAVAILABLE" if is_provider_down else "RATE_LIMIT_EXCEEDED"
+                        self.active_task.metadata["diagnostic"] = diagnostic
+                        self.total_failed += 1
+                    elif self.active_task.attempts < self.active_task.max_attempts:
+                        import random
+                        backoff_sec = min(60.0, (2 ** self.active_task.attempts) + random.uniform(0.1, 0.5))
+                        self.active_task.metadata["next_retry_at"] = time.time() + backoff_sec
                         self.active_task.status = "QUEUED"
                         with self.queue_lock:
                             self.queue.append(self.active_task)
                     else:
                         self.active_task.status = "FAILED"
+                        self.active_task.metadata["diagnostic"] = diagnostic
                         self.total_failed += 1
 
                 self.task_history.append(
@@ -381,6 +473,7 @@ class ContinuousSupervisor:
                         "status": self.active_task.status,
                         "attempts": self.active_task.attempts,
                         "result": res,
+                        "diagnostic": res.get("diagnostic"),
                     }
                 )
                 self.active_task = None

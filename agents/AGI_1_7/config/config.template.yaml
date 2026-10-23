@@ -1,0 +1,50 @@
+# AGI 1.7 OMEGA COMMAND — SANITIZED CONFIGURATION TEMPLATE
+# Open-Source Distribution Safe: NEVER commit real credentials, session tokens, or account IDs.
+
+system:
+  identity: "AGI 1.7 OMEGA COMMAND"
+  version: "1.7.0"
+  operating_mode: "PAPER" # Strict default: 'PAPER' or 'ANALYSIS_ONLY'. NEVER default to 'LIVE'.
+  timezone: "Asia/Kolkata"
+
+broker:
+  name: "Paytm Money Limited"
+  interface_type: "VISIBLE_BROWSER_AUTOMATION" # Real visible browser UI
+  # Account credentials MUST NOT be hard-coded; users authenticate manually in visible Chrome
+  account_id: "${PAYTM_ACCOUNT_ID:-UNSPECIFIED}"
+  cdp_debugging_port: 9229
+  desktop_station: "WinSta0\\Default"
+
+risk_limits:
+  initial_paper_capital_inr: 50000.0
+  max_loss_per_trade_pct: 0.005 # 0.5% max risk per trade
+  aggregate_open_risk_pct: 0.010 # 1.0% total open risk
+  daily_drawdown_circuit_breaker_pct: 0.015 # 1.5% daily halt
+  max_concurrent_positions: 3
+  max_daily_round_trips: 10
+  allow_overnight: false # Intraday default; overnight requires explicit authorization
+
+storage:
+  preferred_root: "D:\\AGI_Storage\\AGI_1_7"
+  fallback_root: "agents/AGI_1_7/runtime_storage"
+  memory_db: "omega_memory.db"
+  paper_ledger_db: "multi_day_ledger.db"
+  live_ledger_db: "live_broker_ledger.db"
+
+dashboard:
+  host: "127.0.0.1" # Strict loopback isolation
+  port: 8088
+  auto_launch_browser: true
+
+agents:
+  alexa:
+    role: "Browser, Computer Use, and Trade Operations"
+    enabled: true
+  emily:
+    role: "Global Risk Radar & News Verification"
+    enabled: true
+    min_confidence: 0.85
+  max:
+    role: "Multi-Horizon Quantitative Analysis & Options Risk"
+    enabled: true
+    min_expectancy_inr: 100.0

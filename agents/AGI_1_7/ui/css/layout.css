@@ -1,0 +1,750 @@
+/**
+ * AGI 1.7 OMEGA COMMAND — UI V3 LAYOUT & RESPONSIVE ARCHITECTURE
+ * Enforces Shell Invariants: 0 Page Overflow, Rigid Single-Line Navigation, Responsive Grids
+ */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--bg-page);
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   1. ROOT APPLICATION SHELL (Strict 100vw x 100vh)
+═══════════════════════════════════════════════════════════════ */
+.app-shell {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   2. PERSISTENT GLOBAL HEADER (Strict 52px Single-Line)
+═══════════════════════════════════════════════════════════════ */
+.app-header {
+    height: var(--header-height);
+    background: var(--color-navy);
+    color: var(--text-inverse);
+    padding: 0 var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-sm);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-shrink: 0;
+}
+
+.brand-anchor {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.brand-badge {
+    background: var(--color-cyan);
+    color: var(--color-navy-dark);
+    font-size: 11px;
+    font-weight: 900;
+    padding: 3px 6px;
+    border-radius: var(--radius-xs);
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+.brand-title {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+}
+
+.paper-status-tag {
+    background: rgba(245, 158, 11, 0.2);
+    border: 1px solid #f59e0b;
+    color: #fbbf24;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: var(--radius-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Workspace Navigation Bar */
+.workspace-nav {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    background: rgba(0, 0, 0, 0.22);
+    padding: 3px;
+    border-radius: var(--radius-md);
+    margin-left: var(--space-2);
+}
+
+.nav-tab-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-out);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.nav-tab-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-tab-btn.active {
+    background: #0284c7;
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-shrink: 0;
+}
+
+.market-status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+}
+
+.market-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ef4444;
+}
+
+.epoch-select-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.epoch-select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    max-width: 180px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    outline: none;
+}
+
+.epoch-select option {
+    background: var(--color-navy-dark);
+    color: #ffffff;
+}
+
+.btn-header-cta {
+    background: var(--color-cyan);
+    color: var(--color-navy-dark);
+    border: none;
+    font-size: 12.5px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: background var(--duration-fast) var(--ease-out), transform var(--duration-fast);
+}
+
+.btn-header-cta:hover {
+    background: var(--color-cyan-hover);
+    transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   3. CAPITAL & METRICS SUMMARY RIBBON (Strict 42px Single-Line)
+═══════════════════════════════════════════════════════════════ */
+.account-ribbon {
+    height: var(--metrics-ribbon-height);
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0 var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    z-index: 90;
+}
+
+.ribbon-metrics-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    min-width: 0;
+    overflow: hidden;
+}
+
+.ribbon-metric-item {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.metric-lbl {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.metric-val {
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    font-weight: 800;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.metric-val.profit { color: var(--bull-green); }
+.metric-val.loss { color: var(--bear-red); }
+.metric-val.reserve { color: var(--reserve-amber); }
+
+.ribbon-provenance-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border-subtle);
+    padding: 3px 8px;
+    border-radius: var(--radius-xs);
+    color: var(--color-navy);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   4. WORKSPACE VIEWPORT CONTAINER (Zero-Reload Router)
+═══════════════════════════════════════════════════════════════ */
+.workspace-container {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+
+.workspace-pane {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    background: var(--bg-page);
+}
+
+.workspace-pane.active {
+    display: flex;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   5. WORKSPACE A: TRADING DESK LAYOUT
+═══════════════════════════════════════════════════════════════ */
+.trading-desk-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    background: var(--bg-page);
+}
+
+/* Collapsible Left Watchlist */
+.watchlist-sidebar {
+    width: var(--watchlist-width);
+    flex-shrink: 0;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    z-index: 40;
+    transition: margin-left var(--duration-fast) var(--ease-out);
+    min-width: 0;
+    overflow: hidden;
+}
+
+.watchlist-sidebar.collapsed {
+    margin-left: calc(-1 * var(--watchlist-width));
+}
+
+/* Central Trading Core */
+.trading-center {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--bg-page);
+}
+
+/* Instrument & Spot Quote Topbar */
+.instrument-topbar {
+    height: 48px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-4);
+    flex-shrink: 0;
+    gap: var(--space-3);
+    min-width: 0;
+}
+
+.inst-hero-cluster {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    white-space: nowrap;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.inst-toggle-btn {
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 5px 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+}
+
+.inst-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.inst-type-badge {
+    font-size: 10.5px;
+    font-weight: 800;
+    background: var(--inst-bg);
+    color: var(--inst-blue);
+    padding: 2px 6px;
+    border-radius: var(--radius-xs);
+    text-transform: uppercase;
+}
+
+.inst-ltp-val {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.inst-chg-val {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.inst-controls-cluster {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+}
+
+.segmented-control {
+    display: inline-flex;
+    background: var(--bg-card-subtle);
+    padding: 2px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+}
+
+.segment-btn {
+    background: transparent;
+    border: none;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-out);
+    white-space: nowrap;
+}
+
+.segment-btn.active {
+    background: var(--bg-card);
+    color: var(--color-navy);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-drawer-toggle {
+    background: #ffffff;
+    border: 1px solid var(--color-navy-light);
+    color: var(--color-navy);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 30px;
+    white-space: nowrap;
+    transition: all var(--duration-fast);
+}
+
+.btn-drawer-toggle:hover {
+    background: var(--color-navy);
+    color: #ffffff;
+}
+
+/* Large Interactive Chart Container */
+.chart-container {
+    flex: 1;
+    min-height: 280px;
+    min-width: 0;
+    position: relative;
+    background: var(--chart-canvas-bg);
+    border-bottom: 1px solid var(--border-subtle);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-canvas-wrapper {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+}
+
+#candlestickCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+}
+
+.chart-legend-overlay {
+    position: absolute;
+    top: var(--space-2);
+    left: var(--space-3);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    pointer-events: none;
+}
+
+.chart-legend-item {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--chart-text-dim);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.legend-color-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.chart-timeframe-toolbar {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-3);
+    z-index: 10;
+    display: flex;
+    gap: 4px;
+}
+
+.chart-tf-btn {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+}
+
+.chart-tf-btn.active, .chart-tf-btn:hover {
+    background: var(--inst-blue);
+    border-color: var(--inst-blue);
+}
+
+.chart-bottom-info {
+    height: 24px;
+    background: rgba(8, 13, 26, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0 var(--space-3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--chart-text-dim);
+    flex-shrink: 0;
+}
+
+/* Lower Workspace: Positions & Orders Table */
+.positions-ledger-container {
+    height: var(--bottom-ledger-height);
+    background: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.ledger-tab-header {
+    height: 38px;
+    background: var(--bg-card-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0 var(--space-3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.ledger-tabs {
+    display: flex;
+    gap: 2px;
+}
+
+.ledger-tab-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    cursor: pointer;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ledger-tab-btn.active {
+    color: var(--color-navy);
+    border-bottom-color: var(--color-cyan);
+    background: var(--bg-card);
+}
+
+.table-scroll-container {
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: auto;
+    min-width: 0;
+    width: 100%;
+}
+
+/* Right Drawer: Intelligence, Option Chain & Depth */
+.market-drawer {
+    width: var(--drawer-width);
+    flex-shrink: 0;
+    background: var(--bg-card);
+    border-left: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    z-index: 40;
+    min-width: 0;
+    overflow: hidden;
+    transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.market-drawer.collapsed {
+    display: none !important;
+}
+
+.drawer-header {
+    height: 40px;
+    background: var(--bg-card-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0 var(--space-3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.drawer-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--color-navy);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.drawer-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: var(--radius-xs);
+}
+
+.drawer-close-btn:hover {
+    color: var(--bear-red);
+    background: var(--bear-bg);
+}
+
+.drawer-tab-bar {
+    display: flex;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 2px;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.drawer-tab {
+    flex: 1;
+    text-align: center;
+    padding: 6px 2px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+}
+
+.drawer-tab.active {
+    background: var(--bg-card-subtle);
+    color: var(--color-navy);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: var(--space-3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   6. RESPONSIVE MEDIA QUERIES (1920, 1680, 1440, 1366)
+═══════════════════════════════════════════════════════════════ */
+@media (max-width: 1680px) {
+    :root {
+        --watchlist-width: 240px;
+        --drawer-width: 340px;
+    }
+    .ribbon-metrics-list {
+        gap: var(--space-4);
+    }
+}
+
+@media (max-width: 1440px) {
+    .ribbon-provenance-tag {
+        display: none;
+    }
+    .epoch-select {
+        max-width: 140px;
+    }
+    .inst-hero-ltp {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1366px) {
+    :root {
+        --header-height: 48px;
+        --metrics-ribbon-height: 38px;
+        --watchlist-width: 220px;
+        --drawer-width: 320px;
+    }
+    .nav-tab-btn {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+    .metric-val {
+        font-size: 12.5px;
+    }
+}

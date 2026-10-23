@@ -52,11 +52,13 @@ class ModelResponseValidationError(RuntimeError):
 
 _SECRET_PATTERNS = [
     (re.compile(r"AIza[0-9A-Za-z\-_]{35}"), "<REDACTED_GOOGLE_API_KEY>"),
-    (re.compile(r"sk-[A-Za-z0-9]{20,}"), "<REDACTED_SK_KEY>"),
+    (re.compile(r"sk-[A-Za-z0-9]{16,}"), "<REDACTED_SK_KEY>"),
     (re.compile(r"ghp_[A-Za-z0-9]{30,}"), "<REDACTED_GITHUB_TOKEN>"),
     (re.compile(r"github_pat_[A-Za-z0-9_]{22,}"), "<REDACTED_GITHUB_PAT>"),
     (re.compile(r"AKIA[0-9A-Z]{16}"), "<REDACTED_AWS_KEY>"),
     (re.compile(r"(?i)Bearer\s+[A-Za-z0-9\-._~+/]+=*"), "Bearer <REDACTED_TOKEN>"),
+    (re.compile(r"eyJ[A-Za-z0-9-_]{10,}\.eyJ[A-Za-z0-9-_]{10,}\.[A-Za-z0-9-_]{10,}"), "<REDACTED_JWT_TOKEN>"),
+    (re.compile(r"(?i)(api[_-]?secret|secret[_-]?key|access[_-]?token|auth[_-]?token|jwt[_-]?token)\s*[:=]\s*['\"]?[A-Za-z0-9\-_./+=]{8,}['\"]?"), r"\1=<REDACTED_SECRET>"),
     (re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----[\s\S]*?-----END [A-Z ]*PRIVATE KEY-----"), "<REDACTED_PRIVATE_KEY>"),
 ]
 

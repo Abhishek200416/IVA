@@ -1,0 +1,49 @@
+{
+  "version": "1.7.0-phase12.3",
+  "created_at": "2026-10-15T12:15:00+05:30",
+  "evaluation_corpus": "DEVELOPMENT_TUNING",
+  "cases": [
+    {
+      "id": "DEV-CASE-01",
+      "category": "DEV_SYNONYM_TUNING",
+      "prompt": "Investigate WebSocket packet drop in Nifty tick streaming handler",
+      "expected_specialist": "swe_python_runtime_engineer",
+      "tuning_focus": "Network buffer sizing and asyncio queue backpressure"
+    },
+    {
+      "id": "DEV-CASE-02",
+      "category": "DEV_TOKEN_BUDGETING",
+      "prompt": "Evaluate token compression ratio on 50 consecutive compiler error dumps",
+      "expected_specialist": "perf_token_budget_controller",
+      "tuning_focus": "ACON compression vs content-addressed artifact preservation"
+    },
+    {
+      "id": "DEV-CASE-03",
+      "category": "DEV_CONCURRENCY_TUNING",
+      "prompt": "Benchmark 2-worker heavy worker queue latency under 100 queued synthetic tasks",
+      "expected_specialist": "perf_adaptive_concurrency_governor",
+      "tuning_focus": "Worker thread pool scaling vs memory footprint"
+    },
+    {
+      "id": "DEV-CASE-04",
+      "category": "DEV_CALENDAR_TUNING",
+      "prompt": "Validate NSE trading holiday schedule for Diwali Muhurat trading session",
+      "expected_specialist": "swe_api_contract_designer",
+      "tuning_focus": "Special session holiday hours (18:00 to 19:15 IST)"
+    },
+    {
+      "id": "DEV-CASE-05",
+      "category": "DEV_ACCOUNTING_TUNING",
+      "prompt": "Calculate GST on exchange transaction fees and SEBI turnover turnover charges",
+      "expected_specialist": "math_probability_statistician",
+      "tuning_focus": "18% GST applicability on brokerage and exchange transaction charges"
+    },
+    {
+      "id": "DEV-CASE-06",
+      "category": "DEV_HEURISTIC_TUNING",
+      "prompt": "Verify offline local paper fill heuristic when GonkaRouter circuit breaker is OPEN",
+      "expected_specialist": "swe_exception_resilience_engineer",
+      "tuning_focus": "Deterministic conservative bid-ask fill rule fallback"
+    }
+  ]
+}

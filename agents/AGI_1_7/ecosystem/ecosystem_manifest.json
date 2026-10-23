@@ -2,7 +2,7 @@
   "schema_version": "1.7.0",
   "codename": "AGI 1.7 \u2014 OMEGA COMMAND Unified 100-Specialist Embedded Ecosystem",
   "sole_model": "gemini-3.8-flash-high",
-  "ui_visibility_mode": "SINGLE_UNIFIED_AGENT_ONLY (100 Specialists Embedded Internally, Zero UI Dropdown Clutter)",
+  "scope": "GLOBAL_AND_REPO",
   "counts": {
     "visibleTopLevelAgentsInUI": 1,
     "embeddedSpecialistContracts": 100,

@@ -1,0 +1,110 @@
+/**
+ * AGI 1.7 OMEGA COMMAND — UI V3 ANIMATION & INTERACTION SYSTEM
+ * Deliberate, Restrained Transitions. Zero Fake Activity. Full prefers-reduced-motion Support.
+ */
+
+/* ─── Keyframe Animations ─── */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes drawerSlideRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes modalZoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ─── Workspace Transitions ─── */
+.workspace-pane.active {
+    animation: fadeIn var(--duration-fast) var(--ease-out);
+}
+
+/* ─── Drawer Transitions ─── */
+.market-drawer:not(.collapsed) {
+    animation: drawerSlideRight var(--duration-fast) var(--ease-out);
+}
+
+/* ─── Modal Dialog Transitions ─── */
+.modal-backdrop.active .modal-dialog {
+    animation: modalZoomIn var(--duration-fast) var(--ease-out);
+}
+
+/* ─── Loading Skeleton Shimmer ─── */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: var(--radius-xs);
+    display: inline-block;
+}
+
+/* ─── Value Flash Indicator (Genuine Updates Only) ─── */
+.val-flash-up {
+    animation: flashGreen 0.6s ease-out;
+}
+
+.val-flash-down {
+    animation: flashRed 0.6s ease-out;
+}
+
+@keyframes flashGreen {
+    0% { background-color: rgba(16, 185, 129, 0.25); }
+    100% { background-color: transparent; }
+}
+
+@keyframes flashRed {
+    0% { background-color: rgba(239, 68, 68, 0.25); }
+    100% { background-color: transparent; }
+}
+
+/* ─── Accessibility: prefers-reduced-motion Compliance ─── */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .skeleton {
+        animation: none;
+        background: #e2e8f0;
+    }
+}

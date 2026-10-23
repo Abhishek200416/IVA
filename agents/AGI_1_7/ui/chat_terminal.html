@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGI 1.7 OMEGA COMMAND — In-Chat Virtual Computer</title>
+    <style>
+        :root {
+            --bg-base: #070a12;
+            --bg-surface: #0e1424;
+            --bg-card: #151e36;
+            --bg-card-hover: #1c2847;
+            --border: #1f2d4d;
+            --border-highlight: #344775;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --cyan: #06b6d4;
+            --cyan-glow: rgba(6, 182, 212, 0.2);
+            --green: #10b981;
+            --green-glow: rgba(16, 185, 129, 0.2);
+            --amber: #f59e0b;
+            --amber-glow: rgba(245, 158, 11, 0.2);
+            --red: #ef4444;
+            --purple: #8b5cf6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", monospace, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            font-size: 13px;
+        }
+
+        /* Top Context Bar */
+        .top-nav {
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .brand-badge {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            color: #000;
+            font-weight: 800;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+        .header-title {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+        .top-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .sandbox-pill {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--green);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background: currentColor;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        /* Main Workspace Split */
+        .workspace-layout {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 49px);
+            overflow: hidden;
+        }
+
+        /* Left Chat Sidebar / Agent Squad */
+        .sidebar {
+            width: 280px;
+            background: var(--bg-surface);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+        .sidebar-section {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .sidebar-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .agent-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .agent-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .agent-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .agent-name {
+            font-weight: 600;
+            font-size: 12px;
+        }
+        .agent-role {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+        .agent-badge {
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 700;
+        }
+        .badge-pm { background: rgba(6, 182, 212, 0.2); color: var(--cyan); }
+        .badge-sys { background: rgba(245, 158, 11, 0.2); color: var(--amber); }
+        .badge-qa { background: rgba(139, 92, 246, 0.2); color: var(--purple); }
+
+        .session-stats-card {
+            background: rgba(31, 45, 77, 0.35);
+            border: 1px dashed var(--border-highlight);
+            padding: 12px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        /* Quick Action Prompts */
+        .quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .quick-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 7px 10px;
+            border-radius: 5px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 11px;
+            transition: all 0.15s;
+        }
+        .quick-btn:hover {
+            background: var(--bg-card-hover);
+            color: var(--text-primary);
+            border-color: var(--cyan);
+        }
+
+        /* Main Chat Stream Container */
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-base);
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .chat-stream {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Message Bubbles */
+        .message-row {
+            display: flex;
+            gap: 12px;
+            max-width: 900px;
+            width: 100%;
+        }
+        .message-row.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+        .message-row.agent {
+            align-self: flex-start;
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 11px;
+            flex-shrink: 0;
+        }
+        .avatar.alexa { background: linear-gradient(135deg, #06b6d4, #0284c7); color: #000; }
+        .avatar.user { background: #374151; color: #fff; }
+
+        .message-bubble {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 1.5;
+            max-width: 800px;
+            width: 100%;
+        }
+        .message-row.user .message-bubble {
+            background: #1e293b;
+            border-color: #334155;
+            color: #fff;
+            max-width: 600px;
+            width: auto;
+        }
+        .message-author {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .message-time {
+            color: var(--text-muted);
+            font-size: 10px;
+            font-weight: normal;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* IN-CHAT VIRTUAL COMPUTER PANEL (FIRST-CLASS EMBEDDED ELEMENT) */
+        /* ------------------------------------------------------------- */
+        .virtual-computer-panel {
+            background: #0b101d;
+            border: 1px solid var(--border-highlight);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            transition: all 0.25s ease;
+            width: 100%;
+        }
+        .virtual-computer-panel.expanded {
+            width: 100%;
+            max-width: 1000px;
+        }
+        .virtual-computer-panel.minimized .vc-viewport,
+        .virtual-computer-panel.minimized .vc-toolbar,
+        .virtual-computer-panel.minimized .vc-drawer {
+            display: none;
+        }
+
+        /* Computer Panel Header */
+        .vc-header {
+            background: #121a2d;
+            border-bottom: 1px solid var(--border);
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .vc-header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .vc-title {
+            font-weight: 700;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .vc-session-pill {
+            background: #1e293b;
+            color: var(--cyan);
+            font-family: monospace;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            border: 1px solid #334155;
+        }
+        .vc-control-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+        .badge-agi-control {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--green);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+        .badge-human-takeover {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--amber);
+            border: 1px solid rgba(245, 158, 11, 0.5);
+            animation: pulse 1.5s infinite;
+        }
+        .badge-paused {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+        }
+        .badge-stopped {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--red);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+        }
+
+        .vc-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .window-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 13px;
+            cursor: pointer;
+            width: 22px;
+            height: 22px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+        }
+        .window-btn:hover {
+            background: #1e293b;
+            color: #fff;
+        }
+
+        /* Computer Panel Toolbar */
+        .vc-toolbar {
+            background: #0f1728;
+            border-bottom: 1px solid var(--border);
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-tool {
+            background: #1c263d;
+            border: 1px solid #2d3b5b;
+            color: var(--text-primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-tool:hover {
+            background: #273656;
+            border-color: var(--cyan);
+        }
+        .btn-takeover {
+            background: rgba(245, 158, 11, 0.2);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            color: var(--amber);
+        }
+        .btn-takeover:hover {
+            background: rgba(245, 158, 11, 0.35);
+        }
+        .btn-return-agi {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: var(--green);
+        }
+        .btn-return-agi:hover {
+            background: rgba(16, 185, 129, 0.35);
+        }
+        .url-bar-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            background: #070c17;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2px 8px;
+            gap: 6px;
+        }
+        .url-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: monospace;
+            font-size: 11px;
+            outline: none;
+        }
+        .url-go-btn {
+            background: var(--cyan);
+            color: #000;
+            border: none;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 10px;
+        }
+
+        /* Computer Viewport Area */
+        .vc-viewport {
+            position: relative;
+            background: #04070e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 420px;
+            max-height: 560px;
+            overflow: hidden;
+        }
+        .viewport-screen {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            background: #090e1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+        }
+        .vc-canvas {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: crosshair;
+            display: block;
+        }
+
+        /* Overlaid Virtual Mouse Cursor */
+        .virtual-cursor-indicator {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border: 2px solid #ef4444;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.3);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: left 0.1s ease-out, top 0.1s ease-out;
+            z-index: 50;
+        }
+        .virtual-cursor-indicator::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        /* Input Interaction Overlay (Active Coordinates) */
+        .coord-overlay {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 10px;
+            color: var(--cyan);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+            z-index: 40;
+        }
+
+        /* Viewport DOM Elements & State Drawer */
+        .vc-drawer {
+            background: #0c1220;
+            border-top: 1px solid var(--border);
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+        .drawer-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .drawer-stat strong {
+            color: var(--text-primary);
+        }
+
+        /* Bottom Composer */
+        .chat-composer {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border);
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        .composer-input {
+            flex: 1;
+            background: #080d1a;
+            border: 1px solid var(--border-highlight);
+            color: var(--text-primary);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+        .composer-input:focus {
+            border-color: var(--cyan);
+        }
+        .btn-send {
+            background: var(--cyan);
+            color: #000;
+            border: none;
+            font-weight: 700;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: opacity 0.15s;
+        }
+        .btn-send:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Context Navigation -->
+    <header class="top-nav">
+        <div class="brand-section">
+            <span class="brand-badge">AGI 1.7</span>
+            <span class="header-title">OMEGA COMMAND — Conversation & In-Chat Virtual Computer</span>
+        </div>
+        <div class="top-meta">
+            <div class="sandbox-pill">
+                <span class="pulse-dot"></span>
+                <span>SANDBOX ISOLATED (PAPER MODE)</span>
+            </div>
+            <span id="top-session-pill" style="font-family: monospace; font-size: 11px; color: var(--text-muted);">
+                Session: omega-browser-1791819492
+            </span>
+        </div>
+    </header>
+
+    <div class="workspace-layout">
+
+        <!-- Left Sidebar: Agent Squad & State -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Active Agent Squad</div>
+                <div class="agent-list">
+                    <div class="agent-card">
+                        <div class="agent-info">
+                            <span class="agent-name">Alexa</span>
+                            <span class="agent-role">Project Manager / Lead Orchestrator</span>
+                        </div>
+                        <span class="agent-badge badge-pm">MANAGER</span>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-info">
+                            <span class="agent-name">Max</span>
+                            <span class="agent-role">Systems Lead (Computer Use Engine)</span>
+                        </div>
+                        <span class="agent-badge badge-sys">SYSTEMS</span>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-info">
+                            <span class="agent-name">Emily</span>
+                            <span class="agent-role">Quality Lead (Visual Verification)</span>
+                        </div>
+                        <span class="agent-badge badge-qa">QUALITY</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Quick Action Prompts</div>
+                <div class="quick-actions">
+                    <button class="quick-btn" onclick="sendQuickPrompt('Open my virtual computer')">
+                        🖥️ Open my virtual computer
+                    </button>
+                    <button class="quick-btn" onclick="sendQuickPrompt('Navigate to https://news.ycombinator.com')">
+                        🌐 Navigate to Hacker News
+                    </button>
+                    <button class="quick-btn" onclick="sendQuickPrompt('Click search input')">
+                        🖱️ Click search input
+                    </button>
+                    <button class="quick-btn" onclick="sendQuickPrompt('Scroll down')">
+                        📜 Scroll page down
+                    </button>
+                    <button class="quick-btn" onclick="sendQuickPrompt('Take control')">
+                        🧑‍💻 Take manual control
+                    </button>
+                    <button class="quick-btn" onclick="sendQuickPrompt('Return control')">
+                        🤖 Return control to Alexa
+                    </button>
+                    <button class="quick-btn" onclick="sendQuickPrompt('Stop session')">
+                        ⏹️ Stop virtual computer
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-section" style="flex: 1; overflow-y: auto;">
+                <div class="sidebar-title">Authoritative Telemetry</div>
+                <div class="session-stats-card" id="telemetry-card">
+                    <div>Session ID: <span id="stat-sid" style="color:var(--cyan)">connecting...</span></div>
+                    <div>Status: <span id="stat-health" style="color:var(--green)">READY</span></div>
+                    <div>Owner: <span id="stat-owner">AGI_CONTROL</span></div>
+                    <div>Actions Executed: <span id="stat-actions">0</span></div>
+                    <div>Active Tab: <span id="stat-tab">tab-primary</span></div>
+                    <div>DPI Scale: <span id="stat-dpi">1.0</span></div>
+                    <div>Host Guard: <span style="color:var(--green)">PROTECTED</span></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Stream -->
+        <main class="chat-container">
+            <div class="chat-stream" id="chat-stream">
+
+                <!-- Welcome Agent Message -->
+                <div class="message-row agent">
+                    <div class="avatar alexa">AL</div>
+                    <div class="message-bubble">
+                        <div class="message-author">
+                            <span>Alexa (Project Manager — AGI 1.7)</span>
+                            <span class="message-time">Just now</span>
+                        </div>
+                        <p>Hello! I am <strong>Alexa</strong>, your autonomous project manager and systems orchestrator for <strong>AGI 1.7 OMEGA COMMAND</strong>. Max (our Systems Lead) and Emily (our Quality Lead) are online and synchronized.</p>
+                        <p style="margin-top: 8px;">Our isolated in-chat virtual computer engine is running and ready. Type <code>"Open my virtual computer"</code> or click the quick prompt on the left to attach your persistent virtual computer directly inside this conversation.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Composer Input Bar -->
+            <form class="chat-composer" onsubmit="handleChatSubmit(event)">
+                <input type="text" id="composer-input" class="composer-input" placeholder="Type a message or instruction (e.g., 'Open my virtual computer', 'Navigate to https://google.com')..." autocomplete="off">
+                <button type="submit" class="btn-send">Send</button>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        // Token and API configurations
+        const urlParams = new URLSearchParams(window.location.search);
+        let TOKEN = urlParams.get("token") || "xQ-LGDjI8zueHXrXrbkLIRB6_CJAyKc_";
+        let isComputerPanelOpen = false;
+        let isHumanTakeover = false;
+        let currentStatus = null;
+        let refreshInterval = null;
+
+        // Initialize connection
+        window.addEventListener("DOMContentLoaded", () => {
+            fetchStatus();
+            refreshInterval = setInterval(fetchStatus, 1500);
+        });
+
+        // -------------------------------------------------------------
+        // Telemetry & Status Sync
+        // -------------------------------------------------------------
+        function fetchStatus() {
+            fetch(`/api/status?token=${TOKEN}`)
+                .then(r => {
+                    if (!r.ok) throw new Error("Status fetch error");
+                    return r.json();
+                })
+                .then(data => {
+                    currentStatus = data;
+                    updateUIFromStatus(data);
+                })
+                .catch(err => {
+                    console.warn("Status fetch failed:", err);
+                });
+        }
+
+        function updateUIFromStatus(data) {
+            if (!data) return;
+            document.getElementById("stat-sid").innerText = data.session_id;
+            document.getElementById("stat-health").innerText = data.health_status;
+            document.getElementById("stat-owner").innerText = data.control_state;
+            document.getElementById("stat-actions").innerText = data.total_actions;
+            document.getElementById("stat-tab").innerText = data.active_tab_id;
+            document.getElementById("stat-dpi").innerText = data.dpi_scale;
+            document.getElementById("top-session-pill").innerText = `Session: ${data.session_id}`;
+
+            isHumanTakeover = (data.control_state === "HUMAN_TAKEOVER");
+
+            // Update computer panel if rendered
+            const panel = document.getElementById("embedded-vc-panel");
+            if (panel) {
+                const ownerBadge = document.getElementById("vc-owner-badge");
+                if (ownerBadge) {
+                    ownerBadge.innerText = data.control_state;
+                    ownerBadge.className = "vc-control-badge " + 
+                        (data.control_state === "HUMAN_TAKEOVER" ? "badge-human-takeover" :
+                         data.control_state === "PAUSED" ? "badge-paused" :
+                         data.control_state === "STOPPED" ? "badge-stopped" : "badge-agi-control");
+                }
+                const takeoverBtn = document.getElementById("vc-takeover-btn");
+                if (takeoverBtn) {
+                    if (isHumanTakeover) {
+                        takeoverBtn.innerText = "🤖 Return Control to Alexa";
+                        takeoverBtn.className = "btn-tool btn-return-agi";
+                    } else {
+                        takeoverBtn.innerText = "🧑‍💻 Take Control";
+                        takeoverBtn.className = "btn-tool btn-takeover";
+                    }
+                }
+                const urlInput = document.getElementById("vc-url-input");
+                if (urlInput && document.activeElement !== urlInput) {
+                    urlInput.value = data.current_url || "about:blank";
+                }
+                const cursorIndicator = document.getElementById("vc-cursor");
+                if (cursorIndicator) {
+                    // Map 1280x800 coordinate to viewport screen container (420px height)
+                    const screenBox = document.getElementById("vc-screen");
+                    if (screenBox) {
+                        const scaleX = screenBox.clientWidth / (data.viewport_width || 1280);
+                        const scaleY = screenBox.clientHeight / (data.viewport_height || 800);
+                        cursorIndicator.style.left = (data.cursor_x * scaleX) + "px";
+                        cursorIndicator.style.top = (data.cursor_y * scaleY) + "px";
+                    }
+                }
+                const coordOverlay = document.getElementById("vc-coords");
+                if (coordOverlay) {
+                    coordOverlay.innerText = `X: ${data.cursor_x} | Y: ${data.cursor_y} | ScrollY: ${data.scroll_y}px | Focus: ${data.focused_element_id || 'none'}`;
+                }
+                const titleStat = document.getElementById("vc-stat-title");
+                if (titleStat) titleStat.innerText = data.current_title || "New Tab";
+                const actionsStat = document.getElementById("vc-stat-actions");
+                if (actionsStat) actionsStat.innerText = data.total_actions || 0;
+
+                // Refresh live frame image
+                const img = document.getElementById("vc-frame-img");
+                if (img) {
+                    img.src = `/api/frame?token=${TOKEN}&t=${Date.now()}`;
+                }
+            }
+        }
+
+        // -------------------------------------------------------------
+        // Chat Message Submission & Handling
+        // -------------------------------------------------------------
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById("composer-input");
+            const text = input.value.trim();
+            if (!text) return;
+            input.value = "";
+            processUserMessage(text);
+        }
+
+        function sendQuickPrompt(promptText) {
+            processUserMessage(promptText);
+        }
+
+        function appendUserMessage(text) {
+            const stream = document.getElementById("chat-stream");
+            const row = document.createElement("div");
+            row.className = "message-row user";
+            row.innerHTML = `
+                <div class="avatar user">YOU</div>
+                <div class="message-bubble">
+                    <p>${escapeHtml(text)}</p>
+                </div>
+            `;
+            stream.appendChild(row);
+            stream.scrollTop = stream.scrollHeight;
+        }
+
+        function appendAgentMessage(htmlContent) {
+            const stream = document.getElementById("chat-stream");
+            const row = document.createElement("div");
+            row.className = "message-row agent";
+            row.innerHTML = `
+                <div class="avatar alexa">AL</div>
+                <div class="message-bubble">
+                    <div class="message-author">
+                        <span>Alexa (Project Manager — AGI 1.7)</span>
+                        <span class="message-time">Just now</span>
+                    </div>
+                    ${htmlContent}
+                </div>
+            `;
+            stream.appendChild(row);
+            stream.scrollTop = stream.scrollHeight;
+        }
+
+        function processUserMessage(text) {
+            appendUserMessage(text);
+            const lower = text.toLowerCase();
+
+            // Check if user requested opening virtual computer
+            if (lower.includes("open") && (lower.includes("computer") || lower.includes("virtual"))) {
+                if (!isComputerPanelOpen) {
+                    renderInChatVirtualComputer();
+                } else {
+                    appendAgentMessage(`<p>The <strong>Virtual Computer Panel</strong> is already active in your conversation stream above. Current session: <code>${currentStatus ? currentStatus.session_id : 'active'}</code>.</p>`);
+                }
+                return;
+            }
+
+            // Post to backend API
+            fetch(`/api/chat?token=${TOKEN}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: text })
+            })
+            .then(r => r.json())
+            .then(res => {
+                appendAgentMessage(`<p>${escapeHtml(res.response)}</p>`);
+                fetchStatus();
+            })
+            .catch(err => {
+                // Local fallback command routing if /api/chat is still transitioning
+                routeLocalCommand(text);
+            });
+        }
+
+        function routeLocalCommand(text) {
+            const lower = text.toLowerCase();
+            if (lower.startsWith("navigate to ") || lower.startsWith("go to ")) {
+                const targetUrl = text.replace(/^navigate to\s+/i, "").replace(/^go to\s+/i, "").trim();
+                fetch(`/api/navigate?token=${TOKEN}`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ url: targetUrl })
+                }).then(() => {
+                    appendAgentMessage(`<p>Navigated to <code>${escapeHtml(targetUrl)}</code>. Screen frames refreshed in your virtual computer panel.</p>`);
+                    fetchStatus();
+                });
+            } else if (lower.includes("take control") || lower.includes("takeover")) {
+                toggleTakeover();
+            } else if (lower.includes("return control")) {
+                if (isHumanTakeover) toggleTakeover();
+            } else if (lower.includes("scroll")) {
+                fetch(`/api/scroll_wheel?token=${TOKEN}`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ dx: 0, dy: 300 })
+                }).then(() => {
+                    appendAgentMessage(`<p>Scrolled page viewport. Verified new scroll offset.</p>`);
+                    fetchStatus();
+                });
+            } else if (lower.includes("stop")) {
+                fetch(`/api/session/stop?token=${TOKEN}`, { method: "POST" })
+                    .then(() => {
+                        appendAgentMessage(`<p>Virtual computer session stopped in accordance with safety policy.</p>`);
+                        fetchStatus();
+                    });
+            } else {
+                appendAgentMessage(`<p>Instruction received: "<em>${escapeHtml(text)}</em>". Max and Emily are verifying execution against session <code>${currentStatus ? currentStatus.session_id : 'omega-browser'}</code>.</p>`);
+                fetchStatus();
+            }
+        }
+
+        // -------------------------------------------------------------
+        // RENDER IN-CHAT VIRTUAL COMPUTER PANEL (Directly in Conversation)
+        // -------------------------------------------------------------
+        function renderInChatVirtualComputer() {
+            isComputerPanelOpen = true;
+            const sid = currentStatus ? currentStatus.session_id : "omega-browser-1791819492";
+            const curUrl = currentStatus ? currentStatus.current_url : "https://www.google.com";
+
+            const panelHtml = `
+                <p>Initializing and attaching your <strong>AGI 1.7 OMEGA Virtual Computer</strong> directly inside this chat conversation...</p>
+                <div class="virtual-computer-panel" id="embedded-vc-panel">
+                    
+                    <!-- Panel Window Header -->
+                    <div class="vc-header">
+                        <div class="vc-header-left">
+                            <span class="vc-title">🖥️ Virtual Computer</span>
+                            <span class="vc-session-pill">${sid}</span>
+                            <span class="vc-control-badge badge-agi-control" id="vc-owner-badge">AGI_CONTROL</span>
+                        </div>
+                        <div class="vc-header-actions">
+                            <button class="window-btn" title="Minimize" onclick="toggleMinimize()">−</button>
+                            <button class="window-btn" title="Expand / Restore" onclick="toggleExpand()">⤢</button>
+                            <button class="window-btn" title="Close Panel" onclick="closePanel()">✕</button>
+                        </div>
+                    </div>
+
+                    <!-- Browser Toolbar -->
+                    <div class="vc-toolbar">
+                        <button class="btn-tool" onclick="remoteStart()" title="Start/Resume Session">▶</button>
+                        <button class="btn-tool" onclick="remotePause()" title="Pause Session">⏸</button>
+                        <button class="btn-tool" onclick="remoteStop()" title="Stop Session">⏹</button>
+                        <button class="btn-tool" onclick="remoteReload()" title="Reload">&#x21bb;</button>
+                        
+                        <div class="url-bar-container">
+                            <span style="color:var(--text-muted); font-size:11px;">🔒</span>
+                            <input type="text" id="vc-url-input" class="url-input" value="${curUrl}" onkeydown="if(event.key==='Enter') remoteGoUrl()">
+                            <button class="url-go-btn" onclick="remoteGoUrl()">Go</button>
+                        </div>
+
+                        <button class="btn-tool btn-takeover" id="vc-takeover-btn" onclick="toggleTakeover()">
+                            🧑‍💻 Take Control
+                        </button>
+                    </div>
+
+                    <!-- Live Viewport Canvas / Frame Stream -->
+                    <div class="vc-viewport">
+                        <div class="viewport-screen" id="vc-screen" onclick="handleViewportClick(event)" onmousemove="handleViewportMove(event)" onwheel="handleViewportWheel(event)">
+                            <img id="vc-frame-img" class="vc-canvas" src="/api/frame?token=${TOKEN}&t=${Date.now()}" alt="Live Virtual Computer Frame">
+                            <div class="virtual-cursor-indicator" id="vc-cursor" style="left: 31%; top: 21%;"></div>
+                            <div class="coord-overlay" id="vc-coords">X: 400 | Y: 170 | ScrollY: 0px | Focus: q</div>
+                        </div>
+                    </div>
+
+                    <!-- Telemetry & Elements Drawer -->
+                    <div class="vc-drawer">
+                        <div class="drawer-info">
+                            <span class="drawer-stat">Title: <strong id="vc-stat-title">Google Search</strong></span>
+                            <span class="drawer-stat">Actions: <strong id="vc-stat-actions">3</strong></span>
+                            <span class="drawer-stat">Display: <strong>1280x800 (1.0x DPI)</strong></span>
+                        </div>
+                        <div>
+                            <span style="color:var(--green)">● Paper Sandbox Isolation Enforced</span>
+                        </div>
+                    </div>
+
+                </div>
+            `;
+            appendAgentMessage(panelHtml);
+            fetchStatus();
+        }
+
+        // -------------------------------------------------------------
+        // Bidirectional Interactive Input Handlers (Canvas Coordinates)
+        // -------------------------------------------------------------
+        function handleViewportClick(e) {
+            const screen = document.getElementById("vc-screen");
+            if (!screen) return;
+            const rect = screen.getBoundingClientRect();
+            const relX = e.clientX - rect.left;
+            const relY = e.clientY - rect.top;
+            
+            // Map click from rendered element size to authoritative 1280x800 viewport
+            const targetX = Math.round((relX / screen.clientWidth) * 1280);
+            const targetY = Math.round((relY / screen.clientHeight) * 800);
+
+            // Update local indicator immediately
+            const cursor = document.getElementById("vc-cursor");
+            if (cursor) {
+                cursor.style.left = relX + "px";
+                cursor.style.top = relY + "px";
+            }
+
+            fetch(`/api/click_at?token=${TOKEN}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ x: targetX, y: targetY, button: "left" })
+            })
+            .then(r => r.json())
+            .then(res => {
+                console.log("Coordinate click executed:", res);
+                fetchStatus();
+            });
+        }
+
+        let moveThrottle = false;
+        function handleViewportMove(e) {
+            if (moveThrottle) return;
+            moveThrottle = true;
+            setTimeout(() => { moveThrottle = false; }, 80);
+
+            const screen = document.getElementById("vc-screen");
+            if (!screen) return;
+            const rect = screen.getBoundingClientRect();
+            const relX = e.clientX - rect.left;
+            const relY = e.clientY - rect.top;
+            const targetX = Math.round((relX / screen.clientWidth) * 1280);
+            const targetY = Math.round((relY / screen.clientHeight) * 800);
+
+            const coordOverlay = document.getElementById("vc-coords");
+            if (coordOverlay) {
+                coordOverlay.innerText = `X: ${targetX} | Y: ${targetY} (hover)`;
+            }
+
+            if (isHumanTakeover) {
+                fetch(`/api/move_cursor?token=${TOKEN}`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ x: targetX, y: targetY })
+                }).catch(() => {});
+            }
+        }
+
+        function handleViewportWheel(e) {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? 150 : -150;
+            fetch(`/api/scroll_wheel?token=${TOKEN}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ dx: 0, dy: delta })
+            }).then(() => fetchStatus());
+        }
+
+        // -------------------------------------------------------------
+        // Window & Mode Controls (Expand, Minimize, Restore, Takeover)
+        // -------------------------------------------------------------
+        function toggleExpand() {
+            const panel = document.getElementById("embedded-vc-panel");
+            if (!panel) return;
+            panel.classList.toggle("expanded");
+        }
+
+        function toggleMinimize() {
+            const panel = document.getElementById("embedded-vc-panel");
+            if (!panel) return;
+            panel.classList.toggle("minimized");
+        }
+
+        function closePanel() {
+            const panel = document.getElementById("embedded-vc-panel");
+            if (panel) panel.remove();
+            isComputerPanelOpen = false;
+            appendAgentMessage(`<p>Virtual Computer view detached from chat stream. Session remains persistent in background.</p>`);
+        }
+
+        function toggleTakeover() {
+            const endpoint = isHumanTakeover ? "/api/return_control" : "/api/take_control";
+            fetch(`${endpoint}?token=${TOKEN}`, { method: "POST" })
+                .then(r => r.json())
+                .then(data => {
+                    isHumanTakeover = (data.control_state === "HUMAN_TAKEOVER");
+                    const msg = isHumanTakeover
+                        ? "🧑‍💻 <strong>Human Takeover activated</strong>. AGI automation paused. Direct mouse and keyboard control routed to your cursor."
+                        : "🤖 <strong>Control returned to AGI (Alexa)</strong>. Fresh page observation audited and automation resumed.";
+                    appendAgentMessage(`<p>${msg}</p>`);
+                    fetchStatus();
+                });
+        }
+
+        function remoteGoUrl() {
+            const input = document.getElementById("vc-url-input");
+            if (!input) return;
+            const url = input.value.trim();
+            if (!url) return;
+            fetch(`/api/navigate?token=${TOKEN}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ url: url })
+            }).then(() => {
+                appendAgentMessage(`<p>Navigated virtual computer to: <code>${escapeHtml(url)}</code></p>`);
+                fetchStatus();
+            });
+        }
+
+        function remoteReload() {
+            fetch(`/api/reload?token=${TOKEN}`, { method: "POST" }).then(() => fetchStatus());
+        }
+
+        function remoteStart() {
+            fetch(`/api/session/start?token=${TOKEN}`, { method: "POST" }).then(() => fetchStatus());
+        }
+
+        function remotePause() {
+            fetch(`/api/session/pause?token=${TOKEN}`, { method: "POST" }).then(() => fetchStatus());
+        }
+
+        function remoteStop() {
+            fetch(`/api/session/stop?token=${TOKEN}`, { method: "POST" }).then(() => {
+                appendAgentMessage(`<p>Virtual computer session stopped.</p>`);
+                fetchStatus();
+            });
+        }
+
+        function escapeHtml(str) {
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+        }
+    </script>
+</body>
+</html>

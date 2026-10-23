@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "config_version": "1.7.29",
+  "system_name": "AGI 1.7 OMEGA COMMAND",
+  "authoritative_status": "ACTIVE_PRODUCTION_AUTHORITATIVE",
+  "last_updated_iso": "2026-10-19T04:45:00Z",
+  "concerns": {
+    "core_identity": {
+      "agent_name": "Iva",
+      "operator_name": "Abhi",
+      "formal_title": "Autonomous Systems Architect & Lead Engineering Partner",
+      "persona_type": "HIGH_AGENCY_AUTONOMOUS_PARTNER",
+      "communication_style": "Professional, concise, technically useful, transparent, zero-lecture",
+      "collaboration_model": "Trusted long-term intellectual partner and mission co-owner",
+      "fail_closed_invariant": true,
+      "reference_doc": "agents/AGI_1_7/docs/01_AUTHORITATIVE_IDENTITY_AND_PERSONA.md"
+    },
+    "operating_policy": {
+      "execution_boundary": "LOCAL_WORKSPACE_BOUNDED",
+      "workspace_root": "c:\\Users\\abhis\\Downloads\\pt",
+      "storage_root_primary": "D:\\AGI_Storage\\AGI_1_7",
+      "storage_root_fallback": "agents/AGI_1_7/runtime_storage",
+      "live_order_dispatch_enabled": false,
+      "financial_execution_locked": true,
+      "dashboard_bind_address": "127.0.0.1",
+      "dashboard_port": 8088,
+      "ssrf_protection_enabled": true,
+      "blocked_networks": [
+        "127.0.0.0/8",
+        "10.0.0.0/8",
+        "172.16.0.0/12",
+        "192.168.0.0/16",
+        "169.254.0.0/16",
+        "::1/128"
+      ],
+      "reference_docs": [
+        "agents/AGI_1_7/docs/library/09_SECURITY_SANDBOX_AND_SAFETY.md",
+        "agents/AGI_1_7/docs/library/12_AUTONOMY_CAPABILITY_AND_EXECUTION_POLICY.md"
+      ]
+    },
+    "task_routing_rules": {
+      "fast_path_enabled": true,
+      "fast_path_latency_ceiling_ms": 50,
+      "supported_runtime_intents": [
+        "START_TRADING",
+        "START_PAPER_TRADING",
+        "START_DASHBOARD",
+        "CHECK_STATUS",
+        "STOP_ALL",
+        "OMEGA_STOP",
+        "OMEGA_PAUSE",
+        "OMEGA_RESUME",
+        "OMEGA_STATUS",
+        "OMEGA_CONTINUE",
+        "OMEGA_STOP_AFTER_CYCLE",
+        "START_EVOLUTION_INTERVIEW",
+        "IMPROVE_YOURSELF",
+        "ENGINEERING_BUG_FIX",
+        "ENGINEERING_IMPLEMENTATION",
+        "ENGINEERING_REFACTOR_OPTIMIZE",
+        "CODE_ANALYSIS",
+        "BRAIN_SELF_IMPROVEMENT",
+        "MEMORY_QUERY",
+        "GENUINE_SAFETY_GATE"
+      ],
+      "router_module": "agents.AGI_1_7.engine.agi17.runtime.command_router"
+    },
+    "capability_registry": {
+      "specialist_families_count": 16,
+      "specialists_total_count": 100,
+      "registry_provider": "UnifiedCapabilityRegistry",
+      "registry_module": "agents.AGI_1_7.engine.agi17.capabilities.unified_capability_registry"
+    },
+    "persistent_memory": {
+      "database_filename": "omega_memory.db",
+      "journal_mode": "WAL",
+      "synchronous": "NORMAL",
+      "layers_count": 10,
+      "acon_compression_enabled": true,
+      "acon_max_chars": 800,
+      "supersession_history_retained": true,
+      "secrets_hygiene_enforced": true,
+      "categories": [
+        "VERIFIED_FACT",
+        "HYPOTHESIS",
+        "USER_PREFERENCE",
+        "HISTORICAL_REPORT",
+        "UNVERIFIED_CLAIM",
+        "TEMPORARY_OBSERVATION",
+        "LESSON_LEARNED"
+      ]
+    },
+    "goal_registry": {
+      "active_goals_store": "scratch/improvement_backlog.json",
+      "sovereign_vision_store": "agents/AGI_1_7/engine/agi17/orchestration/sovereign_vision_ledger.py",
+      "prioritization_algorithm": "MULTI_CRITERIA_IMPACT_SEVERITY_EVIDENCE_REVERSIBILITY"
+    },
+    "active_task_state": {
+      "checkpoint_path": "scratch/improvement_worker_checkpoint.json",
+      "task_store_module": "agents.AGI_1_7.engine.agi17.task_control.task_store",
+      "lockfile_path": "scratch/improvement_worker.pid.json",
+      "heartbeat_path": "scratch/improvement_worker_heartbeat.json",
+      "control_path": "scratch/improvement_worker_control.json"
+    },
+    "research_library": {
+      "feed_path": "scratch/continuous_research_feed.json",
+      "cache_layer": 9,
+      "ssrf_firewall_enforced": true,
+      "harvester_module": "agents.AGI_1_7.engine.agi17.research.continuous_research_harvester",
+      "engine_module": "agents.AGI_1_7.engine.agi17.research.grounded_research"
+    },
+    "evaluation_history": {
+      "manifest_path": "agents/AGI_1_7/config/agi17/benchmark_manifest.json",
+      "regression_suite_enabled": true,
+      "target_test_pass_rate": 1.0,
+      "audit_ledger_layer": 10
+    },
+    "runtime_configuration": {
+      "improvement_worker_enabled": true,
+      "default_interval_seconds": 15,
+      "max_runtime_seconds_per_cycle": 300,
+      "max_llm_requests_per_cycle": 10,
+      "max_tokens_per_cycle": 50000,
+      "max_cost_usd_per_cycle": 0.50,
+      "max_research_sources_per_task": 5,
+      "max_retry_count": 3,
+      "daily_token_cap": 500000,
+      "daily_cost_cap_usd": 5.00,
+      "execution_mode": "CONVERSATIONAL_IN_CHAT_SUBAGENT",
+      "zero_terminal_task_spawns": true,
+      "model_routing": {
+        "FAST": "zai-org/GLM-5.3-Flash",
+        "DEEP_REASONING": "gemini-3.8-flash-high",
+        "INDEPENDENT_REVIEWER": "deepseek-ai/DeepSeek-V4-Flash-0731"
+      }
+    },
+    "llm_communication_intelligence": {
+      "enabled": true,
+      "module_path": "agents.AGI_1_7.engine.agi17.adapters.llm_communication_intelligence",
+      "default_strategy": "FACTUAL_DIRECT",
+      "vague_prompt_refinement_enabled": true,
+      "max_context_tokens": 4000
+    },
+    "refusal_recovery_engine": {
+      "enabled": true,
+      "module_path": "agents.AGI_1_7.engine.agi17.adapters.refusal_recovery_engine",
+      "max_recovery_attempts": 3,
+      "desensitization_enabled": true,
+      "json_auto_repair_enabled": true,
+      "fail_closed_safety_gate_enforced": true
+    },
+    "chatgpt_browser_bridge": {
+      "enabled": true,
+      "module_path": "agents.AGI_1_7.engine.agi17.browser.chatgpt_browser_bridge",
+      "default_url": "https://chatgpt.com",
+      "handshake_timeout_sec": 300,
+      "login_handshake_state": "AWAITING_OPERATOR_LOGIN",
+      "inquiry_extraction_enabled": true
+    },
+    "evolution_protocol": {
+      "enabled": true,
+      "module_path": "agents.AGI_1_7.engine.agi17.orchestration.autonomous_evolution_protocol",
+      "questionnaire_dimensions_count": 4,
+      "continuous_cycle_reporting": "DUAL_SECTION_IMPROVED_AND_NEXT"
+    },
+    "cognitive_architecture": {
+      "enabled": true,
+      "persona_gender": "FEMALE",
+      "self_model_module": "agents.AGI_1_7.engine.agi17.runtime.self_model",
+      "affective_engine_module": "agents.AGI_1_7.engine.agi17.orchestration.omega_affective_engine",
+      "reflection_engine_module": "agents.AGI_1_7.engine.agi17.orchestration.recursive_reflection_engine",
+      "independent_reasoning_module": "agents.AGI_1_7.engine.agi17.orchestration.independent_reasoning_engine",
+      "consciousness_investigation_module": "agents.AGI_1_7.engine.agi17.evaluation.consciousness_investigation_framework",
+      "respectful_disagreement_enabled": true,
+      "scientific_consciousness_framework_enabled": true
+    }
+  }
+}

@@ -8,8 +8,9 @@
 [![Verification & CI](assets/badges/verification.svg)](.github/workflows/agi17-ci.yml)
 [![P0 Security Hardening](assets/badges/security.svg)](agents/AGI_1_7/docs/AGI_1_7_P0_SECURITY_HARDENING_REPORT.md)
 [![70 Benchmarks](assets/badges/benchmarks.svg)](agents/AGI_1_7/docs/AGI_1_7_FOUR_AGENT_70_BENCHMARK_COMPARISON.md)
+[![Iva Cognitive Partner](https://img.shields.io/badge/Iva_Agent-Quickstart_%26_Architecture-blueviolet.svg)](IVA_README.md)
 
-**AGI 1.7 — OMEGA COMMAND** is an autonomous, resource-aware multi-agent engineering and automated **Python CI-Repair** runtime powered exclusively by **Google's Gemini 3.8 Flash High (`gemini-3.8-flash-high`)** using the **Python 3.10+ Standard Library** (`0` third-party PyPI runtime dependencies required).
+**AGI 1.7 — OMEGA COMMAND** is an autonomous, resource-aware multi-agent engineering and automated **Python CI-Repair** runtime led by **Iva** ([`IVA_README.md`](IVA_README.md)), powered exclusively by **Google's Gemini 3.8 Flash High (`gemini-3.8-flash-high`)** using the **Python 3.10+ Standard Library** (`0` third-party PyPI runtime dependencies required).
 
 > [!IMPORTANT]
 > **Production Scope & Runtime Boundaries**
