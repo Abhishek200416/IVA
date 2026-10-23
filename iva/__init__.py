@@ -29,6 +29,7 @@ from agents.IVA.engine.agi17.adapters.agi_17_adapter import AGI17Adapter
 from agents.IVA.engine.agi17.adapters.model_adapter import ModelAdapter
 from agents.IVA.engine.agi17.adapters.universal_api_provider import UniversalAPIProvider, load_repo_dotenv
 from agents.IVA.engine.agi17.orchestration.ci_repair_agent import CIRepairAgent
+from agents.IVA.engine.agi17.runtime.terminal_client import TerminalClient, run_terminal_session
 
 __all__ = [
     "AuthoritativeBrainConfig",
@@ -43,5 +44,7 @@ __all__ = [
     "UniversalAPIProvider",
     "load_repo_dotenv",
     "CIRepairAgent",
+    "TerminalClient",
+    "run_terminal_session",
     "__version__",
 ]

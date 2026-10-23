@@ -170,21 +170,58 @@ Iva's persistent memory is organized into 10 structured layers in SQLite WAL mod
 
 ---
 
-## 🎙️ Running Iva: 4 Multi-Modal Interfaces
+## 💻 Running Iva: Primary Interactive Terminal & Multi-Modal Surfaces
 
-Choose the interface that fits your workflow:
+Iva is engineered first and foremost for the **terminal** — pure standard library console interaction suitable for **any device** (Linux servers, SSH terminals, Raspberry Pi, macOS, Windows CMD/PowerShell, headless Docker containers) with **zero GUI or voice popups required**.
 
-### 1. Desktop Voice HUD & Always-On-Top System Overlay
-Talk to Iva directly with interactive voice and a floating system HUD:
-```bash
-python talk_to_iva.py
-```
-*(On Windows, you can simply double-click `launch_iva_call.bat`!)*
-
-### 2. Autonomous Multi-Agent Terminal CLI
-Run the full IVA task control plane, mission decomposition DAG, and 100-specialist routing engine:
+### 1. 🌟 Interactive Terminal CLI (Recommended for All Devices)
+Launch the pure, distraction-free interactive terminal session:
 ```bash
 python run_iva.py
+```
+*(No voice popup, no GUI window — runs 100% in your console on any OS)*
+
+#### Terminal Commands:
+- `iva> help` — View interactive command guide and prompt examples
+- `iva> specialists` — Inspect the 100 embedded specialist contracts across 16 families
+- `iva> plugins` — Verify self-contained status (zero external plugins needed)
+- `iva> status` — Check active LLM engine, memory location, and safety gates
+- `iva> profile` — Display hardware capacity and system resources
+- `iva> repair <dir>` — Run automated Python CI repair on target directory
+- `iva> <your prompt>` — Ask any natural language question or assign engineering tasks
+
+#### Single-Shot Command Execution:
+You can also run one-shot commands or prompts directly without entering the interactive loop:
+```bash
+python run_iva.py status
+python run_iva.py specialists
+python run_iva.py "Explain SVI volatility smile calibration"
+```
+
+---
+
+## 🛡️ Zero External Plugins Mandate — 100% Self-Contained
+
+When using IVA, you **DO NOT NEED** to install separate external agent frameworks, plugins, or third-party skill packs:
+- ❌ **NO separate 'Ponytail' plugin needed**: Minimal-diff AST refactoring (`swe_patch_minimizer`, `swe_ast_refactoring_specialist`) is already built-in.
+- ❌ **NO separate 'Agency' / 'AutoGPT' / 'CrewAI' frameworks needed**: Multi-agent DAG orchestration, task dependency management, and lifecycle coordination are natively embedded.
+- ❌ **NO separate 'Yux Pro Max' or external prompt packs needed**: All 100 specialist contracts have pre-compiled, mathematically rigorous prompt schemas embedded in [`registry.json`](agents/IVA/ecosystem/agent_registry/registry.json).
+
+### Everything Built Natively Inside IVA:
+1. **100 Embedded Specialists across 16 Families**: Software engineering, testing/QA, OS/terminal ops, volatility modeling, browser automation, security, math, physics, biology, and storage.
+2. **Automated Python CI-Repair Agent (`CIRepairAgent`)**: Sandboxed bug reproduction, minimal patch synthesis, and zero-regression testing.
+3. **10-Layer Cognitive Memory (`omega_memory.db`)**: Structured SQLite WAL memory stored directly on your own system.
+4. **Universal API Provider**: Standard library REST client supporting Google Gemini and OpenAI-compatible endpoints on any platform.
+
+---
+
+### 2. Automated Python CI-Repair Agent (`CIRepairAgent`)
+Automatically diagnose failing test suites in a disposable Docker container, synthesize minimal-diff patches, and verify zero regressions:
+```bash
+python run_iva.py \
+  --ci-repair-dir agents/IVA/live_code_mission_workspace \
+  --module-filename token_bucket.py \
+  --prompt "Fix failing unit tests with minimal diff"
 ```
 
 ### 3. Real-Time Observability Web Dashboard
@@ -194,13 +231,11 @@ python agents/IVA/ui/standalone_dashboard_server.py
 ```
 *Open your browser to [http://127.0.0.1:8088](http://127.0.0.1:8088).*
 
-### 4. Automated Python CI-Repair Agent (`CIRepairAgent`)
-Automatically diagnose failing test suites in a disposable Docker container, synthesize minimal-diff patches, and verify zero regressions:
+### 4. Optional Desktop Voice HUD (For Desktop Workstations)
+If you are on a desktop workstation and want interactive voice and a floating system HUD:
 ```bash
-python run_iva.py \
-  --ci-repair-dir agents/IVA/live_code_mission_workspace \
-  --module-filename token_bucket.py \
-  --prompt "Fix failing unit tests with minimal diff"
+python talk_to_iva.py
+# (On Windows, double-click: launch_iva_call.bat)
 ```
 
 ---

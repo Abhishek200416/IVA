@@ -225,6 +225,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--query", default=None, help="Process conversational or operational query through CommandRouter and LLM communication layer")
     parser.add_argument("--api-key", default=None, help="Universal LLM API Key (Google Gemini, OpenAI, Groq, OpenRouter). If omitted, auto-discovered from .env or environment variables.")
     parser.add_argument("--model", default=None, help="LLM model name override (e.g. gemini-2.5-flash, gemini-2.0-flash, gpt-4o, etc.)")
+    parser.add_argument(
+        "-i", "--interactive", "--cli",
+        dest="interactive",
+        action="store_true",
+        help="Launch the interactive terminal session with Iva (zero GUI/voice overlays, pure terminal CLI)",
+    )
     parser.add_argument("--detached-pid-file", default=None, help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
 
@@ -330,6 +336,39 @@ def main(argv: list[str] | None = None) -> int:
 
     storage_root = _resolve_storage_root(args.storage_root)
 
+    if not args.prompt and args.command and args.command.lower() not in (
+        "trading", "go-real", "goreal", "live", "worker-stop", "worker-pause", "worker-resume", "omega-stop", "omega-pause", "omega-resume"
+    ):
+        cmd_low = args.command.lower().strip()
+        from agents.IVA.engine.agi17.runtime.terminal_client import TerminalClient, run_single_prompt
+        adapter = AGI17Adapter(storage_root=storage_root, api_key=args.api_key, model=args.model)
+        tc = TerminalClient(adapter=adapter, api_key=args.api_key, model=args.model, storage_root=storage_root)
+        if cmd_low in ("specialists", "specialist", "skills"):
+            tc.print_specialists()
+            return 0
+        elif cmd_low in ("plugins", "plugin", "agency", "ponytail"):
+            tc.print_plugins_notice()
+            return 0
+        elif cmd_low in ("status", "health"):
+            tc.print_status()
+            return 0
+        elif cmd_low in ("profile", "hardware"):
+            tc.print_profile()
+            return 0
+        elif cmd_low in ("help", "?"):
+            tc.print_help()
+            return 0
+        elif not args.code_task_dir and not args.ci_repair_dir:
+            return run_single_prompt(
+                args.command,
+                adapter=adapter,
+                api_key=args.api_key,
+                model=args.model,
+                storage_root=storage_root,
+            )
+        else:
+            args.prompt = args.command
+
     # Normal CLI runs the complete coding workflow by default whenever a prompt is given
     # unless --text-only or --profile-only or --ci-repair-dir is specified.
     effective_code_dir: str | None = args.code_task_dir
@@ -395,6 +434,24 @@ def main(argv: list[str] | None = None) -> int:
         )
         print(json.dumps(repair_res, indent=2, default=str), flush=True)
         return ci_exit_code
+
+    # Interactive Terminal Session Launch (Phase 17.30)
+    # Triggered explicitly via -i / --interactive / --cli, OR when run without arguments on an interactive terminal (isatty)
+    is_interactive_terminal = getattr(args, "interactive", False) or (
+        not args.prompt
+        and not args.profile_only
+        and not args.ci_repair_dir
+        and hasattr(sys.stdin, "isatty")
+        and sys.stdin.isatty()
+    )
+    if is_interactive_terminal and not args.profile_only:
+        from agents.IVA.engine.agi17.runtime.terminal_client import run_terminal_session
+        return run_terminal_session(
+            adapter=adapter,
+            api_key=args.api_key,
+            model=args.model,
+            storage_root=storage_root,
+        )
 
     if args.profile_only or not args.prompt:
         profile = adapter.profiler.build_full_profile()

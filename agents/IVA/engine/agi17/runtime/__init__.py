@@ -19,6 +19,7 @@ from .omega_control_center import (
     get_orchestration_service,
     get_readiness_assessor,
 )
+from .terminal_client import TerminalClient, run_terminal_session
 
 __all__ = [
     "CommandRouter",
@@ -42,4 +43,6 @@ __all__ = [
     "get_agent_catalog",
     "get_orchestration_service",
     "get_readiness_assessor",
+    "TerminalClient",
+    "run_terminal_session",
 ]
