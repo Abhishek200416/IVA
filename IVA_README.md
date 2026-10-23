@@ -120,9 +120,9 @@ python talk_to_iva.py
 *(On Windows, you can simply double-click `launch_iva_call.bat`!)*
 
 ### 2. Autonomous Multi-Agent Terminal CLI
-Run the full AGI 1.7 task control plane, mission decomposition DAG, and 100-specialist routing engine:
+Run the full IVA task control plane, mission decomposition DAG, and 100-specialist routing engine:
 ```bash
-python agents/AGI_1_7/run_agi_17.py
+python run_iva.py
 ```
 
 ### 3. Real-Time Observability Web Dashboard
@@ -135,7 +135,7 @@ python agents/AGI_1_7/ui/standalone_dashboard_server.py
 ### 4. Automated Python CI-Repair Agent (`CIRepairAgent`)
 Automatically diagnose failing test suites in a disposable Docker container, synthesize minimal-diff patches, and verify zero regressions:
 ```bash
-python agents/AGI_1_7/run_agi_17.py \
+python run_iva.py \
   --ci-repair-dir agents/AGI_1_7/live_code_mission_workspace \
   --module-filename token_bucket.py \
   --prompt "Fix failing unit tests with minimal diff"
@@ -149,13 +149,13 @@ Verify that Iva and the multi-agent runtime are functioning with 100% test integ
 
 ```bash
 # Verify Iva's Cognitive Architecture & Identity (100% Passing)
-python -m unittest agents/AGI_1_7/tests/test_iva_cognitive_architecture_and_identity.py
+python -m unittest tests/test_iva_cognitive_architecture_and_identity.py
 
 # Verify Zero-Leak Security & Production Hardening
-python -m unittest agents/AGI_1_7/tests/test_production_hardening_sprint.py
+python -m unittest tests/test_production_hardening_sprint.py
 
 # Verify Unit Engine Suite
-python -m unittest agents/AGI_1_7/tests/unit/test_agi17_unit_suite.py
+python -m unittest tests/unit/test_iva_unit_suite.py
 ```
 
 ---

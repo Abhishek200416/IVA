@@ -1,20 +1,20 @@
-# AGI 1.7 — OMEGA COMMAND
-## Resource-Aware, Sandboxed Multi-Agent Coding & Python CI-Repair Runtime (`gemini-3.8-flash-high`)
+# 🌟 IVA — Autonomous Cognitive Engineering Partner & Multi-Agent Runtime
+## Resource-Aware, Sandboxed Multi-Agent Coding, System Automation & Quantitative Intelligence (`gemini-3.8-flash-high`)
 
-[![Runtime](assets/badges/runtime.svg)](agents/AGI_1_7/run_agi_17.py)
+[![Runtime](assets/badges/runtime.svg)](run_iva.py)
 [![Sole Model](assets/badges/model.svg)](agents/AGI_1_7/engine/agi17/adapters/model_adapter.py)
 [![Sandbox](assets/badges/sandbox.svg)](agents/AGI_1_7/engine/agi17/process_supervision/sandbox_runner.py)
 [![Specialist Contracts](assets/badges/specialists.svg)](agents/AGI_1_7/ecosystem/agent_registry/registry.json)
-[![Verification & CI](assets/badges/verification.svg)](.github/workflows/agi17-ci.yml)
+[![Verification & CI](assets/badges/verification.svg)](.github/workflows/iva-ci.yml)
 [![P0 Security Hardening](assets/badges/security.svg)](agents/AGI_1_7/docs/AGI_1_7_P0_SECURITY_HARDENING_REPORT.md)
-[![70 Benchmarks](assets/badges/benchmarks.svg)](agents/AGI_1_7/docs/AGI_1_7_FOUR_AGENT_70_BENCHMARK_COMPARISON.md)
+[![Tests](https://img.shields.io/badge/Test_Suite-tests%2F-success.svg)](tests/)
 [![Iva Cognitive Partner](https://img.shields.io/badge/Iva_Agent-Quickstart_%26_Architecture-blueviolet.svg)](IVA_README.md)
 
-**AGI 1.7 — OMEGA COMMAND** is an autonomous, resource-aware multi-agent engineering and automated **Python CI-Repair** runtime led by **Iva** ([`IVA_README.md`](IVA_README.md)), powered exclusively by **Google's Gemini 3.8 Flash High (`gemini-3.8-flash-high`)** using the **Python 3.10+ Standard Library** (`0` third-party PyPI runtime dependencies required).
+**IVA** is an autonomous, resource-aware multi-agent engineering partner and automated **Python CI-Repair** runtime led by **Iva** ([`IVA_README.md`](IVA_README.md)), powered exclusively by **Google's Gemini 3.8 Flash High (`gemini-3.8-flash-high`)** using the **Python 3.10+ Standard Library** (`0` third-party PyPI runtime dependencies required).
 
 > [!IMPORTANT]
 > **Production Scope & Runtime Boundaries**
-> - **Orchestration, Sandboxed Verification & Task Runtime:** AGI 1.7 provides multi-agent orchestration, transactional SQLite WAL task control, disposable Docker sandbox isolation, and cross-session persistent memory wrapping `gemini-3.8-flash-high` via [`ModelAdapter`](agents/AGI_1_7/engine/agi17/adapters/model_adapter.py). It is **not** a custom pre-trained or fine-tuned base LLM.
+> - **Orchestration, Sandboxed Verification & Task Runtime:** IVA provides multi-agent orchestration, transactional SQLite WAL task control, disposable Docker sandbox isolation, and cross-session persistent memory wrapping `gemini-3.8-flash-high` via [`ModelAdapter`](agents/AGI_1_7/engine/agi17/adapters/model_adapter.py). It is **not** a custom pre-trained or fine-tuned base LLM.
 > - **1 Unified Entrypoint Managing 100 Specialist Contracts:** Coordinates **100 validated specialist agent contracts** across 16 functional families ([`registry.json`](agents/AGI_1_7/ecosystem/agent_registry/registry.json)), embedded inside [`agents/AGI_1_7/`](agents/AGI_1_7/) and routed dynamically with minimal-diff railings via [`EcosystemCoordinator`](agents/AGI_1_7/ecosystem/agent_registry/ecosystem_coordinator.py).
 > - **Production CI-Repair Specialist (`CIRepairAgent`):** Includes a dedicated **Automated Python CI-Repair Agent** ([`ci_repair_agent.py`](agents/AGI_1_7/engine/agi17/orchestration/ci_repair_agent.py), [`PRODUCT_SPEC_PYTHON_CI_REPAIR.md`](agents/AGI_1_7/docs/PRODUCT_SPEC_PYTHON_CI_REPAIR.md)) that reproduces failing `unittest` suites inside a network-isolated disposable container, synthesizes minimal root-cause patches under strict cost ceilings, verifies zero test regressions, and stages human-reviewable PR payloads.
 
@@ -850,7 +850,7 @@ After running setup, you can launch Iva across three primary interaction surface
   ```
 - **Autonomous Terminal Multi-Agent CLI:**
   ```bash
-  python agents/AGI_1_7/run_agi_17.py
+  python run_iva.py
   ```
 - **Real-Time Observability Web Dashboard (port 8088):**
   ```bash
@@ -859,15 +859,18 @@ After running setup, you can launch Iva across three primary interaction surface
 
 ---
 
-### 3. Run the Complete Verification Suite (`88+` Tests)
+### 3. Run the Complete Verification Suite (`tests/`)
+All test suites are cleanly organized inside the root `tests/` directory:
 ```bash
 python -m unittest \
-  agents/AGI_1_7/tests/test_iva_cognitive_architecture_and_identity.py \
-  agents/AGI_1_7/tests/test_p0_security_and_real_docker.py \
-  agents/AGI_1_7/tests/test_production_hardening_sprint.py \
-  agents/AGI_1_7/tests/unit/test_agi17_unit_suite.py \
-  agents/AGI_1_7/tests/integration/test_agi17_integration_suite.py \
-  agents/AGI_1_7/tests/end_to_end/test_agi17_e2e_demos.py -v
+  tests/test_iva_cognitive_architecture_and_identity.py \
+  tests/test_production_hardening_sprint.py \
+  tests/test_p0_security_and_real_docker.py \
+  tests/test_model_disclosure_boundary.py \
+  tests/test_finance_safety_invariants.py \
+  tests/unit/test_iva_unit_suite.py \
+  tests/integration/test_iva_integration_suite.py \
+  tests/end_to_end/test_iva_e2e_demos.py -v
 ```
 
 ### 4. Optional Package Installation (`pyproject.toml`)
@@ -878,12 +881,12 @@ python -m pip install -e .
 
 ### 5. Run Capability Profiler & Crash Reconciliation
 ```bash
-python agents/AGI_1_7/run_agi_17.py --profile-only
+python run_iva.py --profile-only
 ```
 
 ### 6. Run Multi-Specialist Coding, Sandboxed Testing & Self-Healing
 ```bash
-python agents/AGI_1_7/run_agi_17.py \
+python run_iva.py \
   --title "Interval Merger" \
   --prompt "Implement IntervalMerger in interval_merger.py" \
   --code-task-dir agents/AGI_1_7/live_code_mission_workspace \
@@ -893,7 +896,7 @@ python agents/AGI_1_7/run_agi_17.py \
 
 ### 7. Run Detached Background Execution (Daemon Mode)
 ```bash
-python agents/AGI_1_7/run_agi_17.py \
+python run_iva.py \
   --detach \
   --task-id TASK-BG-001 \
   --prompt "Implement and verify cryptographic token bucket"

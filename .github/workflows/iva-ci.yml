@@ -1,4 +1,4 @@
-name: AGI 1.7 OMEGA COMMAND — Verification & CI Suite
+name: IVA — Verification & CI Suite
 
 on:
   push:
@@ -19,7 +19,7 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 jobs:
-  verify-agi-1-7-runtime:
+  verify-iva-runtime:
     name: Verify 100 Specialists, Sandbox Security & Runtime Tests (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -29,7 +29,7 @@ jobs:
         python-version: ["3.12"]
 
     steps:
-      - name: Checkout AGI-1.7V Repository
+      - name: Checkout Repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Set up Python ${{ matrix.python-version }}
@@ -41,16 +41,19 @@ jobs:
         run: python -m pip install -e .
 
       - name: Verify Zero Secret Leaks & Zero Hardcoded Local Paths
-        run: python -m unittest agents/AGI_1_7/tests/test_production_hardening_sprint.py -v
+        run: python -m unittest tests/test_production_hardening_sprint.py -v
+
+      - name: Run Iva Cognitive Architecture & Identity Verification Suite
+        run: python -m unittest tests/test_iva_cognitive_architecture_and_identity.py -v
 
       - name: Run P0 Production Security Hardening & Docker Sandbox Tests
-        run: python -m unittest agents/AGI_1_7/tests/test_p0_security_and_real_docker.py -v
+        run: python -m unittest tests/test_p0_security_and_real_docker.py -v
 
       - name: Run Adversarial Model-Disclosure Boundary & Secret Redaction Tests
-        run: python -m unittest agents/AGI_1_7/tests/test_model_disclosure_boundary.py -v
+        run: python -m unittest tests/test_model_disclosure_boundary.py -v
 
       - name: Run Finance Safety Invariants & Pre-Trade RMS Control Tests
-        run: python -m unittest agents/AGI_1_7/tests/test_finance_safety_invariants.py -v
+        run: python -m unittest tests/test_finance_safety_invariants.py -v
 
       - name: Verify 100 Specialist Contracts & Ecosystem Sync (Dry-Run, Zero Home Mutation)
         run: python agents/AGI_1_7/scripts/sync_ecosystem.py --dry-run
@@ -59,14 +62,14 @@ jobs:
         run: |
           python -c "from agents.AGI_1_7.ecosystem.agent_registry.ecosystem_coordinator import EcosystemCoordinator; c = EcosystemCoordinator(); inv = c.get_inventory_summary(); print(inv); assert inv['embedded_specialists_count'] == 100; assert inv['agency_profiles_bridged_count'] >= 76; assert inv['mcp_servers_count'] == 21; assert inv['plugin_suites_count'] == 11; assert inv['workflow_skills_count'] == 74"
 
-      - name: Run AGI 1.7 Unit Test Suite (26 Tests)
-        run: python -m unittest agents/AGI_1_7/tests/unit/test_agi17_unit_suite.py -v
+      - name: Run IVA Unit Test Suite (26 Tests)
+        run: python -m unittest tests/unit/test_iva_unit_suite.py -v
 
-      - name: Run AGI 1.7 Integration Test Suite (16 Tests)
-        run: python -m unittest agents/AGI_1_7/tests/integration/test_agi17_integration_suite.py -v
+      - name: Run IVA Integration Test Suite (16 Tests)
+        run: python -m unittest tests/integration/test_iva_integration_suite.py -v
 
-      - name: Run AGI 1.7 End-to-End Demo Test Suite (7 Tests)
-        run: python -m unittest agents/AGI_1_7/tests/end_to_end/test_agi17_e2e_demos.py -v
+      - name: Run IVA End-to-End Demo Test Suite (7 Tests)
+        run: python -m unittest tests/end_to_end/test_iva_e2e_demos.py -v
 
       - name: Run Generated Workspace Unit Test Suites (TokenBucket & IntervalMerger)
         run: |
@@ -74,13 +77,13 @@ jobs:
           python -m unittest discover -s agents/AGI_1_7/demo_workspace/src -t agents/AGI_1_7/demo_workspace/src -p "test_*.py" -v
 
       - name: Run CLI Startup & Capability Profile Smoke Check
-        run: python agents/AGI_1_7/run_agi_17.py --profile-only
+        run: python run_iva.py --profile-only
 
   verify-real-docker-sandbox-linux:
     name: Real Docker Engine Container Isolation & Security Proof (ubuntu-latest)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout AGI-1.7V Repository
+      - name: Checkout Repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Set up Python 3.12
@@ -99,5 +102,4 @@ jobs:
       - name: Execute Real Docker Engine Integration & Adversarial Sandbox Proofs
         env:
           AGI17_REQUIRE_REAL_DOCKER: "1"
-        run: python -m unittest agents.AGI_1_7.tests.test_p0_security_and_real_docker.TestP0RealDockerEngineIntegration -v
-
+        run: python -m unittest tests.test_p0_security_and_real_docker.TestP0RealDockerEngineIntegration -v
