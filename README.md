@@ -835,13 +835,56 @@ python setup_iva.py
 **What `setup_iva.py` automatically handles for your local system:**
 1. **Runtime Verification:** Checks Python 3.10+ standard library compatibility.
 2. **Environment Configuration:** Automatically creates a safe `.env` file from `.env.example` if not present.
-3. **Local Cognitive Memory Provisioning:** Automatically initializes a fresh, cross-platform SQLite WAL memory database (`omega_memory.db`) directly on **your own system** at `~/.iva/memory/omega_memory.db` (or custom directory set via `OMEGA_MEMORY_DIR`). Sets up all 10 schema layers and seeds baseline cognitive identity.
-4. **100-Specialist Registry Audit:** Validates 100 specialist contracts across all 16 functional families.
-5. **Physical Safety Gate Audit:** Confirms fail-closed safety invariant (`LIVE_ORDER_DISPATCH_ENABLED = False`).
+3. **API Key Discovery & Diagnostic Audit:** Scans `.env` and environment variables for Universal API Keys (`GEMINI_API_KEY`, `GOOGLE_API_KEY`, `OPENAI_API_KEY`).
+4. **Local Cognitive Memory Provisioning:** Automatically initializes a fresh, cross-platform SQLite WAL memory database (`omega_memory.db`) directly on **your own system** at `~/.iva/memory/omega_memory.db` (or custom directory set via `OMEGA_MEMORY_DIR`). Sets up all 10 schema layers and seeds baseline cognitive identity.
+5. **100-Specialist Registry Audit:** Validates 100 specialist contracts across all 16 functional families.
+6. **Physical Safety Gate Audit:** Confirms fail-closed safety invariant (`LIVE_ORDER_DISPATCH_ENABLED = False`).
 
 ---
 
-### 2. Run Iva Multi-Modal Interfaces
+### 2. Universal API Key Setup (Run IVA Anywhere — Cloud, Server, or Local)
+
+IVA supports **Universal Access**: it is completely decoupled from any specific host IDE or proprietary desktop tool. You can run IVA on **any server, Docker container, cloud VM, or developer laptop** using standard API keys.
+
+#### Where to Configure Your API Key:
+
+- **In the `.env` file (Recommended):**
+  Open `.env` (automatically created by `setup_iva.py`) and enter your key:
+  ```bash
+  # Google Gemini API Key (Recommended - Free tier available at https://aistudio.google.com/app/apikey)
+  GEMINI_API_KEY="AIzaSyYourGeminiAPIKeyHere"
+
+  # Optional Model Override:
+  # GEMINI_MODEL="gemini-2.5-flash"
+
+  # Or OpenAI-Compatible APIs (DeepSeek, Groq, OpenRouter, Ollama):
+  # OPENAI_API_KEY="sk-YourOpenAIKeyHere"
+  # OPENAI_BASE_URL="https://api.openai.com/v1"
+  ```
+
+- **As an Environment Variable:**
+  ```bash
+  # Linux / macOS
+  export GEMINI_API_KEY="AIzaSyYourGeminiAPIKeyHere"
+
+  # Windows PowerShell
+  $env:GEMINI_API_KEY="AIzaSyYourGeminiAPIKeyHere"
+  ```
+
+- **Directly via CLI Flag:**
+  ```bash
+  python run_iva.py --api-key "AIzaSyYourGeminiAPIKeyHere" --title "Task" --prompt "Execute mission"
+  ```
+
+#### How to Obtain a Free Google Gemini API Key:
+1. Visit **Google AI Studio**: [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+2. Sign in with your Google account.
+3. Click **"Create API key"** and copy the key.
+4. Set it in `.env` as `GEMINI_API_KEY="AIzaSy..."` and run `python setup_iva.py`.
+
+---
+
+### 3. Run Iva Multi-Modal Interfaces
 After running setup, you can launch Iva across three primary interaction surfaces:
 - **Desktop Voice HUD & Always-On-Top Overlay:**
   ```bash
@@ -859,7 +902,7 @@ After running setup, you can launch Iva across three primary interaction surface
 
 ---
 
-### 3. Run the Complete Verification Suite (`tests/`)
+### 4. Run the Complete Verification Suite (`tests/`)
 All test suites are cleanly organized inside the root `tests/` directory:
 ```bash
 python -m unittest \
@@ -868,23 +911,24 @@ python -m unittest \
   tests/test_p0_security_and_real_docker.py \
   tests/test_model_disclosure_boundary.py \
   tests/test_finance_safety_invariants.py \
+  tests/unit/test_universal_api_provider.py \
   tests/unit/test_iva_unit_suite.py \
   tests/integration/test_iva_integration_suite.py \
   tests/end_to_end/test_iva_e2e_demos.py -v
 ```
 
-### 4. Optional Package Installation (`pyproject.toml`)
+### 5. Optional Package Installation (`pyproject.toml`)
 If you want to install optional UI voice, dashboard, or browser dependencies:
 ```bash
 python -m pip install -e .
 ```
 
-### 5. Run Capability Profiler & Crash Reconciliation
+### 6. Run Capability Profiler & Crash Reconciliation
 ```bash
 python run_iva.py --profile-only
 ```
 
-### 6. Run Multi-Specialist Coding, Sandboxed Testing & Self-Healing
+### 7. Run Multi-Specialist Coding, Sandboxed Testing & Self-Healing
 ```bash
 python run_iva.py \
   --title "Interval Merger" \
@@ -894,7 +938,7 @@ python run_iva.py \
   --test-filename test_interval_merger.py
 ```
 
-### 7. Run Detached Background Execution (Daemon Mode)
+### 8. Run Detached Background Execution (Daemon Mode)
 ```bash
 python run_iva.py \
   --detach \

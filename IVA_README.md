@@ -70,9 +70,71 @@ python setup_iva.py
 #### What `setup_iva.py` automatically accomplishes for YOUR system:
 1. **Python 3.10+ Runtime Check**: Confirms standard library environment.
 2. **Local Environment Initialization**: Automatically creates your safe `.env` from `.env.example` if not already present.
-3. **Local Cognitive Memory Self-Provisioning**: Generates a dedicated, fresh SQLite WAL persistent cognitive database (`omega_memory.db`) directly on **your own machine** (stored at `~/.iva/memory/` by default). Initializes all 10 schema layers and seeds Iva's cognitive bootstrap.
-4. **100-Specialist Contract Validation**: Verifies all 100 specialist subagent contracts across all 16 capability families.
-5. **Physical Safety Audit**: Audits the fail-closed invariant (`LIVE_ORDER_DISPATCH_ENABLED = False`) to guarantee zero unintended financial execution.
+3. **API Key Discovery & Diagnostic Audit**: Scans your local `.env` and environment variables for Universal API Keys (`GEMINI_API_KEY`, `GOOGLE_API_KEY`, or `OPENAI_API_KEY`).
+4. **Local Cognitive Memory Self-Provisioning**: Generates a dedicated, fresh SQLite WAL persistent cognitive database (`omega_memory.db`) directly on **your own machine** (stored at `~/.iva/memory/` by default). Initializes all 10 schema layers and seeds Iva's cognitive bootstrap.
+5. **100-Specialist Contract Validation**: Verifies all 100 specialist subagent contracts across all 16 capability families.
+6. **Physical Safety Audit**: Audits the fail-closed invariant (`LIVE_ORDER_DISPATCH_ENABLED = False`) to guarantee zero unintended financial execution.
+
+---
+
+## 🔑 Universal API Key Setup (Run Iva Anywhere — Cloud, Server, or Local)
+
+Iva supports **Universal Access**: she is completely decoupled from any specific host IDE or proprietary desktop tool. She can run on **any server, Docker container, cloud VM, or developer laptop** using a direct API key.
+
+### 1. Where to Put Your API Key
+
+You can configure your API key in **one of three simple ways**:
+
+#### Option A: In the `.env` file (Recommended)
+Copy `.env.example` to `.env` in the repository root (or run `python setup_iva.py` which automatically creates it for you), then open `.env` and paste your key:
+
+```bash
+# ==============================================================================
+# UNIVERSAL API KEYS — RUN IVA ANYWHERE (CLOUD, SERVER, OR LOCAL)
+# ==============================================================================
+# 1. Google Gemini API Key (Recommended - Free Tier Available):
+#    Get your free key at: https://aistudio.google.com/app/apikey
+GEMINI_API_KEY="AIzaSyYourGeminiAPIKeyHere"
+
+# Optional Model Override (Defaults to gemini-2.5-flash / gemini-2.0-flash):
+# GEMINI_MODEL="gemini-2.5-flash"
+
+# 2. OpenAI / Compatible APIs (DeepSeek, Groq, OpenRouter, Ollama):
+# OPENAI_API_KEY="sk-YourOpenAIKeyHere"
+# OPENAI_BASE_URL="https://api.openai.com/v1"
+# OPENAI_MODEL="gpt-4o"
+```
+
+#### Option B: As an Environment Variable
+Set the environment variable in your terminal session or cloud environment:
+```bash
+# Linux / macOS
+export GEMINI_API_KEY="AIzaSyYourGeminiAPIKeyHere"
+
+# Windows PowerShell
+$env:GEMINI_API_KEY="AIzaSyYourGeminiAPIKeyHere"
+
+# Windows Command Prompt
+set GEMINI_API_KEY=AIzaSyYourGeminiAPIKeyHere
+```
+
+#### Option C: Directly via CLI Flag
+Pass the API key directly when running Iva:
+```bash
+python run_iva.py --api-key "AIzaSyYourGeminiAPIKeyHere" --title "Mission Title" --prompt "Task description"
+```
+
+### 2. How to Obtain a Free Google Gemini API Key
+1. Visit **Google AI Studio**: [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+2. Sign in with your Google account.
+3. Click **"Create API key"** and copy the generated key.
+4. Paste it into your `.env` file as `GEMINI_API_KEY="AIzaSy..."`.
+5. Run `python setup_iva.py` — Iva will detect and verify your key automatically!
+
+### 3. Universal Execution Architecture
+- **100% Python Standard Library**: Iva uses built-in `urllib.request` for direct cloud REST communication. No third-party SDK (`google-generativeai`, `openai`, etc.) is required to run the core agent.
+- **Auto-Discovery**: `ModelAdapter` automatically detects `GEMINI_API_KEY`, `GOOGLE_API_KEY`, or `OPENAI_API_KEY` in `.env` or system environment variables.
+- **No Antigravity IDE Lock-in**: While Iva can interface with Antigravity when present, she runs standalone on headless Linux servers, GitHub Actions CI runners, Docker containers, and macOS/Windows workstations with standard API access.
 
 ---
 
