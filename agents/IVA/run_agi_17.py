@@ -75,6 +75,10 @@ def _spawn_detached(args: argparse.Namespace, storage_root: Path, effective_code
         cmd.append("--apply-approved-patch")
     if getattr(args, "test_pattern", None):
         cmd.extend(["--test-pattern", str(args.test_pattern)])
+    if getattr(args, "api_key", None):
+        cmd.extend(["--api-key", str(args.api_key)])
+    if getattr(args, "model", None):
+        cmd.extend(["--model", str(args.model)])
 
     creationflags = 0
     if os.name == "nt":
@@ -219,6 +223,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--worker-single-cycle", action="store_true", help="Run exactly one improvement cycle and exit")
     parser.add_argument("--worker-stop-after-cycle", action="store_true", help="Stop Improvement Worker after completing current cycle")
     parser.add_argument("--query", default=None, help="Process conversational or operational query through CommandRouter and LLM communication layer")
+    parser.add_argument("--api-key", default=None, help="Universal LLM API Key (Google Gemini, OpenAI, Groq, OpenRouter). If omitted, auto-discovered from .env or environment variables.")
+    parser.add_argument("--model", default=None, help="LLM model name override (e.g. gemini-2.5-flash, gemini-2.0-flash, gpt-4o, etc.)")
     parser.add_argument("--detached-pid-file", default=None, help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
 
@@ -333,7 +339,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.detach:
         return _spawn_detached(args, storage_root, effective_code_dir)
 
-    adapter = AGI17Adapter(storage_root=storage_root)
+    adapter = AGI17Adapter(storage_root=storage_root, api_key=args.api_key, model=args.model)
 
     startup = adapter.run_startup_reconciliation()
 

@@ -53,7 +53,7 @@ def check_python_version() -> bool:
     return True
 
 def setup_environment_file() -> Path:
-    print("\n[2/5] Checking Local Environment Configuration (.env)...")
+    print("\n[2/5] Checking Local Environment Configuration (.env & API Keys)...")
     env_file = REPO_ROOT / ".env"
     env_example = REPO_ROOT / ".env.example"
 
@@ -66,6 +66,23 @@ def setup_environment_file() -> Path:
         else:
             env_file.write_text("LIVE_ORDER_DISPATCH_ENABLED=false\n", encoding="utf-8")
             print("  ✅ Initialized baseline safe .env file.")
+
+    # Inspect Universal API Key access
+    from agents.IVA.engine.agi17.adapters.universal_api_provider import load_repo_dotenv
+    load_repo_dotenv()
+
+    gemini_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+    openai_key = os.environ.get("OPENAI_API_KEY")
+    if gemini_key:
+        print("  ✅ Universal Google Gemini API Key detected (Universal access active everywhere).")
+    elif openai_key:
+        print("  ✅ Universal OpenAI-Compatible API Key detected (Universal access active everywhere).")
+    else:
+        print("  ℹ️  No API key detected in .env yet. To run IVA anywhere on any machine:")
+        print("     1. Open '.env' in this directory.")
+        print("     2. Add your GEMINI_API_KEY=your_key (Get a free key: https://aistudio.google.com/app/apikey).")
+        print("     (Antigravity CLI and offline test harnesses remain available).")
+
     return env_file
 
 def initialize_local_memory() -> Path:

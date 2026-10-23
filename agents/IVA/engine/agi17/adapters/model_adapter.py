@@ -124,6 +124,8 @@ class ModelRequest:
     campaign_id: Optional[str] = None
     child_task_id: Optional[str] = None
     tier: str = "BENCHMARK_ITEM"
+    system_instruction: Optional[str] = None
+    model_override: Optional[str] = None
 
 
 @dataclass
@@ -267,7 +269,10 @@ class ModelAdapter:
         agy_path: Optional[str | Path] = None,
         config: Optional[ModelProviderConfig] = None,
         mock_provider: Optional[BaseModelProvider] = None,
+        api_provider: Optional[BaseModelProvider] = None,
         disclosure_policy: Optional[ModelDisclosurePolicy] = None,
+        api_key: Optional[str] = None,
+        model_name: Optional[str] = None,
     ) -> None:
         self.config = config or ModelProviderConfig()
         if not self.is_authorized_model(self.config.model_name, allow_federated=self.config.allow_federated_models):
@@ -279,6 +284,20 @@ class ModelAdapter:
         self.supervisor = supervisor or ProcessSupervisor()
         self.mock_provider = mock_provider
         self.disclosure_policy = disclosure_policy or ModelDisclosurePolicy.production_strict()
+
+        # Universal API Provider auto-discovery
+        if self.mock_provider is None:
+            if api_provider is not None:
+                self.api_provider = api_provider
+            else:
+                from .universal_api_provider import UniversalAPIProvider, load_repo_dotenv
+                load_repo_dotenv()
+                if api_key or UniversalAPIProvider.has_available_credentials():
+                    self.api_provider = UniversalAPIProvider(api_key=api_key, model_name=model_name)
+                else:
+                    self.api_provider = None
+        else:
+            self.api_provider = None
 
         self.agy_path = self.resolve_agy_path(agy_path)
 
@@ -501,15 +520,16 @@ class ModelAdapter:
             tier=tier,
         )
 
-        # Offline mock execution path for unit/integration testing
-        if self.mock_provider is not None:
-            mock_out = self.mock_provider.generate(request_obj)
-            provider_usage = mock_out.get("provider_usage")
-            response_text = redact_sensitive_text(str(mock_out.get("response_text", "")))
+        # Active provider execution path (Mock offline testing or Universal REST API)
+        active_provider = self.mock_provider or self.api_provider
+        if active_provider is not None:
+            provider_out = active_provider.generate(request_obj)
+            provider_usage = provider_out.get("provider_usage")
+            response_text = redact_sensitive_text(str(provider_out.get("response_text", "")))
             response_text, _ = SecretRedactor.redact(response_text)
-            parsed_response = mock_out.get("parsed_json") or {}
+            parsed_response = provider_out.get("parsed_json") or {}
             if self.config.strict_response_validation and not response_text.strip():
-                raise ModelResponseValidationError(f"Empty response from mock provider for task '{task_id}'")
+                raise ModelResponseValidationError(f"Empty response from model provider for task '{task_id}'")
             usage_rec = self.token_controller.record_usage(
                 task_id=task_id,
                 child_task_id=child_task_id,
@@ -528,16 +548,17 @@ class ModelAdapter:
             with self._lock:
                 self._cumulative_mission_cost_usd = round(self._cumulative_mission_cost_usd + call_cost, 6)
                 cum_cost = self._cumulative_mission_cost_usd
-            duration_sec = float(mock_out.get("duration_sec", 0.001))
-            mock_status = mock_out.get("status", "SUCCEEDED")
-            mock_exit = mock_out.get("exit_code", 0)
+            duration_sec = float(provider_out.get("duration_sec", 0.001))
+            prov_status = provider_out.get("status", "SUCCEEDED")
+            prov_exit = provider_out.get("exit_code", 0)
+            is_mock_val = bool(provider_out.get("is_mock", self.mock_provider is not None))
             return {
                 "task_id": task_id,
                 "agent_id": agent_id,
-                "model": self.SOLE_MODEL,
-                "status": mock_status,
-                "exit_code": mock_exit,
-                "timed_out": bool(mock_out.get("timed_out", False)),
+                "model": provider_out.get("model") or getattr(active_provider, "model_name", self.SOLE_MODEL),
+                "status": prov_status,
+                "exit_code": prov_exit,
+                "timed_out": bool(provider_out.get("timed_out", False)),
                 "duration_sec": duration_sec,
                 "latency_ms": round(duration_sec * 1000.0, 2),
                 "cwd_used": exec_cwd,
@@ -545,7 +566,7 @@ class ModelAdapter:
                 "response_text": response_text,
                 "parsed_json": parsed_response,
                 "token_usage": {
-                    "accounting_mode": "MOCK_OFFLINE_TEST",
+                    "accounting_mode": "MOCK_OFFLINE_TEST" if is_mock_val else "UNIVERSAL_API",
                     "input_tokens": usage_rec.input_tokens,
                     "output_tokens": usage_rec.output_tokens,
                     "thinking_tokens": usage_rec.thinking_tokens,
@@ -558,18 +579,25 @@ class ModelAdapter:
                 "attempt_ledger": [
                     {
                         "attempt": 1,
-                        "status": mock_status,
-                        "exit_code": mock_exit,
-                        "timed_out": bool(mock_out.get("timed_out", False)),
+                        "status": prov_status,
+                        "exit_code": prov_exit,
+                        "timed_out": bool(provider_out.get("timed_out", False)),
                         "duration_sec": duration_sec,
-                        "notification_id": mock_out.get("notification_id"),
+                        "notification_id": provider_out.get("notification_id"),
                     }
                 ],
-                "is_mock": True,
-                "notification_id": mock_out.get("notification_id"),
-                "stdout_log_path": mock_out.get("stdout_log_path"),
-                "stderr_log_path": mock_out.get("stderr_log_path"),
+                "is_mock": is_mock_val,
+                "notification_id": provider_out.get("notification_id"),
+                "stdout_log_path": provider_out.get("stdout_log_path"),
+                "stderr_log_path": provider_out.get("stderr_log_path"),
             }
+
+        if not self.agy_path.exists():
+            raise RuntimeError(
+                f"No live model execution engine found at '{self.agy_path}'. "
+                "Universal access mode is supported anywhere: please set GEMINI_API_KEY (recommended) "
+                "or OPENAI_API_KEY in your .env file or environment variable (Get a free key at https://aistudio.google.com/)."
+            )
 
         cmd = self.build_command(
             prompt=prompt,

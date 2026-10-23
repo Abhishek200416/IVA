@@ -56,6 +56,8 @@ class AGI17Adapter:
         approval_gate: Optional[HighImpactApprovalGate] = None,
         model_adapter: Optional[ModelAdapter] = None,
         disclosure_policy: Optional[ModelDisclosurePolicy] = None,
+        api_key: Optional[str] = None,
+        model: Optional[str] = None,
     ) -> None:
         import os as _os
         import sys as _sys
@@ -102,6 +104,8 @@ class AGI17Adapter:
             governor=self.governor,
             supervisor=self.supervisor,
             disclosure_policy=self.disclosure_policy,
+            api_key=api_key,
+            model_name=model,
         )
         self.approval_gate = approval_gate or (
             sandbox_runner.approval_gate if sandbox_runner is not None else HighImpactApprovalGate()

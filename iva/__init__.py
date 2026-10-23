@@ -26,6 +26,8 @@ from agents.IVA.engine.agi17.memory.omega_command_memory import OmegaCommandMemo
 from agents.IVA.engine.agi17.capabilities.unified_capability_registry import UnifiedCapabilityRegistry
 from agents.IVA.ecosystem.agent_registry.ecosystem_coordinator import EcosystemCoordinator
 from agents.IVA.engine.agi17.adapters.agi_17_adapter import AGI17Adapter
+from agents.IVA.engine.agi17.adapters.model_adapter import ModelAdapter
+from agents.IVA.engine.agi17.adapters.universal_api_provider import UniversalAPIProvider, load_repo_dotenv
 from agents.IVA.engine.agi17.orchestration.ci_repair_agent import CIRepairAgent
 
 __all__ = [
@@ -37,6 +39,9 @@ __all__ = [
     "UnifiedCapabilityRegistry",
     "EcosystemCoordinator",
     "AGI17Adapter",
+    "ModelAdapter",
+    "UniversalAPIProvider",
+    "load_repo_dotenv",
     "CIRepairAgent",
     "__version__",
 ]
