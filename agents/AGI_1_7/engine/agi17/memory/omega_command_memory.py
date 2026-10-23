@@ -163,6 +163,15 @@ class OmegaCommandMemory:
     ) -> None:
         import os as _os
         import sys as _sys
+
+        env_dir = _os.environ.get("OMEGA_MEMORY_DIR")
+        if env_dir:
+            primary_dir = env_dir
+        elif primary_dir == r"D:\AGI_Storage\AGI_1_7\memory":
+            # If default D:\ drive is not mounted, default to clean user-home or workspace memory
+            if _sys.platform != "win32" or not _os.path.exists("D:\\"):
+                primary_dir = Path.home() / ".iva" / "memory"
+
         self.primary_dir = Path(primary_dir)
         default_fb = Path(__file__).resolve().parents[3] / "state_fallback" / "memory"
         resolved_fb = fallback_dir if fallback_dir is not None else mirror_dir
