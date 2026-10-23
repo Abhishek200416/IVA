@@ -290,7 +290,7 @@ class ModelAdapter:
             if api_provider is not None:
                 self.api_provider = api_provider
             else:
-                from .universal_api_provider import UniversalAPIProvider, load_repo_dotenv
+                from agents.IVA.engine.agi17.adapters.universal_api_provider import UniversalAPIProvider, load_repo_dotenv
                 load_repo_dotenv()
                 if api_key or UniversalAPIProvider.has_available_credentials():
                     self.api_provider = UniversalAPIProvider(api_key=api_key, model_name=model_name)

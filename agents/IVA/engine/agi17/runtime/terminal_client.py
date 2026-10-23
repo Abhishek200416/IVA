@@ -186,7 +186,7 @@ class TerminalClient:
         print(f"   • {bold('Active LLM Engine')}   : {cyan(summary['provider'])} [{summary['model']}]")
         print(f"   • {bold('Physical Safety')}     : {red(summary['safety_gate'])}")
         print(cyan(sep))
-        print(bold("   Commands: ") + "help | specialists | plugins | status | profile | clear | exit")
+        print(bold("   Commands: ") + "help | specialists | plugins | status | profile | test | clear | exit")
         print(dim("   Or type any natural language prompt, question, or engineering task below."))
         print(cyan(sep) + "\n")
 
@@ -276,6 +276,69 @@ class TerminalClient:
             print(f"   • CPU Cores detected   : {os.cpu_count() or 1}")
         print(cyan("=" * 78) + "\n")
 
+    def run_self_tests(self, verbosity: int = 1) -> int:
+        """Runs the self-verification test suite across core IVA capabilities."""
+        import unittest
+        print("\n" + cyan("=" * 78))
+        print(bold(magenta("   🧪 IVA AUTONOMOUS SELF-VERIFICATION SUITE")))
+        print(cyan("=" * 78))
+        print(dim("   Executing tests across terminal, universal API, cognitive identity & hardening...\n"))
+
+        repo_root = Path(__file__).resolve().parents[5] if len(Path(__file__).resolve().parents) >= 6 else Path.cwd()
+        if not (repo_root / "tests").is_dir():
+            cur = Path(__file__).resolve().parent
+            while cur != cur.parent:
+                if (cur / "tests").is_dir():
+                    repo_root = cur
+                    break
+                cur = cur.parent
+
+        loader = unittest.TestLoader()
+        suite = unittest.TestSuite()
+
+        test_files = [
+            repo_root / "tests" / "unit" / "test_terminal_client.py",
+            repo_root / "tests" / "unit" / "test_universal_api_provider.py",
+            repo_root / "tests" / "test_iva_cognitive_architecture_and_identity.py",
+            repo_root / "tests" / "test_production_hardening_sprint.py",
+        ]
+
+        found_count = 0
+        for tf in test_files:
+            if tf.is_file():
+                found_count += 1
+                try:
+                    loaded = loader.discover(start_dir=str(tf.parent), pattern=tf.name)
+                    suite.addTests(loaded)
+                except Exception as e:
+                    print(yellow(f"   ⚠️ Could not load {tf.name}: {e}"))
+
+        if found_count == 0 or suite.countTestCases() == 0:
+            tests_dir = repo_root / "tests"
+            if tests_dir.is_dir():
+                discovered = loader.discover(start_dir=str(tests_dir), pattern="test_*.py")
+                suite.addTests(discovered)
+
+        total_tests = suite.countTestCases()
+        print(f"   • Loaded {bold(str(total_tests))} test cases from verified test modules.")
+
+        runner = unittest.TextTestRunner(verbosity=verbosity)
+        t0 = time.perf_counter()
+        result = runner.run(suite)
+        dt = round(time.perf_counter() - t0, 2)
+
+        print(cyan("-" * 78))
+        if result.wasSuccessful():
+            print(bold(green(f"   ✅ All {total_tests} tests PASSED in {dt}s. IVA self-verification 100% GREEN.")))
+            print(cyan("=" * 78) + "\n")
+            return 0
+        else:
+            failures = len(result.failures)
+            errors = len(result.errors)
+            print(bold(red(f"   ❌ Self-verification FAILED ({failures} failures, {errors} errors) in {dt}s.")))
+            print(cyan("=" * 78) + "\n")
+            return 1
+
     def print_help(self) -> None:
         """Displays the command help guide."""
         print("\n" + cyan("=" * 78))
@@ -287,6 +350,7 @@ class TerminalClient:
         print(f"     {cyan('plugins')}     : Inspect zero-external-plugin architecture")
         print(f"     {cyan('status')}      : Check active LLM engine, memory, and safety status")
         print(f"     {cyan('profile')}     : Display hardware and resource capacity profile")
+        print(f"     {cyan('test')}        : Run autonomous self-tests across terminal, API, and core suites")
         print(f"     {cyan('repair <dir>')}: Run automated Python CI repair on target directory")
         print(f"     {cyan('clear')} / {cyan('cls')} : Clear the terminal screen")
         print(f"     {cyan('exit')} / {cyan('quit')}: Exit the terminal session\n")
@@ -393,6 +457,8 @@ class TerminalClient:
                 self.print_status()
             elif low in ("profile", "hardware"):
                 self.print_profile()
+            elif low in ("test", "tests", "verify", "selftest"):
+                self.run_self_tests()
             elif low in ("clear", "cls"):
                 os.system("cls" if os.name == "nt" else "clear")
                 self.display_banner()
