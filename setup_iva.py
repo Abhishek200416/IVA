@@ -70,7 +70,7 @@ def setup_environment_file() -> Path:
 
 def initialize_local_memory() -> Path:
     print("\n[3/5] Provisioning Persistent Cognitive Memory (omega_memory.db)...")
-    from agents.AGI_1_7.engine.agi17.memory.omega_command_memory import OmegaCommandMemory
+    from agents.IVA.engine.agi17.memory.omega_command_memory import OmegaCommandMemory
 
     # Determine user-specific memory directory
     custom_dir = os.environ.get("OMEGA_MEMORY_DIR")
@@ -105,14 +105,14 @@ def initialize_local_memory() -> Path:
         return db_path
     except Exception as exc:
         print(f"  ⚠️ Note: Using local fallback storage ({exc})")
-        fallback_dir = REPO_ROOT / "agents" / "AGI_1_7" / "runtime_storage" / "memory"
+        fallback_dir = REPO_ROOT / "agents" / "IVA" / "runtime_storage" / "memory"
         mem = OmegaCommandMemory(primary_dir=fallback_dir)
         print(f"  ✅ Local fallback memory initialized at: {mem.db_path}")
         return mem.db_path
 
 def verify_specialist_contracts() -> int:
     print("\n[4/5] Verifying 100-Specialist Ecosystem Registry...")
-    registry_file = REPO_ROOT / "agents" / "AGI_1_7" / "ecosystem" / "agent_registry" / "registry.json"
+    registry_file = REPO_ROOT / "agents" / "IVA" / "ecosystem" / "agent_registry" / "registry.json"
     if not registry_file.exists():
         print("  ⚠️ Warning: registry.json not found at standard path.")
         return 0
@@ -130,7 +130,7 @@ def verify_specialist_contracts() -> int:
 
 def check_safety_invariants() -> None:
     print("\n[5/5] Auditing Physical Safety Invariants...")
-    from agents.AGI_1_7.engine.agi17.runtime.authoritative_brain_config import AuthoritativeBrainConfig
+    from agents.IVA.engine.agi17.runtime.authoritative_brain_config import AuthoritativeBrainConfig
 
     config = AuthoritativeBrainConfig()
     if config.core_identity.fail_closed_invariant and not config.operating_policy.live_order_dispatch_enabled:
@@ -156,7 +156,7 @@ def print_ready_guide(db_path: Path):
     print("     python run_iva.py")
     print()
     print("  3. Real-Time Web Telemetry Dashboard (port 8088):")
-    print("     python agents/AGI_1_7/ui/standalone_dashboard_server.py")
+    print("     python agents/IVA/ui/standalone_dashboard_server.py")
     print()
     print("  4. Verify Cognitive Architecture Integrity Test:")
     print("     python -m unittest tests/test_iva_cognitive_architecture_and_identity.py")

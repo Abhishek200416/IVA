@@ -193,10 +193,10 @@ class AuthoritativeBrainConfig:
     _instance: Optional["AuthoritativeBrainConfig"] = None
 
     def __init__(self, config_path: Optional[Path] = None):
-        self.workspace_root = Path(__file__).resolve().parents[5]
-        self.config_path = config_path or (
-            self.workspace_root / "agents" / "AGI_1_7" / "config" / "agi17" / "authoritative_runtime_config.json"
-        )
+        agent_root = Path(__file__).resolve().parents[3]
+        default_cfg = agent_root / "config" / "agi17" / "authoritative_runtime_config.json"
+        self.workspace_root = agent_root.parent.parent
+        self.config_path = config_path or default_cfg
         self.raw_data: Dict[str, Any] = {}
         self.sha256_digest: str = ""
         self.load()

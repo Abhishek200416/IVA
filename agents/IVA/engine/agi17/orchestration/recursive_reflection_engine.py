@@ -70,6 +70,9 @@ class RecursiveReflectionEngine:
     """Manages bounded recursive self-reflection and verified improvement adoption."""
 
     PROTECTED_POLICIES = {
+        "agents/IVA/docs/01_AUTHORITATIVE_IDENTITY_AND_PERSONA.md",
+        "agents/IVA/docs/library/09_SECURITY_SANDBOX_AND_SAFETY.md",
+        "agents/IVA/docs/library/12_AUTONOMY_CAPABILITY_AND_EXECUTION_POLICY.md",
         "agents/AGI_1_7/docs/01_AUTHORITATIVE_IDENTITY_AND_PERSONA.md",
         "agents/AGI_1_7/docs/library/09_SECURITY_SANDBOX_AND_SAFETY.md",
         "agents/AGI_1_7/docs/library/12_AUTONOMY_CAPABILITY_AND_EXECUTION_POLICY.md",

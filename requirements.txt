@@ -1,6 +1,6 @@
 # ==============================================================================
-# Iva & AGI 1.7 OMEGA COMMAND — Runtime & Optional Dependencies
-# Core AGI 1.7 engine requires ZERO third-party packages (100% Python stdlib).
+# IVA Autonomous Runtime — Optional Dependencies
+# Core IVA engine requires ZERO third-party packages (100% Python stdlib).
 # The packages below enable optional Desktop Voice HUD, Web UI, and Testing.
 # ==============================================================================
 

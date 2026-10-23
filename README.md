@@ -2,11 +2,11 @@
 ## Resource-Aware, Sandboxed Multi-Agent Coding, System Automation & Quantitative Intelligence (`gemini-3.8-flash-high`)
 
 [![Runtime](assets/badges/runtime.svg)](run_iva.py)
-[![Sole Model](assets/badges/model.svg)](agents/AGI_1_7/engine/agi17/adapters/model_adapter.py)
-[![Sandbox](assets/badges/sandbox.svg)](agents/AGI_1_7/engine/agi17/process_supervision/sandbox_runner.py)
-[![Specialist Contracts](assets/badges/specialists.svg)](agents/AGI_1_7/ecosystem/agent_registry/registry.json)
+[![Sole Model](assets/badges/model.svg)](agents/IVA/engine/agi17/adapters/model_adapter.py)
+[![Sandbox](assets/badges/sandbox.svg)](agents/IVA/engine/agi17/process_supervision/sandbox_runner.py)
+[![Specialist Contracts](assets/badges/specialists.svg)](agents/IVA/ecosystem/agent_registry/registry.json)
 [![Verification & CI](assets/badges/verification.svg)](.github/workflows/iva-ci.yml)
-[![P0 Security Hardening](assets/badges/security.svg)](agents/AGI_1_7/docs/AGI_1_7_P0_SECURITY_HARDENING_REPORT.md)
+[![P0 Security Hardening](assets/badges/security.svg)](agents/IVA/docs/IVA_P0_SECURITY_HARDENING_REPORT.md)
 [![Tests](https://img.shields.io/badge/Test_Suite-tests%2F-success.svg)](tests/)
 [![Iva Cognitive Partner](https://img.shields.io/badge/Iva_Agent-Quickstart_%26_Architecture-blueviolet.svg)](IVA_README.md)
 
@@ -14,19 +14,19 @@
 
 > [!IMPORTANT]
 > **Production Scope & Runtime Boundaries**
-> - **Orchestration, Sandboxed Verification & Task Runtime:** IVA provides multi-agent orchestration, transactional SQLite WAL task control, disposable Docker sandbox isolation, and cross-session persistent memory wrapping `gemini-3.8-flash-high` via [`ModelAdapter`](agents/AGI_1_7/engine/agi17/adapters/model_adapter.py). It is **not** a custom pre-trained or fine-tuned base LLM.
-> - **1 Unified Entrypoint Managing 100 Specialist Contracts:** Coordinates **100 validated specialist agent contracts** across 16 functional families ([`registry.json`](agents/AGI_1_7/ecosystem/agent_registry/registry.json)), embedded inside [`agents/AGI_1_7/`](agents/AGI_1_7/) and routed dynamically with minimal-diff railings via [`EcosystemCoordinator`](agents/AGI_1_7/ecosystem/agent_registry/ecosystem_coordinator.py).
-> - **Production CI-Repair Specialist (`CIRepairAgent`):** Includes a dedicated **Automated Python CI-Repair Agent** ([`ci_repair_agent.py`](agents/AGI_1_7/engine/agi17/orchestration/ci_repair_agent.py), [`PRODUCT_SPEC_PYTHON_CI_REPAIR.md`](agents/AGI_1_7/docs/PRODUCT_SPEC_PYTHON_CI_REPAIR.md)) that reproduces failing `unittest` suites inside a network-isolated disposable container, synthesizes minimal root-cause patches under strict cost ceilings, verifies zero test regressions, and stages human-reviewable PR payloads.
+> - **Orchestration, Sandboxed Verification & Task Runtime:** IVA provides multi-agent orchestration, transactional SQLite WAL task control, disposable Docker sandbox isolation, and cross-session persistent memory wrapping `gemini-3.8-flash-high` via [`ModelAdapter`](agents/IVA/engine/agi17/adapters/model_adapter.py). It is **not** a custom pre-trained or fine-tuned base LLM.
+> - **1 Unified Entrypoint Managing 100 Specialist Contracts:** Coordinates **100 validated specialist agent contracts** across 16 functional families ([`registry.json`](agents/IVA/ecosystem/agent_registry/registry.json)), embedded inside [`agents/IVA/`](agents/IVA/) and routed dynamically with minimal-diff railings via [`EcosystemCoordinator`](agents/IVA/ecosystem/agent_registry/ecosystem_coordinator.py).
+> - **Production CI-Repair Specialist (`CIRepairAgent`):** Includes a dedicated **Automated Python CI-Repair Agent** ([`ci_repair_agent.py`](agents/IVA/engine/agi17/orchestration/ci_repair_agent.py), [`PRODUCT_SPEC_PYTHON_CI_REPAIR.md`](agents/IVA/docs/PRODUCT_SPEC_PYTHON_CI_REPAIR.md)) that reproduces failing `unittest` suites inside a network-isolated disposable container, synthesizes minimal root-cause patches under strict cost ceilings, verifies zero test regressions, and stages human-reviewable PR payloads.
 
 ---
 
-## 🏛️ 1. Exhaustive Architectural Blueprint of AGI 1.7
+## 🏛️ 1. Exhaustive Architectural Blueprint of IVA
 
-AGI 1.7 is engineered as a defense-in-depth, transactional multi-agent operating runtime. It eliminates unbounded token expansion, non-deterministic execution loops, and insecure host code execution through formal control planes and container sandboxing.
+IVA is engineered as a defense-in-depth, transactional multi-agent operating runtime. It eliminates unbounded token expansion, non-deterministic execution loops, and insecure host code execution through formal control planes and container sandboxing.
 
 ### 1.1 Master Multi-Tier Multi-Agent System Topology
 
-The diagram below maps the complete 8-tier architecture of AGI 1.7, tracing execution from entrypoint ingestion and gatekeeper security through DAG decomposition, Win32 hardware governance, 100-specialist routing, ephemeral Docker container isolation, self-learning failure playbooks, and independent human approval gating:
+The diagram below maps the complete 8-tier architecture of IVA, tracing execution from entrypoint ingestion and gatekeeper security through DAG decomposition, Win32 hardware governance, 100-specialist routing, ephemeral Docker container isolation, self-learning failure playbooks, and independent human approval gating:
 
 ```mermaid
 flowchart TB
@@ -47,7 +47,7 @@ flowchart TB
         ORCH --> DECOMP["Mission Decomposer (DAG Planner)<br/>(Max 100 Subtasks, Max Depth = 3)"]
         DECOMP --> DEP["DependencyManager<br/>(DFS Cycle Detection & Topological Sort)"]
         
-        DEP <--> TASKDB[("14-State SQLite WAL Task Store<br/>(agi17_tasks.db)")]
+        DEP <--> TASKDB[("14-State SQLite WAL Task Store<br/>(iva_tasks.db)")]
         TASKDB <--> TLOG[("Append-Only Task Event Log<br/>(task_events.jsonl)")]
         TASKDB <--> CHECK["CheckpointManager<br/>(SHA-256 Checksums & Crash Recovery: reconcile_after_restart)"]
         TASKDB <--> STM["TaskStateMachine<br/>(14-State Transition Enforcer)"]
@@ -197,7 +197,7 @@ flowchart LR
 
 ### 1.3 The Enforced 14-State Task State Machine
 
-Every mission, subtask, and repair loop transitions through an enforced 14-state machine managed by [`TaskStateMachine`](agents/AGI_1_7/engine/agi17/task_control/task_state_machine.py). Invalid transitions are rejected at runtime rather than silently accepted:
+Every mission, subtask, and repair loop transitions through an enforced 14-state machine managed by [`TaskStateMachine`](agents/IVA/engine/agi17/task_control/task_state_machine.py). Invalid transitions are rejected at runtime rather than silently accepted:
 
 ```mermaid
 stateDiagram-v2
@@ -315,7 +315,7 @@ sequenceDiagram
 
 #### 1. Hierarchical DAG Orchestrator (`HierarchicalOrchestrator`)
 - **Fast Path vs. Hierarchical DAG:** Trivial, single-file requests bypass multi-agent overhead via the direct *Fast Path*. Complex missions trigger the *Hierarchical DAG Planner*, which decomposes the goal into a topological graph of up to **100 logical subtasks** (`MAX_LOGICAL_CHILD_TASKS = 100`).
-- **Dependency Resolution & Cycle Detection:** [`DependencyManager`](agents/AGI_1_7/engine/agi17/task_control/dependency_manager.py) enforces a maximum delegation depth of `3` (`max_delegation_depth = 3`) and detects circular dependencies via depth-first search (`DependencyCycleError`).
+- **Dependency Resolution & Cycle Detection:** [`DependencyManager`](agents/IVA/engine/agi17/task_control/dependency_manager.py) enforces a maximum delegation depth of `3` (`max_delegation_depth = 3`) and detects circular dependencies via depth-first search (`DependencyCycleError`).
 - **Inter-Specialist Context Pipeline:** Upstream artifacts and verified contracts pass between agents via typed dictionaries (`context["upstream_outputs"]`), preventing lost context across multi-stage lifecycles.
 
 #### 2. Dynamic Concurrency & Resource Governor (`ResourceGovernor`)
@@ -352,20 +352,20 @@ flowchart TD
 ```
 
 #### 3. 14-State Transactional Control Plane & Live CommandInbox
-- **WAL Durability & Event Auditing:** Every task event is committed to SQLite in WAL mode (`agi17_tasks.db`) and journaled to `task_events.jsonl` with an `idempotency_key` preventing redundant executions upon resume.
-- **Mid-Flight Instruction Ingestion:** Operators can interact with running missions via [`CommandInbox`](agents/AGI_1_7/engine/agi17/task_control/task_manager.py):
+- **WAL Durability & Event Auditing:** Every task event is committed to SQLite in WAL mode (`iva_tasks.db`) and journaled to `task_events.jsonl` with an `idempotency_key` preventing redundant executions upon resume.
+- **Mid-Flight Instruction Ingestion:** Operators can interact with running missions via [`CommandInbox`](agents/IVA/engine/agi17/task_control/task_manager.py):
   - `ADD_CHILD_TASK`: Dynamically appends a new node to the active DAG without aborting parent progress.
   - `PAUSE_CURRENT_AND_SWITCH`: Suspends active execution, captures a SHA-256 checkpoint, and shifts resources.
   - `CANCEL_AND_REPLACE`: Cancels an executing branch and substitutes an alternative execution strategy.
   - `REPRIORITIZE`: Re-orders queue priorities dynamically.
-- **Crash Recovery Protocol (`reconcile_after_restart()`):** Scans the SQLite WAL store upon startup, inspects `task_events.jsonl`, validates disk checkpoint hashes via [`CheckpointManager`](agents/AGI_1_7/engine/agi17/task_control/checkpoint_manager.py), and safely moves un-finalized tasks to `READY` or `FAILED`.
+- **Crash Recovery Protocol (`reconcile_after_restart()`):** Scans the SQLite WAL store upon startup, inspects `task_events.jsonl`, validates disk checkpoint hashes via [`CheckpointManager`](agents/IVA/engine/agi17/task_control/checkpoint_manager.py), and safely moves un-finalized tasks to `READY` or `FAILED`.
 
 ```mermaid
 flowchart TD
     subgraph WalEngine ["SQLite WAL Transaction & Crash Recovery Protocol"]
         direction TB
         RESTART["Engine Start / Process Crash Recovery"] --> RECON["reconcile_after_restart()"]
-        RECON --> SCAN_DB[("Scan agi17_tasks.db (WAL Mode)")]
+        RECON --> SCAN_DB[("Scan iva_tasks.db (WAL Mode)")]
         RECON --> SCAN_LOG[("Inspect task_events.jsonl Audit Log")]
         SCAN_DB & SCAN_LOG --> CHECK_SUM["CheckpointManager (Validate SHA-256 Hashes)"]
         CHECK_SUM --> STATE_INSPECT{"Task State at Interruption"}
@@ -376,7 +376,7 @@ flowchart TD
 ```
 
 #### 4. Disposable Container Sandbox & Process Supervision
-- **Container Hardening Parameters:** All untrusted code executes inside ephemeral containers managed by [`DisposableSandboxRunner`](agents/AGI_1_7/engine/agi17/process_supervision/sandbox_runner.py):
+- **Container Hardening Parameters:** All untrusted code executes inside ephemeral containers managed by [`DisposableSandboxRunner`](agents/IVA/engine/agi17/process_supervision/sandbox_runner.py):
   - **Image:** `python:3.12-slim@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1`
   - **Isolation Flags:** `--rm --name agi17-sbx-<uuid> --network none --cap-drop ALL --security-opt no-new-privileges --read-only`
   - **Scratch Space:** `--tmpfs /tmp:rw,noexec,nosuid,nodev,size=64m`
@@ -412,7 +412,7 @@ flowchart TD
 ```
 
 #### 5. 10-Layer Cross-Session Memory & Self-Learning Playbooks
-[`OmegaCommandMemory`](agents/AGI_1_7/engine/agi17/memory/omega_command_memory.py) maintains cross-session persistent knowledge across 10 structured layers in SQLite WAL (`omega_memory.db`):
+[`OmegaCommandMemory`](agents/IVA/engine/agi17/memory/omega_command_memory.py) maintains cross-session persistent knowledge across 10 structured layers in SQLite WAL (`omega_memory.db`):
 
 | Layer | Layer Identifier | Retention & Function |
 | :---: | :--- | :--- |
@@ -427,7 +427,7 @@ flowchart TD
 | **9** | `VERIFIED_RESEARCH_CACHE` | Fact-checked references and verified tool call outputs |
 | **10** | `IMMUTABLE_AUDIT_AND_BENCHMARK_LEDGER` | SHA-256 sealed benchmark evaluation ledgers and test audits |
 
-- **Structural ACON Compression:** [`ACONCompressor`](agents/AGI_1_7/engine/agi17/memory/omega_command_memory.py) compresses execution observations while preserving critical anchor tokens: SHA-256 hashes (`[a-f0-9]{64}`), exit codes (`exit_code: 0`), file paths, error types (`OutOfMemoryError`), and task IDs (`TASK-xxx`).
+- **Structural ACON Compression:** [`ACONCompressor`](agents/IVA/engine/agi17/memory/omega_command_memory.py) compresses execution observations while preserving critical anchor tokens: SHA-256 hashes (`[a-f0-9]{64}`), exit codes (`exit_code: 0`), file paths, error types (`OutOfMemoryError`), and task IDs (`TASK-xxx`).
 - **Continuous Failure-Playbook Learning:** When a test fails, `record_failure_lesson()` records `(subject_key, error_signature, root_cause, minimal_fix_rule)`. During subsequent planning, `build_compact_memory_prompt_block()` injects a `<=120`-token guardrail directly into the coder's prompt, ensuring self-healing without token bloat.
 
 ```mermaid
@@ -458,17 +458,17 @@ flowchart TD
 
 ---
 
-### 1.6 How Systems, Operators & CI Know and Interact with AGI 1.7
+### 1.6 How Systems, Operators & CI Know and Interact with IVA
 
-To external systems, CI/CD runners, and developers, AGI 1.7 presents a strictly typed, deterministic operating surface governed by formal specification contracts and immutable identity rules:
+To external systems, CI/CD runners, and developers, IVA presents a strictly typed, deterministic operating surface governed by formal specification contracts and immutable identity rules:
 
 #### 1. Runtime Identity & Sovereign Contract
 - **Sole Base Model:** Powered exclusively by Google's **Gemini 3.8 Flash High (`gemini-3.8-flash-high`)** via `ModelAdapter` with high-effort reasoning (`--effort high`). Under **Directive 0**, any attempt to fall back to unauthorized or lower-tier models immediately aborts execution.
 - **Zero Third-Party Dependencies:** The entire orchestration, task state machine, Win32 hardware governor, token economy, and memory subsystems run on the **Python 3.10+ Standard Library** (`0` pip dependencies required for core operations).
-- **Storage Sovereignty:** Primary persistence targets external NVMe storage on volume `D:\` (`D:\AGI_Storage\AGI_1_7\` and `D:\AGI_Evaluation\AGI_1_7_OMEGA_COMMAND\`), with deterministic zero-data-loss local fallback if `D:\` is offline.
+- **Storage Sovereignty:** Primary persistence targets external NVMe storage on volume `D:\` (`D:\IVA_Storage\memory\`), with deterministic zero-data-loss local fallback if `D:\` is offline.
 
 #### 2. The `AgentContract` Standard & Specification Schema
-Every agent within AGI 1.7 is governed by an immutable JSON schema contract ([`agent_contract.py`](agents/AGI_1_7/ecosystem/agent_registry/agent_contract.py)):
+Every agent within IVA is governed by an immutable JSON schema contract ([`agent_contract.py`](agents/IVA/ecosystem/agent_registry/agent_contract.py)):
 ```json
 {
   "agent_id": "swe_python_runtime_engineer",
@@ -494,7 +494,7 @@ Every agent within AGI 1.7 is governed by an immutable JSON schema contract ([`a
 - **Deterministic Verification Hooks:** Every agent must execute its automated verification hook upon task completion, producing an immutable SHA-256 digest sealing its outputs.
 
 #### 3. Specialist Discovery & The `CapabilityRouter`
-Tasks do not hardcode specialist bindings. Instead, the [`CapabilityRouter`](agents/AGI_1_7/ecosystem/agent_registry/capability_router.py) maps dynamic prompts to contracts:
+Tasks do not hardcode specialist bindings. Instead, the [`CapabilityRouter`](agents/IVA/ecosystem/agent_registry/capability_router.py) maps dynamic prompts to contracts:
 1. **Semantic Token Extraction:** Normalizes incoming task objectives against domain stopword dictionaries and intent classifiers.
 2. **Capability Intersection:** Scores all 100 contracts by overlapping capability sets and keyword weights.
 3. **Permission & Resource Check:** Discards candidates whose resource class or tool permissions breach active constraints.
@@ -503,15 +503,15 @@ Tasks do not hardcode specialist bindings. Instead, the [`CapabilityRouter`](age
 #### 4. Three Unified External Interfaces
 | Interface Mode | Entrypoint Module | Primary Purpose & Usage |
 | :--- | :--- | :--- |
-| **CLI Control Plane** | [`run_agi_17.py`](agents/AGI_1_7/run_agi_17.py) / [`agi17ctl.py`](agents/AGI_1_7/scripts/agi17ctl.py) | Interactive terminal execution, capability profiling (`--profile-only`), and CI integration. |
-| **Python SDK Adapter** | [`AGI17Adapter`](agents/AGI_1_7/engine/agi17/adapters/agi_17_adapter.py) | Master programmatic API: `execute_mission()`, `run_ci_repair()`, `run_self_evolution()`. |
-| **Live CommandInbox IPC** | [`CommandInbox`](agents/AGI_1_7/engine/agi17/task_control/task_manager.py) | Mid-flight asynchronous operator override protocol (`ADD_CHILD_TASK`, `PAUSE_CURRENT_AND_SWITCH`, `CANCEL_AND_REPLACE`, `REPRIORITIZE`). |
+| **CLI Control Plane** | [`run_iva.py`](agents/IVA/run_iva.py) / [`run_iva.py`](agents/IVA/scripts/run_iva.py) | Interactive terminal execution, capability profiling (`--profile-only`), and CI integration. |
+| **Python SDK Adapter** | [`IVAAdapter`](agents/IVA/engine/agi17/adapters/agi_17_adapter.py) | Master programmatic API: `execute_mission()`, `run_ci_repair()`, `run_self_evolution()`. |
+| **Live CommandInbox IPC** | [`CommandInbox`](agents/IVA/engine/agi17/task_control/task_manager.py) | Mid-flight asynchronous operator override protocol (`ADD_CHILD_TASK`, `PAUSE_CURRENT_AND_SWITCH`, `CANCEL_AND_REPLACE`, `REPRIORITIZE`). |
 
 ---
 
 ### 1.7 Concurrency Architecture: 100 Logical DAG Specialists vs. 1..4 Dynamic Physical Heavy Workers
 
-A central architectural innovation of AGI 1.7 is the complete separation between **logical task expressiveness** and **physical execution concurrency**:
+A central architectural innovation of IVA is the complete separation between **logical task expressiveness** and **physical execution concurrency**:
 
 ```mermaid
 flowchart TD
@@ -520,7 +520,7 @@ flowchart TD
         DAG_GOAL["High-Level Software Goal / Milestone"] --> PLANNER["Hierarchical Decomposer & Planner"]
         PLANNER --> GRAPH["Topological Task Graph (Up to 100 Logical Tasks)<br/>(MAX_LOGICAL_CHILD_TASKS = 100 | MAX_AGENT_SPECIALIZATIONS = 100)"]
         GRAPH --> DEP_MGR["DependencyManager (DFS Cycle Detection, Max Depth = 3)"]
-        DEP_MGR --> SQLITE_DAG[("14-State SQLite WAL Task Store<br/>(agi17_tasks.db)")]
+        DEP_MGR --> SQLITE_DAG[("14-State SQLite WAL Task Store<br/>(iva_tasks.db)")]
     end
 
     subgraph AdmissionControl ["2. Resource-Aware Admission & Queue Tiering"]
@@ -561,10 +561,10 @@ In complex engineering operations, tasks exhibit rich dependency graphs (specify
 3. Subprocess deadlocks and socket exhaustion.
 4. Upstream API rate limit depletion (`429 Too Many Requests`).
 
-By storing the entire DAG logically inside SQLite WAL tables with DFS dependency resolution, AGI 1.7 allows an operator to plan and track up to 100 subtasks simultaneously, while dynamically dispatching only **1 to 4 active heavy workers** based on live hardware headroom.
+By storing the entire DAG logically inside SQLite WAL tables with DFS dependency resolution, IVA allows an operator to plan and track up to 100 subtasks simultaneously, while dynamically dispatching only **1 to 4 active heavy workers** based on live hardware headroom.
 
 #### Live Hardware Telemetry & Thresholds
-[`ResourceGovernor`](agents/AGI_1_7/engine/agi17/orchestration/resource_governor.py) and [`ResourceWatchdogDaemon`](agents/AGI_1_7/engine/agi17/process_supervision/resource_watchdog.py) sample the Windows kernel every `100ms`:
+[`ResourceGovernor`](agents/IVA/engine/agi17/orchestration/resource_governor.py) and [`ResourceWatchdogDaemon`](agents/IVA/engine/agi17/process_supervision/resource_watchdog.py) sample the Windows kernel every `100ms`:
 - **Physical RAM Floor:** `min_free_phys_ram_mb = 1400.0 MB` (Hard floor; executions halt below this).
 - **Commit Charge Floor:** `min_free_commit_mb = 2500.0 MB` (Pagefile protection).
 - **CPU Ceilings:** `max_cpu_percent = 85.0%` (Throttles worker admission when host is CPU-bound).
@@ -583,13 +583,13 @@ By storing the entire DAG logically inside SQLite WAL tables with DFS dependency
 
 ---
 
-### 1.8 The Cognitive Reasoning Loop & Decision Flow (How AGI 1.7 Thinks)
+### 1.8 The Cognitive Reasoning Loop & Decision Flow (How IVA Thinks)
 
-The cognitive reasoning loop of AGI 1.7 executes as a deterministic 12-stage cycle:
+The cognitive reasoning loop of IVA executes as a deterministic 12-stage cycle:
 
 ```mermaid
 flowchart TD
-    subgraph CognitiveLoop ["12-Stage Autonomous Cognitive Loop (How AGI 1.7 Thinks)"]
+    subgraph CognitiveLoop ["12-Stage Autonomous Cognitive Loop (How IVA Thinks)"]
         direction TB
         S1["1. Live Telemetry & Hardware Snapshot<br/>(Capture Win32 RAM, Commit, CPU & Storage Headroom)"]
         S2["2. Mandatory Pre-Planning Memory Retrieval<br/>(Query Layers 5, 6, 7 from omega_memory.db WAL Mode)"]
@@ -622,21 +622,21 @@ flowchart TD
 1. **Live Telemetry & Hardware Snapshot:** Evaluates host memory, commit headroom, CPU usage, and battery/AC power before taking any computational action. Low headroom forces effort backoff or queue pausing.
 2. **Mandatory Pre-Planning Memory Retrieval (`retrieve_before_planning()`):** Under runtime invariants, the agent is strictly prohibited from planning from a blank slate. It queries Layer 5 (Semantic Facts), Layer 6 (Procedural Recipes), and Layer 7 (Failure Playbooks) in SQLite WAL (`omega_memory.db`), filtering out stopwords and injecting historical lessons without token bloat.
 3. **Complexity Classification:** Determines whether the task is a single-step action (routed through the direct Fast Path) or an architectural engineering goal (routed to the Hierarchical DAG Planner).
-4. **DAG Topological Decomposition & Cycle Detection:** Structures subtasks with strict dependency declarations. [`DependencyManager`](agents/AGI_1_7/engine/agi17/task_control/dependency_manager.py) runs DFS cycle detection, rejecting circular dependencies before execution.
-5. **Specialist Capability Routing:** The [`CapabilityRouter`](agents/AGI_1_7/ecosystem/agent_registry/capability_router.py) maps each subtask to the most capable of the 100 validated contracts.
-6. **Gemini 3.8 Flash High Extended Reasoning:** Executes model calls using `--effort high` inside [`isolated_cwd`](agents/AGI_1_7/engine/agi17/telemetry/token_economy.py). Extended thinking explores invariants, edge cases, minimal code changes, and failure modes under strict pre-call token ceilings.
-7. **Streaming Process Supervision:** Execution output streams through [`ProcessSupervisor`](agents/AGI_1_7/engine/agi17/process_supervision/process_supervisor.py) and [`StreamParser`](agents/AGI_1_7/engine/agi17/process_supervision/stream_parser.py), detecting completed units, percentages, and error signatures in real time while enforcing idle-output watchdogs.
-8. **Live Instruction Checkpointing:** Between DAG waves, the active thread inspects the [`CommandInbox`](agents/AGI_1_7/engine/agi17/task_control/task_manager.py) to ingest operator overrides (`ADD_CHILD_TASK`, `PAUSE_CURRENT_AND_SWITCH`, `CANCEL_AND_REPLACE`).
+4. **DAG Topological Decomposition & Cycle Detection:** Structures subtasks with strict dependency declarations. [`DependencyManager`](agents/IVA/engine/agi17/task_control/dependency_manager.py) runs DFS cycle detection, rejecting circular dependencies before execution.
+5. **Specialist Capability Routing:** The [`CapabilityRouter`](agents/IVA/ecosystem/agent_registry/capability_router.py) maps each subtask to the most capable of the 100 validated contracts.
+6. **Gemini 3.8 Flash High Extended Reasoning:** Executes model calls using `--effort high` inside [`isolated_cwd`](agents/IVA/engine/agi17/telemetry/token_economy.py). Extended thinking explores invariants, edge cases, minimal code changes, and failure modes under strict pre-call token ceilings.
+7. **Streaming Process Supervision:** Execution output streams through [`ProcessSupervisor`](agents/IVA/engine/agi17/process_supervision/process_supervisor.py) and [`StreamParser`](agents/IVA/engine/agi17/process_supervision/stream_parser.py), detecting completed units, percentages, and error signatures in real time while enforcing idle-output watchdogs.
+8. **Live Instruction Checkpointing:** Between DAG waves, the active thread inspects the [`CommandInbox`](agents/IVA/engine/agi17/task_control/task_manager.py) to ingest operator overrides (`ADD_CHILD_TASK`, `PAUSE_CURRENT_AND_SWITCH`, `CANCEL_AND_REPLACE`).
 9. **Disposable Container Sandbox Isolation:** Candidate code executes inside an air-gapped Docker container (`DisposableSandboxRunner`, `--network none`, `--read-only`, tmpfs `/tmp`, non-root UID 65534). Host execution is strictly blocked.
-10. **Self-Learning Failure Memory & Repair Loop:** If a test assertion fails, [`CIRepairAgent`](agents/AGI_1_7/engine/agi17/orchestration/ci_repair_agent.py) extracts the failure signature, logs a lesson in Layer 7, and injects a `<=120`-token compact guardrail into the subsequent turn to prevent repetitive bugs.
+10. **Self-Learning Failure Memory & Repair Loop:** If a test assertion fails, [`CIRepairAgent`](agents/IVA/engine/agi17/orchestration/ci_repair_agent.py) extracts the failure signature, logs a lesson in Layer 7, and injects a `<=120`-token compact guardrail into the subsequent turn to prevent repetitive bugs.
 11. **High-Impact Independent Approval Gating:** Generated code is staged in an external quarantine directory outside the workspace. Workspace files remain byte-for-byte unmodified until testing passes and human approval tokens are granted.
-12. **Zero-Fabrication Claim-to-Evidence Audit:** [`EvidenceVerifier`](agents/AGI_1_7/engine/agi17/verification/evidence_verifier.py) compares execution output against ground-truth logs, computes SHA-256 artifact checksums, records the immutable audit record to Layer 10, and commits task completion in SQLite WAL.
+12. **Zero-Fabrication Claim-to-Evidence Audit:** [`EvidenceVerifier`](agents/IVA/engine/agi17/verification/evidence_verifier.py) compares execution output against ground-truth logs, computes SHA-256 artifact checksums, records the immutable audit record to Layer 10, and commits task completion in SQLite WAL.
 
 ---
 
 ### 1.9 Context Engineering Engine & 9-Layer Context Architecture
 
-The [`ContextEngine`](agents/AGI_1_7/engine/agi17/context/context_engine.py) implements a 9-layer context architecture ensuring prompt relevance, conflict resolution, and secret redaction:
+The [`ContextEngine`](agents/IVA/engine/agi17/context/context_engine.py) implements a 9-layer context architecture ensuring prompt relevance, conflict resolution, and secret redaction:
 
 ```mermaid
 flowchart TB
@@ -665,7 +665,7 @@ flowchart TB
 
 ### 1.10 Continuous 24/7 Supervisor Control Plane
 
-The [`ContinuousSupervisor`](agents/AGI_1_7/engine/agi17/process_supervision/continuous_supervisor.py) provides 24/7 non-terminating autonomous supervision through a 10-state transactional state machine:
+The [`ContinuousSupervisor`](agents/IVA/engine/agi17/process_supervision/continuous_supervisor.py) provides 24/7 non-terminating autonomous supervision through a 10-state transactional state machine:
 
 ```mermaid
 stateDiagram-v2
@@ -703,7 +703,7 @@ stateDiagram-v2
 
 ### 1.11 Continuous Autonomous Self-Evolution Engine
 
-The [`AutonomousSelfEvolutionEngine`](agents/AGI_1_7/engine/agi17/orchestration/self_evolution_engine.py) allows AGI 1.7 to dynamically discover capability gaps, synthesize validated contracts at runtime, verify zero regressions, and cryptographically seal evolution milestones:
+The [`AutonomousSelfEvolutionEngine`](agents/IVA/engine/agi17/orchestration/self_evolution_engine.py) allows IVA to dynamically discover capability gaps, synthesize validated contracts at runtime, verify zero regressions, and cryptographically seal evolution milestones:
 
 ```mermaid
 flowchart TD
@@ -731,9 +731,9 @@ flowchart TD
 
 ---
 
-## 👥 2. 100 Specialist Contracts Managed by AGI 1.7
+## 👥 2. 100 Specialist Contracts Managed by IVA
 
-The multi-agent ecosystem organizes its **100 validated specialist contracts** across 16 functional families in [`registry.json`](agents/AGI_1_7/ecosystem/agent_registry/registry.json):
+The multi-agent ecosystem organizes its **100 validated specialist contracts** across 16 functional families in [`registry.json`](agents/IVA/ecosystem/agent_registry/registry.json):
 
 | # | Specialist Family | Contracts Managed | Core Capabilities & Representative Specialists |
 | :-: | :--- | :-: | :--- |
@@ -760,19 +760,19 @@ The multi-agent ecosystem organizes its **100 validated specialist contracts** a
 
 All reported evaluation results represent verified executions with reproducible logs, SHA-256 artifact hashes, and network-isolated container enforcement.
 
-### 3.1 Head-to-Head Comparative Visual Dossier (Antigravity Basic vs. AGI 1.7)
+### 3.1 Head-to-Head Comparative Visual Dossier (Antigravity Basic vs. IVA)
 
-The visual charts below provide a direct, standalone head-to-head evaluation strictly comparing the **Antigravity Basic Agent (Baseline)** against **AGI 1.7 — OMEGA COMMAND** across verified operational capabilities and 70 benchmark categories in 7 domains:
+The visual charts below provide a direct, standalone head-to-head evaluation strictly comparing the **Antigravity Basic Agent (Baseline)** against **IVA — Autonomous Runtime** across verified operational capabilities and 70 benchmark categories in 7 domains:
 
-![AGI 1.7 vs Antigravity Basic Overall Comparison](assets/graphs/antigravity_vs_agi17_overall_comparison.png)
+![IVA vs Antigravity Basic Overall Comparison](assets/graphs/antigravity_vs_agi17_overall_comparison.png)
 
-![AGI 1.7 vs Antigravity Basic 7-Domain Breakdown](assets/graphs/antigravity_vs_agi17_domain_comparison.png)
+![IVA vs Antigravity Basic 7-Domain Breakdown](assets/graphs/antigravity_vs_agi17_domain_comparison.png)
 
 ### 3.2 Standalone Verification Scorecard
 
 | Evaluation Category | Verified Metric | Result | Verification Standard & Sandbox Policy |
 | :--- | :--- | :---: | :--- |
-| **Repository CI & Hardening Suite** | Full Test Coverage | **`88 / 88` (`100%`)** | Passing across Ubuntu and Windows runners ([Run #38163862109](https://github.com/Abhishek200416/AGI-1.7V/actions/runs/38163862109)) |
+| **Repository CI & Hardening Suite** | Full Test Coverage | **`88 / 88` (`100%`)** | Passing across Ubuntu and Windows runners ([Run #38163862109](https://github.com/Abhishek200416/IVA/actions/runs/38163862109)) |
 | **Real Docker Container Isolation** | Security Integration | **`5 / 5` (`100%`)** | Verified `--network none`, `--read-only`, non-root user, container teardown |
 | **Python Coding & Repair Suite** | Verified Task Completion | **`3 / 3` (`100.0%`)** | 100% of unseen held-out tests pass inside network-isolated container |
 | | Unseen Unit Tests Passed | **`9 / 9` (`100.0%`)** | Evaluated across token-bucket, interval-merger, and AST tasks |
@@ -804,7 +804,7 @@ The visual charts below provide a direct, standalone head-to-head evaluation str
 
 ## 🔧 5. Product Workflow: Automated Python CI-Repair Agent (`CIRepairAgent`)
 
-[`CIRepairAgent`](agents/AGI_1_7/engine/agi17/orchestration/ci_repair_agent.py) is a focused commercial product workflow that automates bug fixing and test repair in CI pipelines:
+[`CIRepairAgent`](agents/IVA/engine/agi17/orchestration/ci_repair_agent.py) is a focused commercial product workflow that automates bug fixing and test repair in CI pipelines:
 
 1. **Reproduction:** Executes the failing test suite inside a network-isolated disposable container and extracts the exact failure traceback.
 2. **Diagnosis & Minimal Patch Synthesis:** Analyzes the root cause and synthesizes a minimal-diff patch under strict cost and token budgets.
@@ -813,8 +813,8 @@ The visual charts below provide a direct, standalone head-to-head evaluation str
 
 ### Running CI-Repair via CLI
 ```bash
-python agents/AGI_1_7/run_agi_17.py \
-  --ci-repair-dir agents/AGI_1_7/live_code_mission_workspace \
+python agents/IVA/run_iva.py \
+  --ci-repair-dir agents/IVA/live_code_mission_workspace \
   --module-filename token_bucket.py \
   --prompt "Fix failing unit tests with minimal diff"
 ```
@@ -824,10 +824,10 @@ python agents/AGI_1_7/run_agi_17.py \
 ## ⚡ 6. Quickstart & Reproducible Commands
 
 ### 1. One-Command Autonomous Setup (`setup_iva.py`)
-AGI 1.7 and Iva feature a self-provisioning runtime setup script that runs on any machine with zero required third-party dependencies:
+IVA and Iva feature a self-provisioning runtime setup script that runs on any machine with zero required third-party dependencies:
 ```bash
-git clone https://github.com/Abhishek200416/AGI-1.7V.git
-cd AGI-1.7V
+git clone https://github.com/Abhishek200416/IVA.git
+cd IVA
 python setup_iva.py
 ```
 *(Alternatively, with `uv`: `uv run python setup_iva.py`)*
@@ -854,7 +854,7 @@ After running setup, you can launch Iva across three primary interaction surface
   ```
 - **Real-Time Observability Web Dashboard (port 8088):**
   ```bash
-  python agents/AGI_1_7/ui/standalone_dashboard_server.py
+  python agents/IVA/ui/standalone_dashboard_server.py
   ```
 
 ---
@@ -889,7 +889,7 @@ python run_iva.py --profile-only
 python run_iva.py \
   --title "Interval Merger" \
   --prompt "Implement IntervalMerger in interval_merger.py" \
-  --code-task-dir agents/AGI_1_7/live_code_mission_workspace \
+  --code-task-dir agents/IVA/live_code_mission_workspace \
   --module-filename interval_merger.py \
   --test-filename test_interval_merger.py
 ```
@@ -907,21 +907,21 @@ python run_iva.py \
 ## 📚 7. Comprehensive Documentation & Audit Directory
 
 ### Security & Governance
-- [P0 Production Hardening & Approval-Gate Security Report](agents/AGI_1_7/docs/AGI_1_7_P0_SECURITY_HARDENING_REPORT.md)
+- [P0 Production Hardening & Approval-Gate Security Report](agents/IVA/docs/IVA_P0_SECURITY_HARDENING_REPORT.md)
 - [Production Security & Governance Specification](docs/SECURITY_AND_GOVERNANCE.md)
-- [Phase 0 Baseline & Security Audit](agents/AGI_1_7/docs/PHASE_0_BASELINE_AND_SECURITY_AUDIT.md)
-- [Licensing, Provenance & Supply-Chain Report](agents/AGI_1_7/docs/LICENSING_AND_PROVENANCE_REPORT.md)
+- [Phase 0 Baseline & Security Audit](agents/IVA/docs/PHASE_0_BASELINE_AND_SECURITY_AUDIT.md)
+- [Licensing, Provenance & Supply-Chain Report](agents/IVA/docs/LICENSING_AND_PROVENANCE_REPORT.md)
 
 ### Product Specifications & Operations
-- [Product Spec — Automated Python CI-Repair Agent](agents/AGI_1_7/docs/PRODUCT_SPEC_PYTHON_CI_REPAIR.md)
-- [Production Readiness, Strict Rubric Scorecard & Commercial Dossier](agents/AGI_1_7/docs/PRODUCTION_READINESS_AND_COMMERCIAL_DOSSIER.md)
-- [Operations, Deployment & Troubleshooting Runbook](agents/AGI_1_7/docs/OPERATIONS_AND_DEPLOYMENT_GUIDE.md)
-- [Technical Architecture & Engineering FAQ](agents/AGI_1_7/docs/TECHNICAL_ARCHITECTURE_AND_FAQ.md)
+- [Product Spec — Automated Python CI-Repair Agent](agents/IVA/docs/PRODUCT_SPEC_PYTHON_CI_REPAIR.md)
+- [Production Readiness, Strict Rubric Scorecard & Commercial Dossier](agents/IVA/docs/PRODUCTION_READINESS_AND_COMMERCIAL_DOSSIER.md)
+- [Operations, Deployment & Troubleshooting Runbook](agents/IVA/docs/OPERATIONS_AND_DEPLOYMENT_GUIDE.md)
+- [Technical Architecture & Engineering FAQ](agents/IVA/docs/TECHNICAL_ARCHITECTURE_AND_FAQ.md)
 
 ### Benchmark Evaluations & Academic Reports
-- [70 Multi-Domain Evaluation Benchmark Report](agents/AGI_1_7/docs/AGI_1_7_FOUR_AGENT_70_BENCHMARK_COMPARISON.md)
-- [Master Final Evaluation Report (GPQA, TB2, OSWorld)](agents/AGI_1_7/docs/AGI17_MASTER_FINAL_EVALUATION_REPORT.md)
-- [Academic Benchmark Report (GPQA Diamond Clean 1.2.2)](agents/AGI_1_7/docs/AGI_1_7_GPQA_CLEAN_189_REPORT.md)
-- [Official `terminal-bench@2.0` Harbor Report](agents/AGI_1_7/docs/AGI17_TERMINAL_BENCH_2_0_REPORT.md)
-- [Official `OSWorld-V2.1` Computer-Use Report](agents/AGI_1_7/docs/AGI17_OSWORLD_V2_1_REPORT.md)
-- [3-Way Held-Out Coding Benchmark Report](agents/AGI_1_7/reports/HELDOUT_CODING_BENCHMARK_REPORT.md)
+- [70 Multi-Domain Evaluation Benchmark Report](agents/IVA/docs/IVA_FOUR_AGENT_70_BENCHMARK_COMPARISON.md)
+- [Master Final Evaluation Report (GPQA, TB2, OSWorld)](agents/IVA/docs/IVA_MASTER_FINAL_EVALUATION_REPORT.md)
+- [Academic Benchmark Report (GPQA Diamond Clean 1.2.2)](agents/IVA/docs/IVA_GPQA_CLEAN_189_REPORT.md)
+- [Official `terminal-bench@2.0` Harbor Report](agents/IVA/docs/IVA_TERMINAL_BENCH_2_0_REPORT.md)
+- [Official `OSWorld-V2.1` Computer-Use Report](agents/IVA/docs/IVA_OSWORLD_V2_1_REPORT.md)
+- [3-Way Held-Out Coding Benchmark Report](agents/IVA/reports/HELDOUT_CODING_BENCHMARK_REPORT.md)

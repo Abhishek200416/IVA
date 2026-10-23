@@ -56,11 +56,11 @@ jobs:
         run: python -m unittest tests/test_finance_safety_invariants.py -v
 
       - name: Verify 100 Specialist Contracts & Ecosystem Sync (Dry-Run, Zero Home Mutation)
-        run: python agents/AGI_1_7/scripts/sync_ecosystem.py --dry-run
+        run: python agents/IVA/scripts/sync_ecosystem.py --dry-run
 
       - name: Verify EcosystemCoordinator Inventory (100 Specialists, >=76 Agency Profiles, 21 MCPs, 11 Plugins, 74 Skills)
         run: |
-          python -c "from agents.AGI_1_7.ecosystem.agent_registry.ecosystem_coordinator import EcosystemCoordinator; c = EcosystemCoordinator(); inv = c.get_inventory_summary(); print(inv); assert inv['embedded_specialists_count'] == 100; assert inv['agency_profiles_bridged_count'] >= 76; assert inv['mcp_servers_count'] == 21; assert inv['plugin_suites_count'] == 11; assert inv['workflow_skills_count'] == 74"
+          python -c "from agents.IVA.ecosystem.agent_registry.ecosystem_coordinator import EcosystemCoordinator; c = EcosystemCoordinator(); inv = c.get_inventory_summary(); print(inv); assert inv['embedded_specialists_count'] == 100; assert inv['agency_profiles_bridged_count'] >= 76; assert inv['mcp_servers_count'] == 21; assert inv['plugin_suites_count'] == 11; assert inv['workflow_skills_count'] == 74"
 
       - name: Run IVA Unit Test Suite (26 Tests)
         run: python -m unittest tests/unit/test_iva_unit_suite.py -v
@@ -73,8 +73,8 @@ jobs:
 
       - name: Run Generated Workspace Unit Test Suites (TokenBucket & IntervalMerger)
         run: |
-          python -m unittest discover -s agents/AGI_1_7/live_code_mission_workspace -t agents/AGI_1_7/live_code_mission_workspace -p "test_*.py" -v
-          python -m unittest discover -s agents/AGI_1_7/demo_workspace/src -t agents/AGI_1_7/demo_workspace/src -p "test_*.py" -v
+          python -m unittest discover -s agents/IVA/live_code_mission_workspace -t agents/IVA/live_code_mission_workspace -p "test_*.py" -v
+          python -m unittest discover -s agents/IVA/demo_workspace/src -t agents/IVA/demo_workspace/src -p "test_*.py" -v
 
       - name: Run CLI Startup & Capability Profile Smoke Check
         run: python run_iva.py --profile-only
@@ -101,5 +101,5 @@ jobs:
 
       - name: Execute Real Docker Engine Integration & Adversarial Sandbox Proofs
         env:
-          AGI17_REQUIRE_REAL_DOCKER: "1"
+          IVA_REQUIRE_REAL_DOCKER: "1"
         run: python -m unittest tests.test_p0_security_and_real_docker.TestP0RealDockerEngineIntegration -v
