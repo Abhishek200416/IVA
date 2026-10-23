@@ -3,20 +3,6 @@ revision = 3
 requires-python = ">=3.10"
 
 [[package]]
-name = "agi-17-omega-command"
-version = "1.7.0"
-source = { editable = "." }
-
-[package.optional-dependencies]
-dev = [
-    { name = "pytest" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0.0" }]
-provides-extras = ["dev"]
-
-[[package]]
 name = "colorama"
 version = "0.4.6"
 source = { registry = "https://pypi.org/simple" }
@@ -45,6 +31,20 @@ sdist = { url = "https://files.pythonhosted.org/packages/01/e1/2069291243c926a2f
 wheels = [
     { url = "https://files.pythonhosted.org/packages/56/43/4ca9e49d27a1fcf6bece6f6aec0ea46bb9112489b93d4b688fb415457bdb/iniconfig-2.3.1-py3-none-any.whl", hash = "sha256:9121e2c1fdb355232495be3194c8dfe87ccc2d5dee45947b78e68f499790d7a7", size = 7552, upload-time = "2026-10-06T22:48:36.959Z" },
 ]
+
+[[package]]
+name = "iva-engine"
+version = "1.7.29"
+source = { editable = "." }
+
+[package.optional-dependencies]
+dev = [
+    { name = "pytest" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0.0" }]
+provides-extras = ["dev"]
 
 [[package]]
 name = "packaging"

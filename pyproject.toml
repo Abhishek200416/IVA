@@ -3,16 +3,16 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "agi-17-omega-command"
-version = "1.7.0"
-description = "AGI 1.7 OMEGA COMMAND — Resource-Aware, Sandboxed, Multi-Agent Coding & CI-Repair Runtime"
+name = "iva-engine"
+version = "1.7.29"
+description = "IVA — Autonomous Cognitive Engineering Partner, Systems Architect & Multi-Agent Runtime"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
 authors = [
     {name = "Abhishek"}
 ]
-keywords = ["ai-agents", "coding-agent", "ci-repair", "sandbox", "sqlite-wal", "orchestration"]
+keywords = ["iva", "cognitive-agent", "autonomous-partner", "multi-agent", "sandbox", "sqlite-wal", "ci-repair"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -30,17 +30,19 @@ dev = [
 ]
 
 [project.scripts]
-agi17 = "agents.AGI_1_7.run_agi_17:main"
+iva = "run_iva:main"
+talk-to-iva = "talk_to_iva:main"
+agi17 = "run_iva:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["agents.AGI_1_7*"]
+include = ["iva*", "agents.AGI_1_7*"]
 
 [tool.setuptools.package-data]
 "agents.AGI_1_7.ecosystem.agent_registry.contracts" = ["*.json"]
 
 [tool.pytest.ini_options]
-testpaths = ["agents/AGI_1_7/tests"]
+testpaths = ["tests"]
 norecursedirs = [
     "agents/AGI_1_7/backups",
     "agents/AGI_1_7/heldout_benchmark_workspace",

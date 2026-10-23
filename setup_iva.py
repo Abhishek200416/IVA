@@ -153,13 +153,13 @@ def print_ready_guide(db_path: Path):
         print("     (or double-click: launch_iva_call.bat)")
     print()
     print("  2. Autonomous Terminal Multi-Agent CLI:")
-    print("     python agents/AGI_1_7/run_agi_17.py")
+    print("     python run_iva.py")
     print()
     print("  3. Real-Time Web Telemetry Dashboard (port 8088):")
     print("     python agents/AGI_1_7/ui/standalone_dashboard_server.py")
     print()
     print("  4. Verify Cognitive Architecture Integrity Test:")
-    print("     python -m unittest agents/AGI_1_7/tests/test_iva_cognitive_architecture_and_identity.py")
+    print("     python -m unittest tests/test_iva_cognitive_architecture_and_identity.py")
     print("=" * 80 + "\n")
 
 def main():
