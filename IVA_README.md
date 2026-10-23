@@ -25,12 +25,12 @@ flowchart TB
         REFLECT["Bounded Recursive Reflection Engine<br/>(10-Question Self-Evaluation Protocol)"]
     end
 
-    subgraph Interfaces ["Multi-Modal Interaction Surfaces"]
+    subgraph Interfaces ["Interaction Surfaces"]
         direction TB
-        VOICE["Desktop Voice HUD & Overlay<br/>(iva_desktop_voice_hud.py / launch_iva_call.bat)"]
-        CLI["Autonomous Terminal CLI<br/>(run_iva.py)"]
-        DASH["Real-Time Observability Web Dashboard<br/>(port 8088 / standalone_dashboard_server.py)"]
+        CLI["Autonomous Terminal CLI<br/>(run_iva.py - Primary)"]
         CI["Automated Python CI-Repair Agent<br/>(ci_repair_agent.py)"]
+        DASH["Real-Time Observability Web Dashboard<br/>(port 8088 / standalone_dashboard_server.py)"]
+        VOICE["Optional Desktop Voice HUD<br/>(talk_to_iva.py)"]
     end
 
     subgraph Specialists ["100 Embedded Specialists across 16 Families"]
