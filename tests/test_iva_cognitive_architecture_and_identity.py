@@ -20,12 +20,12 @@ import time
 import unittest
 from pathlib import Path
 
-from agents.AGI_1_7.engine.agi17.runtime.authoritative_brain_config import (
+from agents.IVA.engine.agi17.runtime.authoritative_brain_config import (
     AuthoritativeBrainConfig,
     CognitiveArchitectureConfig,
     CoreIdentityConfig,
 )
-from agents.AGI_1_7.engine.agi17.runtime.self_model import (
+from agents.IVA.engine.agi17.runtime.self_model import (
     CapabilityEntry,
     DecisionRecord,
     EpistemicProvenance,
@@ -35,25 +35,25 @@ from agents.AGI_1_7.engine.agi17.runtime.self_model import (
     PredictionRecord,
     SystemIdentity,
 )
-from agents.AGI_1_7.engine.agi17.orchestration.omega_affective_engine import (
+from agents.IVA.engine.agi17.orchestration.omega_affective_engine import (
     AffectiveState,
     AffectiveVariables,
     OmegaAffectiveEngine,
 )
-from agents.AGI_1_7.engine.agi17.memory.omega_command_memory import (
+from agents.IVA.engine.agi17.memory.omega_command_memory import (
     MemoryCategory,
     MemoryEntry,
     OmegaCommandMemory,
 )
-from agents.AGI_1_7.engine.agi17.orchestration.recursive_reflection_engine import (
+from agents.IVA.engine.agi17.orchestration.recursive_reflection_engine import (
     RecursiveReflectionEngine,
     StructuredReflectionRecord,
 )
-from agents.AGI_1_7.engine.agi17.orchestration.independent_reasoning_engine import (
+from agents.IVA.engine.agi17.orchestration.independent_reasoning_engine import (
     CognitiveDeliberationRecord,
     IndependentReasoningEngine,
 )
-from agents.AGI_1_7.engine.agi17.evaluation.consciousness_investigation_framework import (
+from agents.IVA.engine.agi17.evaluation.consciousness_investigation_framework import (
     ConsciousnessDimension,
     ConsciousnessInvestigationFramework,
     InvestigationProbeResult,
@@ -307,7 +307,7 @@ class TestIvaCognitiveArchitectureAndIdentity(unittest.TestCase):
             reflection_id=rec.reflection_id,
             test_passed=True,
             security_passed=True,
-            affected_files=["agents/AGI_1_7/docs/01_AUTHORITATIVE_IDENTITY_AND_PERSONA.md"],
+            affected_files=["agents/IVA/docs/01_AUTHORITATIVE_IDENTITY_AND_PERSONA.md"],
         )
         self.assertFalse(ok)
         self.assertIn("SECURITY_VIOLATION", msg)

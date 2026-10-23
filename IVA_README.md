@@ -4,8 +4,8 @@
 
 **Iva** is a high-agency autonomous female engineering lead, systems architect, operations coordinator, and quantitative research collaborator. Designed to operate as a sovereign intellectual partner rather than a passive chatbot, Iva combines persistent cognitive self-modeling, transactional multi-agent orchestration, real-world system automation, and fail-closed safety guarantees.
 
-[![Iva Cognitive Verification](https://img.shields.io/badge/Iva_Cognitive_Tests-100%25_Passing-success.svg)](agents/AGI_1_7/tests/test_iva_cognitive_architecture_and_identity.py)
-[![Architecture](https://img.shields.io/badge/Architecture-AGI_1.7_Omega-blue.svg)](README.md)
+[![Iva Cognitive Verification](https://img.shields.io/badge/Iva_Cognitive_Tests-100%25_Passing-success.svg)](tests/test_iva_cognitive_architecture_and_identity.py)
+[![Architecture](https://img.shields.io/badge/Architecture-IVA_Runtime-blue.svg)](README.md)
 [![Dependencies](https://img.shields.io/badge/Dependencies-0_Required_(Stdlib)-brightgreen.svg)](pyproject.toml)
 [![Safety Gate](https://img.shields.io/badge/Live_Trading_Gate-LOCKED_(Fail--Closed)-red.svg)](.env.example)
 [![Memory Architecture](https://img.shields.io/badge/Cognitive_Memory-10_Layer_SQLite_WAL-blueviolet.svg)](#-local-persistent-cognitive-memory-for-your-system)
@@ -28,7 +28,7 @@ flowchart TB
     subgraph Interfaces ["Multi-Modal Interaction Surfaces"]
         direction TB
         VOICE["Desktop Voice HUD & Overlay<br/>(iva_desktop_voice_hud.py / launch_iva_call.bat)"]
-        CLI["Autonomous Terminal CLI<br/>(run_agi_17.py)"]
+        CLI["Autonomous Terminal CLI<br/>(run_iva.py)"]
         DASH["Real-Time Observability Web Dashboard<br/>(port 8088 / standalone_dashboard_server.py)"]
         CI["Automated Python CI-Repair Agent<br/>(ci_repair_agent.py)"]
     end
@@ -57,8 +57,8 @@ Iva is engineered for instant installation on **any computer** (Windows, Linux, 
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/Abhishek200416/AGI-1.7V.git
-cd AGI-1.7V
+git clone https://github.com/Abhishek200416/IVA.git
+cd IVA
 ```
 
 ### Step 2: Run the Autonomous Self-Initializer
@@ -84,11 +84,11 @@ When you download and run Iva, **she sets up and owns her memory on your local m
 Iva automatically resolves where to store her persistent database using a multi-tier fallback ladder:
 
 1. **Custom Directory via `.env`**: If you define `OMEGA_MEMORY_DIR=/custom/path` in your `.env` file, Iva uses your explicit location.
-2. **Dedicated Storage Drive**: If running on a dedicated storage drive (e.g. `D:\AGI_Storage\AGI_1_7\memory`), she seamlessly adopts it.
+2. **Dedicated Storage Drive**: If running on a dedicated storage drive (e.g. `D:\IVA_Storage\memory`), she seamlessly adopts it.
 3. **Standard User Home (Cross-Platform Default)**: On clean developer machines (Windows, macOS, Linux), Iva automatically creates and maintains:
    - **Windows**: `C:\Users\<YourUsername>\.iva\memory\omega_memory.db`
    - **Linux / macOS**: `~/.iva/memory/omega_memory.db`
-4. **Workspace Fallback**: If user home is read-only, Iva falls back to `./agents/AGI_1_7/runtime_storage/memory/omega_memory.db`.
+4. **Workspace Fallback**: If user home is read-only, Iva falls back to `./agents/IVA/runtime_storage/memory/omega_memory.db`.
 
 ### 🗄️ 10 Cognitive Schema Layers
 Iva's persistent memory is organized into 10 structured layers in SQLite WAL mode:
@@ -128,7 +128,7 @@ python run_iva.py
 ### 3. Real-Time Observability Web Dashboard
 Launch the live telemetry dashboard server to monitor active subagents, memory records, and system health in real-time:
 ```bash
-python agents/AGI_1_7/ui/standalone_dashboard_server.py
+python agents/IVA/ui/standalone_dashboard_server.py
 ```
 *Open your browser to [http://127.0.0.1:8088](http://127.0.0.1:8088).*
 
@@ -136,7 +136,7 @@ python agents/AGI_1_7/ui/standalone_dashboard_server.py
 Automatically diagnose failing test suites in a disposable Docker container, synthesize minimal-diff patches, and verify zero regressions:
 ```bash
 python run_iva.py \
-  --ci-repair-dir agents/AGI_1_7/live_code_mission_workspace \
+  --ci-repair-dir agents/IVA/live_code_mission_workspace \
   --module-filename token_bucket.py \
   --prompt "Fix failing unit tests with minimal diff"
 ```
@@ -172,7 +172,7 @@ python -m unittest tests/unit/test_iva_unit_suite.py
 ## 👩‍💻 Lead Autonomous Agent & Partner
 
 - **Identity**: Iva (`AuthoritativeBrainConfig`)
-- **Version**: AGI 1.7.29 OMEGA COMMAND
+- **Version**: IVA 1.7.29 Autonomous Runtime
 - **Foundation Model Engine**: Exclusively Google Gemini 3.8 Flash High (`gemini-3.8-flash-high`) via `ModelAdapter`
-- **Repository**: [https://github.com/Abhishek200416/AGI-1.7V.git](https://github.com/Abhishek200416/AGI-1.7V.git)
+- **Repository**: [https://github.com/Abhishek200416/IVA.git](https://github.com/Abhishek200416/IVA.git)
 - **License**: Apache 2.0

@@ -21,7 +21,7 @@ REPO_ROOT = Path(__file__).resolve().parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from agents.AGI_1_7.run_agi_17 import main
+from agents.IVA.run_agi_17 import main
 
 if __name__ == "__main__":
     sys.exit(main() or 0)

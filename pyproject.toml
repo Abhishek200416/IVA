@@ -36,18 +36,18 @@ agi17 = "run_iva:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["iva*", "agents.AGI_1_7*"]
+include = ["iva*", "agents.IVA*", "agents.AGI_1_7*"]
 
 [tool.setuptools.package-data]
-"agents.AGI_1_7.ecosystem.agent_registry.contracts" = ["*.json"]
+"agents.IVA.ecosystem.agent_registry.contracts" = ["*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 norecursedirs = [
-    "agents/AGI_1_7/backups",
-    "agents/AGI_1_7/heldout_benchmark_workspace",
-    "agents/AGI_1_7/live_code_mission_workspace",
-    "agents/AGI_1_7/demo_workspace",
+    "agents/IVA/backups",
+    "agents/IVA/heldout_benchmark_workspace",
+    "agents/IVA/live_code_mission_workspace",
+    "agents/IVA/demo_workspace",
     "node_modules",
     ".venv",
     ".gemini",

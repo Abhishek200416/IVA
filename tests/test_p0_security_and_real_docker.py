@@ -1084,9 +1084,9 @@ class TestP0RealDockerEngineIntegration(unittest.TestCase):
         import os as _os
 
         if not self.docker_ready:
-            if _os.environ.get("AGI17_REQUIRE_REAL_DOCKER") == "1":
+            if _os.environ.get("IVA_REQUIRE_REAL_DOCKER") == "1" or _os.environ.get("AGI17_REQUIRE_REAL_DOCKER") == "1":
                 self.fail(
-                    f"AGI17_REQUIRE_REAL_DOCKER=1 is set, but real Docker Engine / pinned image is unavailable: {self.docker_reason}"
+                    f"IVA_REQUIRE_REAL_DOCKER=1 is set, but real Docker Engine / pinned image is unavailable: {self.docker_reason}"
                 )
             self.skipTest(f"Real Docker Engine / pinned image unavailable on this host: {self.docker_reason}")
         self.temp_dir = Path(tempfile.mkdtemp(prefix="agi17_real_docker_"))
