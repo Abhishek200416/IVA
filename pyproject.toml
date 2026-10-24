@@ -8,7 +8,7 @@ version = "1.7.29"
 description = "IVA — Autonomous Cognitive Engineering Partner, Systems Architect & Multi-Agent Runtime"
 readme = "README.md"
 requires-python = ">=3.10"
-license = {text = "Apache-2.0"}
+license = {text = "MIT"}
 authors = [
     {name = "Abhishek"}
 ]
@@ -16,7 +16,7 @@ keywords = ["iva", "cognitive-agent", "autonomous-partner", "multi-agent", "sand
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: Apache Software License",
+    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
