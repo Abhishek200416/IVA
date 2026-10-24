@@ -229,7 +229,40 @@ class TestUniversalAPIProvider(unittest.TestCase):
         self.assertEqual(adapter.model_adapter.api_provider.api_key, "AIzaSyAdapterTestKey")
         self.assertEqual(adapter.model_adapter.api_provider.model_name, "gemini-2.5-flash")
 
+    def test_09_anthropic_claude_provider_execution(self) -> None:
+        provider = UniversalAPIProvider(
+            api_key="sk-ant-synthetic-key-123",
+            provider_type="anthropic",
+            model_name="claude-3-5-sonnet-20241022",
+        )
+        self.assertEqual(provider.provider_type, "anthropic")
+        self.assertEqual(provider.model_name, "claude-3-5-sonnet-20241022")
+
+        fake_resp = {
+            "id": "msg_01",
+            "model": "claude-3-5-sonnet-20241022",
+            "type": "message",
+            "role": "assistant",
+            "content": [{"type": "text", "text": "Claude Sonnet analysis complete."}],
+            "usage": {"input_tokens": 40, "output_tokens": 20},
+        }
+
+        mock_resp = MagicMock()
+        mock_resp.read.return_value = json.dumps(fake_resp).encode("utf-8")
+        mock_resp.__enter__.return_value = mock_resp
+
+        req = ModelRequest(task_id="TASK-CLAUDE", prompt="Solve bug")
+        with patch("urllib.request.urlopen", return_value=mock_resp):
+            res = provider.generate(req)
+
+        self.assertEqual(res["status"], "SUCCEEDED")
+        self.assertEqual(res["model"], "claude-3-5-sonnet-20241022")
+        self.assertIn("Claude Sonnet analysis complete.", res["response_text"])
+        self.assertEqual(res["provider_usage"]["input_tokens"], 40)
+        self.assertEqual(res["provider_usage"]["output_tokens"], 20)
+
 
 if __name__ == "__main__":
     unittest.main()
+
 

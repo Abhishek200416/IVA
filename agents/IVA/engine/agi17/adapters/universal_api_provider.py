@@ -90,14 +90,27 @@ class UniversalAPIProvider(BaseModelProvider):
         self.backoff_sec = backoff_sec
 
         # Resolve credentials and provider type
-        gemini_key = api_key or os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-        openai_key = os.environ.get("OPENAI_API_KEY")
+        gemini_key = api_key if (provider_type == "gemini") else (api_key or os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY"))
+        anthropic_key = api_key if (provider_type == "anthropic") else (os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("CLAUDE_API_KEY"))
+        openai_key = api_key if (provider_type == "openai") else os.environ.get("OPENAI_API_KEY")
+        groq_key = os.environ.get("GROQ_API_KEY")
+        deepseek_key = os.environ.get("DEEPSEEK_API_KEY")
+        openrouter_key = os.environ.get("OPENROUTER_API_KEY")
+        custom_base = base_url or os.environ.get("OPENAI_API_BASE") or os.environ.get("OPENAI_BASE_URL")
 
         if provider_type:
             self.provider_type = provider_type.lower()
+        elif anthropic_key:
+            self.provider_type = "anthropic"
         elif gemini_key:
             self.provider_type = "gemini"
-        elif openai_key:
+        elif groq_key:
+            self.provider_type = "groq"
+        elif deepseek_key:
+            self.provider_type = "deepseek"
+        elif openrouter_key:
+            self.provider_type = "openrouter"
+        elif openai_key or custom_base:
             self.provider_type = "openai"
         else:
             self.provider_type = "gemini"  # Default fallback
@@ -116,6 +129,61 @@ class UniversalAPIProvider(BaseModelProvider):
                 or os.environ.get("GEMINI_BASE_URL")
                 or "https://generativelanguage.googleapis.com/v1beta"
             ).rstrip("/")
+        elif self.provider_type == "anthropic":
+            self.api_key = anthropic_key or api_key or ""
+            self.model_name = (
+                model_name
+                or os.environ.get("ANTHROPIC_MODEL")
+                or os.environ.get("IVA_MODEL")
+                or "claude-3-5-sonnet-20241022"
+            )
+            self.base_url = (
+                base_url
+                or os.environ.get("ANTHROPIC_BASE_URL")
+                or "https://api.anthropic.com/v1"
+            ).rstrip("/")
+        elif self.provider_type == "groq":
+            self.api_key = groq_key or api_key or ""
+            self.model_name = (
+                model_name
+                or os.environ.get("GROQ_MODEL")
+                or os.environ.get("IVA_MODEL")
+                or "llama-3.3-70b-versatile"
+            )
+            self.base_url = (
+                base_url
+                or os.environ.get("GROQ_BASE_URL")
+                or "https://api.groq.com/openai/v1"
+            ).rstrip("/")
+            self.provider_type = "openai"
+        elif self.provider_type == "deepseek":
+            self.api_key = deepseek_key or api_key or ""
+            self.model_name = (
+                model_name
+                or os.environ.get("DEEPSEEK_MODEL")
+                or os.environ.get("IVA_MODEL")
+                or "deepseek-chat"
+            )
+            self.base_url = (
+                base_url
+                or os.environ.get("DEEPSEEK_BASE_URL")
+                or "https://api.deepseek.com/v1"
+            ).rstrip("/")
+            self.provider_type = "openai"
+        elif self.provider_type == "openrouter":
+            self.api_key = openrouter_key or api_key or ""
+            self.model_name = (
+                model_name
+                or os.environ.get("OPENROUTER_MODEL")
+                or os.environ.get("IVA_MODEL")
+                or "anthropic/claude-3.5-sonnet"
+            )
+            self.base_url = (
+                base_url
+                or os.environ.get("OPENROUTER_BASE_URL")
+                or "https://openrouter.ai/api/v1"
+            ).rstrip("/")
+            self.provider_type = "openai"
         else:
             self.api_key = openai_key or api_key or ""
             self.model_name = (
@@ -139,7 +207,13 @@ class UniversalAPIProvider(BaseModelProvider):
         return bool(
             os.environ.get("GEMINI_API_KEY")
             or os.environ.get("GOOGLE_API_KEY")
+            or os.environ.get("ANTHROPIC_API_KEY")
+            or os.environ.get("CLAUDE_API_KEY")
             or os.environ.get("OPENAI_API_KEY")
+            or os.environ.get("GROQ_API_KEY")
+            or os.environ.get("DEEPSEEK_API_KEY")
+            or os.environ.get("OPENROUTER_API_KEY")
+            or os.environ.get("OPENAI_API_BASE")
         )
 
     def generate(self, request: ModelRequest) -> Dict[str, Any]:
@@ -147,14 +221,17 @@ class UniversalAPIProvider(BaseModelProvider):
         self.call_history.append(request)
         t0 = time.perf_counter()
 
-        if not self.api_key:
+        if not self.api_key and not (self.base_url and ("localhost" in self.base_url or "127.0.0.1" in self.base_url)):
             raise RuntimeError(
-                "UniversalAPIProvider requires an API key. Please set GEMINI_API_KEY (recommended) "
-                "or OPENAI_API_KEY in your local .env file or environment variable."
+                "UniversalAPIProvider requires an API key. Please set GEMINI_API_KEY (Google Gemini), "
+                "ANTHROPIC_API_KEY (Anthropic Claude), OPENAI_API_KEY (OpenAI), GROQ_API_KEY (Groq), "
+                "or DEEPSEEK_API_KEY in your local .env file or environment variable."
             )
 
         if self.provider_type == "gemini":
             return self._call_gemini_rest(request, t0)
+        elif self.provider_type == "anthropic":
+            return self._call_anthropic_rest(request, t0)
         else:
             return self._call_openai_rest(request, t0)
 
@@ -398,6 +475,111 @@ class UniversalAPIProvider(BaseModelProvider):
             "error_message": redact_sensitive_text(str(last_error or "Unknown error")),
             "is_mock": False,
             "notification_id": f"OPENAI-FAILED-{request.task_id}",
+            "stdout_log_path": None,
+            "stderr_log_path": None,
+        }
+
+    def _call_anthropic_rest(self, request: ModelRequest, start_time: float) -> Dict[str, Any]:
+        """Calls Anthropic Messages API using standard library urllib."""
+        eff_model = getattr(request, "model_override", None) or self.model_name
+        endpoint = f"{self.base_url}/messages"
+
+        payload: Dict[str, Any] = {
+            "model": eff_model,
+            "max_tokens": 8192,
+            "messages": [{"role": "user", "content": request.prompt}],
+        }
+        sys_inst = getattr(request, "system_instruction", None)
+        if sys_inst:
+            payload["system"] = str(sys_inst)
+
+        headers = {
+            "Content-Type": "application/json",
+            "x-api-key": self.api_key,
+            "anthropic-version": "2023-06-01",
+            "User-Agent": "IVA-Autonomous-Partner/1.7.29",
+        }
+
+        data_bytes = json.dumps(payload).encode("utf-8")
+        last_error = None
+
+        for attempt in range(1, self.max_retries + 1):
+            req = urllib.request.Request(endpoint, data=data_bytes, headers=headers, method="POST")
+            try:
+                ctx = ssl.create_default_context()
+                with urllib.request.urlopen(req, timeout=self.timeout_sec, context=ctx) as resp:
+                    resp_bytes = resp.read()
+                    parsed = json.loads(resp_bytes.decode("utf-8"))
+                    dt = max(0.001, time.perf_counter() - start_time)
+
+                    resp_text = ""
+                    for block in parsed.get("content", []):
+                        if block.get("type") == "text":
+                            resp_text += block.get("text", "")
+
+                    usage = parsed.get("usage", {})
+                    in_toks = int(usage.get("input_tokens", 0))
+                    out_toks = int(usage.get("output_tokens", 0))
+
+                    return {
+                        "status": "SUCCEEDED",
+                        "model": parsed.get("model", eff_model),
+                        "exit_code": 0,
+                        "timed_out": False,
+                        "duration_sec": round(dt, 4),
+                        "response_text": resp_text,
+                        "parsed_json": {},
+                        "provider_usage": {
+                            "input_tokens": in_toks,
+                            "output_tokens": out_toks,
+                            "thinking_tokens": 0,
+                            "cached_tokens": 0,
+                            "total_tokens": in_toks + out_toks,
+                        },
+                        "is_mock": False,
+                        "notification_id": f"ANTHROPIC-SUCCEEDED-{request.task_id}",
+                        "stdout_log_path": None,
+                        "stderr_log_path": None,
+                    }
+            except urllib.error.HTTPError as he:
+                err_body = ""
+                try:
+                    err_body = he.read().decode("utf-8", errors="ignore")
+                except Exception:
+                    pass
+                last_error = f"HTTP {he.code}: {he.reason} - {err_body[:200]}"
+                logger.warning("Anthropic HTTPError %d on attempt %d: %s", he.code, attempt, last_error)
+                if he.code in (401, 403):
+                    break
+                time.sleep(self.backoff_sec * attempt)
+            except urllib.error.URLError as ue:
+                last_error = f"URLError: {ue.reason}"
+                logger.warning("Anthropic URLError on attempt %d: %s", attempt, last_error)
+                time.sleep(self.backoff_sec * attempt)
+            except Exception as e:
+                last_error = f"Unexpected error: {str(e)}"
+                logger.error("Anthropic unexpected error attempt %d: %s", attempt, last_error)
+                time.sleep(self.backoff_sec)
+
+        dt = max(0.001, time.perf_counter() - start_time)
+        return {
+            "status": "FAILED",
+            "model": eff_model,
+            "exit_code": 1,
+            "timed_out": False,
+            "duration_sec": round(dt, 4),
+            "response_text": "",
+            "parsed_json": {},
+            "provider_usage": {
+                "input_tokens": 0,
+                "output_tokens": 0,
+                "thinking_tokens": 0,
+                "cached_tokens": 0,
+                "total_tokens": 0,
+            },
+            "error_message": redact_sensitive_text(str(last_error or "Unknown error")),
+            "is_mock": False,
+            "notification_id": f"ANTHROPIC-FAILED-{request.task_id}",
             "stdout_log_path": None,
             "stderr_log_path": None,
         }
