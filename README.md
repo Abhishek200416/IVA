@@ -197,19 +197,31 @@ IVA provides universal model access via [`UniversalAPIProvider`](agents/IVA/engi
 IVA automatically searches for credentials in the following order:
 
 1. **Local `.env` File (Recommended)**:
-   Add your key to `.env` in the repository root:
+   Add any of your preferred model keys to `.env` in the repository root:
    ```env
-   # Google Gemini API (Recommended: Free & Fast)
+   # 1. Google Gemini (Recommended - Free Tier & Fast)
    GEMINI_API_KEY="AIzaSy..."
+   GEMINI_MODEL="gemini-3.8-flash-high"   # Options: gemini-3.8-flash-high, gemini-2.5-pro, gemini-2.5-flash
 
-   # Optional Model Selection (Default: gemini-3.8-flash-high)
-   # Options: gemini-3.8-flash-high, gemini-2.5-pro, gemini-2.5-flash
-   GEMINI_MODEL="gemini-3.8-flash-high"
+   # 2. Anthropic Claude
+   # ANTHROPIC_API_KEY="sk-ant-..."
+   # ANTHROPIC_MODEL="claude-3-5-sonnet-20241022"  # or claude-3-7-sonnet-20250219
 
-   # Or OpenAI-compatible REST endpoint
+   # 3. OpenAI
    # OPENAI_API_KEY="sk-..."
-   # OPENAI_API_BASE="https://api.openai.com/v1"
    # OPENAI_MODEL="gpt-4o"
+
+   # 4. DeepSeek
+   # DEEPSEEK_API_KEY="sk-..."
+   # DEEPSEEK_MODEL="deepseek-chat"
+
+   # 5. Groq (Ultra-Fast Inference)
+   # GROQ_API_KEY="gsk_..."
+   # GROQ_MODEL="llama-3.3-70b-versatile"
+
+   # 6. OpenRouter / Local LLMs (Ollama, vLLM, LM Studio)
+   # OPENAI_API_BASE="http://localhost:11434/v1"
+   # OPENAI_MODEL="qwen2.5-coder"
    ```
 
 2. **System Environment Variables**:
@@ -217,6 +229,8 @@ IVA automatically searches for credentials in the following order:
    ```bash
    # Linux / macOS / SSH
    export GEMINI_API_KEY="AIzaSy..."
+   # or: export ANTHROPIC_API_KEY="sk-ant-..."
+   # or: export OPENAI_API_KEY="sk-..."
 
    # Windows PowerShell
    $env:GEMINI_API_KEY="AIzaSy..."
@@ -230,6 +244,21 @@ IVA automatically searches for credentials in the following order:
    ```bash
    python run_iva.py --api-key "AIzaSy..."
    ```
+
+### ⚡ Global CLI Installation (Run `iva` Like Claude Code)
+
+Want to invoke IVA globally from **any directory** just like typing `claude` with Claude Code?
+
+```bash
+# In the cloned repository, install editable console script:
+pip install -e .
+
+# Now, open ANY directory on your machine and simply type:
+iva
+
+# Or run a single-shot autonomous engineering task:
+iva "Fix failing unit tests in this repository"
+```
 
 > [!TIP]
 > **Free Google Gemini API Key:** You can generate a free Gemini API key in 30 seconds at [Google AI Studio](https://aistudio.google.com/app/apikey). Standard free tier provides generous limits without requiring a credit card.
