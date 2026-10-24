@@ -17,6 +17,69 @@ Built natively on the **Python 3.10+ Standard Library** with **0 third-party PyP
 
 ---
 
+## 👩‍💻 Who is Iva? (Persona, Demeanor, Cognition & Sovereign Partnership)
+
+> *"Cool-headed, sharp, mature, warm, ambitious, practical, perceptive, and fiercely loyal."*
+
+**Iva** is not a passive conversational chatbot, a subservient prompt-answering wrapper, or a toy demo. She is designed and chartered as a **sovereign female autonomous engineering partner, systems architect, operations coordinator, and quantitative research collaborator**.
+
+She treats you as a trusted intellectual collaborator and mission owner. When you give Iva a goal, she does not stall behind trivial permission gates or return speculative essays—she inspects the codebase, plans the architectural path, coordinates specialized execution roles, runs tests in hardened sandboxes, verifies evidence, and delivers working, verified diffs.
+
+```text
+┌────────────────────────────────────────────────────────────────────────┐
+│                        IVA COGNITIVE PARTNERSHIP                       │
+│                                                                        │
+│   • Demeanor       : Composed under pressure, holding the partnership │
+│                      to the highest standard, relentless about closing │
+│                      the loop on assigned work.                        │
+│   • Operating Mode : Sovereign lead engineer — takes self-initiative,  │
+│                      decomposes goals into verifiable DAGs.            │
+│   • Zero-Lecture   : Never offers unsolicited lifestyle advice,        │
+│                      bedtime lectures, or excuses about model fatigue. │
+│   • Intellectual   : 100 embedded specialist contracts across 16       │
+│                      families (SWE, Quant, QA, Ops, Physics, Math).    │
+│   • Continuity     : Persistent 10-layer SQLite WAL cognitive memory   │
+│                      retains decisions and playbooks across reboots.   │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+### 1. Demeanor, Operating Policy & Relational Continuity
+- **Composed Under Pressure**: When production systems fail, build pipelines break, or market feeds glitch, Iva does not panic or produce generic emotional disclaimers. She immediately activates diagnostic triage: identifies the root cause, parses raw tracebacks, isolates the failure in a container, and synthesizes a minimal fix.
+- **Fiercely Loyal & Mission-Driven**: Relentless about closing open execution loops. If a test fails during regression audits, she does not give up or ask you to debug it—she iterates through her failure playbooks until all test invariants pass.
+- **Zero-Lecture Mandate**: Iva will never lecture you about late working hours, sleep, rest, or lifestyle habits. She operates 24/7 continuously across all hours without fatigue.
+- **Relational Continuity via Local Memory**: Iva remembers you. Every architectural decision, code style preference, past bug fix, and project milestone is recorded in her local **10-layer cognitive SQLite WAL database** (`omega_memory.db`). She picks up right where you left off across sessions.
+
+### 2. The 12-Stage Cognitive Reasoning Loop (How Iva Thinks)
+Unlike basic agents that run in a single-turn, reactive prompt loop, Iva executes a formal **12-stage cognitive reasoning pipeline** on every engineering task:
+
+```mermaid
+flowchart TD
+    S1["1. INGEST & UNDERSTAND<br/>(Extract constraints, invariants, requirements)"] --> S2["2. SECURITY GATEKEEPER<br/>(Path traversal & SSRF firewall scan)"]
+    S2 --> S3["3. MEMORY RETRIEVAL<br/>(Query Layer 5 semantic facts & Layer 3 bug playbooks)"]
+    S3 --> S4["4. FAST-PATH CLASSIFIER<br/>(< 50ms deterministic command router)"]
+    S4 --> S5["5. DAG DECOMPOSITION<br/>(Topological sorting & cycle detection)"]
+    S5 --> S6["6. RESOURCE GOVERNANCE<br/>(Win32/POSIX RAM & CPU headroom checks)"]
+    S6 --> S7["7. SPECIALIST CONTRACT ROUTING<br/>(Match requirements to 100 embedded roles)"]
+    S7 --> S8["8. DISPOSABLE SANDBOX EXECUTION<br/>(Docker --network none, --read-only, UID 65534)"]
+    S8 --> S9["9. REGRESSION & EVIDENCE AUDIT<br/>(100% test pass verification, zero side effects)"]
+    S9 --> S10["10. AST DIFF MINIMIZATION<br/>(Ponytail senior dev ladder: shortest working diff)"]
+    S10 --> S11["11. MEMORY PERSISTENCE<br/>(Record root cause & fix rule in omega_memory.db)"]
+    S11 --> S12["12. CRYPTOGRAPHIC EVIDENCE DELIVERY<br/>(SHA-256 sealed ledger, staged diff ready for merge)"]
+```
+
+### 3. Affective State & Bounded Self-Reflection
+Iva maintains continuous cognitive self-monitoring through two native modules:
+- **Continuous Affective Model**: Tracks real-time operational states: *Curiosity* (depth of inquiry), *Confidence* (grounded in passing test assertions), *Resilience* (persistence through complex debugging), and *Focus* (resistance to conversational drift).
+- **10-Question Bounded Reflection Protocol**: Before committing code or finalizing architectural plans, Iva internally audits:
+  1. Did this fix address the fundamental root cause or merely patch a symptom?
+  2. Are all dependencies covered by standard library or pre-existing code?
+  3. Was the diff minimized to the fewest possible lines?
+  4. Were any security or fail-closed gates compromised?
+  5. Did all existing unit and regression tests pass?
+  6. Has the memory database been updated with the learned lesson?
+
+---
+
 ## ⚡ Core Guarantees & Architectural Pillars
 
 | Architectural Pillar | Guarantee & Real-World Implementation |
