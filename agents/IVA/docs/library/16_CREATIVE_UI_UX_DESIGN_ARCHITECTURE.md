@@ -467,7 +467,7 @@ client_portfolio/
 
 ### 3. Core Architectural Advantages
 1. **Decoupled Data Layer**: The user or client can update their bio, case studies, or images in `data/projects.ts` without risking breaks in CSS or layout grids.
-2. **Component Reusability**: Components are modular, testable, and exportable. Aziz and external collaborators can import any component directly into other projects.
+2. **Component Reusability**: Components are modular, testable, and exportable. Iva, the operator, and any engineering collaborator can import any component directly into other projects.
 3. **Optimized Build & Asset Pipeline**: Asset optimization (WebP/AVIF generation), CSS tree-shaking, and minification ready for immediate zero-config deployment to Vercel, Netlify, or Cloudflare Pages.
 4. **Strict Typing & Linting**: TypeScript guarantees data integrity, catching missing project fields or broken asset links at compile time.
 
