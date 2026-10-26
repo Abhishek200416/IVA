@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURELIA PHARMACOPOEIA • High Alpine Biodynamic Botanicals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F5F2EB;
+      --forest: #14221A;
+      --forest-light: #213529;
+      --sage: #7C9885;
+      --ochre: #C28847;
+      --border: rgba(20, 34, 26, 0.12);
+      --font-display: 'Italiana', serif;
+      --font-serif: 'Newsreader', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    body {
+      background: var(--bg);
+      color: var(--forest);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* FIXED ROTATING SEASONAL HARVEST COMPASS */
+    .harvest-compass-hud {
+      position: fixed;
+      top: 40px;
+      right: 48px;
+      width: 90px;
+      height: 90px;
+      border: 1px solid var(--forest);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(245, 242, 235, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      pointer-events: none;
+    }
+    .compass-dial {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      transition: transform 0.1s linear;
+    }
+    .compass-indicator {
+      position: absolute;
+      top: 4px;
+      left: calc(50% - 3px);
+      width: 6px;
+      height: 6px;
+      background: var(--ochre);
+      border-radius: 50%;
+    }
+    .compass-season {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--forest);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* TOP BOTANICAL HEADER */
+    .apothecary-header {
+      padding: 40px 64px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-mark {
+      font-family: var(--font-display);
+      font-size: 32px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--forest);
+    }
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--sage);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* HERO STATEMENT */
+    .apothecary-hero {
+      padding: 96px 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ochre);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: inline-block;
+    }
+    .hero-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 6vw, 84px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+    .hero-desc {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      font-style: italic;
+      color: #3B4E42;
+      max-width: 760px;
+      margin: 0 auto 48px;
+      line-height: 1.8;
+    }
+
+    /* ASYMMETRIC PARALLAX DUAL STREAM CONTAINER */
+    .parallax-stream-wrap {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 48px 120px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .column-standard {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+    .column-parallax {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      transform: translateY(60px); /* initial offset */
+    }
+
+    /* HERBARIUM SPECIMEN SHEET */
+    .specimen-sheet {
+      background: #FFF;
+      border: 1px solid var(--border);
+      padding: 48px 40px;
+      box-shadow: 0 4px 20px rgba(20, 34, 26, 0.04);
+      position: relative;
+    }
+    .herbarium-stamp {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      border: 1px solid var(--ochre);
+      color: var(--ochre);
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .botanical-latin {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--forest);
+      margin-bottom: 6px;
+    }
+    .botanical-common {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--sage);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: block;
+    }
+    .specimen-text {
+      font-size: 15px;
+      color: #4A5850;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .assay-matrix {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+    .assay-label {
+      color: var(--sage);
+      text-transform: uppercase;
+    }
+    .assay-val {
+      font-weight: 600;
+      color: var(--forest);
+    }
+
+    /* HARVEST CYCLE TIMELINE BLOCK */
+    .cycle-card {
+      background: var(--forest);
+      color: var(--bg);
+      padding: 48px 40px;
+    }
+    .cycle-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #FFF;
+    }
+    .cycle-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .cycle-step {
+      border-left: 2px solid var(--ochre);
+      padding-left: 20px;
+    }
+    .cycle-month {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ochre);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .cycle-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #FFF;
+    }
+
+    /* APOTHECARY ORDER BOX */
+    .order-banner {
+      background: #FFF;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--ochre);
+      padding: 56px;
+      text-align: center;
+      margin-bottom: 96px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-botanical {
+      background: var(--forest);
+      color: #FFF;
+      border: none;
+      padding: 16px 36px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 28px;
+      transition: all 0.2s ease;
+    }
+    .btn-botanical:hover {
+      background: var(--ochre);
+    }
+
+    /* FOOTER */
+    .apothecary-footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--sage);
+      text-transform: uppercase;
+    }
+
+    /* 5-TIER ADAPTIVE RESPONSIVENESS MATRIX */
+    /* 1. Mobile Handheld (< 640px) */
+    @media (max-width: 640px) {
+      .apothecary-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 24px 20px;
+      }
+      .apothecary-hero {
+        padding: 48px 20px;
+      }
+      .hero-h1 {
+        font-size: 36px;
+      }
+      .hero-desc {
+        font-size: 17px;
+        margin-bottom: 32px;
+      }
+      .parallax-stream-wrap {
+        grid-template-columns: 1fr;
+        padding: 0 20px 64px;
+        gap: 32px;
+      }
+      .column-parallax {
+        transform: none;
+      }
+      .specimen-sheet {
+        padding: 32px 20px;
+      }
+      .cycle-card {
+        padding: 32px 20px;
+      }
+      .order-banner {
+        padding: 36px 20px;
+        margin: 0 20px 64px;
+      }
+      .btn-botanical {
+        width: 100%;
+      }
+      .harvest-compass-hud {
+        display: none;
+      }
+      .apothecary-footer {
+        flex-direction: column;
+        gap: 12px;
+        padding: 24px 20px;
+        text-align: center;
+      }
+    }
+
+    /* 2. Tablet (641px - 1024px) */
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .parallax-stream-wrap {
+        grid-template-columns: 1fr;
+        padding: 0 36px 80px;
+      }
+      .column-parallax {
+        transform: none;
+      }
+      .harvest-compass-hud {
+        top: 24px;
+        right: 24px;
+      }
+    }
+
+    /* 3. Ultra-Wide & 4K Monitoring (> 1920px) */
+    @media (min-width: 1921px) {
+      .apothecary-header, .apothecary-hero, .parallax-stream-wrap, .order-banner, .apothecary-footer {
+        max-width: 1720px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-h1 {
+        font-size: 104px;
+      }
+      .hero-desc {
+        font-size: 26px;
+        max-width: 960px;
+      }
+      .harvest-compass-hud {
+        width: 120px;
+        height: 120px;
+        right: 80px;
+      }
+      .compass-season {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FIXED HARVEST SEASON COMPASS HUD -->
+  <div class="harvest-compass-hud">
+    <div class="compass-dial" id="compassDial">
+      <div class="compass-indicator"></div>
+    </div>
+    <div class="compass-season" id="seasonText">VERNAL<br>EQUINOX</div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="apothecary-header">
+    <div>
+      <div class="brand-mark">AURELIA</div>
+      <div class="brand-sub">Biodynamic Pharmacopoeia • Bernese Oberland</div>
+    </div>
+    <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ochre); text-transform: uppercase;">
+      ALTITUDE: 2,140M • SOLITARY HARVEST
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="apothecary-hero">
+    <span class="hero-badge">Curated Extraction Registry // Monograph 14</span>
+    <h1 class="hero-h1">MEDICINE BORN AT THE TREE LINE.</h1>
+    <p class="hero-desc">
+      "At extreme alpine elevation, sub-zero winds and fierce ultraviolet radiation force wild flora to synthesize potent protective polyphenols. We harvest exclusively by hand during lunar crests, preserving the cellular memory of the plant."
+    </p>
+  </section>
+
+  <!-- PARALLAX DUAL HERBARIUM STREAMS -->
+  <main class="parallax-stream-wrap">
+
+    <!-- LEFT COLUMN: STANDARD SPEED -->
+    <div class="column-standard">
+      <article class="specimen-sheet">
+        <span class="herbarium-stamp">BATCH NO. 084</span>
+        <h2 class="botanical-latin">Leontopodium alpinum</h2>
+        <span class="botanical-common">Wild Alpine Edelweiss • Cold Ultrasonic Infusion</span>
+        <p class="specimen-text">
+          Hand-gathered on the scree ridges of the Schilthorn at 2,400 meters. The velvety bracts are infused in cold-pressed organic meadowfoam seed oil for forty-two days, extracting potent leontopodic acid flavonoids that provide profound cellular barrier defense.
+        </p>
+        <div class="assay-matrix">
+          <div>
+            <span class="assay-label">Leontopodic Acid A:</span>
+            <span class="assay-val">98.4% Purity</span>
+          </div>
+          <div>
+            <span class="assay-label">Harvest Solstice:</span>
+            <span class="assay-val">Late August (Waxing)</span>
+          </div>
+        </div>
+      </article>
+
+      <div class="cycle-card">
+        <h2 class="cycle-title">THE 4-SEASON ALCHEMICAL CALENDAR</h2>
+        <p style="font-size: 14px; color: #BAC7BE; line-height: 1.7;">
+          Our extraction protocol adheres strictly to alpine phenology. Nothing is accelerated; time and barometric pressure are our primary laboratory reagents.
+        </p>
+        <ul class="cycle-list">
+          <li class="cycle-step">
+            <span class="cycle-month">APRIL — MAY // STAGE 01</span>
+            <div class="cycle-name">Glacial Melt Sap Harvest (Betula pendula)</div>
+          </li>
+          <li class="cycle-step">
+            <span class="cycle-month">JUNE — JULY // STAGE 02</span>
+            <div class="cycle-name">High-Ridge Arnica & Alpine Rose Steam Distillation</div>
+          </li>
+          <li class="cycle-step">
+            <span class="cycle-month">AUGUST — SEPTEMBER // STAGE 03</span>
+            <div class="cycle-name">Edelweiss & Masterwort Root Cold Maceration</div>
+          </li>
+          <li class="cycle-step">
+            <span class="cycle-month">OCTOBER — DECEMBER // STAGE 04</span>
+            <div class="cycle-name">Curing, Micro-Filtering & Numbered Amber Flacon Sealing</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: PARALLAX OFFSET SPEED -->
+    <div class="column-parallax" id="parallaxCol">
+      <article class="specimen-sheet">
+        <span class="herbarium-stamp">BATCH NO. 085</span>
+        <h2 class="botanical-latin">Arnica montana</h2>
+        <span class="botanical-common">High-Alp Arnica • Sub-Zero Hydro-Extract</span>
+        <p class="specimen-text">
+          Grown in acidic alpine humus pastures near Grindelwald. Extracted using supercritical CO2 at 31°C to preserve heat-sensitive sesquiterpene lactones (helenalin) responsible for immediate neuromuscular soothing.
+        </p>
+        <div class="assay-matrix">
+          <div>
+            <span class="assay-label">Helenalin Content:</span>
+            <span class="assay-val">4.2 mg/ml</span>
+          </div>
+          <div>
+            <span class="assay-label">pH Buffer Level:</span>
+            <span class="assay-val">5.4 Balanced</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="specimen-sheet">
+        <span class="herbarium-stamp">BATCH NO. 086</span>
+        <h2 class="botanical-latin">Peucedanum ostruthium</h2>
+        <span class="botanical-common">Alpine Masterwort • Wild Root Resin</span>
+        <p class="specimen-text">
+          Known in Swiss folk medicine as the "Divine Root". The taproots require 5 years of alpine freeze-thaw cycles before digging. High concentration of oxypeucedanin coumarins known for microcirculatory renewal.
+        </p>
+        <div class="assay-matrix">
+          <div>
+            <span class="assay-label">Coumarin Extract:</span>
+            <span class="assay-val">32% Pure Oleoresin</span>
+          </div>
+          <div>
+            <span class="assay-label">Aging Period:</span>
+            <span class="assay-val">60 Months Undisturbed</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  </main>
+
+  <!-- APOTHECARY ORDER BOX -->
+  <section class="order-banner">
+    <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ochre); letter-spacing: 0.2em; text-transform: uppercase;">
+      Annual Reserve Subscription
+    </div>
+    <h2 style="font-family: var(--font-display); font-size: 38px; margin: 12px 0 16px;">
+      THE 2026 APOTHECARY COFFRET
+    </h2>
+    <p style="font-size: 15px; color: #4A5850; max-width: 580px; margin: 0 auto; line-height: 1.8;">
+      Each season yields only 350 boxed coffrets, individually numbered and sealed with green bee propolis wax. Includes the complete tripartite set of Edelweiss Elixir, Arnica Balm, and Masterwort Essence.
+    </p>
+    <button class="btn-botanical" onclick="alert('Aurelia 2026 Reserve Coffret reservation dossier initialized.')">
+      RESERVE AN ALCHEMICAL COFFRET →
+    </button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="apothecary-footer">
+    <div>AURELIA PHARMACOPOEIA • KANDERSTEG, SWITZERLAND</div>
+    <div>CERTIFIED BIODYNAMIC DEMETER PROTOCOL • SWISS MEDICINAL HERBARIUM</div>
+  </footer>
+
+  <script>
+    // Parallax scroll effect and Compass rotation
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const parallaxCol = document.getElementById('parallaxCol');
+      
+      // Asymmetric parallax shift
+      if (window.innerWidth > 900) {
+        parallaxCol.style.transform = `translateY(${60 - (scrollY * 0.15)}px)`;
+      }
+
+      // Rotate harvest compass HUD
+      const dial = document.getElementById('compassDial');
+      const degrees = (scrollY * 0.25) % 360;
+      dial.style.transform = `rotate(${degrees}deg)`;
+
+      // Update season text based on scroll threshold
+      const seasonText = document.getElementById('seasonText');
+      if (degrees < 90) seasonText.innerHTML = "VERNAL<br>EQUINOX";
+      else if (degrees < 180) seasonText.innerHTML = "SUMMER<br>SOLSTICE";
+      else if (degrees < 270) seasonText.innerHTML = "AUTUMN<br>HARVEST";
+      else seasonText.innerHTML = "WINTER<br>DISTILL";
+    });
+  </script>
+</body>
+</html>

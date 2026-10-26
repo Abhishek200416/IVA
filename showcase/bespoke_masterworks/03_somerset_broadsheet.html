@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE SOMERSET REVIEW • Folio Monograph No. IX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Courier+Prime&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-rag: #F5EFE6;
+      --ink: #1C1814;
+      --ink-faint: #696259;
+      --red-seal: #8C2C1D;
+      --rule: rgba(28, 24, 20, 0.2);
+      --font-display: 'Fraunces', serif;
+      --font-body: 'Newsreader', Georgia, serif;
+      --font-mono: 'Courier Prime', monospace;
+    }
+    body {
+      background: var(--bg-rag);
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      padding: 48px 40px;
+    }
+    /* BROADSHEET MASTHEAD */
+    .masthead {
+      max-width: 1280px;
+      margin: 0 auto 32px;
+      text-align: center;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 20px;
+    }
+    .masthead-subline {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .broadsheet-title {
+      font-family: var(--font-display);
+      font-size: 58px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    /* 3-COLUMN HISTORICAL LAYOUT */
+    .broadsheet-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 22% 54% 24%;
+      gap: 32px;
+    }
+    /* COL 1: MARGINALIA & FOOTNOTES */
+    .col-margin {
+      border-right: 1px solid var(--rule);
+      padding-right: 24px;
+      font-size: 13px;
+      color: var(--ink-faint);
+    }
+    .margin-block {
+      margin-bottom: 32px;
+      border-top: 1px solid var(--rule);
+      padding-top: 12px;
+    }
+    .margin-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--red-seal);
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    /* COL 2: THE LEAD ESSAY */
+    .col-lead {
+      padding: 0 12px;
+    }
+    .essay-h1 {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .essay-h1 em {
+      font-style: italic;
+      color: var(--red-seal);
+    }
+    .dropcap::first-letter {
+      font-family: var(--font-display);
+      font-size: 64px;
+      float: left;
+      line-height: 0.8;
+      padding-right: 12px;
+      padding-top: 4px;
+      color: var(--red-seal);
+      font-weight: bold;
+    }
+    .pull-quote {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 20px 0;
+      margin: 32px 0;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-style: italic;
+      text-align: center;
+      line-height: 1.4;
+    }
+    /* COL 3: MONOGRAPH COUPON SLIP */
+    .col-slip {
+      border-left: 1px solid var(--rule);
+      padding-left: 24px;
+    }
+    .coupon-ticket {
+      border: 2px dashed var(--ink);
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.4);
+      margin-bottom: 28px;
+    }
+    .ticket-head {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--red-seal);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .ticket-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .btn-tear {
+      width: 100%;
+      background: var(--ink);
+      color: var(--bg-rag);
+      border: none;
+      padding: 10px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 16px;
+    }
+    .btn-tear:hover { background: var(--red-seal); }
+
+    /* 5-TIER ADAPTIVE RESPONSIVENESS MATRIX */
+    /* 1. Mobile Handheld (< 800px) */
+    @media (max-width: 800px) {
+      body {
+        padding: 24px 16px;
+      }
+      .broadsheet-title {
+        font-size: 34px;
+        letter-spacing: 0.04em;
+      }
+      .masthead-subline {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        text-align: center;
+      }
+      .broadsheet-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .col-margin {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 32px;
+      }
+      .col-lead {
+        border-right: none;
+        padding: 0 0 32px 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      .col-coupon {
+        padding-left: 0;
+      }
+      .lead-h1 {
+        font-size: 28px;
+      }
+    }
+
+    /* 2. Tablet (801px - 1100px) */
+    @media (min-width: 801px) and (max-width: 1100px) {
+      body {
+        padding: 36px 24px;
+      }
+      .broadsheet-grid {
+        grid-template-columns: 1fr 1.5fr;
+      }
+      .col-coupon {
+        grid-column: span 2;
+        border-top: 1px solid var(--rule);
+        padding: 32px 0 0 0;
+      }
+    }
+
+    /* 3. Ultra-Wide & 4K Monitoring (> 1920px) */
+    @media (min-width: 1921px) {
+      .masthead, .broadsheet-grid {
+        max-width: 1680px;
+      }
+      .broadsheet-title {
+        font-size: 84px;
+      }
+      .col-lead {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="masthead">
+    <div class="masthead-subline">
+      <div>VOL. IX • NO. 412</div>
+      <div>EDINBURGH & LONDON</div>
+      <div>PRICE: THREE SHILLINGS</div>
+    </div>
+    <div class="broadsheet-title">THE SOMERSET REVIEW</div>
+  </div>
+
+  <div class="broadsheet-grid">
+    <!-- COL 1: MARGINALIA -->
+    <div class="col-margin">
+      <div class="margin-block">
+        <div class="margin-label">CRITIC’S NOTE [1]</div>
+        Set by hand in Caslon Old Style and Somerset rag at the St. Jude letterpress foundry.
+      </div>
+      <div class="margin-block">
+        <div class="margin-label">PROVENANCE RECORD</div>
+        Edition limited to 350 physical impressions. No digital subscription or surveillance cookie tracking.
+      </div>
+      <div class="margin-block">
+        <div class="margin-label">METEOROLOGY</div>
+        North Sea gale off Leith harbor. Heavy sea mist over Arthur’s Seat. Barometer: 29.8 inHg.
+      </div>
+    </div>
+
+    <!-- COL 2: THE ESSAY -->
+    <div class="col-lead">
+      <h1 class="essay-h1">The Sacred Cadence of <em>Unflickering Typography</em> in an Age of Distraction.</h1>
+      <p class="dropcap" style="font-size:18px; margin-bottom:20px;">
+        When the eye meets an impression of inked metal on cotton paper, there is a fundamental cognitive settling that no digital screen can duplicate. The paper holds the words in immutable stillness. It demands nothing from the reader except solitary reflection.
+      </p>
+      <div class="pull-quote">
+        "A book does not update. It does not scroll. It simply exists, holding its ground against the ephemeral tide of contemporary noise."
+      </div>
+      <p style="font-size:17px; color:var(--ink-faint);">
+        In our Edinburgh workshop, each page passes through the cylinder press at a patient cadence. The ink dries over forty-eight hours in wooden racks before the sheets are gathered, folded by bone folder, and sewn with unbleached Irish linen thread.
+      </p>
+    </div>
+
+    <!-- COL 3: COUPON TICKET -->
+    <div class="col-slip">
+      <div class="coupon-ticket">
+        <div class="ticket-head">SUBSCRIPTION FOLIO SLIP</div>
+        <div class="ticket-title">Monograph Vol. X: The Architecture of Silence</div>
+        <p style="font-size:13px; color:var(--ink-faint);">
+          Quarter-bound in dark calfskin with gilded top edge. Delivered by post quarterly.
+        </p>
+        <button class="btn-tear" onclick="alert('Subscription Ticket Reserved: You will be invoiced via traditional postal dispatch.')">Tear & Dispatch Coupon</button>
+      </div>
+      <div style="font-size:12px; color:var(--ink-faint); line-height:1.7;">
+        Printed by The Somerset Press, Old Town, Edinburgh. All rights reserved under the Berne Convention.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

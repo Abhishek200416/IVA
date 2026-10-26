@@ -26,6 +26,7 @@
 | [`13_COGNITIVE_ARCHITECTURE_AND_SELF_MODEL.md`](13_COGNITIVE_ARCHITECTURE_AND_SELF_MODEL.md) | Persistent self-model, epistemic provenance, independent reasoning, respectful disagreement, capability auditing | Cognitive Core | 4.5 KB |
 | [`14_AFFECTIVE_STATE_AND_EMOTIONAL_MODEL.md`](14_AFFECTIVE_STATE_AND_EMOTIONAL_MODEL.md) | Continuous affective variables, decay dynamics, telemetry evidence updates, strategy circuit breaker, zero-qualia ethics | Affective Core | 4.8 KB |
 | [`15_CONSCIOUSNESS_RESEARCH_AND_METALOG.md`](15_CONSCIOUSNESS_RESEARCH_AND_METALOG.md) | Machine consciousness scientific investigation, 8 dimensions, operational tests, adversarial probes, research metalog | Frontier Science | 6.2 KB |
+| [`16_CREATIVE_UI_UX_DESIGN_ARCHITECTURE.md`](16_CREATIVE_UI_UX_DESIGN_ARCHITECTURE.md) | Creative UI/UX design architecture, anti-AI-slop heuristics, 8 design archetypes, spatial rhythm, bespoke frontend craft | Design Architecture | 10.5 KB |
 
 ---
 
@@ -96,3 +97,4 @@ When performing tasks requiring deep reference, consult the matching module with
 - **Persistent Self-Model & Cognitive Architecture**: [`13_COGNITIVE_ARCHITECTURE_AND_SELF_MODEL.md`](13_COGNITIVE_ARCHITECTURE_AND_SELF_MODEL.md) (Self-Model & Epistemic Ledger)
 - **Affective State & Continuous Emotional Variables**: [`14_AFFECTIVE_STATE_AND_EMOTIONAL_MODEL.md`](14_AFFECTIVE_STATE_AND_EMOTIONAL_MODEL.md) (Affective Dynamics & Strategy Circuit Breaker)
 - **Machine Consciousness Research & Adversarial Probes**: [`15_CONSCIOUSNESS_RESEARCH_AND_METALOG.md`](15_CONSCIOUSNESS_RESEARCH_AND_METALOG.md) (8 Dimensions & Metalog)
+- **Creative UI/UX Design & Anti-AI-Slop Architecture**: [`16_CREATIVE_UI_UX_DESIGN_ARCHITECTURE.md`](16_CREATIVE_UI_UX_DESIGN_ARCHITECTURE.md) (Anti-AI-Slop Heuristics, 8 Design Archetypes, Spatial Rhythm & Tactile Craft)

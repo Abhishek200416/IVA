@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WERKSTATT 08 • Swiss Brutalist Industrial Design Manifesto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F3EFE6;
+      --ink: #111111;
+      --signal-orange: #FF4400;
+      --border-thick: 3px solid #111111;
+      --border-thin: 1.5px solid #111111;
+      --font-display: 'Syne', sans-serif;
+      --font-sans: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+
+    /* TOP RUNNING MARQUEE TAPE */
+    .ticker-bar {
+      background: var(--ink);
+      color: var(--bg);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 8px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+    }
+    .ticker-content {
+      display: inline-block;
+      animation: ticker 25s linear infinite;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* BRUTALIST MASTHEAD GRID */
+    .manifesto-header {
+      border-bottom: var(--border-thick);
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+    .header-col {
+      padding: 32px 36px;
+      border-right: var(--border-thick);
+    }
+    .header-col:last-child {
+      border-right: none;
+    }
+    .logo-mark {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+    .badge-orange {
+      display: inline-block;
+      background: var(--signal-orange);
+      color: #FFF;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    /* ASYMMETRIC MAIN GRID SKELETON */
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      min-height: calc(100vh - 120px);
+    }
+    .grid-left {
+      border-right: var(--border-thick);
+      padding: 64px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .grid-right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .manifesto-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 6vw, 92px);
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+    .manifesto-h1 span.highlight {
+      background: var(--signal-orange);
+      color: #FFF;
+      padding: 0 8px;
+      display: inline-block;
+    }
+
+    .thesis-statement {
+      font-size: 19px;
+      max-width: 620px;
+      font-weight: 500;
+      line-height: 1.6;
+      border-left: 6px solid var(--ink);
+      padding-left: 24px;
+      margin-bottom: 48px;
+    }
+
+    /* RIGHT COLUMN STACK */
+    .spec-block {
+      padding: 40px;
+      border-bottom: var(--border-thick);
+      background: #FFF;
+      position: relative;
+    }
+    .spec-block:last-child {
+      border-bottom: none;
+      flex: 1;
+      background: var(--bg);
+    }
+    .spec-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--signal-orange);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .spec-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .spec-desc {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    /* HARD OFFSET BUTTONS */
+    .btn-brutal {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--ink);
+      color: var(--bg);
+      text-decoration: none;
+      padding: 16px 32px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      border: var(--border-thick);
+      box-shadow: 6px 6px 0px var(--signal-orange);
+      cursor: pointer;
+      transition: all 0.1s ease;
+    }
+    .btn-brutal:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 4px 4px 0px var(--signal-orange);
+    }
+    .btn-brutal:active {
+      transform: translate(6px, 6px);
+      box-shadow: 0px 0px 0px var(--signal-orange);
+    }
+
+    /* FOOTER BAR */
+    .brutal-footer {
+      border-top: var(--border-thick);
+      padding: 24px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      background: #E8E3D7;
+    }
+
+    /* 5-TIER ADAPTIVE RESPONSIVENESS MATRIX */
+    @media (max-width: 900px) {
+      .manifesto-header { grid-template-columns: 1fr; }
+      .manifesto-grid { grid-template-columns: 1fr; }
+      .header-col { border-right: none; border-bottom: var(--border-thick); padding: 24px; }
+      .grid-left { border-right: none; border-bottom: var(--border-thick); padding: 40px 24px; }
+      .spec-block { padding: 28px 24px; }
+      .manifesto-h1 { font-size: clamp(38px, 9vw, 56px); }
+      .thesis-statement { font-size: 16px; padding-left: 16px; margin-bottom: 32px; }
+      .btn-brutal { width: 100%; justify-content: center; }
+    }
+
+    @media (min-width: 1921px) {
+      .manifesto-header, .manifesto-grid, .brutal-footer {
+        max-width: 1920px;
+        margin: 0 auto;
+      }
+      .manifesto-h1 {
+        font-size: 110px;
+      }
+      .thesis-statement {
+        font-size: 24px;
+        max-width: 880px;
+      }
+      .spec-title {
+        font-size: 34px;
+      }
+      .spec-desc {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- RUNNING INDUSTRIAL TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-content">
+      WERKSTATT 08 • FORM FOLLOWS RESISTANCE • ZÜRICH ARCHIVE • NO DECORATION WITHOUT FUNCTION • MATERIAL HONESTY • RAW STEEL • CAST ALUMINA • ZERO SOFT SHADOWS • PHYSICAL WEIGHT • 
+      WERKSTATT 08 • FORM FOLLOWS RESISTANCE • ZÜRICH ARCHIVE • NO DECORATION WITHOUT FUNCTION • MATERIAL HONESTY • RAW STEEL • CAST ALUMINA • ZERO SOFT SHADOWS • PHYSICAL WEIGHT •
+    </div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="manifesto-header">
+    <div class="header-col">
+      <span class="badge-orange">Index Dossier / 2026.04</span>
+      <h1 class="logo-mark">WERKSTATT 08</h1>
+    </div>
+    <div class="header-col">
+      <p style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 6px;">Atelier Location</p>
+      <p style="font-size: 14px; font-weight: 600;">Badenerstrasse 142<br>8004 Zürich, CH</p>
+    </div>
+    <div class="header-col">
+      <p style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 6px;">Discipline Focus</p>
+      <p style="font-size: 14px; font-weight: 600;">Physical Hardware & Kinematic Tooling</p>
+    </div>
+  </header>
+
+  <!-- ASYMMETRIC MAIN GRID -->
+  <main class="manifesto-grid">
+    <section class="grid-left">
+      <div>
+        <h2 class="manifesto-h1">
+          WE BUILD<br>
+          TOOLS THAT<br>
+          <span class="highlight">OUTLAST</span><br>
+          CONSUMPTION.
+        </h2>
+        <p class="thesis-statement">
+          Industrial design has been degraded into disposable glossy plastic and planned obsolescence. Werkstatt 08 machines structural instruments in solid brass, hardened tool steel, and raw phenolic resins. Every screw thread is standardized. Every assembly is user-repairable with a single 4mm hex key.
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+        <button class="btn-brutal" onclick="alert('Werkstatt 08 Hardware Catalog dispatched to terminal archive.')">
+          ORDER PHYSICAL DOSSIER →
+        </button>
+        <span style="font-family: var(--font-mono); font-size: 12px; color: #666;">EDITION: 400 NUMBERED COPIES</span>
+      </div>
+    </section>
+
+    <aside class="grid-right">
+      <div class="spec-block">
+        <div class="spec-num">// PRINCIPLE 01</div>
+        <h3 class="spec-title">MASS INTEGRITY</h3>
+        <p class="spec-desc">A handheld tool must possess tactile mass. If a tool feels weightless, the user treats it as disposable garbage. Minimum casing thickness: 3.2mm cast bronze.</p>
+      </div>
+
+      <div class="spec-block">
+        <div class="spec-num">// PRINCIPLE 02</div>
+        <h3 class="spec-title">ZERO SOFTWARE LOCKS</h3>
+        <p class="spec-desc">No firmware dependencies. No cloud pairing handshakes. No Bluetooth telemetry for an object that turns, cuts, measures, or illuminates.</p>
+      </div>
+
+      <div class="spec-block">
+        <div class="spec-num">// PRINCIPLE 03</div>
+        <h3 class="spec-title">VISIBLE FASTENERS</h3>
+        <p class="spec-desc">Glue is cowardice. Ultrasonically welded plastic seams hide bad engineering. All Werkstatt housings expose metric M4 hex socket cap fasteners.</p>
+      </div>
+    </aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="brutal-footer">
+    <div>WERKSTATT 08 • ALL RIGHTS HELD BY THE ATELIER</div>
+    <div>MONO PROTOCOL // REV 4.2</div>
+  </footer>
+
+</body>
+</html>

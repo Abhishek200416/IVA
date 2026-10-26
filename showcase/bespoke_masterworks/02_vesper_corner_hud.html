@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAISON VESPER • Paris Haute Couture Fall 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #080809;
+      color: #F5F3EF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    /* 4-CORNER ANCHORED HUD (NO STANDARD NAVBAR) */
+    .hud-corner {
+      position: fixed;
+      z-index: 100;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: #8E8C86;
+    }
+    .hud-top-left {
+      top: 40px; left: 48px;
+      font-family: 'Bodoni Moda', serif;
+      font-size: 24px;
+      letter-spacing: 0.15em;
+      color: #FFF;
+      font-weight: 700;
+    }
+    .hud-top-right {
+      top: 40px; right: 48px;
+    }
+    .hud-bottom-left {
+      bottom: 40px; left: 48px;
+      line-height: 1.6;
+    }
+    .hud-bottom-right {
+      bottom: 40px; right: 48px;
+    }
+    .btn-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: transparent;
+      color: #FFF;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-circle:hover {
+      background: #FFF;
+      color: #000;
+      transform: scale(1.08);
+    }
+    /* CENTER STAGE HERO */
+    .stage-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .portrait-frame {
+      width: 440px;
+      height: 640px;
+      overflow: hidden;
+      position: relative;
+      background: #111;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+    }
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.1) grayscale(100%);
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .portrait-frame:hover img {
+      transform: scale(1.04);
+    }
+    /* MIX-BLEND-MODE FLOATING TYPOGRAPHY */
+    .floating-title {
+      position: absolute;
+      font-family: 'Bodoni Moda', serif;
+      font-size: 110px;
+      font-weight: 400;
+      line-height: 0.9;
+      text-transform: uppercase;
+      mix-blend-mode: difference;
+      color: #FFFFFF;
+      pointer-events: none;
+      z-index: 50;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .floating-title em {
+      font-style: italic;
+      font-family: 'Bodoni Moda', serif;
+    }
+
+    /* 5-TIER ADAPTIVE RESPONSIVENESS MATRIX */
+    /* 1. Mobile & Small Screen (< 768px) */
+    @media (max-width: 768px) {
+      .hud-top-left {
+        top: 20px; left: 20px;
+        font-size: 18px;
+      }
+      .hud-top-right {
+        top: 20px; right: 20px;
+        font-size: 10px;
+      }
+      .hud-bottom-left {
+        bottom: 20px; left: 20px;
+        font-size: 10px;
+      }
+      .hud-bottom-right {
+        bottom: 20px; right: 20px;
+      }
+      .btn-circle {
+        width: 54px;
+        height: 54px;
+        font-size: 10px;
+      }
+      .portrait-frame {
+        width: 82vw;
+        height: 65vh;
+      }
+      .floating-title {
+        font-size: clamp(34px, 9vw, 56px);
+        white-space: normal;
+        padding: 0 20px;
+      }
+    }
+
+    /* 2. Tablet (769px - 1024px) */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .portrait-frame {
+        width: 60vw;
+        height: 72vh;
+      }
+      .floating-title {
+        font-size: 80px;
+      }
+    }
+
+    /* 3. Ultra-Wide & 4K Monitoring (> 1920px) */
+    @media (min-width: 1921px) {
+      .portrait-frame {
+        width: 580px;
+        height: 84vh;
+      }
+      .floating-title {
+        font-size: 160px;
+      }
+      .hud-corner {
+        font-size: 14px;
+      }
+      .btn-circle {
+        width: 90px;
+        height: 90px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hud-corner hud-top-left">MAISON VESPER</div>
+  <div class="hud-corner hud-top-right">
+    <a href="javascript:void(0)" onclick="alert('Runway Monograph: Fall/Winter 2026 Collection Dossier')" style="color:#FFF; text-decoration:none;">Dossier Index [M]</a>
+  </div>
+  <div class="hud-corner hud-bottom-left">
+    <div>LOOK 04 // METAMORPHIC SILHOUETTE</div>
+    <div style="color:#555; margin-top:4px;">PARIS SALON D'HONNEUR</div>
+  </div>
+  <div class="hud-corner hud-bottom-right">
+    <button class="btn-circle" onclick="alert('Examine Look 04: Hand-draped wool creponne with sculptural pagoda shoulder.')">View</button>
+  </div>
+
+  <div class="stage-container">
+    <div class="floating-title">
+      SCULPTURAL <em>FORM</em>
+    </div>
+    <div class="portrait-frame">
+      <img src="assets/editorial_fashion_monochrome_1792991443843.jpg" alt="Maison Vesper Look 04">
+    </div>
+  </div>
+</body>
+</html>

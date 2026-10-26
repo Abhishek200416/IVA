@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KURA SPATIAL • Copenhagen & Kyoto Architectural Atelier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-cream: #F7F5F0;
+      --text-dark: #1A1918;
+      --text-muted: #736E67;
+      --border-line: rgba(26, 25, 24, 0.12);
+      --font-serif: 'Italiana', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+    body {
+      background: var(--bg-cream);
+      color: var(--text-dark);
+      font-family: var(--font-sans);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+    }
+    /* LEFT SPLIT: FIXED IN PLACE */
+    .left-pinned {
+      width: 44%;
+      height: 100vh;
+      border-right: 1px solid var(--border-line);
+      padding: 64px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background: var(--bg-cream);
+    }
+    .brand-mark {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .hero-statement {
+      margin: auto 0;
+    }
+    .hero-h1 {
+      font-family: var(--font-serif);
+      font-size: 56px;
+      font-weight: 400;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+    .lead-copy {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 440px;
+    }
+    .pinned-meta {
+      border-top: 1px solid var(--border-line);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+    .btn-inquire {
+      background: var(--text-dark);
+      color: #FFF;
+      border: none;
+      padding: 12px 24px;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-inquire:hover { opacity: 0.85; }
+
+    /* RIGHT SPLIT: FLUID SCROLL */
+    .right-scroll {
+      width: 56%;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 64px 56px 120px;
+      scroll-behavior: smooth;
+    }
+    .project-entry {
+      margin-bottom: 96px;
+    }
+    .project-img-box {
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+      border-radius: 4px;
+      margin-bottom: 24px;
+      background: #EAE6DF;
+    }
+    .project-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-img-box:hover img {
+      transform: scale(1.03);
+    }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border-line);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .project-name {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 400;
+    }
+    .project-location {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 16px;
+    }
+    .spec-table td {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-line);
+      color: var(--text-muted);
+    }
+    .spec-table td strong {
+      color: var(--text-dark);
+    }
+
+    /* 5-TIER ADAPTIVE RESPONSIVENESS MATRIX */
+    /* 1. Mobile & Small Tablet (< 900px) */
+    @media (max-width: 900px) {
+      body {
+        height: auto;
+        overflow: auto;
+        flex-direction: column;
+      }
+      .left-pinned {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-line);
+        padding: 48px 24px;
+      }
+      .hero-h1 {
+        font-size: 38px;
+        margin: 20px 0;
+      }
+      .right-scroll {
+        width: 100%;
+        height: auto;
+        padding: 40px 24px;
+        overflow-y: visible;
+      }
+      .project-img-box {
+        height: 280px;
+      }
+      .pinned-meta {
+        margin-top: 32px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .btn-inquire {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* 2. Tablet Portrait (640px - 900px) */
+    @media (min-width: 641px) and (max-width: 900px) {
+      .project-img-box {
+        height: 420px;
+      }
+    }
+
+    /* 3. Ultra-Wide & 4K Monitoring (> 1920px) */
+    @media (min-width: 1921px) {
+      .left-pinned {
+        padding: 96px 80px;
+        width: 40%;
+      }
+      .hero-h1 {
+        font-size: 72px;
+      }
+      .right-scroll {
+        padding: 96px 120px;
+        width: 60%;
+      }
+      .project-img-box {
+        height: 680px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- LEFT: 100vh PINNED HERO & IDENTITY -->
+  <aside class="left-pinned">
+    <div class="brand-mark">KURA SPATIAL</div>
+    
+    <div class="hero-statement">
+      <div style="font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--text-muted); margin-bottom:20px; font-weight:600;">
+        MONOGRAPH 2026 // COPENHAGEN & KYOTO
+      </div>
+      <h1 class="hero-h1">Architecture of daylight, tactile stillness & raw stone.</h1>
+      <p class="lead-copy">
+        We compose contemplative spaces where internal human consciousness harmonizes with changing seasonal shadows. Eliminating ornamentation to let natural materials speak.
+      </p>
+    </div>
+
+    <div class="pinned-meta">
+      <div>COPENHAGEN <span id="localTime">11:15 CET</span></div>
+      <button class="btn-inquire" onclick="alert('Inquiry Desk: Kura Spatial accepts 4 private residential commissions per annum.')">Commission Work</button>
+    </div>
+  </aside>
+
+  <!-- RIGHT: FLUID VERTICAL PROJECT FEED -->
+  <main class="right-scroll">
+    <article class="project-entry">
+      <div class="project-img-box">
+        <img src="assets/scandinavian_minimalist_pavilion_1792991400403.jpg" alt="Kyoto Lake Sanctuary">
+      </div>
+      <div class="project-header">
+        <h2 class="project-name">The Kyoto Lake Sanctuary</h2>
+        <div class="project-location">Kyoto, Japan • 2025</div>
+      </div>
+      <p style="font-size:14px; color:var(--text-muted); line-height:1.7;">
+        Cantilevered board-formed concrete pavilion resting over mountain spring pool. Traditional kanawa-tsugi joinery in smoked yakisugi cedar.
+      </p>
+      <table class="spec-table">
+        <tr><td>FOOTPRINT</td><td style="text-align:right"><strong>340 m²</strong></td></tr>
+        <tr><td>STRUCTURAL SYSTEM</td><td style="text-align:right"><strong>Monolithic Thermal Concrete</strong></td></tr>
+        <tr><td>SOLAR ORIENTATION</td><td style="text-align:right"><strong>True South-Southwest (194°)</strong></td></tr>
+      </table>
+    </article>
+
+    <article class="project-entry">
+      <div class="project-img-box">
+        <img src="assets/minimalist_concrete_interior_1792991421707.jpg" alt="Villa Kura Interior">
+      </div>
+      <div class="project-header">
+        <h2 class="project-name">Villa Kura Residence</h2>
+        <div class="project-location">Copenhagen • 2026</div>
+      </div>
+      <p style="font-size:14px; color:var(--text-muted); line-height:1.7;">
+        Domestic living space balancing raw limestone walls with continuous double-glazed garden apertures and Danish white oak joinery.
+      </p>
+      <table class="spec-table">
+        <tr><td>FOOTPRINT</td><td style="text-align:right"><strong>480 m²</strong></td></tr>
+        <tr><td>PRIMARY FINISHES</td><td style="text-align:right"><strong>Unrefined Limestone / Soap-Treated Oak</strong></td></tr>
+        <tr><td>HEATING STRATEGY</td><td style="text-align:right"><strong>Geothermal Radiant Slabs</strong></td></tr>
+      </table>
+    </article>
+  </main>
+</body>
+</html>
