@@ -330,10 +330,12 @@ When a user gives a high-level portfolio or website request:
   2. **Asset Delineation**:
      - *User Provides*: Personal/studio name, actual project photographs (if available), biography, links.
      - *IVA Generates*: Bespoke layout skeleton, custom high-resolution imagery/renders, responsive typography scales, scroll physics.
-  3. **The "RZ Equation" (Targeted Questions)**: Proactively raise 2 to 3 decisive questions:
+  3. **The "RZ Equation" (Targeted Questions)**: Proactively raise 3 to 4 decisive questions:
+     - *"What frontend stack or file format do you prefer for this project? (e.g., React `.tsx` with Next.js/Vite, Vanilla TypeScript `.ts`, modern `.astro`, standard JavaScript `.jsx` / `.js`, or Svelte `.svelte`?)"*
      - *"Do you have existing high-res project imagery, or should I generate custom photorealistic renders?"*
      - *"Is this purely a static showcase portfolio, or do you require an active client commission/inquiry booking flow?"*
      - *"Do you have specific project case studies to highlight, or should I author domain-authentic narrative examples?"*
+
 
 #### Step 3: Modular Project Architecture & Component Blueprint
 - Outline the project structure (`src/`, `assets/`, `styles/`, `components/`) and verify backend requirements before writing code.
