@@ -202,3 +202,6 @@ agents/IVA/engine/diagnose_*.py
 
 agents/AGI_1_7/finance/
 agents/IVA/finance/
+
+# Proprietary Client & Company Projects (Do Not Push)
+ropves-website/
