@@ -68,8 +68,18 @@ def setup_environment_file() -> Path:
             print("  ✅ Initialized baseline safe .env file.")
 
     # Inspect Universal API Key access
-    from agents.IVA.engine.agi17.adapters.universal_api_provider import load_repo_dotenv
-    load_repo_dotenv()
+    try:
+        from agents.IVA.engine.agi17.adapters.universal_api_provider import load_repo_dotenv
+        load_repo_dotenv()
+    except Exception:
+        if env_file.is_file():
+            for line in env_file.read_text(encoding="utf-8", errors="ignore").splitlines():
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    k, v = k.strip(), v.strip().strip("'\"")
+                    if k and k not in os.environ:
+                        os.environ[k] = v
 
     gemini_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     openai_key = os.environ.get("OPENAI_API_KEY")

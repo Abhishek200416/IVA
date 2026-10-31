@@ -21,25 +21,25 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from agents.AGI_1_7.engine.agi17.finance.bank_nifty_market import BankNiftyContractSpec
-from agents.AGI_1_7.engine.agi17.finance.bank_nifty_paper_trader import (
+from agents.IVA.engine.agi17.finance.bank_nifty_market import BankNiftyContractSpec
+from agents.IVA.engine.agi17.finance.bank_nifty_paper_trader import (
     BankNiftyPaperTrader,
     MarketRegime,
     OrderSide,
     OrderType,
     SignalStatus,
 )
-from agents.AGI_1_7.engine.agi17.finance.margin_liquidation import (
+from agents.IVA.engine.agi17.finance.margin_liquidation import (
     MarginAccountSnapshot,
     MarginStatus,
 )
-from agents.AGI_1_7.engine.agi17.finance.pre_trade_risk_killswitch import (
+from agents.IVA.engine.agi17.finance.pre_trade_risk_killswitch import (
     EmergencyCancellationPlan,
     PortfolioKillSwitch,
     PreTradeOrderRequest,
     PreTradeRiskEngine,
 )
-from agents.AGI_1_7.engine.agi17.security.model_disclosure_policy import SecretRedactor
+from agents.IVA.engine.agi17.security.model_disclosure_policy import SecretRedactor
 
 
 class TestFinanceSafetyInvariants(unittest.TestCase):

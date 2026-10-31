@@ -49,54 +49,54 @@ REPO_ROOT = _find_repo_root()
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from agents.AGI_1_7.ecosystem.agent_registry.registry_validator import (
+from agents.IVA.ecosystem.agent_registry.registry_validator import (
     RegistryValidationError,
     RegistryValidator,
 )
-from agents.AGI_1_7.ecosystem.agent_registry.specialist_factory import (
+from agents.IVA.ecosystem.agent_registry.specialist_factory import (
     SpecialistFactory,
     build_default_contracts,
 )
-from agents.AGI_1_7.engine.agi17.capabilities.resource_snapshot import (
+from agents.IVA.engine.agi17.capabilities.resource_snapshot import (
     LiveResourceMetrics,
     ResourceSnapshot,
 )
-from agents.AGI_1_7.engine.agi17.memory.omega_command_memory import (
+from agents.IVA.engine.agi17.memory.omega_command_memory import (
     ACONCompressor,
     OmegaCommandMemory,
 )
-from agents.AGI_1_7.engine.agi17.orchestration.resource_governor import ResourceGovernor
-from agents.AGI_1_7.engine.agi17.process_supervision.completion_notifier import (
+from agents.IVA.engine.agi17.orchestration.resource_governor import ResourceGovernor
+from agents.IVA.engine.agi17.process_supervision.completion_notifier import (
     CompletionNotifier,
     ExpectedArtifactSpec,
 )
-from agents.AGI_1_7.engine.agi17.process_supervision.process_supervisor import (
+from agents.IVA.engine.agi17.process_supervision.process_supervisor import (
     ProcessSupervisor,
 )
-from agents.AGI_1_7.engine.agi17.process_supervision.stream_parser import StreamParser
-from agents.AGI_1_7.engine.agi17.research.grounded_research import (
+from agents.IVA.engine.agi17.process_supervision.stream_parser import StreamParser
+from agents.IVA.engine.agi17.research.grounded_research import (
     GroundedResearchEngine,
     SSRFBlockedError,
 )
-from agents.AGI_1_7.engine.agi17.task_control.checkpoint_manager import (
+from agents.IVA.engine.agi17.task_control.checkpoint_manager import (
     CheckpointManager,
 )
-from agents.AGI_1_7.engine.agi17.task_control.dependency_manager import (
+from agents.IVA.engine.agi17.task_control.dependency_manager import (
     DependencyCycleError,
     DependencyManager,
 )
-from agents.AGI_1_7.engine.agi17.task_control.task_manager import DurableTaskManager
-from agents.AGI_1_7.engine.agi17.task_control.task_state_machine import (
+from agents.IVA.engine.agi17.task_control.task_manager import DurableTaskManager
+from agents.IVA.engine.agi17.task_control.task_state_machine import (
     InvalidStateTransitionError,
     TaskState,
     TaskStateMachine,
 )
-from agents.AGI_1_7.engine.agi17.task_control.task_store import TaskStore
-from agents.AGI_1_7.engine.agi17.telemetry.token_economy import (
+from agents.IVA.engine.agi17.task_control.task_store import TaskStore
+from agents.IVA.engine.agi17.telemetry.token_economy import (
     AdaptiveTokenController,
     TokenBudgetExceededError,
 )
-from agents.AGI_1_7.engine.agi17.verification.evidence_verifier import EvidenceVerifier
+from agents.IVA.engine.agi17.verification.evidence_verifier import EvidenceVerifier
 
 
 class TestAGI17UnitSuite(unittest.TestCase):
@@ -451,7 +451,7 @@ class TestAGI17UnitSuite(unittest.TestCase):
 
     # 25. EcosystemCoordinator inventory & active railings (Ponytail, Context7, Sequential Thinking, CodeRabbit, GSD, Agency)
     def test_25_ecosystem_coordinator_inventory_and_railings(self) -> None:
-        from agents.AGI_1_7.ecosystem.agent_registry.ecosystem_coordinator import EcosystemCoordinator
+        from agents.IVA.ecosystem.agent_registry.ecosystem_coordinator import EcosystemCoordinator
 
         coord = EcosystemCoordinator()
         inv = coord.get_inventory_summary()
@@ -479,7 +479,7 @@ class TestAGI17UnitSuite(unittest.TestCase):
 
     # 26. Strict surface-only GPQA answer extraction (zero thinking-transcript recovery by default)
     def test_26_gpqa_strict_surface_answer_extraction(self) -> None:
-        from agents.AGI_1_7.scripts.run_gpqa_clean_189_agi17 import extract_choice
+        from agents.IVA.scripts.run_gpqa_clean_189_agi17 import extract_choice
 
         ans_ok = extract_choice("Step-by-step derivation complete.\n<choice>C</choice>")
         self.assertEqual(ans_ok, "C")

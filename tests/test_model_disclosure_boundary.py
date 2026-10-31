@@ -26,22 +26,22 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 from unittest import mock
 
-from agents.AGI_1_7.engine.agi17.adapters.agi_17_adapter import AGI17Adapter
-from agents.AGI_1_7.engine.agi17.adapters.model_adapter import (
+from agents.IVA.engine.agi17.adapters.agi_17_adapter import AGI17Adapter
+from agents.IVA.engine.agi17.adapters.model_adapter import (
     BaseModelProvider,
     ModelAdapter,
     ModelProviderConfig,
     ModelRequest,
 )
-from agents.AGI_1_7.engine.agi17.orchestration.ci_repair_agent import CIRepairAgent, CIRepairBudget
-from agents.AGI_1_7.engine.agi17.orchestration.hierarchical_orchestrator import HierarchicalOrchestrator
-from agents.AGI_1_7.engine.agi17.process_supervision.sandbox_runner import (
+from agents.IVA.engine.agi17.orchestration.ci_repair_agent import CIRepairAgent, CIRepairBudget
+from agents.IVA.engine.agi17.orchestration.hierarchical_orchestrator import HierarchicalOrchestrator
+from agents.IVA.engine.agi17.process_supervision.sandbox_runner import (
     DisposableSandboxRunner,
     HighImpactApprovalGate,
     SandboxExecutionResult,
     SandboxPolicy,
 )
-from agents.AGI_1_7.engine.agi17.security.model_disclosure_policy import (
+from agents.IVA.engine.agi17.security.model_disclosure_policy import (
     DisclosureContext,
     DisclosureDecision,
     DisclosureMode,
@@ -50,7 +50,7 @@ from agents.AGI_1_7.engine.agi17.security.model_disclosure_policy import (
     ModelDisclosurePolicy,
     SecretRedactor,
 )
-from agents.AGI_1_7.engine.agi17.telemetry.token_economy import AdaptiveTokenController
+from agents.IVA.engine.agi17.telemetry.token_economy import AdaptiveTokenController
 
 
 class SpyExternalModelProvider(BaseModelProvider):

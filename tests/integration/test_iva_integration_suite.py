@@ -40,29 +40,29 @@ REPO_ROOT = _find_repo_root()
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from agents.AGI_1_7.ecosystem.agent_registry.specialist_factory import SpecialistFactory
-from agents.AGI_1_7.engine.agi17.capabilities.resource_snapshot import LiveResourceMetrics
-from agents.AGI_1_7.engine.agi17.memory.omega_command_memory import OmegaCommandMemory
-from agents.AGI_1_7.engine.agi17.orchestration.hierarchical_orchestrator import (
+from agents.IVA.ecosystem.agent_registry.specialist_factory import SpecialistFactory
+from agents.IVA.engine.agi17.capabilities.resource_snapshot import LiveResourceMetrics
+from agents.IVA.engine.agi17.memory.omega_command_memory import OmegaCommandMemory
+from agents.IVA.engine.agi17.orchestration.hierarchical_orchestrator import (
     HierarchicalOrchestrator,
     SubtaskSpec,
 )
-from agents.AGI_1_7.engine.agi17.orchestration.resource_governor import ResourceGovernor
-from agents.AGI_1_7.engine.agi17.process_supervision.completion_notifier import (
+from agents.IVA.engine.agi17.orchestration.resource_governor import ResourceGovernor
+from agents.IVA.engine.agi17.process_supervision.completion_notifier import (
     CompletionNotifier,
     ExpectedArtifactSpec,
 )
-from agents.AGI_1_7.engine.agi17.process_supervision.process_supervisor import (
+from agents.IVA.engine.agi17.process_supervision.process_supervisor import (
     ProcessSupervisor,
 )
-from agents.AGI_1_7.engine.agi17.task_control.task_manager import DurableTaskManager
-from agents.AGI_1_7.engine.agi17.task_control.task_state_machine import TaskState
-from agents.AGI_1_7.engine.agi17.telemetry.progress_service import ProgressService
-from agents.AGI_1_7.engine.agi17.telemetry.token_economy import (
+from agents.IVA.engine.agi17.task_control.task_manager import DurableTaskManager
+from agents.IVA.engine.agi17.task_control.task_state_machine import TaskState
+from agents.IVA.engine.agi17.telemetry.progress_service import ProgressService
+from agents.IVA.engine.agi17.telemetry.token_economy import (
     AdaptiveTokenController,
     TokenBudgetExceededError,
 )
-from agents.AGI_1_7.engine.agi17.verification.evidence_verifier import EvidenceVerifier
+from agents.IVA.engine.agi17.verification.evidence_verifier import EvidenceVerifier
 
 
 class TestAGI17IntegrationSuite(unittest.TestCase):
@@ -470,7 +470,7 @@ class TestAGI17IntegrationSuite(unittest.TestCase):
 
     # Test P — Normal execute_mission code_task_dir workflow & explicit fallback reporting
     def test_P_normal_execute_mission_code_task_dir_and_fallback_reporting(self) -> None:
-        from agents.AGI_1_7.engine.agi17.process_supervision.sandbox_runner import (
+        from agents.IVA.engine.agi17.process_supervision.sandbox_runner import (
             DisposableSandboxRunner,
             SandboxPolicy,
         )

@@ -16,8 +16,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Dict, Optional, Sequence
 
-from agents.AGI_1_7.ecosystem.agent_registry.ecosystem_coordinator import EcosystemCoordinator
-from agents.AGI_1_7.ecosystem.agent_registry.specialist_factory import SpecialistFactory
+from agents.IVA.ecosystem.agent_registry.ecosystem_coordinator import EcosystemCoordinator
+from agents.IVA.ecosystem.agent_registry.specialist_factory import SpecialistFactory
 from ..capabilities.capability_profiler import CapabilityProfiler
 from ..capabilities.resource_snapshot import ResourceSnapshot
 from ..memory.omega_command_memory import OmegaCommandMemory
