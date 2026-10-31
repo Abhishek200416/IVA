@@ -35,7 +35,7 @@ REPO_ROOT = _find_repo_root()
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from agents.AGI_1_7.engine.agi17.adapters.model_adapter import (
+from agents.IVA.engine.agi17.adapters.model_adapter import (
     DeterministicMockProvider,
     ModelAdapter,
     ModelCostBudgetExceededError,
@@ -44,8 +44,8 @@ from agents.AGI_1_7.engine.agi17.adapters.model_adapter import (
     ModelResponseValidationError,
     redact_sensitive_text,
 )
-from agents.AGI_1_7.engine.agi17.orchestration.ci_repair_agent import CIRepairAgent, CIRepairBudget
-from agents.AGI_1_7.engine.agi17.process_supervision.sandbox_runner import (
+from agents.IVA.engine.agi17.orchestration.ci_repair_agent import CIRepairAgent, CIRepairBudget
+from agents.IVA.engine.agi17.process_supervision.sandbox_runner import (
     DisposableSandboxRunner,
     HighImpactActionBlockedError,
     HighImpactApprovalGate,
@@ -56,7 +56,7 @@ from agents.AGI_1_7.engine.agi17.process_supervision.sandbox_runner import (
     scan_untrusted_content,
     validate_relative_sandbox_path,
 )
-from agents.AGI_1_7.engine.agi17.telemetry.token_economy import AdaptiveTokenController
+from agents.IVA.engine.agi17.telemetry.token_economy import AdaptiveTokenController
 
 
 class TestProductionHardeningSprint(unittest.TestCase):
@@ -279,7 +279,7 @@ class TestProductionHardeningSprint(unittest.TestCase):
         self.assertIn("return a + b", (ws / "adder.py").read_text(encoding="utf-8"))
 
     def test_13_self_learning_failure_memory_and_compact_guardrails(self) -> None:
-        from agents.AGI_1_7.engine.agi17.memory.omega_command_memory import OmegaCommandMemory
+        from agents.IVA.engine.agi17.memory.omega_command_memory import OmegaCommandMemory
 
         mem = OmegaCommandMemory(primary_dir=self.temp_dir / "mem", mirror_dir=self.temp_dir / "mem_mirror")
         lesson = mem.record_failure_lesson(
@@ -296,7 +296,7 @@ class TestProductionHardeningSprint(unittest.TestCase):
         self.assertLessEqual(len(ret["compact_guardrails_prompt_block"]), 480)
 
     def test_14_task_manager_idempotency_key_deduplication(self) -> None:
-        from agents.AGI_1_7.engine.agi17.task_control.task_manager import DurableTaskManager
+        from agents.IVA.engine.agi17.task_control.task_manager import DurableTaskManager
 
         tm = DurableTaskManager(
             db_path=self.temp_dir / "tasks.db",
@@ -308,8 +308,8 @@ class TestProductionHardeningSprint(unittest.TestCase):
         self.assertEqual(t1["task_id"], t2["task_id"])
 
     def test_15_capability_maturity_breakdown_and_50_task_suite(self) -> None:
-        from agents.AGI_1_7.benchmarks.heldout_coding_suite import HELDOUT_CODING_50_SUITE
-        from agents.AGI_1_7.ecosystem.agent_registry.ecosystem_coordinator import EcosystemCoordinator
+        from agents.IVA.benchmarks.heldout_coding_suite import HELDOUT_CODING_50_SUITE
+        from agents.IVA.ecosystem.agent_registry.ecosystem_coordinator import EcosystemCoordinator
 
         coord = EcosystemCoordinator()
         maturity = coord.get_capability_maturity_breakdown(verified_task_contributions=3)
@@ -324,8 +324,8 @@ class TestProductionHardeningSprint(unittest.TestCase):
             self.assertEqual(len(task.grader_sha256), 64)
 
     def test_16_production_sandbox_policy_and_terminal_outcomes(self) -> None:
-        from agents.AGI_1_7.engine.agi17.orchestration.hierarchical_orchestrator import HierarchicalOrchestrator, SubtaskSpec
-        from agents.AGI_1_7.engine.agi17.task_control.task_manager import DurableTaskManager
+        from agents.IVA.engine.agi17.orchestration.hierarchical_orchestrator import HierarchicalOrchestrator, SubtaskSpec
+        from agents.IVA.engine.agi17.task_control.task_manager import DurableTaskManager
 
         prod_pol = SandboxPolicy.production()
         self.assertTrue(prod_pol.require_container_isolation)
@@ -358,7 +358,7 @@ class TestProductionHardeningSprint(unittest.TestCase):
         self.assertEqual(res_failed["terminal_outcome"], "FAILED")
 
     def test_17_cli_exit_codes_for_all_terminal_states(self) -> None:
-        from agents.AGI_1_7.run_agi_17 import compute_cli_exit_code, main as cli_main
+        from agents.IVA.run_agi_17 import compute_cli_exit_code, main as cli_main
 
         self.assertEqual(compute_cli_exit_code({"terminal_outcome": "SUCCEEDED_AND_VERIFIED"}), 0)
         self.assertEqual(compute_cli_exit_code({"terminal_outcome": "PROFILE_ONLY_OK"}), 0)
@@ -386,7 +386,7 @@ class TestProductionHardeningSprint(unittest.TestCase):
         self.assertEqual(exit_blocked, 2)
 
     def test_18_pinned_docker_digest_and_atomic_write_and_structured_approval(self) -> None:
-        from agents.AGI_1_7.engine.agi17.process_supervision.sandbox_runner import (
+        from agents.IVA.engine.agi17.process_supervision.sandbox_runner import (
             APPROVED_PINNED_PYTHON_IMAGE,
             SandboxPolicyViolationError,
             atomic_write_workspace_file,
@@ -462,7 +462,7 @@ class TestProductionHardeningSprint(unittest.TestCase):
         self.assertIn("return a * b", (ws / "pkg" / "calc.py").read_text(encoding="utf-8"))
 
     def test_20_corrupted_checkpoint_and_repeated_reconcile_idempotency(self) -> None:
-        from agents.AGI_1_7.engine.agi17.task_control.task_manager import DurableTaskManager, TaskState
+        from agents.IVA.engine.agi17.task_control.task_manager import DurableTaskManager, TaskState
 
         tm = DurableTaskManager(
             db_path=self.temp_dir / "rec_tasks.db",

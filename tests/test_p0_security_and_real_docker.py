@@ -46,23 +46,23 @@ REPO_ROOT = _find_repo_root()
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from agents.AGI_1_7.engine.agi17.adapters.agi_17_adapter import AGI17Adapter
-from agents.AGI_1_7.engine.agi17.adapters.model_adapter import (
+from agents.IVA.engine.agi17.adapters.agi_17_adapter import AGI17Adapter
+from agents.IVA.engine.agi17.adapters.model_adapter import (
     DeterministicMockProvider,
     ModelAdapter,
     ModelCostBudgetExceededError,
     ModelProviderConfig,
     ModelRequest,
 )
-from agents.AGI_1_7.engine.agi17.orchestration.ci_repair_agent import (
+from agents.IVA.engine.agi17.orchestration.ci_repair_agent import (
     CIRepairAgent,
     CIRepairBudget,
 )
-from agents.AGI_1_7.engine.agi17.orchestration.hierarchical_orchestrator import (
+from agents.IVA.engine.agi17.orchestration.hierarchical_orchestrator import (
     HierarchicalOrchestrator,
     SubtaskSpec,
 )
-from agents.AGI_1_7.engine.agi17.process_supervision.sandbox_runner import (
+from agents.IVA.engine.agi17.process_supervision.sandbox_runner import (
     APPROVED_PINNED_PYTHON_IMAGE,
     DisposableSandboxRunner,
     HighImpactActionBlockedError,
@@ -80,9 +80,9 @@ from agents.AGI_1_7.engine.agi17.process_supervision.sandbox_runner import (
     validate_relative_sandbox_path,
     validate_test_pattern,
 )
-from agents.AGI_1_7.engine.agi17.task_control.task_manager import DurableTaskManager, TaskState
-from agents.AGI_1_7.engine.agi17.telemetry.token_economy import AdaptiveTokenController
-from agents.AGI_1_7.run_agi_17 import TERMINAL_OUTCOME_EXIT_CODES, compute_cli_exit_code, main as cli_main
+from agents.IVA.engine.agi17.task_control.task_manager import DurableTaskManager, TaskState
+from agents.IVA.engine.agi17.telemetry.token_economy import AdaptiveTokenController
+from agents.IVA.run_agi_17 import TERMINAL_OUTCOME_EXIT_CODES, compute_cli_exit_code, main as cli_main
 
 
 def _is_real_docker_pinned_image_ready() -> tuple[bool, str]:
@@ -566,7 +566,7 @@ class TestP0SecurityHardeningOffline(unittest.TestCase):
     # I. Budget and timeout tests
     # ------------------------------------------------------------------
     def test_9I_cumulative_token_cost_and_wall_clock_budgets(self) -> None:
-        from agents.AGI_1_7.engine.agi17.telemetry.token_economy import TokenBudgetExceededError
+        from agents.IVA.engine.agi17.telemetry.token_economy import TokenBudgetExceededError
 
         ws = self.temp_dir / "ws_budget"
         ws.mkdir(parents=True, exist_ok=True)
@@ -761,7 +761,7 @@ class TestP0SecurityHardeningOffline(unittest.TestCase):
     # ------------------------------------------------------------------
     def test_9M_posix_termux_agy_resolution_and_missing_binary_fallback(self) -> None:
         import os as _os
-        from agents.AGI_1_7.engine.agi17.process_supervision.process_supervisor import ProcessSupervisor
+        from agents.IVA.engine.agi17.process_supervision.process_supervisor import ProcessSupervisor
 
         # 1. On POSIX/Termux without AGY_PATH or PATH binary, ModelAdapter must never construct a Windows AppData path
         with mock.patch("shutil.which", return_value=None), mock.patch.dict(_os.environ, {}, clear=False):

@@ -34,13 +34,13 @@ REPO_ROOT = _find_repo_root()
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from agents.AGI_1_7.engine.agi17.adapters.agi_17_adapter import AGI17Adapter
-from agents.AGI_1_7.engine.agi17.capabilities.resource_snapshot import LiveResourceMetrics
-from agents.AGI_1_7.engine.agi17.memory.omega_command_memory import OmegaCommandMemory
-from agents.AGI_1_7.engine.agi17.orchestration.hierarchical_orchestrator import SubtaskSpec
-from agents.AGI_1_7.engine.agi17.process_supervision.completion_notifier import ExpectedArtifactSpec
-from agents.AGI_1_7.engine.agi17.task_control.task_state_machine import TaskState
-from agents.AGI_1_7.engine.agi17.telemetry.token_economy import TokenBudgetExceededError
+from agents.IVA.engine.agi17.adapters.agi_17_adapter import AGI17Adapter
+from agents.IVA.engine.agi17.capabilities.resource_snapshot import LiveResourceMetrics
+from agents.IVA.engine.agi17.memory.omega_command_memory import OmegaCommandMemory
+from agents.IVA.engine.agi17.orchestration.hierarchical_orchestrator import SubtaskSpec
+from agents.IVA.engine.agi17.process_supervision.completion_notifier import ExpectedArtifactSpec
+from agents.IVA.engine.agi17.task_control.task_state_machine import TaskState
+from agents.IVA.engine.agi17.telemetry.token_economy import TokenBudgetExceededError
 
 
 class TestAGI17EndToEndDemos(unittest.TestCase):
