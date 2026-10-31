@@ -197,8 +197,172 @@ class UniversalAPIProvider(BaseModelProvider):
                 or os.environ.get("OPENAI_BASE_URL")
                 or "https://api.openai.com/v1"
             ).rstrip("/")
-
         self.call_history: List[ModelRequest] = []
+        self.available_models: List[str] = []
+        self.auto_discovered: bool = False
+        self.auto_discovery_attempted: bool = False
+
+        # If user did not specify an explicit model override, autonomously fetch and select from API key
+        explicit_model = model_name or os.environ.get("IVA_MODEL") or os.environ.get(f"{self.provider_type.upper()}_MODEL")
+        if not explicit_model and self.api_key:
+            try:
+                discovered = self.auto_discover_optimal_model()
+                if discovered:
+                    self.model_name = discovered
+                    self.auto_discovered = True
+            except Exception as exc:
+                logger.debug("Auto-discovery of optimal model deferred: %s", exc)
+
+    def fetch_remote_models(self) -> List[str]:
+        """Queries the upstream provider REST endpoint using the active API key to fetch available models.
+        
+        Uses 100% Python standard library urllib.request without external dependencies.
+        Returns a list of model identifier strings.
+        """
+        if not self.api_key and not (self.base_url and ("localhost" in self.base_url or "127.0.0.1" in self.base_url)):
+            return []
+
+        ctx = ssl.create_default_context()
+        try:
+            if self.provider_type == "gemini":
+                endpoint = f"{self.base_url}/models?key={self.api_key}"
+                req = urllib.request.Request(
+                    endpoint,
+                    headers={"User-Agent": "IVA-Autonomous-Partner/1.7.29"},
+                    method="GET",
+                )
+                with urllib.request.urlopen(req, timeout=4.0, context=ctx) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    models = []
+                    for m in data.get("models", []):
+                        m_name = m.get("name", "")
+                        if m_name.startswith("models/"):
+                            m_name = m_name[len("models/"):]
+                        methods = m.get("supportedGenerationMethods", [])
+                        if not methods or "generateContent" in methods:
+                            models.append(m_name)
+                    self.available_models = models
+                    return models
+            elif self.provider_type == "anthropic":
+                endpoint = f"{self.base_url}/models"
+                req = urllib.request.Request(
+                    endpoint,
+                    headers={
+                        "x-api-key": self.api_key,
+                        "anthropic-version": "2023-06-01",
+                        "User-Agent": "IVA-Autonomous-Partner/1.7.29",
+                    },
+                    method="GET",
+                )
+                with urllib.request.urlopen(req, timeout=4.0, context=ctx) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    models = [m.get("id") for m in data.get("data", []) if m.get("id")]
+                    self.available_models = models
+                    return models
+            else:
+                endpoint = f"{self.base_url}/models"
+                req = urllib.request.Request(
+                    endpoint,
+                    headers={
+                        "Authorization": f"Bearer {self.api_key}",
+                        "User-Agent": "IVA-Autonomous-Partner/1.7.29",
+                    },
+                    method="GET",
+                )
+                with urllib.request.urlopen(req, timeout=4.0, context=ctx) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    models = [m.get("id") for m in data.get("data", []) if m.get("id")]
+                    self.available_models = models
+                    return models
+        except Exception as exc:
+            logger.debug("Automatic remote model fetching for %s skipped/failed: %s", self.provider_type, exc)
+            return []
+
+    def auto_discover_optimal_model(self) -> str:
+        """Autonomously inspects available remote models from the active API key and selects the best model.
+        
+        Zero user prompting: dynamically ranks and picks the optimal model target.
+        Falls back to proven defaults if offline or rate-limited.
+        """
+        self.auto_discovery_attempted = True
+        candidates = self.fetch_remote_models()
+        if not candidates:
+            defaults = {
+                "gemini": "gemini-2.5-flash",
+                "anthropic": "claude-3-5-sonnet-20241022",
+                "groq": "llama-3.3-70b-versatile",
+                "deepseek": "deepseek-chat",
+                "openrouter": "anthropic/claude-3.5-sonnet",
+                "openai": "gpt-4o-mini",
+            }
+            return defaults.get(self.provider_type, "gemini-2.5-flash")
+
+        preferences = {
+            "gemini": [
+                "gemini-2.5-flash",
+                "gemini-2.5-pro",
+                "gemini-2.0-flash",
+                "gemini-2.0-flash-exp",
+                "gemini-1.5-pro",
+                "gemini-1.5-flash",
+                "gemini-1.5-flash-8b",
+            ],
+            "openai": [
+                "gpt-4o",
+                "gpt-4o-mini",
+                "gpt-4-turbo",
+                "gpt-4",
+                "o1-preview",
+                "o1-mini",
+                "gpt-3.5-turbo",
+            ],
+            "anthropic": [
+                "claude-3-5-sonnet-20241022",
+                "claude-3-5-sonnet-latest",
+                "claude-3-5-haiku-20241022",
+                "claude-3-opus-20240229",
+            ],
+            "groq": [
+                "llama-3.3-70b-versatile",
+                "llama-3.1-70b-versatile",
+                "llama-3.1-8b-instant",
+                "mixtral-8x7b-32768",
+            ],
+            "deepseek": [
+                "deepseek-chat",
+                "deepseek-coder",
+            ],
+            "openrouter": [
+                "anthropic/claude-3.5-sonnet",
+                "google/gemini-2.5-flash",
+                "openai/gpt-4o",
+                "meta-llama/llama-3.3-70b-instruct",
+            ],
+        }
+
+        pref_list = preferences.get(self.provider_type, preferences.get("openai", []))
+        for pref in pref_list:
+            if pref in candidates:
+                logger.info("Auto-discovered and selected optimal model: %s", pref)
+                return pref
+            for c in candidates:
+                if c.startswith(pref):
+                    logger.info("Auto-discovered and selected optimal model (matched): %s", c)
+                    return c
+
+        return candidates[0]
+
+    def get_model_discovery_status(self) -> Dict[str, Any]:
+        """Returns structured metadata about model auto-discovery."""
+        return {
+            "provider_type": self.provider_type,
+            "active_model": self.model_name,
+            "auto_discovered": getattr(self, "auto_discovered", False),
+            "available_models_count": len(getattr(self, "available_models", [])),
+            "available_models": getattr(self, "available_models", []),
+            "base_url": self.base_url,
+            "has_key": bool(self.api_key),
+        }
 
     @classmethod
     def has_available_credentials(cls) -> bool:

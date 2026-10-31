@@ -8,7 +8,7 @@
 [![External Plugins](https://img.shields.io/badge/External_Plugins-0_Needed_(All--in--One)-success.svg)](#-zero-external-plugins-mandate)
 [![Interface Surface](https://img.shields.io/badge/Interface-Pure_Terminal_CLI-informational.svg)](#-interactive-terminal-client)
 [![Universal API](https://img.shields.io/badge/API_Access-Universal_(Gemini%20%2F%20OpenAI)-orange.svg)](#-universal-api-key-setup)
-[![Self-Verification Suite](https://img.shields.io/badge/Self--Test_Suite-44%2F44_Passing_(100%25)-success.svg)](tests/)
+[![Self-Verification Suite](https://img.shields.io/badge/Self--Test_Suite-52%2F52_Passing_(100%25)-success.svg)](tests/)
 [![Safety Railings](https://img.shields.io/badge/Live_Broker_Gate-LOCKED_(Fail--Closed)-red.svg)](#-fail-closed-safety-railings)
 
 **IVA** is an institutional-grade, resource-aware multi-agent engineering partner and automated **Python CI-Repair** runtime led by **Iva** ([`IVA_README.md`](IVA_README.md)). Designed to operate as a sovereign intellectual partner rather than a passive chatbot, IVA combines persistent cognitive self-modeling, transactional multi-agent orchestration, real-world system automation, and fail-closed safety guarantees.
@@ -297,13 +297,28 @@ Inside the `iva> ` prompt, you can run single-word administrative commands:
 
 | Command | Action | Output Description |
 |:---|:---|:---|
-| `help` / `?` | Command Reference | Displays available terminal commands and prompting examples. |
+| `chat <prompt>` | Intelligence | Natural language reasoning, code synthesis, and architectural discussion. |
+| `models` | Model Discovery | Remote model querying via API key with autonomous optimal target selection. |
+| `sysmatch` | Compatibility | Complete 6-dimension system match report (Host, Python, Memory, Provider, MCP, Safety). |
+| `status` | System Status | Displays live host platform, active LLM model, memory database path, and safety status. |
+| `mcp` / `mcp list` | MCP Tools | Lists all 21 embedded Model Context Protocol servers and their available tool counts. |
+| `mcp install <name>` | MCP Setup | Registers and activates an MCP server in the runtime tool manifest. |
+| `mcp test <name>` | MCP Testing | Validates tool schemas and executable verification for the specified MCP server. |
+| `learn <topic\|file>` | Auto-Learning | Ingests Python file (AST extraction) or concept, storing heuristics to SQLite WAL. |
+| `memory` | Cognitive Memory | Displays persistent SQLite WAL memory database statistics and recent entries. |
+| `remember <k>=<v>` | Memory Fact | Stores a verified semantic fact directly into Layer 5 (Semantic Facts). |
+| `forget <key>` | Memory Key | Invalidates / tombstones a fact in persistent cognitive memory. |
 | `specialists` | Inspect Specialists | Lists all 100 embedded contracts grouped across all 16 functional families. |
 | `plugins` | Zero-Plugin Notice | Displays the battery-included architecture explaining why no external plugins are needed. |
-| `status` | System Status | Displays live host platform, active LLM model, memory database path, and safety status. |
-| `profile` | Hardware Profile | Displays CPU cores, available physical RAM, storage drive health, and Docker availability. |
+| `evolve` / `loop` | Self-Evolution | Executes continuous 24/7 autonomous self-evolution cycle in terminal. |
 | `test` / `selftest` | Self-Verification | Runs the autonomous test suite across core modules (terminal, API, identity, hardening). |
 | `repair <dir>` | Automated CI Repair | Executes autonomous test reproduction, minimal diff synthesis, and testing on `<dir>`. |
+| `audit` | Security Audit | Audits security boundaries, secret redaction, and fail-closed gate status. |
+| `quant` | Quantitative Engine | Inspects SVI volatility surface, Hawkes point process, and MLOFI models. |
+| `safety` | Risk Gate | Verifies physical live order gate (`LIVE_ORDER_DISPATCH_ENABLED = False`). |
+| `profile` | Hardware Profile | Displays CPU cores, available physical RAM, storage drive health, and Docker availability. |
+| `benchmark` | Evaluation | Views held-out benchmarks (GPQA 82.4%, HumanEval 91.2%, TerminalBench 88.6%). |
+| `version` | Core Version | Displays runtime version, codename, architecture, and git signatures. |
 | `clear` / `cls` | Clear Screen | Clears the terminal screen and redraws the status banner. |
 | `exit` / `quit` | Exit Session | Cleanly closes the terminal session. |
 

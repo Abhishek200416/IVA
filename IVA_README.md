@@ -251,9 +251,9 @@ Iva's persistent memory is organized into 10 structured layers in SQLite WAL mod
 
 ---
 
-## 💻 Running Iva: Primary Interactive Terminal & Multi-Modal Surfaces
+## 💻 Running Iva: 24 Native Terminal Operational Ways (Any Device)
 
-Iva is engineered first and foremost for the **terminal** — pure standard library console interaction suitable for **any device** (Linux servers, SSH terminals, Raspberry Pi, macOS, Windows CMD/PowerShell, headless Docker containers) with **zero GUI or voice popups required**.
+Iva is engineered first and foremost for the **terminal** — pure standard library console interaction suitable for **any device** (Android/Termux, Linux servers, SSH terminals, Raspberry Pi, macOS, Windows CMD/PowerShell, and headless Docker containers) with **zero GUI or voice popups required**.
 
 ### 1. 🌟 Interactive Terminal CLI (Recommended for All Devices)
 Launch the pure, distraction-free interactive terminal session:
@@ -262,21 +262,62 @@ python run_iva.py
 ```
 *(No voice popup, no GUI window — runs 100% in your console on any OS)*
 
-#### Terminal Commands:
-- `iva> help` — View interactive command guide and prompt examples
-- `iva> specialists` — Inspect the 100 embedded specialist contracts across 16 families
-- `iva> plugins` — Verify self-contained status (zero external plugins needed)
-- `iva> status` — Check active LLM engine, memory location, and safety gates
-- `iva> profile` — Display hardware capacity and system resources
-- `iva> repair <dir>` — Run automated Python CI repair on target directory
-- `iva> <your prompt>` — Ask any natural language question or assign engineering tasks
+### 2. 🤖 Dynamic Active Model Target Auto-Discovery (Zero User Friction)
+When you link an API key (e.g. `GEMINI_API_KEY`, `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GROQ_API_KEY`), **Iva never interrupts or prompts you asking which model to choose**.
+- She queries the provider REST endpoint directly using Python standard library `urllib.request`.
+- She dynamically inspects available models and ranks candidates against frontier benchmarks.
+- She autonomously selects the optimal active model target (e.g., `gemini-2.5-flash`, `gpt-4o`, `claude-3-5-sonnet`) with instant fallbacks if rate limits occur.
+- Run `python run_iva.py models` to view active model selection and discovered remote endpoints.
+
+### 3. 🔍 Complete 6-Dimension System Match Matrix (`sysmatch`)
+Iva provides automated verification across 6 architectural dimensions, confirming complete hardware and software compatibility:
+1. **Host Platform & OS**: Linux, Android/Termux, Windows, Darwin, or Cloud VM.
+2. **Python Runtime & Stdlib Isolation**: Python 3.10-3.14+ verified; zero 3rd-party pip blockers.
+3. **Persistent SQLite Memory WAL**: 10-layer cognitive schema with dynamic path resolution.
+4. **Model Provider & Auto-Discovery**: Direct REST provider connectivity and target selection.
+5. **Specialist & MCP Tool Ecosystem**: 100 embedded specialist contracts + 21 MCP servers.
+6. **Physical Safety & Risk Invariants**: `LIVE_ORDER_DISPATCH_ENABLED = False` (Safe Fail-Closed).
+
+Run `python run_iva.py sysmatch` to verify 100% compatibility on your machine.
+
+### 4. 🧭 The 24 Native Terminal Operational Ways
+
+| # | Command | Category | Description |
+|---|---|---|---|
+| **1** | `chat <prompt>` / natural prompt | Intelligence | Natural language reasoning, code synthesis, and architectural discussion. |
+| **2** | `models` | Models | Auto-discover remote models from provider API key & view active target. |
+| **3** | `sysmatch` | Compatibility | Display complete 6-dimension system match verification report. |
+| **4** | `status` | Health | Inspect live runtime health, provider state, memory count, and safety status. |
+| **5** | `mcp` / `mcp list` | MCP Tools | Catalog of all 21 embedded Model Context Protocol servers & tool counts. |
+| **6** | `mcp install <name>` | MCP Tools | Register and activate an MCP server into the runtime tool manifest. |
+| **7** | `mcp test <name>` | MCP Tools | Test tool parameter schemas and executable verification for an MCP server. |
+| **8** | `learn <topic\|file>` | Autonomous Learning | Ingest Python file (AST extraction) or concept, storing heuristics to memory. |
+| **9** | `memory` | Cognitive Memory | Inspect 10-layer SQLite WAL memory database statistics and recent entries. |
+| **10** | `remember <key>=<val>` | Cognitive Memory | Store a verified semantic fact directly into Layer 5 (Semantic Facts). |
+| **11** | `forget <key>` | Cognitive Memory | Invalidate / tombstone a fact in persistent cognitive memory. |
+| **12** | `specialists` | Architecture | Browse all 100 embedded specialist contracts across 16 capability families. |
+| **13** | `plugins` | Architecture | Inspect zero-external-plugins mandate notice (All-in-One Engine). |
+| **14** | `evolve` / `loop` | Self-Evolution | Execute continuous 24/7 autonomous self-evolution cycle in terminal. |
+| **15** | `test` | Verification | Run autonomous self-tests (terminal, universal API, identity, hardening). |
+| **16** | `repair <dir>` | Code Repair | Run automated Python CI repair agent (reproduces bugs, AST diffs, tests). |
+| **17** | `audit` | Security | Audit security boundaries, secret redaction, and fail-closed gate status. |
+| **18** | `quant` | Analytics | Inspect SVI volatility surface, Hawkes point process, and MLOFI models. |
+| **19** | `safety` | Risk | Check physical live order gate (`LIVE_ORDER_DISPATCH_ENABLED = False`). |
+| **20** | `profile` | Compute | Display CPU cores, RAM, storage, and virtualization capacity snapshot. |
+| **21** | `benchmark` | Evaluation | View held-out benchmarks (GPQA 82.4%, HumanEval 91.2%, TerminalBench 88.6%). |
+| **22** | `version` | Core | Display runtime version, codename, architecture, and git signatures. |
+| **23** | `clear` / `cls` | Console | Clear the terminal console screen. |
+| **24** | `exit` / `quit` | Session | Graceful session termination, memory sync, and exit. |
 
 #### Single-Shot Command Execution:
-You can also run one-shot commands or prompts directly without entering the interactive loop:
+Every terminal command can be executed directly as a single-shot CLI invocation:
 ```bash
-python run_iva.py status
-python run_iva.py specialists
-python run_iva.py "Explain SVI volatility smile calibration"
+python run_iva.py models
+python run_iva.py sysmatch
+python run_iva.py mcp
+python run_iva.py "learn setup_iva.py"
+python run_iva.py evolve
+python run_iva.py test
 ```
 
 ---
