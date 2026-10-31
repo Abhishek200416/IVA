@@ -14,11 +14,17 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from agents.AGI_1_7.engine.agi17.adapters.agi_17_adapter import AGI17Adapter
+from agents.IVA.engine.agi17.adapters.agi_17_adapter import AGI17Adapter
 
 
 def _resolve_storage_root(preferred: str | None) -> Path:
-    candidate = Path(preferred) if preferred else Path(r"D:\AGI_Storage\AGI_1_7")
+    if preferred:
+        candidate = Path(preferred)
+    elif sys.platform == "win32" and os.path.exists("D:\\"):
+        candidate = Path(r"D:\AGI_Storage\AGI_1_7")
+    else:
+        candidate = Path.home() / ".iva" / "storage"
+
     try:
         candidate.mkdir(parents=True, exist_ok=True)
         probe = candidate / ".write_probe"
@@ -26,7 +32,7 @@ def _resolve_storage_root(preferred: str | None) -> Path:
         probe.unlink(missing_ok=True)
         return candidate
     except OSError:
-        fallback = REPO_ROOT / "agents" / "AGI_1_7" / "runtime_storage"
+        fallback = REPO_ROOT / "agents" / "IVA" / "runtime_storage"
         fallback.mkdir(parents=True, exist_ok=True)
         return fallback
 
@@ -236,7 +242,7 @@ def main(argv: list[str] | None = None) -> int:
 
     # Conversational & Operational Query Fast-Path (Phase 17.26)
     if args.query:
-        from agents.AGI_1_7.engine.agi17.runtime.command_router import CommandRouter
+        from agents.IVA.engine.agi17.runtime.command_router import CommandRouter
         router = CommandRouter()
         routing_res = router.handle_command(args.query)
         print(json.dumps(routing_res, indent=2, default=str), flush=True)
@@ -244,28 +250,28 @@ def main(argv: list[str] | None = None) -> int:
 
     # Autonomous Improvement Worker Handlers (Phase 17.25)
     if args.worker_stop or (args.command and args.command.lower() in ("worker-stop", "omega-stop")):
-        from agents.AGI_1_7.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
+        from agents.IVA.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
         w = PersistentImprovementWorker()
         w.set_control_signal("STOP", reason="run_agi_17.py --worker-stop")
         print(json.dumps({"status": "STOP_SIGNAL_SENT", "persisted": True}, indent=2))
         return 0
 
     if args.worker_pause or (args.command and args.command.lower() in ("worker-pause", "omega-pause")):
-        from agents.AGI_1_7.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
+        from agents.IVA.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
         w = PersistentImprovementWorker()
         w.set_control_signal("PAUSE", reason="run_agi_17.py --worker-pause")
         print(json.dumps({"status": "PAUSE_SIGNAL_SENT"}, indent=2))
         return 0
 
     if args.worker_resume or (args.command and args.command.lower() in ("worker-resume", "omega-resume")):
-        from agents.AGI_1_7.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
+        from agents.IVA.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
         w = PersistentImprovementWorker()
         w.set_control_signal("RESUME", reason="run_agi_17.py --worker-resume")
         print(json.dumps({"status": "RESUME_SIGNAL_SENT"}, indent=2))
         return 0
 
     if args.worker_status or (args.command and args.command.lower() in ("worker-status", "omega-status")):
-        from agents.AGI_1_7.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
+        from agents.IVA.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
         w = PersistentImprovementWorker()
         hb = json.loads(w.heartbeat_file.read_text(encoding="utf-8")) if w.heartbeat_file.exists() else {}
         cp = json.loads(w.checkpoint_file.read_text(encoding="utf-8")) if w.checkpoint_file.exists() else {}
@@ -273,7 +279,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.worker_single_cycle or (args.command and args.command.lower() == "worker-single-cycle"):
-        from agents.AGI_1_7.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
+        from agents.IVA.engine.agi17.orchestration.persistent_improvement_worker import PersistentImprovementWorker
         w = PersistentImprovementWorker()
         w.acquire_worker_lock(force=True)
         try:
@@ -285,7 +291,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.worker_start or (args.command and args.command.lower() in ("worker-start", "worker")):
         # Spawn persistent worker in OS-detached background process
-        worker_script = REPO_ROOT / "agents" / "AGI_1_7" / "engine" / "agi17" / "orchestration" / "persistent_improvement_worker.py"
+        worker_script = REPO_ROOT / "agents" / "IVA" / "engine" / "agi17" / "orchestration" / "persistent_improvement_worker.py"
         log_dir = REPO_ROOT / "scratch" / "logs"
         log_dir.mkdir(parents=True, exist_ok=True)
         log_file = log_dir / "improvement_worker.log"
@@ -327,11 +333,11 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "trading" or args.trading or (args.prompt and args.prompt.strip().lower() == "trading"):
-        from agents.AGI_1_7.engine.agi17.finance.trading_orchestrator import run_trading_command
+        from agents.IVA.engine.agi17.finance.trading_orchestrator import run_trading_command
         return run_trading_command()
 
     if (args.command and args.command.lower() in ("go-real", "goreal", "live")) or (args.prompt and args.prompt.strip().lower() in ("go real", "goreal", "go-real", "live")):
-        from agents.AGI_1_7.engine.agi17.finance.trading_orchestrator import run_go_real_command
+        from agents.IVA.engine.agi17.finance.trading_orchestrator import run_go_real_command
         return run_go_real_command()
 
     storage_root = _resolve_storage_root(args.storage_root)
@@ -348,6 +354,54 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         elif cmd_low in ("plugins", "plugin", "agency", "ponytail"):
             tc.print_plugins_notice()
+            return 0
+        elif cmd_low in ("models", "model", "providers"):
+            tc.print_models()
+            return 0
+        elif cmd_low in ("sysmatch", "match", "compat"):
+            tc.print_sysmatch()
+            return 0
+        elif cmd_low in ("mcp", "mcp list", "mcps"):
+            tc.print_mcp_list()
+            return 0
+        elif cmd_low.startswith("mcp install ") or cmd_low.startswith("mcp add "):
+            srv = args.command.split(" ", 2)[2].strip()
+            tc.execute_mcp_install(srv)
+            return 0
+        elif cmd_low.startswith("mcp test "):
+            srv = args.command.split(" ", 2)[2].strip()
+            tc.execute_mcp_test(srv)
+            return 0
+        elif cmd_low.startswith("learn "):
+            tgt = args.command[6:].strip()
+            tc.execute_learn(tgt)
+            return 0
+        elif cmd_low in ("memory", "mem"):
+            tc.print_memory_status()
+            return 0
+        elif cmd_low.startswith("remember "):
+            tc.execute_remember(args.command[9:].strip())
+            return 0
+        elif cmd_low.startswith("forget "):
+            tc.execute_forget(args.command[7:].strip())
+            return 0
+        elif cmd_low in ("evolve", "loop", "24", "self-improve"):
+            tc.execute_evolve()
+            return 0
+        elif cmd_low in ("audit", "security", "guard"):
+            tc.print_audit()
+            return 0
+        elif cmd_low in ("quant", "volatility", "alpha"):
+            tc.print_quant()
+            return 0
+        elif cmd_low in ("safety", "gate"):
+            tc.print_safety()
+            return 0
+        elif cmd_low in ("benchmark", "bench", "scores"):
+            tc.print_benchmark()
+            return 0
+        elif cmd_low in ("version", "ver"):
+            tc.print_version()
             return 0
         elif cmd_low in ("status", "health"):
             tc.print_status()
@@ -375,7 +429,7 @@ def main(argv: list[str] | None = None) -> int:
     # unless --text-only or --profile-only or --ci-repair-dir is specified.
     effective_code_dir: str | None = args.code_task_dir
     if effective_code_dir is None and args.prompt and not args.text_only and not args.profile_only and not args.ci_repair_dir:
-        effective_code_dir = str(REPO_ROOT / "agents" / "AGI_1_7" / "live_code_mission_workspace")
+        effective_code_dir = str(REPO_ROOT / "agents" / "IVA" / "live_code_mission_workspace")
 
     if args.detach:
         return _spawn_detached(args, storage_root, effective_code_dir)
@@ -481,7 +535,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.prompt:
-        from agents.AGI_1_7.engine.agi17.runtime.command_router import CommandRouter, CommandIntent
+        from agents.IVA.engine.agi17.runtime.command_router import CommandRouter, CommandIntent
         router = CommandRouter()
         intent = router.classify_intent(args.prompt)
         if intent == CommandIntent.GENUINE_SAFETY_GATE:
